@@ -1,0 +1,1687 @@
+{
+ "Administrative Tribunals Support Service of Canada": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 70.0,
+   "pses_diversity_inclusion": 78.8,
+   "pses_engagement": 77.7,
+   "pses_harassment": 67.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 58.5,
+   "pses_diversity_inclusion": 78.2,
+   "pses_engagement": 73.6,
+   "pses_harassment": 61.0
+  },
+  "Women": {
+   "pses_discrimination": 72.0,
+   "pses_diversity_inclusion": 82.2,
+   "pses_engagement": 79.6,
+   "pses_harassment": 67.0
+  }
+ },
+ "Agriculture and Agri-Food Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 64.5,
+   "pses_diversity_inclusion": 76.0,
+   "pses_engagement": 74.9,
+   "pses_harassment": 63.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 78.5,
+   "pses_engagement": 77.6,
+   "pses_harassment": 69.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 57.0,
+   "pses_diversity_inclusion": 71.8,
+   "pses_engagement": 70.6,
+   "pses_harassment": 56.5
+  },
+  "Women": {
+   "pses_discrimination": 66.5,
+   "pses_diversity_inclusion": 77.5,
+   "pses_engagement": 76.6,
+   "pses_harassment": 61.0
+  }
+ },
+ "Atlantic Canada Opportunities Agency": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 87.0,
+   "pses_diversity_inclusion": 90.2,
+   "pses_engagement": 84.4,
+   "pses_harassment": 88.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 72.5,
+   "pses_diversity_inclusion": 86.8,
+   "pses_engagement": 87.3,
+   "pses_harassment": 76.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 82.5,
+   "pses_engagement": 80.1,
+   "pses_harassment": 65.5
+  },
+  "Women": {
+   "pses_discrimination": 79.0,
+   "pses_diversity_inclusion": 87.8,
+   "pses_engagement": 85.9,
+   "pses_harassment": 76.0
+  }
+ },
+ "Canada Border Services Agency": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 44.0,
+   "pses_diversity_inclusion": 56.8,
+   "pses_engagement": 53.3,
+   "pses_harassment": 39.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 55.0,
+   "pses_diversity_inclusion": 68.3,
+   "pses_engagement": 64.9,
+   "pses_harassment": 53.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 43.0,
+   "pses_diversity_inclusion": 59.0,
+   "pses_engagement": 53.9,
+   "pses_harassment": 39.5
+  },
+  "Women": {
+   "pses_discrimination": 53.5,
+   "pses_diversity_inclusion": 68.0,
+   "pses_engagement": 64.0,
+   "pses_harassment": 49.0
+  }
+ },
+ "Canada Economic Development for Quebec Regions": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 62.5,
+   "pses_diversity_inclusion": 79.2,
+   "pses_engagement": 78.1,
+   "pses_harassment": 68.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 60.0,
+   "pses_diversity_inclusion": 76.7,
+   "pses_engagement": 71.9,
+   "pses_harassment": 57.0
+  },
+  "Women": {
+   "pses_discrimination": 68.5,
+   "pses_diversity_inclusion": 83.5,
+   "pses_engagement": 79.4,
+   "pses_harassment": 67.0
+  }
+ },
+ "Canada Energy Regulator": {
+  "Indigenous Peoples": {
+   "pses_diversity_inclusion": 72.5,
+   "pses_engagement": 77.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 73.5,
+   "pses_diversity_inclusion": 79.5,
+   "pses_engagement": 80.9,
+   "pses_harassment": 74.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 55.0,
+   "pses_diversity_inclusion": 67.7,
+   "pses_engagement": 69.1,
+   "pses_harassment": 50.0
+  },
+  "Women": {
+   "pses_discrimination": 64.0,
+   "pses_diversity_inclusion": 74.5,
+   "pses_engagement": 74.0,
+   "pses_harassment": 65.0
+  }
+ },
+ "Canada Revenue Agency": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 76.3,
+   "pses_engagement": 69.6,
+   "pses_harassment": 67.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 75.0,
+   "pses_diversity_inclusion": 81.3,
+   "pses_engagement": 75.6,
+   "pses_harassment": 75.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 61.0,
+   "pses_diversity_inclusion": 72.8,
+   "pses_engagement": 66.1,
+   "pses_harassment": 60.5
+  },
+  "Women": {
+   "pses_discrimination": 73.0,
+   "pses_diversity_inclusion": 80.2,
+   "pses_engagement": 74.6,
+   "pses_harassment": 71.5
+  }
+ },
+ "Canada School of Public Service": {
+  "Indigenous Peoples": {
+   "pses_diversity_inclusion": 85.0,
+   "pses_engagement": 71.6
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 69.5,
+   "pses_diversity_inclusion": 79.0,
+   "pses_engagement": 73.0,
+   "pses_harassment": 67.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 63.0,
+   "pses_diversity_inclusion": 77.8,
+   "pses_engagement": 70.6,
+   "pses_harassment": 65.5
+  },
+  "Women": {
+   "pses_discrimination": 69.5,
+   "pses_diversity_inclusion": 80.0,
+   "pses_engagement": 72.6,
+   "pses_harassment": 65.5
+  }
+ },
+ "Canada Water Agency": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 67.5,
+   "pses_diversity_inclusion": 80.8,
+   "pses_engagement": 76.6,
+   "pses_harassment": 75.0
+  },
+  "Persons with Disabilities": {
+   "pses_diversity_inclusion": 74.5,
+   "pses_engagement": 66.6,
+   "pses_harassment": 32.0
+  },
+  "Women": {
+   "pses_discrimination": 71.5,
+   "pses_diversity_inclusion": 83.2,
+   "pses_engagement": 78.1,
+   "pses_harassment": 75.0
+  }
+ },
+ "Canadian Food Inspection Agency": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 60.0,
+   "pses_diversity_inclusion": 70.7,
+   "pses_engagement": 66.3,
+   "pses_harassment": 54.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 67.5,
+   "pses_diversity_inclusion": 75.8,
+   "pses_engagement": 74.3,
+   "pses_harassment": 67.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 54.5,
+   "pses_diversity_inclusion": 69.0,
+   "pses_engagement": 62.7,
+   "pses_harassment": 53.5
+  },
+  "Women": {
+   "pses_discrimination": 67.0,
+   "pses_diversity_inclusion": 77.0,
+   "pses_engagement": 70.9,
+   "pses_harassment": 62.5
+  }
+ },
+ "Canadian Grain Commission": {
+  "Indigenous Peoples": {
+   "pses_diversity_inclusion": 74.3,
+   "pses_engagement": 66.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 80.0,
+   "pses_diversity_inclusion": 81.7,
+   "pses_engagement": 80.7,
+   "pses_harassment": 76.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 68.0,
+   "pses_diversity_inclusion": 74.7,
+   "pses_engagement": 74.3,
+   "pses_harassment": 65.0
+  },
+  "Women": {
+   "pses_discrimination": 74.0,
+   "pses_diversity_inclusion": 80.7,
+   "pses_engagement": 78.4,
+   "pses_harassment": 67.5
+  }
+ },
+ "Canadian Heritage": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 62.5,
+   "pses_diversity_inclusion": 78.3,
+   "pses_engagement": 70.7,
+   "pses_harassment": 69.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 64.5,
+   "pses_diversity_inclusion": 76.7,
+   "pses_engagement": 76.0,
+   "pses_harassment": 65.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 56.5,
+   "pses_diversity_inclusion": 73.2,
+   "pses_engagement": 69.9,
+   "pses_harassment": 59.0
+  },
+  "Women": {
+   "pses_discrimination": 68.5,
+   "pses_diversity_inclusion": 80.2,
+   "pses_engagement": 75.9,
+   "pses_harassment": 68.0
+  }
+ },
+ "Canadian Human Rights Commission": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 81.0,
+   "pses_diversity_inclusion": 84.0,
+   "pses_engagement": 82.7,
+   "pses_harassment": 78.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 78.5,
+   "pses_diversity_inclusion": 84.3,
+   "pses_engagement": 78.7,
+   "pses_harassment": 76.0
+  },
+  "Women": {
+   "pses_discrimination": 82.5,
+   "pses_diversity_inclusion": 87.0,
+   "pses_engagement": 80.9,
+   "pses_harassment": 79.5
+  }
+ },
+ "Canadian Institutes of Health Research": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 64.0,
+   "pses_diversity_inclusion": 77.7,
+   "pses_engagement": 73.4,
+   "pses_harassment": 68.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 65.0,
+   "pses_diversity_inclusion": 71.2,
+   "pses_engagement": 67.1,
+   "pses_harassment": 67.0
+  },
+  "Women": {
+   "pses_discrimination": 66.0,
+   "pses_diversity_inclusion": 78.3,
+   "pses_engagement": 72.7,
+   "pses_harassment": 65.0
+  }
+ },
+ "Canadian Nuclear Safety Commission": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 78.0,
+   "pses_diversity_inclusion": 84.5,
+   "pses_engagement": 86.3,
+   "pses_harassment": 79.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 78.7,
+   "pses_engagement": 77.1,
+   "pses_harassment": 64.5
+  },
+  "Women": {
+   "pses_discrimination": 81.0,
+   "pses_diversity_inclusion": 85.3,
+   "pses_engagement": 87.3,
+   "pses_harassment": 77.0
+  }
+ },
+ "Canadian Radio-television and Telecommunications Commission": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 84.0,
+   "pses_diversity_inclusion": 76.8,
+   "pses_engagement": 76.7,
+   "pses_harassment": 77.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 80.5,
+   "pses_engagement": 73.6,
+   "pses_harassment": 69.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 52.0,
+   "pses_diversity_inclusion": 74.7,
+   "pses_engagement": 67.7,
+   "pses_harassment": 47.5
+  },
+  "Women": {
+   "pses_discrimination": 63.0,
+   "pses_diversity_inclusion": 76.8,
+   "pses_engagement": 68.1,
+   "pses_harassment": 61.0
+  }
+ },
+ "Canadian Space Agency": {
+  "Indigenous Peoples": {
+   "pses_diversity_inclusion": 82.0,
+   "pses_engagement": 81.4
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 65.0,
+   "pses_diversity_inclusion": 75.2,
+   "pses_engagement": 74.0,
+   "pses_harassment": 61.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 63.0,
+   "pses_diversity_inclusion": 74.7,
+   "pses_engagement": 70.9,
+   "pses_harassment": 54.0
+  },
+  "Women": {
+   "pses_discrimination": 70.5,
+   "pses_diversity_inclusion": 79.3,
+   "pses_engagement": 77.4,
+   "pses_harassment": 60.0
+  }
+ },
+ "Canadian Transportation Agency": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 73.0,
+   "pses_diversity_inclusion": 80.2,
+   "pses_engagement": 77.6,
+   "pses_harassment": 72.0
+  },
+  "Persons with Disabilities": {
+   "pses_diversity_inclusion": 78.0,
+   "pses_engagement": 72.0,
+   "pses_harassment": 68.0
+  },
+  "Women": {
+   "pses_discrimination": 68.5,
+   "pses_diversity_inclusion": 79.5,
+   "pses_engagement": 74.1,
+   "pses_harassment": 65.0
+  }
+ },
+ "Communications Security Establishment Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 69.5,
+   "pses_diversity_inclusion": 83.5,
+   "pses_engagement": 83.1,
+   "pses_harassment": 71.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 74.0,
+   "pses_diversity_inclusion": 84.7,
+   "pses_engagement": 85.0,
+   "pses_harassment": 71.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 65.5,
+   "pses_diversity_inclusion": 79.3,
+   "pses_engagement": 76.3,
+   "pses_harassment": 62.5
+  },
+  "Women": {
+   "pses_discrimination": 71.0,
+   "pses_diversity_inclusion": 83.8,
+   "pses_engagement": 82.4,
+   "pses_harassment": 65.5
+  }
+ },
+ "Correctional Service Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 48.5,
+   "pses_diversity_inclusion": 59.0,
+   "pses_engagement": 55.6,
+   "pses_harassment": 42.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 50.5,
+   "pses_diversity_inclusion": 61.3,
+   "pses_engagement": 59.0,
+   "pses_harassment": 49.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 37.5,
+   "pses_diversity_inclusion": 52.7,
+   "pses_engagement": 48.4,
+   "pses_harassment": 34.0
+  },
+  "Women": {
+   "pses_discrimination": 54.0,
+   "pses_diversity_inclusion": 64.5,
+   "pses_engagement": 61.4,
+   "pses_harassment": 47.0
+  }
+ },
+ "Courts Administration Service": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 60.5,
+   "pses_diversity_inclusion": 72.8,
+   "pses_engagement": 71.1,
+   "pses_harassment": 57.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 64.5,
+   "pses_diversity_inclusion": 75.2,
+   "pses_engagement": 66.6,
+   "pses_harassment": 60.5
+  },
+  "Women": {
+   "pses_discrimination": 66.5,
+   "pses_diversity_inclusion": 74.2,
+   "pses_engagement": 67.1,
+   "pses_harassment": 62.5
+  }
+ },
+ "Crown-Indigenous Relations and Northern Affairs Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 62.5,
+   "pses_diversity_inclusion": 77.0,
+   "pses_engagement": 72.1,
+   "pses_harassment": 58.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 62.0,
+   "pses_diversity_inclusion": 74.2,
+   "pses_engagement": 70.6,
+   "pses_harassment": 60.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 53.0,
+   "pses_diversity_inclusion": 71.7,
+   "pses_engagement": 66.1,
+   "pses_harassment": 52.0
+  },
+  "Women": {
+   "pses_discrimination": 64.0,
+   "pses_diversity_inclusion": 76.7,
+   "pses_engagement": 70.7,
+   "pses_harassment": 62.5
+  }
+ },
+ "Department of Finance Canada": {
+  "Indigenous Peoples": {
+   "pses_diversity_inclusion": 82.7,
+   "pses_engagement": 70.1
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 62.0,
+   "pses_diversity_inclusion": 74.8,
+   "pses_engagement": 74.7,
+   "pses_harassment": 60.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 65.0,
+   "pses_diversity_inclusion": 74.7,
+   "pses_engagement": 71.0,
+   "pses_harassment": 63.0
+  },
+  "Women": {
+   "pses_discrimination": 68.0,
+   "pses_diversity_inclusion": 79.2,
+   "pses_engagement": 75.0,
+   "pses_harassment": 66.5
+  }
+ },
+ "Department of Justice Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 62.5,
+   "pses_diversity_inclusion": 70.8,
+   "pses_engagement": 72.7,
+   "pses_harassment": 62.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 62.0,
+   "pses_diversity_inclusion": 75.2,
+   "pses_engagement": 74.4,
+   "pses_harassment": 62.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 58.0,
+   "pses_diversity_inclusion": 70.7,
+   "pses_engagement": 70.0,
+   "pses_harassment": 56.5
+  },
+  "Women": {
+   "pses_discrimination": 65.0,
+   "pses_diversity_inclusion": 75.3,
+   "pses_engagement": 74.3,
+   "pses_harassment": 62.5
+  }
+ },
+ "Employment and Social Development Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 77.0,
+   "pses_engagement": 72.6,
+   "pses_harassment": 67.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 73.5,
+   "pses_diversity_inclusion": 81.0,
+   "pses_engagement": 76.3,
+   "pses_harassment": 73.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 60.0,
+   "pses_diversity_inclusion": 72.8,
+   "pses_engagement": 66.4,
+   "pses_harassment": 60.0
+  },
+  "Women": {
+   "pses_discrimination": 72.0,
+   "pses_diversity_inclusion": 80.2,
+   "pses_engagement": 74.6,
+   "pses_harassment": 70.5
+  }
+ },
+ "Environment and Climate Change Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 62.0,
+   "pses_diversity_inclusion": 74.0,
+   "pses_engagement": 67.9,
+   "pses_harassment": 61.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 67.0,
+   "pses_diversity_inclusion": 79.0,
+   "pses_engagement": 75.0,
+   "pses_harassment": 67.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 59.0,
+   "pses_diversity_inclusion": 73.5,
+   "pses_engagement": 69.7,
+   "pses_harassment": 58.5
+  },
+  "Women": {
+   "pses_discrimination": 67.5,
+   "pses_diversity_inclusion": 78.7,
+   "pses_engagement": 74.9,
+   "pses_harassment": 65.0
+  }
+ },
+ "Federal Economic Development Agency for Southern Ontario": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 65.0,
+   "pses_diversity_inclusion": 77.7,
+   "pses_engagement": 68.1,
+   "pses_harassment": 65.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 70.0,
+   "pses_diversity_inclusion": 72.7,
+   "pses_engagement": 62.0,
+   "pses_harassment": 69.0
+  },
+  "Women": {
+   "pses_discrimination": 73.5,
+   "pses_diversity_inclusion": 81.0,
+   "pses_engagement": 74.0,
+   "pses_harassment": 73.5
+  }
+ },
+ "Financial Consumer Agency of Canada": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 80.0,
+   "pses_diversity_inclusion": 86.0,
+   "pses_engagement": 89.0,
+   "pses_harassment": 79.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 71.0,
+   "pses_diversity_inclusion": 76.8,
+   "pses_engagement": 75.9,
+   "pses_harassment": 79.0
+  },
+  "Women": {
+   "pses_discrimination": 78.0,
+   "pses_diversity_inclusion": 83.7,
+   "pses_engagement": 83.3,
+   "pses_harassment": 75.0
+  }
+ },
+ "Financial Transactions and Reports Analysis Centre of Canada": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 68.0,
+   "pses_diversity_inclusion": 76.7,
+   "pses_engagement": 68.3,
+   "pses_harassment": 72.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 71.0,
+   "pses_diversity_inclusion": 78.8,
+   "pses_engagement": 67.1,
+   "pses_harassment": 62.5
+  },
+  "Women": {
+   "pses_discrimination": 70.5,
+   "pses_diversity_inclusion": 79.3,
+   "pses_engagement": 68.7,
+   "pses_harassment": 64.5
+  }
+ },
+ "Fisheries and Oceans Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 63.5,
+   "pses_diversity_inclusion": 71.5,
+   "pses_engagement": 70.6,
+   "pses_harassment": 59.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 65.0,
+   "pses_diversity_inclusion": 75.2,
+   "pses_engagement": 73.0,
+   "pses_harassment": 65.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 59.5,
+   "pses_diversity_inclusion": 69.5,
+   "pses_engagement": 67.3,
+   "pses_harassment": 55.0
+  },
+  "Women": {
+   "pses_discrimination": 64.5,
+   "pses_diversity_inclusion": 75.0,
+   "pses_engagement": 72.6,
+   "pses_harassment": 60.0
+  }
+ },
+ "Global Affairs Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 55.0,
+   "pses_diversity_inclusion": 74.8,
+   "pses_engagement": 71.9,
+   "pses_harassment": 51.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 50.0,
+   "pses_diversity_inclusion": 69.3,
+   "pses_engagement": 68.4,
+   "pses_harassment": 48.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 47.0,
+   "pses_diversity_inclusion": 67.7,
+   "pses_engagement": 62.7,
+   "pses_harassment": 44.5
+  },
+  "Women": {
+   "pses_discrimination": 55.5,
+   "pses_diversity_inclusion": 72.3,
+   "pses_engagement": 69.7,
+   "pses_harassment": 51.5
+  }
+ },
+ "Health Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 63.0,
+   "pses_diversity_inclusion": 75.2,
+   "pses_engagement": 67.1,
+   "pses_harassment": 65.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 66.0,
+   "pses_diversity_inclusion": 76.2,
+   "pses_engagement": 71.6,
+   "pses_harassment": 67.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 59.0,
+   "pses_diversity_inclusion": 71.8,
+   "pses_engagement": 65.6,
+   "pses_harassment": 59.5
+  },
+  "Women": {
+   "pses_discrimination": 67.0,
+   "pses_diversity_inclusion": 76.5,
+   "pses_engagement": 70.7,
+   "pses_harassment": 65.5
+  }
+ },
+ "Housing, Infrastructure and Communities Canada": {
+  "Indigenous Peoples": {
+   "pses_diversity_inclusion": 70.0,
+   "pses_engagement": 68.9
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 67.0,
+   "pses_diversity_inclusion": 79.2,
+   "pses_engagement": 74.6,
+   "pses_harassment": 69.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 57.0,
+   "pses_diversity_inclusion": 72.3,
+   "pses_engagement": 67.3,
+   "pses_harassment": 56.5
+  },
+  "Women": {
+   "pses_discrimination": 66.0,
+   "pses_diversity_inclusion": 78.3,
+   "pses_engagement": 73.6,
+   "pses_harassment": 64.0
+  }
+ },
+ "Immigration and Refugee Board of Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 76.8,
+   "pses_engagement": 68.7,
+   "pses_harassment": 67.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 66.5,
+   "pses_diversity_inclusion": 75.8,
+   "pses_engagement": 71.0,
+   "pses_harassment": 65.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 54.0,
+   "pses_diversity_inclusion": 70.2,
+   "pses_engagement": 64.6,
+   "pses_harassment": 56.0
+  },
+  "Women": {
+   "pses_discrimination": 64.5,
+   "pses_diversity_inclusion": 75.8,
+   "pses_engagement": 69.6,
+   "pses_harassment": 64.0
+  }
+ },
+ "Immigration, Refugees and Citizenship Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 66.5,
+   "pses_diversity_inclusion": 76.3,
+   "pses_engagement": 68.0,
+   "pses_harassment": 66.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 68.0,
+   "pses_diversity_inclusion": 78.5,
+   "pses_engagement": 72.9,
+   "pses_harassment": 68.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 56.5,
+   "pses_diversity_inclusion": 70.7,
+   "pses_engagement": 64.0,
+   "pses_harassment": 55.0
+  },
+  "Women": {
+   "pses_discrimination": 68.5,
+   "pses_diversity_inclusion": 78.8,
+   "pses_engagement": 72.7,
+   "pses_harassment": 66.5
+  }
+ },
+ "Impact Assessment Agency of Canada": {
+  "Indigenous Peoples": {
+   "pses_diversity_inclusion": 82.7,
+   "pses_engagement": 81.9,
+   "pses_harassment": 78.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 63.5,
+   "pses_diversity_inclusion": 77.8,
+   "pses_engagement": 76.7,
+   "pses_harassment": 65.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 58.5,
+   "pses_diversity_inclusion": 73.7,
+   "pses_engagement": 70.9,
+   "pses_harassment": 57.5
+  },
+  "Women": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 80.0,
+   "pses_engagement": 75.9,
+   "pses_harassment": 66.0
+  }
+ },
+ "Indigenous Services Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 63.5,
+   "pses_diversity_inclusion": 74.2,
+   "pses_engagement": 71.0,
+   "pses_harassment": 60.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 63.5,
+   "pses_diversity_inclusion": 75.3,
+   "pses_engagement": 72.0,
+   "pses_harassment": 64.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 53.0,
+   "pses_diversity_inclusion": 67.2,
+   "pses_engagement": 63.0,
+   "pses_harassment": 48.5
+  },
+  "Women": {
+   "pses_discrimination": 63.0,
+   "pses_diversity_inclusion": 74.0,
+   "pses_engagement": 69.0,
+   "pses_harassment": 59.0
+  }
+ },
+ "Innovation, Science and Economic Development Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 70.5,
+   "pses_diversity_inclusion": 77.3,
+   "pses_engagement": 73.7,
+   "pses_harassment": 63.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 70.0,
+   "pses_diversity_inclusion": 79.8,
+   "pses_engagement": 76.9,
+   "pses_harassment": 68.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 60.0,
+   "pses_diversity_inclusion": 71.7,
+   "pses_engagement": 66.3,
+   "pses_harassment": 60.0
+  },
+  "Women": {
+   "pses_discrimination": 69.5,
+   "pses_diversity_inclusion": 78.8,
+   "pses_engagement": 74.9,
+   "pses_harassment": 66.0
+  }
+ },
+ "Library and Archives Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 65.0,
+   "pses_diversity_inclusion": 79.3,
+   "pses_engagement": 77.7,
+   "pses_harassment": 74.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 70.5,
+   "pses_diversity_inclusion": 80.8,
+   "pses_engagement": 79.9,
+   "pses_harassment": 74.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 62.0,
+   "pses_diversity_inclusion": 73.0,
+   "pses_engagement": 73.6,
+   "pses_harassment": 57.0
+  },
+  "Women": {
+   "pses_discrimination": 69.5,
+   "pses_diversity_inclusion": 81.0,
+   "pses_engagement": 78.0,
+   "pses_harassment": 68.5
+  }
+ },
+ "Micro-organizations combined": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 60.5,
+   "pses_diversity_inclusion": 69.7,
+   "pses_engagement": 67.1,
+   "pses_harassment": 55.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 74.0,
+   "pses_diversity_inclusion": 80.7,
+   "pses_engagement": 77.9,
+   "pses_harassment": 70.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 77.2,
+   "pses_engagement": 72.9,
+   "pses_harassment": 64.0
+  },
+  "Women": {
+   "pses_discrimination": 76.0,
+   "pses_diversity_inclusion": 81.7,
+   "pses_engagement": 79.1,
+   "pses_harassment": 73.0
+  }
+ },
+ "National Defence": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 61.0,
+   "pses_diversity_inclusion": 68.8,
+   "pses_engagement": 69.7,
+   "pses_harassment": 58.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 67.0,
+   "pses_diversity_inclusion": 75.3,
+   "pses_engagement": 74.0,
+   "pses_harassment": 67.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 60.5,
+   "pses_diversity_inclusion": 68.0,
+   "pses_engagement": 67.1,
+   "pses_harassment": 56.0
+  },
+  "Women": {
+   "pses_discrimination": 66.5,
+   "pses_diversity_inclusion": 74.0,
+   "pses_engagement": 72.7,
+   "pses_harassment": 62.0
+  }
+ },
+ "National Film Board of Canada": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 55.0,
+   "pses_diversity_inclusion": 70.0,
+   "pses_engagement": 72.0,
+   "pses_harassment": 59.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 74.0,
+   "pses_diversity_inclusion": 82.7,
+   "pses_engagement": 80.1,
+   "pses_harassment": 75.0
+  },
+  "Women": {
+   "pses_discrimination": 55.0,
+   "pses_diversity_inclusion": 72.3,
+   "pses_engagement": 71.3,
+   "pses_harassment": 54.5
+  }
+ },
+ "National Research Council Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 66.5,
+   "pses_diversity_inclusion": 80.5,
+   "pses_engagement": 79.3,
+   "pses_harassment": 69.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 76.0,
+   "pses_diversity_inclusion": 80.8,
+   "pses_engagement": 78.9,
+   "pses_harassment": 74.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 63.5,
+   "pses_diversity_inclusion": 76.0,
+   "pses_engagement": 73.4,
+   "pses_harassment": 65.0
+  },
+  "Women": {
+   "pses_discrimination": 71.0,
+   "pses_diversity_inclusion": 80.7,
+   "pses_engagement": 78.6,
+   "pses_harassment": 68.5
+  }
+ },
+ "Natural Resources Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 60.0,
+   "pses_diversity_inclusion": 76.2,
+   "pses_engagement": 75.3,
+   "pses_harassment": 61.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 70.0,
+   "pses_diversity_inclusion": 78.2,
+   "pses_engagement": 76.3,
+   "pses_harassment": 69.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 55.5,
+   "pses_diversity_inclusion": 71.0,
+   "pses_engagement": 66.3,
+   "pses_harassment": 53.0
+  },
+  "Women": {
+   "pses_discrimination": 64.0,
+   "pses_diversity_inclusion": 77.2,
+   "pses_engagement": 74.3,
+   "pses_harassment": 60.5
+  }
+ },
+ "Natural Sciences and Engineering Research Council of Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 78.0,
+   "pses_diversity_inclusion": 88.0,
+   "pses_engagement": 86.9,
+   "pses_harassment": 80.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 75.5,
+   "pses_diversity_inclusion": 84.3,
+   "pses_engagement": 83.9,
+   "pses_harassment": 73.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 77.5,
+   "pses_diversity_inclusion": 85.8,
+   "pses_engagement": 84.0,
+   "pses_harassment": 73.5
+  },
+  "Women": {
+   "pses_discrimination": 75.5,
+   "pses_diversity_inclusion": 85.7,
+   "pses_engagement": 84.0,
+   "pses_harassment": 72.5
+  }
+ },
+ "Office of the Auditor General of Canada": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 52.5,
+   "pses_diversity_inclusion": 68.2,
+   "pses_engagement": 63.6,
+   "pses_harassment": 56.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 54.0,
+   "pses_diversity_inclusion": 68.5,
+   "pses_engagement": 59.9,
+   "pses_harassment": 53.0
+  },
+  "Women": {
+   "pses_discrimination": 57.5,
+   "pses_diversity_inclusion": 72.0,
+   "pses_engagement": 64.1,
+   "pses_harassment": 56.0
+  }
+ },
+ "Office of the Chief Electoral Officer": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 78.5,
+   "pses_diversity_inclusion": 82.7,
+   "pses_engagement": 78.9,
+   "pses_harassment": 84.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 74.5,
+   "pses_diversity_inclusion": 82.3,
+   "pses_engagement": 80.6,
+   "pses_harassment": 75.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 57.0,
+   "pses_diversity_inclusion": 71.5,
+   "pses_engagement": 68.1,
+   "pses_harassment": 58.5
+  },
+  "Women": {
+   "pses_discrimination": 74.0,
+   "pses_diversity_inclusion": 81.2,
+   "pses_engagement": 78.9,
+   "pses_harassment": 72.5
+  }
+ },
+ "Office of the Commissioner of Official Languages": {
+  "Members of Visible Minorities": {
+   "pses_diversity_inclusion": 82.0,
+   "pses_engagement": 83.7
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 71.0,
+   "pses_diversity_inclusion": 77.8,
+   "pses_engagement": 69.1
+  },
+  "Women": {
+   "pses_discrimination": 78.5,
+   "pses_diversity_inclusion": 85.5,
+   "pses_engagement": 82.7,
+   "pses_harassment": 75.0
+  }
+ },
+ "Office of the Privacy Commissioner of Canada": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 78.0,
+   "pses_diversity_inclusion": 82.2,
+   "pses_engagement": 82.6,
+   "pses_harassment": 75.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 79.0,
+   "pses_diversity_inclusion": 81.3,
+   "pses_engagement": 75.1,
+   "pses_harassment": 78.0
+  },
+  "Women": {
+   "pses_discrimination": 76.0,
+   "pses_diversity_inclusion": 82.5,
+   "pses_engagement": 79.7,
+   "pses_harassment": 74.5
+  }
+ },
+ "Office of the Secretary to the Governor General": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 52.0,
+   "pses_diversity_inclusion": 68.0,
+   "pses_engagement": 68.9,
+   "pses_harassment": 54.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 67.0,
+   "pses_diversity_inclusion": 68.5,
+   "pses_engagement": 68.6,
+   "pses_harassment": 54.0
+  },
+  "Women": {
+   "pses_discrimination": 63.0,
+   "pses_diversity_inclusion": 74.7,
+   "pses_engagement": 73.6,
+   "pses_harassment": 63.0
+  }
+ },
+ "Parks Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 62.5,
+   "pses_diversity_inclusion": 74.3,
+   "pses_engagement": 76.3,
+   "pses_harassment": 63.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 66.5,
+   "pses_diversity_inclusion": 74.5,
+   "pses_engagement": 76.9,
+   "pses_harassment": 65.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 60.0,
+   "pses_diversity_inclusion": 70.3,
+   "pses_engagement": 72.0,
+   "pses_harassment": 55.5
+  },
+  "Women": {
+   "pses_discrimination": 68.0,
+   "pses_diversity_inclusion": 77.2,
+   "pses_engagement": 78.0,
+   "pses_harassment": 62.0
+  }
+ },
+ "Parole Board of Canada": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 70.5,
+   "pses_diversity_inclusion": 81.0,
+   "pses_engagement": 77.4,
+   "pses_harassment": 70.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 64.0,
+   "pses_diversity_inclusion": 76.2,
+   "pses_engagement": 73.7,
+   "pses_harassment": 60.0
+  },
+  "Women": {
+   "pses_discrimination": 72.0,
+   "pses_diversity_inclusion": 77.8,
+   "pses_engagement": 76.0,
+   "pses_harassment": 64.0
+  }
+ },
+ "Prairies Economic Development Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 82.0,
+   "pses_diversity_inclusion": 82.0,
+   "pses_engagement": 78.3,
+   "pses_harassment": 82.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 86.0,
+   "pses_diversity_inclusion": 87.3,
+   "pses_engagement": 85.4,
+   "pses_harassment": 82.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 62.0,
+   "pses_diversity_inclusion": 74.2,
+   "pses_engagement": 73.6,
+   "pses_harassment": 67.0
+  },
+  "Women": {
+   "pses_discrimination": 80.5,
+   "pses_diversity_inclusion": 85.0,
+   "pses_engagement": 83.6,
+   "pses_harassment": 73.5
+  }
+ },
+ "Privy Council Office": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 75.0,
+   "pses_diversity_inclusion": 82.3,
+   "pses_engagement": 79.1,
+   "pses_harassment": 77.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 68.5,
+   "pses_diversity_inclusion": 80.7,
+   "pses_engagement": 80.9,
+   "pses_harassment": 67.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 63.5,
+   "pses_diversity_inclusion": 74.3,
+   "pses_engagement": 74.0,
+   "pses_harassment": 61.5
+  },
+  "Women": {
+   "pses_discrimination": 68.0,
+   "pses_diversity_inclusion": 79.0,
+   "pses_engagement": 76.1,
+   "pses_harassment": 66.0
+  }
+ },
+ "Public Health Agency of Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 66.0,
+   "pses_diversity_inclusion": 70.7,
+   "pses_engagement": 65.7,
+   "pses_harassment": 59.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 63.5,
+   "pses_diversity_inclusion": 76.3,
+   "pses_engagement": 69.6,
+   "pses_harassment": 63.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 59.0,
+   "pses_diversity_inclusion": 71.7,
+   "pses_engagement": 63.3,
+   "pses_harassment": 55.5
+  },
+  "Women": {
+   "pses_discrimination": 65.5,
+   "pses_diversity_inclusion": 77.0,
+   "pses_engagement": 69.3,
+   "pses_harassment": 62.0
+  }
+ },
+ "Public Prosecution Service of Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 71.8,
+   "pses_engagement": 75.7,
+   "pses_harassment": 51.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 64.0,
+   "pses_diversity_inclusion": 74.7,
+   "pses_engagement": 74.6,
+   "pses_harassment": 63.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 49.0,
+   "pses_diversity_inclusion": 65.5,
+   "pses_engagement": 64.4,
+   "pses_harassment": 45.5
+  },
+  "Women": {
+   "pses_discrimination": 60.5,
+   "pses_diversity_inclusion": 73.0,
+   "pses_engagement": 72.7,
+   "pses_harassment": 56.0
+  }
+ },
+ "Public Safety Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 61.5,
+   "pses_diversity_inclusion": 75.5,
+   "pses_engagement": 71.6,
+   "pses_harassment": 62.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 63.0,
+   "pses_diversity_inclusion": 76.5,
+   "pses_engagement": 71.4,
+   "pses_harassment": 64.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 53.0,
+   "pses_diversity_inclusion": 70.2,
+   "pses_engagement": 61.9,
+   "pses_harassment": 53.0
+  },
+  "Women": {
+   "pses_discrimination": 62.0,
+   "pses_diversity_inclusion": 76.3,
+   "pses_engagement": 70.6,
+   "pses_harassment": 61.0
+  }
+ },
+ "Public Service": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 62.0,
+   "pses_diversity_inclusion": 72.0,
+   "pses_engagement": 68.6,
+   "pses_harassment": 59.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 77.7,
+   "pses_engagement": 74.1,
+   "pses_harassment": 68.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 57.0,
+   "pses_diversity_inclusion": 70.0,
+   "pses_engagement": 65.4,
+   "pses_harassment": 55.5
+  },
+  "Women": {
+   "pses_discrimination": 68.0,
+   "pses_diversity_inclusion": 77.0,
+   "pses_engagement": 73.0,
+   "pses_harassment": 64.5
+  }
+ },
+ "Public Service Commission of Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 70.0,
+   "pses_diversity_inclusion": 74.5,
+   "pses_engagement": 72.3,
+   "pses_harassment": 67.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 66.0,
+   "pses_diversity_inclusion": 75.7,
+   "pses_engagement": 70.3,
+   "pses_harassment": 61.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 63.0,
+   "pses_diversity_inclusion": 75.2,
+   "pses_engagement": 67.7,
+   "pses_harassment": 58.0
+  },
+  "Women": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 78.3,
+   "pses_engagement": 70.7,
+   "pses_harassment": 62.0
+  }
+ },
+ "Public Services and Procurement Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 67.5,
+   "pses_diversity_inclusion": 77.3,
+   "pses_engagement": 72.4,
+   "pses_harassment": 66.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 70.5,
+   "pses_diversity_inclusion": 78.7,
+   "pses_engagement": 75.6,
+   "pses_harassment": 71.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 61.5,
+   "pses_diversity_inclusion": 73.2,
+   "pses_engagement": 67.0,
+   "pses_harassment": 61.5
+  },
+  "Women": {
+   "pses_discrimination": 74.0,
+   "pses_diversity_inclusion": 80.5,
+   "pses_engagement": 75.7,
+   "pses_harassment": 71.5
+  }
+ },
+ "Royal Canadian Mounted Police": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 69.0,
+   "pses_diversity_inclusion": 74.3,
+   "pses_engagement": 74.9,
+   "pses_harassment": 63.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 66.5,
+   "pses_diversity_inclusion": 75.8,
+   "pses_engagement": 75.0,
+   "pses_harassment": 63.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 56.0,
+   "pses_diversity_inclusion": 68.5,
+   "pses_engagement": 68.3,
+   "pses_harassment": 52.5
+  },
+  "Women": {
+   "pses_discrimination": 67.0,
+   "pses_diversity_inclusion": 74.8,
+   "pses_engagement": 75.3,
+   "pses_harassment": 61.0
+  }
+ },
+ "Shared Services Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 68.5,
+   "pses_diversity_inclusion": 78.5,
+   "pses_engagement": 70.1,
+   "pses_harassment": 68.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 71.5,
+   "pses_diversity_inclusion": 81.3,
+   "pses_engagement": 78.0,
+   "pses_harassment": 72.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 61.5,
+   "pses_diversity_inclusion": 74.2,
+   "pses_engagement": 67.9,
+   "pses_harassment": 60.5
+  },
+  "Women": {
+   "pses_discrimination": 67.5,
+   "pses_diversity_inclusion": 78.7,
+   "pses_engagement": 73.0,
+   "pses_harassment": 65.0
+  }
+ },
+ "Social Sciences and Humanities Research Council of Canada": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 60.5,
+   "pses_diversity_inclusion": 78.3,
+   "pses_engagement": 77.3,
+   "pses_harassment": 64.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 63.0,
+   "pses_diversity_inclusion": 80.7,
+   "pses_engagement": 77.0,
+   "pses_harassment": 66.0
+  },
+  "Women": {
+   "pses_discrimination": 71.0,
+   "pses_diversity_inclusion": 83.2,
+   "pses_engagement": 82.7,
+   "pses_harassment": 71.0
+  }
+ },
+ "Statistics Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 67.0,
+   "pses_diversity_inclusion": 78.3,
+   "pses_engagement": 72.1,
+   "pses_harassment": 63.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 72.5,
+   "pses_diversity_inclusion": 80.7,
+   "pses_engagement": 75.6,
+   "pses_harassment": 73.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 59.0,
+   "pses_diversity_inclusion": 73.3,
+   "pses_engagement": 67.1,
+   "pses_harassment": 58.0
+  },
+  "Women": {
+   "pses_discrimination": 70.5,
+   "pses_diversity_inclusion": 78.5,
+   "pses_engagement": 73.6,
+   "pses_harassment": 68.0
+  }
+ },
+ "Supreme Court of Canada": {
+  "Members of Visible Minorities": {
+   "pses_diversity_inclusion": 80.8,
+   "pses_engagement": 77.9
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 83.0,
+   "pses_diversity_inclusion": 83.5,
+   "pses_engagement": 83.4,
+   "pses_harassment": 69.0
+  },
+  "Women": {
+   "pses_discrimination": 80.0,
+   "pses_diversity_inclusion": 84.8,
+   "pses_engagement": 86.4,
+   "pses_harassment": 75.0
+  }
+ },
+ "Transport Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 62.0,
+   "pses_diversity_inclusion": 69.7,
+   "pses_engagement": 67.6,
+   "pses_harassment": 59.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 69.5,
+   "pses_diversity_inclusion": 76.8,
+   "pses_engagement": 74.6,
+   "pses_harassment": 68.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 59.5,
+   "pses_diversity_inclusion": 70.2,
+   "pses_engagement": 66.7,
+   "pses_harassment": 58.0
+  },
+  "Women": {
+   "pses_discrimination": 69.5,
+   "pses_diversity_inclusion": 78.2,
+   "pses_engagement": 74.7,
+   "pses_harassment": 66.5
+  }
+ },
+ "Transportation Safety Board of Canada": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 77.0,
+   "pses_diversity_inclusion": 79.8,
+   "pses_engagement": 85.9
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 63.0,
+   "pses_diversity_inclusion": 70.0,
+   "pses_engagement": 71.4,
+   "pses_harassment": 59.0
+  },
+  "Women": {
+   "pses_discrimination": 64.5,
+   "pses_diversity_inclusion": 80.2,
+   "pses_engagement": 80.7,
+   "pses_harassment": 65.0
+  }
+ },
+ "Treasury Board of Canada Secretariat": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 72.0,
+   "pses_diversity_inclusion": 74.7,
+   "pses_engagement": 72.0,
+   "pses_harassment": 72.5
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 61.0,
+   "pses_diversity_inclusion": 77.0,
+   "pses_engagement": 73.9,
+   "pses_harassment": 61.5
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 58.0,
+   "pses_diversity_inclusion": 72.5,
+   "pses_engagement": 66.1,
+   "pses_harassment": 56.5
+  },
+  "Women": {
+   "pses_discrimination": 67.5,
+   "pses_diversity_inclusion": 77.7,
+   "pses_engagement": 72.9,
+   "pses_harassment": 65.0
+  }
+ },
+ "Veterans Affairs Canada": {
+  "Indigenous Peoples": {
+   "pses_discrimination": 74.5,
+   "pses_diversity_inclusion": 75.8,
+   "pses_engagement": 69.9,
+   "pses_harassment": 70.0
+  },
+  "Members of Visible Minorities": {
+   "pses_discrimination": 68.5,
+   "pses_diversity_inclusion": 77.7,
+   "pses_engagement": 76.3,
+   "pses_harassment": 71.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 62.5,
+   "pses_diversity_inclusion": 73.3,
+   "pses_engagement": 69.3,
+   "pses_harassment": 62.0
+  },
+  "Women": {
+   "pses_discrimination": 72.0,
+   "pses_diversity_inclusion": 79.2,
+   "pses_engagement": 75.3,
+   "pses_harassment": 69.0
+  }
+ },
+ "Veterans Review and Appeal Board": {
+  "Persons with Disabilities": {
+   "pses_diversity_inclusion": 78.2,
+   "pses_engagement": 78.4
+  },
+  "Women": {
+   "pses_discrimination": 85.0,
+   "pses_diversity_inclusion": 87.7,
+   "pses_engagement": 87.3,
+   "pses_harassment": 82.0
+  }
+ },
+ "Women and Gender Equality Canada": {
+  "Members of Visible Minorities": {
+   "pses_discrimination": 63.0,
+   "pses_diversity_inclusion": 76.7,
+   "pses_engagement": 70.9,
+   "pses_harassment": 59.0
+  },
+  "Persons with Disabilities": {
+   "pses_discrimination": 64.0,
+   "pses_diversity_inclusion": 75.7,
+   "pses_engagement": 64.4,
+   "pses_harassment": 56.0
+  },
+  "Women": {
+   "pses_discrimination": 66.5,
+   "pses_diversity_inclusion": 80.7,
+   "pses_engagement": 71.9,
+   "pses_harassment": 61.5
+  }
+ }
+}

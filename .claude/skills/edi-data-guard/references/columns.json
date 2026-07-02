@@ -1,0 +1,83 @@
+{
+  "description": "Canonical contract for the Employment Equity Gap dataset. edi-data-guard/validate.py reads this file and refuses any CSV that does not conform. Keeping the rules in a reference file (not in code) means the standard is written once and enforced on every run.",
+  "required_columns": [
+    "department_agency",
+    "equity_group",
+    "fiscal_year",
+    "all_employees",
+    "designated_group_members",
+    "representation_percent",
+    "workforce_availability_percent",
+    "expected_number",
+    "gap",
+    "pses_engagement",
+    "pses_diversity_inclusion",
+    "pses_harassment",
+    "pses_discrimination",
+    "pses_mobility_retention"
+  ],
+  "valid_equity_groups": [
+    "Women",
+    "Indigenous Peoples",
+    "Persons with Disabilities",
+    "Members of Visible Minorities"
+  ],
+  "valid_fiscal_years": [
+    "2021-2022",
+    "2022-2023",
+    "2023-2024",
+    "2024-2025"
+  ],
+  "numeric_columns": [
+    "all_employees",
+    "designated_group_members",
+    "representation_percent",
+    "workforce_availability_percent",
+    "expected_number",
+    "gap"
+  ],
+  "percent_columns": [
+    "representation_percent",
+    "workforce_availability_percent"
+  ],
+  "pses_columns": [
+    "pses_engagement",
+    "pses_diversity_inclusion",
+    "pses_harassment",
+    "pses_discrimination",
+    "pses_mobility_retention"
+  ],
+  "workforce_availability_benchmarks": {
+    "2021-2022": {
+      "Women": 53.3,
+      "Indigenous Peoples": 3.8,
+      "Persons with Disabilities": 9.1,
+      "Members of Visible Minorities": 17.2
+    },
+    "2022-2023": {
+      "Women": 53.7,
+      "Indigenous Peoples": 3.8,
+      "Persons with Disabilities": 9.2,
+      "Members of Visible Minorities": 17.3
+    },
+    "2023-2024": {
+      "Women": 55.3,
+      "Indigenous Peoples": 4.1,
+      "Persons with Disabilities": 12.0,
+      "Members of Visible Minorities": 22.7
+    },
+    "2024-2025": {
+      "Women": 54.9,
+      "Indigenous Peoples": 4.0,
+      "Persons with Disabilities": 12.0,
+      "Members of Visible Minorities": 22.7
+    }
+  },
+  "pses_score_range": { "min": 0, "max": 100 },
+  "pses_suppression_code": 9999,
+  "tolerances": {
+    "representation_percent_pp": 0.15,
+    "expected_number_abs": 1.0,
+    "gap_abs": 1.0
+  }
+}

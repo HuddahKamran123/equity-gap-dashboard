@@ -1,0 +1,284 @@
+fiscal_year,report_year,wfa_census,department,all_employees,women_n,women_pct,women_wfa,indigenous_n,indigenous_pct,indigenous_wfa,disability_n,disability_pct,disability_wfa,racialized_n,racialized_pct,racialized_wfa,suppressed_flag,notes
+FY2021-22,2022,2016 Census,Employment and Social Development Canada,33560,22721,67.7,53.3,1507,4.5,3.8,2655,7.9,9.1,9233,27.5,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,National Defence,25440,10597,41.7,53.3,863,3.4,3.8,1381,5.4,9.1,2752,10.8,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Correctional Service Canada,17431,8718,50.0,53.3,1871,10.7,3.8,1135,6.5,9.1,2196,12.6,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Public Services and Procurement Canada,16338,9777,59.8,53.3,576,3.5,3.8,939,5.7,9.1,3049,18.7,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canada Border Services Agency,14362,6779,47.2,53.3,543,3.8,3.8,678,4.7,9.1,2782,19.4,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Fisheries and Oceans Canada,12872,5525,42.9,53.3,627,4.9,3.8,511,4.0,9.1,973,7.6,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Health Canada,9184,5957,64.9,53.3,240,2.6,3.8,598,6.5,9.1,2806,30.6,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,"Immigration, Refugees and Citizenship Canada",8591,5506,64.1,53.3,254,3.0,3.8,464,5.4,9.1,3028,35.2,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Royal Canadian Mounted Police (Civilian Staff),8384,6122,73.0,53.3,467,5.6,3.8,357,4.3,9.1,1428,17.0,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Shared Services Canada,7483,2574,34.4,53.3,267,3.6,3.8,546,7.3,9.1,1641,21.9,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Environment and Climate Change Canada,7045,3673,52.1,53.3,213,3.0,3.8,476,6.8,9.1,1412,20.0,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Indigenous Services Canada,6661,4537,68.1,53.3,1878,28.2,3.8,424,6.4,9.1,1224,18.4,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Global Affairs Canada,6422,3648,56.8,53.3,443,6.9,3.8,274,4.3,9.1,1760,27.4,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Transport Canada,5744,2616,45.5,53.3,231,4.0,3.8,252,4.4,9.1,1100,19.2,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Statistics Canada,5725,2871,50.1,53.3,193,3.4,3.8,478,8.3,9.1,1645,28.7,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,"Innovation, Science and Economic Development Canada",5543,2835,51.1,53.3,158,2.9,3.8,322,5.8,9.1,1410,25.4,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Agriculture and Agri-Food Canada,4953,2603,52.6,53.3,180,3.6,3.8,274,5.5,9.1,962,19.4,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Department of Justice Canada,4929,3360,68.2,53.3,213,4.3,3.8,336,6.8,9.1,1105,22.4,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Natural Resources Canada,4306,2044,47.5,53.3,141,3.3,3.8,328,7.6,9.1,843,19.6,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Public Health Agency of Canada,3683,2502,67.9,53.3,124,3.4,3.8,219,5.9,9.1,1041,28.3,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Veterans Affairs Canada,3439,2512,73.0,53.3,144,4.2,3.8,260,7.6,9.1,334,9.7,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Treasury Board of Canada Secretariat,2214,1346,60.8,53.3,73,3.3,3.8,177,8.0,9.1,522,23.6,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Crown-Indigenous Relations and Northern Affairs Canada,1905,1263,66.3,53.3,333,17.5,3.8,122,6.4,9.1,327,17.2,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canadian Heritage,1864,1270,68.1,53.3,91,4.9,3.8,129,6.9,9.1,343,18.4,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Immigration and Refugee Board of Canada,1791,1155,64.5,53.3,43,2.4,3.8,87,4.9,9.1,701,39.1,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Public Safety Canada,1238,754,60.9,53.3,58,4.7,3.8,93,7.5,9.1,256,20.7,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Public Prosecution Service of Canada,1093,727,66.5,53.3,78,7.1,3.8,69,6.3,9.1,213,19.5,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Privy Council Office,1028,569,55.4,53.3,39,3.8,3.8,50,4.9,9.1,213,20.7,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Elections Canada,922,486,52.7,53.3,21,2.3,3.8,60,6.5,9.1,191,20.7,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Infrastructure Canada,894,548,61.3,53.3,28,3.1,3.8,70,7.8,9.1,207,23.2,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Department of Finance Canada,856,400,46.7,53.3,21,2.5,3.8,42,4.9,9.1,173,20.2,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Public Service Commission of Canada,838,548,65.4,53.3,36,4.3,3.8,130,15.5,9.1,180,21.5,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Library and Archives Canada,819,517,63.1,53.3,39,4.8,3.8,36,4.4,9.1,75,9.2,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Courts Administration Service,711,471,66.2,53.3,21,3.0,3.8,40,5.6,9.1,176,24.8,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canadian Space Agency,684,311,45.5,53.3,10,1.5,3.8,41,6.0,9.1,131,19.2,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canada School of Public Service,641,416,64.9,53.3,26,4.1,3.8,50,7.8,9.1,120,18.7,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Atlantic Canada Opportunities Agency,583,368,63.1,53.3,24,4.1,3.8,48,8.2,9.1,36,6.2,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Administrative Tribunals Support Service of Canada,532,345,64.8,53.3,10,1.9,3.8,34,6.4,9.1,96,18.0,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canadian Radio-television and Telecommunications Commission,513,281,54.8,53.3,24,4.7,3.8,34,6.6,9.1,105,20.5,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canadian Grain Commission,444,217,48.9,53.3,25,5.6,3.8,16,3.6,9.1,126,28.4,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Western Economic Diversification Canada,419,239,57.0,53.3,31,7.4,3.8,20,4.8,9.1,113,27.0,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Parole Board of Canada,406,315,77.6,53.3,24,5.9,3.8,25,6.2,9.1,56,13.8,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,lmpact Assessment Agency of Canada,401,269,67.1,53.3,21,5.2,3.8,30,7.5,9.1,69,17.2,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canada Economic Development for Quebec Regions,351,196,55.8,53.3,7,2.0,3.8,23,6.6,9.1,67,19.1,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Women and Gender Equality Canada,328,276,84.1,53.3,15,4.6,3.8,23,7.0,9.1,67,20.4,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Offices of the Information and Privacy Commissioners of Canada,324,196,60.5,53.3,14,4.3,3.8,16,4.9,9.1,54,16.7,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Federal Economic Development Agency for Southern Ontario,288,180,62.5,53.3,10,3.5,3.8,32,11.1,9.1,81,28.1,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canadian Transportation Agency,271,152,56.1,53.3,8,3.0,3.8,18,6.6,9.1,50,18.5,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canadian Human Rights Commission,253,185,73.1,53.3,9,3.6,3.8,49,19.4,9.1,58,22.9,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Transportation Safety Board of Canada,213,81,38.0,53.3,*,*,3.8,9,4.2,9.1,26,12.2,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Registrar of the Supreme Court of Canada,202,127,62.9,53.3,11,5.4,3.8,17,8.4,9.1,23,11.4,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Office of the Commissioner of Official Languages,155,97,62.6,53.3,*,*,3.8,6,3.9,9.1,16,10.3,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Office of the Governor General’s Secretary,148,91,61.5,53.3,*,*,3.8,11,7.4,9.1,22,14.9,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canadian Northern Economic Development Agency,110,78,70.9,53.3,28,25.5,3.8,*,*,9.1,27,24.5,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Civilian Review and Complaints Commission for the RCMP,75,47,62.7,53.3,*,*,3.8,*,*,9.1,12,16.0,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Veterans Review and Appeal Board,75,50,66.7,53.3,*,*,3.8,*,*,9.1,*,*,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Patented Medicine Prices Review Board Canada,74,37,50.0,53.3,*,*,3.8,6,8.1,9.1,14,18.9,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canadian Dairy Commission,70,38,54.3,53.3,*,*,3.8,*,*,9.1,12,17.1,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Office of the Commissioner for Federal Judicial Affairs Canada,55,40,72.7,53.3,*,*,3.8,*,*,9.1,*,*,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Military Grievances External Review Committee,41,22,53.7,53.3,*,*,3.8,*,*,9.1,7,17.1,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Accessibility Standards Canada,37,17,45.9,53.3,,,3.8,12,32.4,9.1,7,18.9,17.2,no,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Office of the Public Sector Integrity Commissioner of Canada,29,18,62.1,53.3,,,3.8,*,*,9.1,*,*,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,International Joint Commission,27,12,44.4,53.3,,,3.8,*,*,9.1,*,*,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Office of the Commissioner of Lobbying of Canada,27,14,51.9,53.3,,,3.8,*,*,9.1,*,*,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Military Police Complaints Commission of Canada,25,15,60.0,53.3,*,*,3.8,*,*,9.1,7,28.0,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Canadian Intergovernmental Conference Secretariat,23,12,52.2,53.3,*,*,3.8,*,*,9.1,*,*,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,RCMP External Review Committee,21,14,66.7,53.3,,,3.8,*,*,9.1,*,*,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Copyright Board Canada,15,*,*,53.3,,,3.8,*,*,9.1,*,*,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2021-22,2022,2016 Census,Secretariat of the National Security and Intelligence Committee of Parliamentarians,5,*,*,53.3,,,3.8,,,9.1,*,*,17.2,yes,Visible minorities label harmonised to Racialized persons
+FY2022-23,2023,2021 Census,Employment and Social Development Canada,37763,25493,67.5,53.7,1688,4.5,3.8,3163,8.4,9.2,11160,29.6,17.3,no,
+FY2022-23,2023,2021 Census,National Defence,26322,11169,42.4,53.7,914,3.5,3.8,1471,5.6,9.2,3001,11.4,17.3,no,
+FY2022-23,2023,2021 Census,Correctional Service Canada,18099,9186,50.8,53.7,1946,10.8,3.8,1252,6.9,9.2,2402,13.3,17.3,no,
+FY2022-23,2023,2021 Census,Public Services and Procurement Canada,17267,10363,60.0,53.7,631,3.7,3.8,1115,6.5,9.2,3387,19.6,17.3,no,
+FY2022-23,2023,2021 Census,Canada Border Services Agency,15175,7157,47.2,53.7,567,3.7,3.8,834,5.5,9.2,3047,20.1,17.3,no,
+FY2022-23,2023,2021 Census,Fisheries and Oceans Canada,13795,6136,44.5,53.7,711,5.2,3.8,717,5.2,9.2,1238,9.0,17.3,no,
+FY2022-23,2023,2021 Census,"Immigration, Refugees and Citizenship Canada",10683,6885,64.4,53.7,302,2.8,3.8,673,6.3,9.2,4219,39.5,17.3,no,
+FY2022-23,2023,2021 Census,Health Canada¥,9360,6083,65.0,53.7,253,2.7,3.8,697,7.4,9.2,2980,31.8,17.3,no,
+FY2022-23,2023,2021 Census,Royal Canadian Mounted Police (Civilian Staff),9060,6478,71.5,53.7,486,5.4,3.8,416,4.6,9.2,1564,17.3,17.3,no,
+FY2022-23,2023,2021 Census,Shared Services Canada,8348,2967,35.5,53.7,295,3.5,3.8,639,7.7,9.2,1941,23.3,17.3,no,
+FY2022-23,2023,2021 Census,Environment and Climate Change Canada,7507,4006,53.4,53.7,252,3.4,3.8,531,7.1,9.2,1587,21.1,17.3,no,
+FY2022-23,2023,2021 Census,Indigenous Services Canada,7252,5026,69.3,53.7,2065,28.5,3.8,510,7.0,9.2,1363,18.8,17.3,no,
+FY2022-23,2023,2021 Census,Global Affairs Canada,6738,3809,56.5,53.7,417,6.2,3.8,321,4.8,9.2,1893,28.1,17.3,no,
+FY2022-23,2023,2021 Census,Statistics Canada,6093,3056,50.2,53.7,200,3.3,3.8,561,9.2,9.2,1854,30.4,17.3,no,
+FY2022-23,2023,2021 Census,Transport Canada,5992,2755,46.0,53.7,262,4.4,3.8,308,5.1,9.2,1195,19.9,17.3,no,
+FY2022-23,2023,2021 Census,"Innovation, Science and Economic Development Canada",5788,2961,51.2,53.7,161,2.8,3.8,383,6.6,9.2,1592,27.5,17.3,no,
+FY2022-23,2023,2021 Census,Department of Justice Canada,5199,3534,68.0,53.7,236,4.5,3.8,405,7.8,9.2,1273,24.5,17.3,no,
+FY2022-23,2023,2021 Census,Agriculture and Agri-Food Canada,4991,2640,52.9,53.7,195,3.9,3.8,323,6.5,9.2,1005,20.1,17.3,no,
+FY2022-23,2023,2021 Census,Natural Resources Canada,4895,2404,49.1,53.7,192,3.9,3.8,497,10.2,9.2,1113,22.7,17.3,no,
+FY2022-23,2023,2021 Census,Public Health Agency of Canada,3783,2661,70.3,53.7,129,3.4,3.8,259,6.8,9.2,1090,28.8,17.3,no,
+FY2022-23,2023,2021 Census,Veterans Affairs Canada,3491,2567,73.5,53.7,147,4.2,3.8,281,8.0,9.2,358,10.3,17.3,no,
+FY2022-23,2023,2021 Census,Treasury Board of Canada Secretariat,2378,1478,62.2,53.7,74,3.1,3.8,216,9.1,9.2,589,24.8,17.3,no,
+FY2022-23,2023,2021 Census,Crown-Indigenous Relations and Northern Affairs Canada¥,1993,1343,67.4,53.7,336,16.9,3.8,129,6.5,9.2,371,18.6,17.3,no,
+FY2022-23,2023,2021 Census,Immigration and Refugee Board of Canada,1952,1271,65.1,53.7,50,2.6,3.8,109,5.6,9.2,796,40.8,17.3,no,
+FY2022-23,2023,2021 Census,Canadian Heritage,1907,1313,68.9,53.7,101,5.3,3.8,155,8.1,9.2,360,18.9,17.3,no,
+FY2022-23,2023,2021 Census,Public Safety Canada,1435,867,60.4,53.7,85,5.9,3.8,148,10.3,9.2,307,21.4,17.3,no,
+FY2022-23,2023,2021 Census,Infrastructure Canada,1194,738,61.8,53.7,46,3.9,3.8,104,8.7,9.2,316,26.5,17.3,no,
+FY2022-23,2023,2021 Census,Public Prosecution Service of Canada,1139,748,65.7,53.7,85,7.5,3.8,90,7.9,9.2,246,21.6,17.3,no,
+FY2022-23,2023,2021 Census,Privy Council Office,1103,638,57.8,53.7,46,4.2,3.8,76,6.9,9.2,252,22.8,17.3,no,
+FY2022-23,2023,2021 Census,Elections Canada,943,500,53.0,53.7,28,3.0,3.8,69,7.3,9.2,202,21.4,17.3,no,
+FY2022-23,2023,2021 Census,Library and Archives Canada,927,581,62.7,53.7,43,4.6,3.8,45,4.9,9.2,91,9.8,17.3,no,
+FY2022-23,2023,2021 Census,Public Service Commission of Canada,904,599,66.3,53.7,42,4.6,3.8,133,14.7,9.2,219,24.2,17.3,no,
+FY2022-23,2023,2021 Census,Department of Finance Canada,893,426,47.7,53.7,21,2.4,3.8,49,5.5,9.2,184,20.6,17.3,no,
+FY2022-23,2023,2021 Census,Canadian Space Agency,759,346,45.6,53.7,15,2.0,3.8,56,7.4,9.2,150,19.8,17.3,no,
+FY2022-23,2023,2021 Census,Courts Administration Service,746,486,65.1,53.7,18,2.4,3.8,45,6.0,9.2,203,27.2,17.3,no,
+FY2022-23,2023,2021 Census,Canada School of Public Service,688,454,66.0,53.7,32,4.7,3.8,60,8.7,9.2,150,21.8,17.3,no,
+FY2022-23,2023,2021 Census,Atlantic Canada Opportunities Agency,598,387,64.7,53.7,25,4.2,3.8,55,9.2,9.2,45,7.5,17.3,no,
+FY2022-23,2023,2021 Census,Administrative Tribunals Support Service of Canada,592,390,65.9,53.7,12,2.0,3.8,37,6.3,9.2,116,19.6,17.3,no,
+FY2022-23,2023,2021 Census,Canadian Radio-television and Telecommunications Commission,518,274,52.9,53.7,20,3.9,3.8,35,6.8,9.2,115,22.2,17.3,no,
+FY2022-23,2023,2021 Census,Western Economic Diversification Canada£,475,277,58.3,53.7,31,6.5,3.8,28,5.9,9.2,130,27.4,17.3,no,
+FY2022-23,2023,2021 Census,Canadian Grain Commission,439,211,48.1,53.7,24,5.5,3.8,19,4.3,9.2,125,28.5,17.3,no,
+FY2022-23,2023,2021 Census,lmpact Assessment Agency of Canada,422,285,67.5,53.7,20,4.7,3.8,29,6.9,9.2,84,19.9,17.3,no,
+FY2022-23,2023,2021 Census,Women and Gender Equality Canada,414,352,85.0,53.7,22,5.3,3.8,46,11.1,9.2,96,23.2,17.3,no,
+FY2022-23,2023,2021 Census,Parole Board of Canada,412,318,77.2,53.7,24,5.8,3.8,30,7.3,9.2,60,14.6,17.3,no,
+FY2022-23,2023,2021 Census,Canada Economic Development for Quebec Regions,354,205,57.9,53.7,6,1.7,3.8,29,8.2,9.2,76,21.5,17.3,no,
+FY2022-23,2023,2021 Census,Canadian Transportation Agency,291,160,55.0,53.7,9,3.1,3.8,28,9.6,9.2,57,19.6,17.3,no,
+FY2022-23,2023,2021 Census,Offices of the Information and Privacy Commissioners of Canada,290,182,62.8,53.7,16,5.5,3.8,20,6.9,9.2,50,17.2,17.3,no,
+FY2022-23,2023,2021 Census,Federal Economic Development Agency for Southern Ontario,287,174,60.6,53.7,10,3.5,3.8,37,12.9,9.2,86,30.0,17.3,no,
+FY2022-23,2023,2021 Census,Canadian Human Rights Commission,269,199,74.0,53.7,7,2.6,3.8,47,17.5,9.2,64,23.8,17.3,no,
+FY2022-23,2023,2021 Census,Registrar of the Supreme Court of Canada,219,136,62.1,53.7,10,4.6,3.8,21,9.6,9.2,34,15.5,17.3,no,
+FY2022-23,2023,2021 Census,Transportation Safety Board of Canada,200,79,39.5,53.7,*,*,3.8,11,5.5,9.2,24,12.0,17.3,yes,
+FY2022-23,2023,2021 Census,Office of the Commissioner of Official Languages,155,99,63.9,53.7,*,*,3.8,7,4.5,9.2,16,10.3,17.3,yes,
+FY2022-23,2023,2021 Census,Office of the Governor General’s Secretary,151,92,60.9,53.7,*,*,3.8,13,8.6,9.2,27,17.9,17.3,yes,
+FY2022-23,2023,2021 Census,Canadian Northern Economic Development Agency,108,68,63.0,53.7,27,25.0,3.8,8,7.4,9.2,27,25.0,17.3,no,
+FY2022-23,2023,2021 Census,Veterans Review and Appeal Board,88,58,65.9,53.7,*,*,3.8,6,6.8,9.2,,,17.3,yes,
+FY2022-23,2023,2021 Census,Patented Medicine Prices Review Board Canada,80,46,57.5,53.7,*,*,3.8,6,7.5,9.2,18,22.5,17.3,yes,
+FY2022-23,2023,2021 Census,Civilian Review and Complaints Commission for the RCMP,80,52,65.0,53.7,*,*,3.8,*,*,9.2,17,21.3,17.3,yes,
+FY2022-23,2023,2021 Census,Canadian Dairy Commission,70,38,54.3,53.7,*,*,3.8,*,*,9.2,11,15.7,17.3,yes,
+FY2022-23,2023,2021 Census,Office of the Commissioner for Federal Judicial Affairs Canada,54,37,68.5,53.7,*,*,3.8,*,*,9.2,*,*,17.3,yes,
+FY2022-23,2023,2021 Census,Accessibility Standards Canada,47,24,51.1,53.7,*,*,3.8,17,36.2,9.2,9,19.1,17.3,yes,
+FY2022-23,2023,2021 Census,Military Grievances External Review Committee,45,28,62.2,53.7,*,*,3.8,6,13.3,9.2,8,17.8,17.3,yes,
+FY2022-23,2023,2021 Census,Office of the Public Sector Integrity Commissioner of Canada,35,20,57.1,53.7,*,*,3.8,*,*,9.2,7,20.0,17.3,yes,
+FY2022-23,2023,2021 Census,International Joint Commission,29,16,55.2,53.7,,,3.8,*,*,9.2,*,*,17.3,yes,
+FY2022-23,2023,2021 Census,Military Police Complaints Commission of Canada,28,18,64.3,53.7,*,*,3.8,*,*,9.2,8,28.6,17.3,yes,
+FY2022-23,2023,2021 Census,Office of the Commissioner of Lobbying of Canada,26,14,53.8,53.7,,,3.8,*,*,9.2,*,*,17.3,yes,
+FY2022-23,2023,2021 Census,Canadian Intergovernmental Conference Secretariat,25,12,48.0,53.7,,,3.8,*,*,9.2,*,*,17.3,yes,
+FY2022-23,2023,2021 Census,RCMP External Review Committee,24,15,62.5,53.7,,,3.8,*,*,9.2,*,*,17.3,yes,
+FY2022-23,2023,2021 Census,Copyright Board Canada,16,*,*,53.7,,,3.8,*,*,9.2,*,*,17.3,yes,
+FY2022-23,2023,2021 Census,Secretariat of the National Security and Intelligence Committee of Parliamentarians,8,*,*,53.7,,,3.8,,,9.2,*,*,17.3,yes,
+FY2022-23,2023,2021 Census,Total,253411,143406,56.6,53.7,13363,5.3,3.8,17410,6.9,9.2,55034,21.7,17.3,no,
+FY2023-24,2024,2021 Census,Employment and Social Development Canada,38144,25695,67.4,55.3,1690,4.4,4.1,3364,8.8,12.0,11658,30.6,22.7,no,
+FY2023-24,2024,2021 Census,National Defence1,27707,11893,42.9,55.3,956,3.5,4.1,1618,5.8,12.0,3336,12.0,22.7,no,
+FY2023-24,2024,2021 Census,Correctional Service Canada,18596,9504,51.1,55.3,1998,10.7,4.1,1325,7.1,12.0,2691,14.5,22.7,no,
+FY2023-24,2024,2021 Census,Public Services and Procurement Canada,18204,11044,60.7,55.3,683,3.8,4.1,1347,7.4,12.0,3692,20.3,22.7,no,
+FY2023-24,2024,2021 Census,Canada Border Services Agency,15951,7581,47.5,55.3,606,3.8,4.1,1162,7.3,12.0,3423,21.5,22.7,no,
+FY2023-24,2024,2021 Census,Fisheries and Oceans Canada2,14123,6320,44.7,55.3,773,5.5,4.1,966,6.8,12.0,1383,9.8,22.7,no,
+FY2023-24,2024,2021 Census,"Immigration, Refugees and Citizenship Canada",12141,7882,64.9,55.3,338,2.8,4.1,913,7.5,12.0,5026,41.4,22.7,no,
+FY2023-24,2024,2021 Census,Royal Canadian Mounted Police3,9884,6979,70.6,55.3,535,5.4,4.1,482,4.9,12.0,1811,18.3,22.7,no,
+FY2023-24,2024,2021 Census,Health Canada4,9591,6230,65.0,55.3,292,3.0,4.1,902,9.4,12.0,3228,33.7,22.7,no,
+FY2023-24,2024,2021 Census,Shared Services Canada,8971,3191,35.6,55.3,344,3.8,4.1,730,8.1,12.0,2187,24.4,22.7,no,
+FY2023-24,2024,2021 Census,Indigenous Services Canada4,8148,5705,70.0,55.3,2232,27.4,4.1,657,8.1,12.0,1635,20.1,22.7,no,
+FY2023-24,2024,2021 Census,Environment and Climate Change Canada,7993,4368,54.6,55.3,272,3.4,4.1,605,7.6,12.0,1722,21.5,22.7,no,
+FY2023-24,2024,2021 Census,Statistics Canada,7077,3778,53.4,55.3,224,3.2,4.1,651,9.2,12.0,2047,28.9,22.7,no,
+FY2023-24,2024,2021 Census,Global Affairs Canada,6960,3951,56.8,55.3,410,5.9,4.1,381,5.5,12.0,2043,29.4,22.7,no,
+FY2023-24,2024,2021 Census,Transport Canada,6355,2951,46.4,55.3,279,4.4,4.1,453,7.1,12.0,1372,21.6,22.7,no,
+FY2023-24,2024,2021 Census,"Innovation, Science and Economic Development Canada",6006,3110,51.8,55.3,160,2.7,4.1,465,7.7,12.0,1751,29.2,22.7,no,
+FY2023-24,2024,2021 Census,Department of Justice Canada,5478,3758,68.6,55.3,274,5.0,4.1,1039,19.0,12.0,1565,28.6,22.7,no,
+FY2023-24,2024,2021 Census,Natural Resources Canada,5325,2648,49.7,55.3,209,3.9,4.1,553,10.4,12.0,1253,23.5,22.7,no,
+FY2023-24,2024,2021 Census,Agriculture and Agri-Food Canada,5134,2751,53.6,55.3,223,4.3,4.1,396,7.7,12.0,1070,20.8,22.7,no,
+FY2023-24,2024,2021 Census,Public Health Agency of Canada,3831,2670,69.7,55.3,131,3.4,4.1,306,8.0,12.0,1187,31.0,22.7,no,
+FY2023-24,2024,2021 Census,Veterans Affairs Canada,3637,2653,72.9,55.3,157,4.3,4.1,345,9.5,12.0,392,10.8,22.7,no,
+FY2023-24,2024,2021 Census,Treasury Board of Canada Secretariat,2381,1505,63.2,55.3,83,3.5,4.1,253,10.6,12.0,635,26.7,22.7,no,
+FY2023-24,2024,2021 Census,Immigration and Refugee Board of Canada,2298,1496,65.1,55.3,51,2.2,4.1,143,6.2,12.0,1025,44.6,22.7,no,
+FY2023-24,2024,2021 Census,Crown-Indigenous Relations and Northern Affairs Canada4,1925,1290,67.0,55.3,339,17.6,4.1,134,7.0,12.0,360,18.7,22.7,no,
+FY2023-24,2024,2021 Census,Canadian Heritage,1788,1225,68.5,55.3,98,5.5,4.1,165,9.2,12.0,353,19.7,22.7,no,
+FY2023-24,2024,2021 Census,Public Safety Canada,1521,932,61.3,55.3,86,5.7,4.1,173,11.4,12.0,331,21.8,22.7,no,
+FY2023-24,2024,2021 Census,Infrastructure Canada,1361,846,62.2,55.3,45,3.3,4.1,141,10.4,12.0,387,28.4,22.7,no,
+FY2023-24,2024,2021 Census,Privy Council Office,1193,698,58.5,55.3,49,4.1,4.1,89,7.5,12.0,313,26.2,22.7,no,
+FY2023-24,2024,2021 Census,Public Prosecution Service of Canada,1159,764,65.9,55.3,84,7.2,4.1,93,8.0,12.0,257,22.2,22.7,no,
+FY2023-24,2024,2021 Census,Library and Archives Canada,1079,685,63.5,55.3,49,4.5,4.1,66,6.1,12.0,113,10.5,22.7,no,
+FY2023-24,2024,2021 Census,Elections Canada,1045,554,53.0,55.3,35,3.3,4.1,72,6.9,12.0,230,22.0,22.7,no,
+FY2023-24,2024,2021 Census,Department of Finance Canada,922,434,47.1,55.3,24,2.6,4.1,56,6.1,12.0,211,22.9,22.7,no,
+FY2023-24,2024,2021 Census,Public Service Commission of Canada,868,583,67.2,55.3,37,4.3,4.1,131,15.1,12.0,205,23.6,22.7,no,
+FY2023-24,2024,2021 Census,Canadian Space Agency,850,406,47.8,55.3,16,1.9,4.1,97,11.4,12.0,193,22.7,22.7,no,
+FY2023-24,2024,2021 Census,Courts Administration Service,795,507,63.8,55.3,21,2.6,4.1,53,6.7,12.0,227,28.6,22.7,no,
+FY2023-24,2024,2021 Census,Canada School of Public Service,668,450,67.4,55.3,34,5.1,4.1,70,10.5,12.0,161,24.1,22.7,no,
+FY2023-24,2024,2021 Census,Administrative Tribunals Support Service of Canada,597,399,66.8,55.3,16,2.7,4.1,44,7.4,12.0,131,21.9,22.7,no,
+FY2023-24,2024,2021 Census,Canadian Radio-television and Telecommunications Commission,596,327,54.9,55.3,30,5.0,4.1,53,8.9,12.0,135,22.7,22.7,no,
+FY2023-24,2024,2021 Census,Atlantic Canada Opportunities Agency,578,376,65.1,55.3,28,4.8,4.1,77,13.3,12.0,53,9.2,22.7,no,
+FY2023-24,2024,2021 Census,lmpact Assessment Agency of Canada 5,490,332,67.8,55.3,27,5.5,4.1,42,8.6,12.0,112,22.9,22.7,no,
+FY2023-24,2024,2021 Census,Parole Board of Canada,482,364,75.5,55.3,22,4.6,4.1,42,8.7,12.0,87,18.0,22.7,no,
+FY2023-24,2024,2021 Census,Western Economic Diversification Canada6,479,282,58.9,55.3,27,5.6,4.1,37,7.7,12.0,142,29.6,22.7,no,
+FY2023-24,2024,2021 Census,Canadian Grain Commission,454,209,46.0,55.3,23,5.1,4.1,25,5.5,12.0,140,30.8,22.7,no,
+FY2023-24,2024,2021 Census,Women and Gender Equality Canada,416,350,84.1,55.3,22,5.3,4.1,51,12.3,12.0,106,25.5,22.7,no,
+FY2023-24,2024,2021 Census,Canada Economic Development for Quebec Regions,357,199,55.7,55.3,7,2.0,4.1,29,8.1,12.0,81,22.7,22.7,no,
+FY2023-24,2024,2021 Census,Canadian Transportation Agency,346,188,54.3,55.3,9,2.6,4.1,37,10.7,12.0,79,22.8,22.7,no,
+FY2023-24,2024,2021 Census,Offices of the Information and Privacy Commissioners of Canada,303,190,62.7,55.3,14,4.6,4.1,17,5.6,12.0,54,17.8,22.7,no,
+FY2023-24,2024,2021 Census,Federal Economic Development Agency for Southern Ontario,287,167,58.2,55.3,11,3.8,4.1,37,12.9,12.0,93,32.4,22.7,no,
+FY2023-24,2024,2021 Census,Canadian Human Rights Commission,272,201,73.9,55.3,7,2.6,4.1,47,17.3,12.0,77,28.3,22.7,no,
+FY2023-24,2024,2021 Census,Registrar of the Supreme Court of Canada,226,134,59.3,55.3,9,4.0,4.1,23,10.2,12.0,33,14.6,22.7,no,
+FY2023-24,2024,2021 Census,Transportation Safety Board of Canada,209,84,40.2,55.3,*,*,4.1,11,5.3,12.0,25,12.0,22.7,yes,
+FY2023-24,2024,2021 Census,Office of the Commissioner of Official Languages,161,107,66.5,55.3,*,*,4.1,8,5.0,12.0,17,10.6,22.7,yes,
+FY2023-24,2024,2021 Census,Office of the Governor General’s Secretary,156,97,62.2,55.3,*,*,4.1,16,10.3,12.0,28,17.9,22.7,yes,
+FY2023-24,2024,2021 Census,Veterans Review and Appeal Board,123,83,67.5,55.3,*,*,4.1,6,4.9,12.0,,,22.7,yes,
+FY2023-24,2024,2021 Census,Canadian Northern Economic Development Agency,109,70,64.2,55.3,26,23.9,4.1,10,9.2,12.0,24,22.0,22.7,no,
+FY2023-24,2024,2021 Census,Civilian Review and Complaints Commission for the RCMP,89,62,69.7,55.3,*,*,4.1,9,10.1,12.0,17,19.1,22.7,yes,
+FY2023-24,2024,2021 Census,Federal Economic Development Agency for Northern Ontario,83,55,66.3,55.3,7,8.4,4.1,9,10.8,12.0,*,*,22.7,yes,
+FY2023-24,2024,2021 Census,Patented Medicine Prices Review Board Canada,79,42,53.2,55.3,*,*,4.1,*,*,12.0,19,24.1,22.7,yes,
+FY2023-24,2024,2021 Census,Canadian Dairy Commission,72,39,54.2,55.3,*,*,4.1,6,8.3,12.0,13,18.1,22.7,yes,
+FY2023-24,2024,2021 Census,Office of the Commissioner for Federal Judicial Affairs Canada,55,37,67.3,55.3,,,4.1,*,*,12.0,*,*,22.7,yes,
+FY2023-24,2024,2021 Census,Accessibility Standards Canada,54,32,59.3,55.3,*,*,4.1,16,29.6,12.0,14,25.9,22.7,yes,
+FY2023-24,2024,2021 Census,Military Grievances External Review Committee,47,30,63.8,55.3,*,*,4.1,8,17.0,12.0,11,23.4,22.7,yes,
+FY2023-24,2024,2021 Census,Canadian Intergovernmental Conference Secretariat,34,18,52.9,55.3,*,*,4.1,*,*,12.0,10,29.4,22.7,yes,
+FY2023-24,2024,2021 Census,Office of the Public Sector Integrity Commissioner of Canada,33,19,57.6,55.3,*,*,4.1,*,*,12.0,*,*,22.7,yes,
+FY2023-24,2024,2021 Census,Military Police Complaints Commission of Canada,31,21,67.7,55.3,*,*,4.1,*,*,12.0,10,32.3,22.7,yes,
+FY2023-24,2024,2021 Census,International Joint Commission,31,16,51.6,55.3,*,*,4.1,6,19.4,12.0,*,*,22.7,yes,
+FY2023-24,2024,2021 Census,Office of the Commissioner of Lobbying of Canada,28,13,46.4,55.3,*,*,4.1,*,*,12.0,6,21.4,22.7,yes,
+FY2023-24,2024,2021 Census,RCMP External Review Committee,23,15,65.2,55.3,*,*,4.1,*,*,12.0,*,*,22.7,yes,
+FY2023-24,2024,2021 Census,Copyright Board Canada,16,10,62.5,55.3,,,4.1,*,*,12.0,*,*,22.7,yes,
+FY2023-24,2024,2021 Census,Secretariat of the National Security and Intelligence Committee of Parliamentarians,6,*,*,55.3,,,4.1,,,12.0,,,22.7,yes,
+FY2023-24,2024,2021 Census,Law Commission of Canada,2,*,*,55.3,,,4.1,,,12.0,*,*,22.7,yes,
+FY2023-24,2024,2021 Census,Total7,266433,151607,56.9,55.3,14152,5.3,4.1,21089,7.9,12.0,61015,22.9,22.7,no,
+FY2024-25,2025,2021 Census,Employment and Social Development Canada,38334,25771,67.2,54.9,1603,4.2,4.0,3241,8.5,12.0,11972,31.2,22.7,no,
+FY2024-25,2025,2021 Census,National Defence1,28241,12130,43.0,54.9,1046,3.7,4.0,2059,7.3,12.0,3704,13.1,22.7,no,
+FY2024-25,2025,2021 Census,Correctional Service Canada,18660,9582,51.4,54.9,1983,10.6,4.0,1389,7.4,12.0,2895,15.5,22.7,no,
+FY2024-25,2025,2021 Census,Public Services and Procurement Canada,18381,11182,60.8,54.9,720,3.9,4.0,1576,8.6,12.0,3962,21.6,22.7,no,
+FY2024-25,2025,2021 Census,Canada Border Services Agency,16235,7657,47.2,54.9,710,4.4,4.0,1522,9.4,12.0,3998,24.6,22.7,no,
+FY2024-25,2025,2021 Census,Fisheries and Oceans Canada2,13924,6222,44.7,54.9,1079,7.7,4.0,1639,11.8,12.0,1726,12.4,22.7,no,
+FY2024-25,2025,2021 Census,"Immigration, Refugees and Citizenship Canada",10974,7071,64.4,54.9,318,2.9,4.0,870,7.9,12.0,4494,41.0,22.7,no,
+FY2024-25,2025,2021 Census,Royal Canadian Mounted Police (RCMP)3,10822,7554,69.8,54.9,567,5.2,4.0,590,5.5,12.0,2155,19.9,22.7,no,
+FY2024-25,2025,2021 Census,Health Canada4,9173,5926,64.6,54.9,281,3.1,4.0,906,9.9,12.0,3141,34.2,22.7,no,
+FY2024-25,2025,2021 Census,Shared Services Canada,8671,2961,34.1,54.9,346,4.0,4.0,755,8.7,12.0,2162,24.9,22.7,no,
+FY2024-25,2025,2021 Census,Indigenous Services Canada4,8389,5890,70.2,54.9,2253,26.9,4.0,750,8.9,12.0,1759,21.0,22.7,no,
+FY2024-25,2025,2021 Census,Environment and Climate Change Canada,8180,4464,54.6,54.9,304,3.7,4.0,723,8.8,12.0,1815,22.2,22.7,no,
+FY2024-25,2025,2021 Census,Global Affairs Canada,7210,4100,56.9,54.9,417,5.8,4.0,447,6.2,12.0,2175,30.2,22.7,no,
+FY2024-25,2025,2021 Census,Statistics Canada,6845,3624,52.9,54.9,232,3.4,4.0,741,10.8,12.0,2036,29.7,22.7,no,
+FY2024-25,2025,2021 Census,Transport Canada,6361,2997,47.1,54.9,273,4.3,4.0,597,9.4,12.0,1436,22.6,22.7,no,
+FY2024-25,2025,2021 Census,"Innovation, Science and Economic Development Canada",6091,3143,51.6,54.9,173,2.8,4.0,513,8.4,12.0,1871,30.7,22.7,no,
+FY2024-25,2025,2021 Census,Natural Resources Canada,5613,2810,50.1,54.9,254,4.5,4.0,629,11.2,12.0,1412,25.2,22.7,no,
+FY2024-25,2025,2021 Census,Department of Justice Canada,5556,3806,68.5,54.9,269,4.8,4.0,1083,19.5,12.0,1619,29.1,22.7,no,
+FY2024-25,2025,2021 Census,Agriculture and Agri-Food Canada,5041,2709,53.7,54.9,239,4.7,4.0,503,10.0,12.0,1093,21.7,22.7,no,
+FY2024-25,2025,2021 Census,Veterans Affairs Canada,3657,2670,73.0,54.9,167,4.6,4.0,417,11.4,12.0,435,11.9,22.7,no,
+FY2024-25,2025,2021 Census,Public Health Agency of Canada,3164,2221,70.2,54.9,107,3.4,4.0,266,8.4,12.0,924,29.2,22.7,no,
+FY2024-25,2025,2021 Census,Immigration and Refugee Board of Canada,2278,1484,65.1,54.9,49,2.2,4.0,172,7.6,12.0,1084,47.6,22.7,no,
+FY2024-25,2025,2021 Census,Treasury Board of Canada Secretariat,2271,1413,62.2,54.9,91,4.0,4.0,299,13.2,12.0,618,27.2,22.7,no,
+FY2024-25,2025,2021 Census,Canadian Heritage,1814,1240,68.4,54.9,112,6.2,4.0,198,10.9,12.0,390,21.5,22.7,no,
+FY2024-25,2025,2021 Census,Crown-Indigenous Relations and Northern Affairs Canada4,1808,1224,67.7,54.9,337,18.6,4.0,160,8.8,12.0,326,18.0,22.7,no,
+FY2024-25,2025,2021 Census,Public Safety Canada,1628,993,61.0,54.9,82,5.0,4.0,221,13.6,12.0,399,24.5,22.7,no,
+FY2024-25,2025,2021 Census,"Housing, Infrastructure and Communities Canada",1552,954,61.5,54.9,55,3.5,4.0,168,10.8,12.0,442,28.5,22.7,no,
+FY2024-25,2025,2021 Census,Elections Canada,1308,719,55.0,54.9,39,3.0,4.0,109,8.3,12.0,369,28.2,22.7,no,
+FY2024-25,2025,2021 Census,Public Prosecution Service of Canada,1136,751,66.1,54.9,81,7.1,4.0,104,9.2,12.0,264,23.2,22.7,no,
+FY2024-25,2025,2021 Census,Privy Council Office,1130,656,58.1,54.9,46,4.1,4.0,110,9.7,12.0,316,28.0,22.7,no,
+FY2024-25,2025,2021 Census,Library and Archives Canada,1108,700,63.2,54.9,48,4.3,4.0,69,6.2,12.0,125,11.3,22.7,no,
+FY2024-25,2025,2021 Census,Department of Finance Canada,946,468,49.5,54.9,27,2.9,4.0,75,7.9,12.0,235,24.8,22.7,no,
+FY2024-25,2025,2021 Census,Canadian Space Agency,900,430,47.8,54.9,21,2.3,4.0,140,15.6,12.0,214,23.8,22.7,no,
+FY2024-25,2025,2021 Census,Courts Administration Service,823,516,62.7,54.9,16,1.9,4.0,67,8.1,12.0,242,29.4,22.7,no,
+FY2024-25,2025,2021 Census,Public Service Commission of Canada,771,509,66.0,54.9,31,4.0,4.0,130,16.9,12.0,178,23.1,22.7,no,
+FY2024-25,2025,2021 Census,Canadian Radio-television and Telecommunications Commission,689,390,56.6,54.9,38,5.5,4.0,76,11.0,12.0,174,25.3,22.7,no,
+FY2024-25,2025,2021 Census,Administrative Tribunals Support Service of Canada,571,382,66.9,54.9,15,2.6,4.0,61,10.7,12.0,145,25.4,22.7,no,
+FY2024-25,2025,2021 Census,Canada School of Public Service,571,379,66.4,54.9,27,4.7,4.0,68,11.9,12.0,141,24.7,22.7,no,
+FY2024-25,2025,2021 Census,Atlantic Canada Opportunities Agency,564,364,64.5,54.9,26,4.6,4.0,89,15.8,12.0,56,9.9,22.7,no,
+FY2024-25,2025,2021 Census,Impact Assessment Agency of Canada5,550,366,66.5,54.9,37,6.7,4.0,60,10.9,12.0,128,23.3,22.7,no,
+FY2024-25,2025,2021 Census,Western Economic Diversification Canada6,476,289,60.7,54.9,23,4.8,4.0,44,9.2,12.0,146,30.7,22.7,no,
+FY2024-25,2025,2021 Census,Canadian Grain Commission,449,199,44.3,54.9,21,4.7,4.0,25,5.6,12.0,148,33.0,22.7,no,
+FY2024-25,2025,2021 Census,Parole Board of Canada,448,341,76.1,54.9,16,3.6,4.0,45,10.0,12.0,87,19.4,22.7,no,
+FY2024-25,2025,2021 Census,Women and Gender Equality Canada,376,314,83.5,54.9,20,5.3,4.0,49,13.0,12.0,92,24.5,22.7,no,
+FY2024-25,2025,2021 Census,Canada Economic Development for Quebec Regions,362,206,56.9,54.9,*,*,4.0,36,9.9,12.0,82,22.7,22.7,yes,
+FY2024-25,2025,2021 Census,Canadian Transportation Agency,335,187,55.8,54.9,10,3.0,4.0,38,11.3,12.0,81,24.2,22.7,no,
+FY2024-25,2025,2021 Census,Offices of the Information and Privacy Commissioners of Canada,333,209,62.8,54.9,18,5.4,4.0,32,9.6,12.0,67,20.1,22.7,no,
+FY2024-25,2025,2021 Census,Canadian Human Rights Commission,264,194,73.5,54.9,7,2.7,4.0,50,18.9,12.0,76,28.8,22.7,no,
+FY2024-25,2025,2021 Census,Federal Economic Development Agency for Southern Ontario,237,146,61.6,54.9,9,3.8,4.0,32,13.5,12.0,73,30.8,22.7,no,
+FY2024-25,2025,2021 Census,Registrar of the Supreme Court of Canada,226,136,60.2,54.9,7,3.1,4.0,26,11.5,12.0,35,15.5,22.7,no,
+FY2024-25,2025,2021 Census,Transportation Safety Board of Canada,216,87,40.3,54.9,7,3.2,4.0,18,8.3,12.0,28,13.0,22.7,no,
+FY2024-25,2025,2021 Census,Office of the Commissioner of Official Languages,159,106,66.7,54.9,*,*,4.0,15,9.4,12.0,21,13.2,22.7,yes,
+FY2024-25,2025,2021 Census,Office of the Secretary to the Governor General,140,88,62.9,54.9,*,*,4.0,17,12.1,12.0,24,17.1,22.7,yes,
+FY2024-25,2025,2021 Census,Veterans Review and Appeal Board,129,83,64.3,54.9,*,*,4.0,8,6.2,12.0,,,22.7,yes,
+FY2024-25,2025,2021 Census,Canadian Northern Economic Development Agency,113,76,67.3,54.9,31,27.4,4.0,11,9.7,12.0,24,21.2,22.7,no,
+FY2024-25,2025,2021 Census,Federal Economic Development Agency for Northern Ontario,99,60,60.6,54.9,11,11.1,4.0,18,18.2,12.0,12,12.1,22.7,no,
+FY2024-25,2025,2021 Census,Civilian Review and Complaints Commission for the RCMP,92,65,70.7,54.9,*,*,4.0,10,10.9,12.0,18,19.6,22.7,yes,
+FY2024-25,2025,2021 Census,Canadian Dairy Commission,84,47,56.0,54.9,*,*,4.0,6,7.1,12.0,20,23.8,22.7,yes,
+FY2024-25,2025,2021 Census,Patented Medicine Prices Review Board Canada,78,43,55.1,54.9,*,*,4.0,*,*,12.0,19,24.4,22.7,yes,
+FY2024-25,2025,2021 Census,Office of the Commissioner for Federal Judicial Affairs Canada,63,43,68.3,54.9,,,4.0,*,*,12.0,7,11.1,22.7,yes,
+FY2024-25,2025,2021 Census,Accessibility Standards Canada,57,33,57.9,54.9,*,*,4.0,15,26.3,12.0,17,29.8,22.7,yes,
+FY2024-25,2025,2021 Census,Military Grievances External Review Committee,50,33,66.0,54.9,*,*,4.0,10,20.0,12.0,10,20.0,22.7,yes,
+FY2024-25,2025,2021 Census,Canadian Intergovernmental Conference Secretariat,36,16,44.4,54.9,*,*,4.0,*,*,12.0,12,33.3,22.7,yes,
+FY2024-25,2025,2021 Census,Office of the Public Sector Integrity Commissioner of Canada,33,20,60.6,54.9,*,*,4.0,*,*,12.0,8,24.2,22.7,yes,
+FY2024-25,2025,2021 Census,Office of the Commissioner of Lobbying of Canada,32,17,53.1,54.9,*,*,4.0,*,*,12.0,7,21.9,22.7,yes,
+FY2024-25,2025,2021 Census,International Joint Commission,28,14,50.0,54.9,*,*,4.0,6,21.4,12.0,*,*,22.7,yes,
+FY2024-25,2025,2021 Census,Military Police Complaints Commission of Canada,25,16,64.0,54.9,*,*,4.0,*,*,12.0,10,40.0,22.7,yes,
+FY2024-25,2025,2021 Census,RCMP External Review Committee,22,15,68.2,54.9,*,*,4.0,*,*,12.0,*,*,22.7,yes,
+FY2024-25,2025,2021 Census,Copyright Board Canada,20,12,60.0,54.9,,,4.0,*,*,12.0,*,*,22.7,yes,
+FY2024-25,2025,2021 Census,Secretariat of the National Security and Intelligence Committee of Parliamentarians,8,*,*,54.9,,,4.0,,,12.0,,,22.7,yes,
+FY2024-25,2025,2021 Census,Law Commission of Canada,5,*,*,54.9,,,4.0,,,12.0,*,*,22.7,yes,
+FY2024-25,2025,2021 Census,Total7,266935,151528,56.8,54.9,14738,5.5,4.0,24128,9.0,12.0,63765,23.9,22.7,no,

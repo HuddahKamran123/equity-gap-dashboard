@@ -1,0 +1,24 @@
+# --- Next.js app (web/) ---
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+web/next-env.d.ts
+
+# --- secrets: never commit ---
+.env
+.env.*
+web/.env
+web/.env.*
+
+# --- raw data: the 1.25 GB PSES file is too large for git (reproducible from the
+#     documented URL); the small 4-year representation CSV is the multi-year source
+#     of record and IS committed ---
+Knowledge/data/raw/*
+!Knowledge/data/raw/bt1_28_representation_2021_2025.csv
+
+# --- os / misc ---
+.DS_Store
+**/.DS_Store
+*.log
+node_modules/
