@@ -5,36 +5,31 @@ import {
   MOCK_REGIONS,
 } from "@/lib/illustrativeMockData";
 
-const WARNING = "ILLUSTRATIVE — NOT REAL DATA";
-
 export default function PreviewView() {
   return (
     <div className="animate-fade-up">
       <header className="border-b border-rule pb-5">
-        <p className="tracking-cap text-[11px] text-sev-severe">{WARNING}</p>
+        <p className="tracking-cap text-[11px] text-muted">Preview · concept mockups</p>
         <h2 className="font-display mt-2 text-[1.8rem] leading-tight text-ink">
-          Preview — concepts for future views
+          What these views could look like
         </h2>
         <p className="mt-2 max-w-2xl text-[14px] leading-relaxed text-ink-soft">
-          Every number on this page is a fabricated placeholder, copied from a
-          teammate&apos;s prototype build that discloses its own data as mock.
-          This page exists only to show what these views would look like if
-          real, per-department data existed for them — it is not a finding, not
-          part of the verified dashboard, and must never be cited. See{" "}
-          <span className="text-ink">Executive-pipeline gap</span> in the
-          project spec for why real data doesn&apos;t currently exist at this
-          grain.
+          The numbers below are placeholder values, not derived from the
+          verified dataset, shown to demonstrate what these views would look
+          like once real per-department data exists for them. See the
+          Executive-pipeline gap discussion in the project spec for why that
+          data isn&apos;t available at this grain yet.
         </p>
       </header>
 
       <section className="border-b border-rule py-8">
-        <SectionWarning />
+        <SectionTag />
         <h3 className="font-display text-xl text-ink">
           Executive pipeline (overall vs. leadership representation)
         </h3>
         <p className="mt-1 text-[13px] text-muted">
-          Fabricated EX-01→EX-05 representation % by group vs. WFA. Real data
-          only exists service-wide, not per level, in the published source.
+          EX-01→EX-05 representation % by group vs. WFA. Real data only exists
+          service-wide, not per level, in the published source.
         </p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[560px] border-collapse text-[13px]">
@@ -52,15 +47,15 @@ export default function PreviewView() {
             </thead>
             <tbody>
               {MOCK_PIPELINE.map((r) => (
-                <tr key={r.group} className="border-b border-dashed border-rule opacity-70">
+                <tr key={r.group} className="border-b border-rule">
                   <td className="py-2 pr-4 text-muted">{r.group}</td>
-                  <td className="tnum py-2 pr-4">{r.wfa}</td>
-                  <td className="tnum py-2 pr-4">{r.ex1}</td>
-                  <td className="tnum py-2 pr-4">{r.ex2}</td>
-                  <td className="tnum py-2 pr-4">{r.ex3}</td>
-                  <td className="tnum py-2 pr-4">{r.ex4}</td>
-                  <td className="tnum py-2 pr-4">{r.ex5}</td>
-                  <td className="tnum py-2 pr-4">{r.total}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.wfa}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.ex1}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.ex2}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.ex3}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.ex4}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.ex5}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.total}</td>
                 </tr>
               ))}
             </tbody>
@@ -69,11 +64,11 @@ export default function PreviewView() {
       </section>
 
       <section className="border-b border-rule py-8">
-        <SectionWarning />
+        <SectionTag />
         <h3 className="font-display text-xl text-ink">
           Workforce flows (hires, promotions, separations)
         </h3>
-        <p className="mt-1 text-[13px] text-muted">Fabricated % by group and fiscal year.</p>
+        <p className="mt-1 text-[13px] text-muted">% by group and fiscal year.</p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[480px] border-collapse text-[13px]">
             <thead>
@@ -87,12 +82,12 @@ export default function PreviewView() {
             </thead>
             <tbody>
               {MOCK_FLOWS.map((r, i) => (
-                <tr key={i} className="border-b border-dashed border-rule opacity-70">
+                <tr key={i} className="border-b border-rule">
                   <td className="py-2 pr-4 text-muted">{r.year}</td>
                   <td className="py-2 pr-4 text-muted">{r.group}</td>
-                  <td className="tnum py-2 pr-4">{r.hires}</td>
-                  <td className="tnum py-2 pr-4">{r.promo}</td>
-                  <td className="tnum py-2 pr-4">{r.sep}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.hires}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.promo}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.sep}</td>
                 </tr>
               ))}
             </tbody>
@@ -101,9 +96,9 @@ export default function PreviewView() {
       </section>
 
       <section className="border-b border-rule py-8">
-        <SectionWarning />
+        <SectionTag />
         <h3 className="font-display text-xl text-ink">Region of work</h3>
-        <p className="mt-1 text-[13px] text-muted">Fabricated % of each group by region.</p>
+        <p className="mt-1 text-[13px] text-muted">% of each group by region.</p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[560px] border-collapse text-[13px]">
             <thead>
@@ -118,13 +113,13 @@ export default function PreviewView() {
             </thead>
             <tbody>
               {MOCK_REGIONS.map((r) => (
-                <tr key={r.region} className="border-b border-dashed border-rule opacity-70">
+                <tr key={r.region} className="border-b border-rule">
                   <td className="py-2 pr-4 text-muted">{r.region}</td>
-                  <td className="tnum py-2 pr-4">{r.all}</td>
-                  <td className="tnum py-2 pr-4">{r.women}</td>
-                  <td className="tnum py-2 pr-4">{r.indigenous}</td>
-                  <td className="tnum py-2 pr-4">{r.disability}</td>
-                  <td className="tnum py-2 pr-4">{r.racialized}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.all}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.women}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.indigenous}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.disability}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.racialized}</td>
                 </tr>
               ))}
             </tbody>
@@ -133,9 +128,9 @@ export default function PreviewView() {
       </section>
 
       <section className="py-8">
-        <SectionWarning />
+        <SectionTag />
         <h3 className="font-display text-xl text-ink">Occupational groups</h3>
-        <p className="mt-1 text-[13px] text-muted">Fabricated % of each group by occupation code.</p>
+        <p className="mt-1 text-[13px] text-muted">% of each group by occupation code.</p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[560px] border-collapse text-[13px]">
             <thead>
@@ -150,13 +145,13 @@ export default function PreviewView() {
             </thead>
             <tbody>
               {MOCK_OCC_GROUPS.map((r) => (
-                <tr key={r.occ} className="border-b border-dashed border-rule opacity-70">
+                <tr key={r.occ} className="border-b border-rule">
                   <td className="py-2 pr-4 text-muted">{r.occ}</td>
-                  <td className="tnum py-2 pr-4">{r.all}</td>
-                  <td className="tnum py-2 pr-4">{r.women}</td>
-                  <td className="tnum py-2 pr-4">{r.indigenous}</td>
-                  <td className="tnum py-2 pr-4">{r.disability}</td>
-                  <td className="tnum py-2 pr-4">{r.racialized}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.all}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.women}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.indigenous}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.disability}</td>
+                  <td className="tnum py-2 pr-4 text-ink">{r.racialized}</td>
                 </tr>
               ))}
             </tbody>
@@ -167,10 +162,8 @@ export default function PreviewView() {
   );
 }
 
-function SectionWarning() {
+function SectionTag() {
   return (
-    <p className="mb-3 inline-block rounded-sm border border-sev-severe px-2 py-0.5 text-[10px] font-medium tracking-cap text-sev-severe">
-      {WARNING}
-    </p>
+    <p className="tracking-cap mb-2 text-[10px] text-faint">Placeholder data · concept only</p>
   );
 }
