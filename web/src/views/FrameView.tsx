@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { CountUp } from "@/components/ui/CountUp";
 import { SeverityTag } from "@/components/ui/SeverityTag";
-import { ROWS, META, rowsForYear } from "@/lib/data";
+import { ROWS, META, SUBGROUP_PSES_META, cpaWideExperienceByGroup, rowsForYear } from "@/lib/data";
 import { GROUP_SHORT, fmtInt } from "@/lib/format";
-import { CURRENT_YEAR, GROUPS, type Severity } from "@/lib/types";
+import { CURRENT_YEAR, GROUPS, SUBGROUP_PSES_THEME_LABELS, SUBGROUP_PSES_THEMES, type Severity } from "@/lib/types";
 
 const SEV_ORDER: Severity[] = ["severe", "substantial", "moderate", "slight", "above"];
 
@@ -21,6 +21,7 @@ export default function FrameView() {
   }));
   const suppressed = rows.filter((r) => r.suppressed).length;
   const totalForBar = rows.length;
+  const cpaExperience = cpaWideExperienceByGroup();
 
   const stats = [
     { label: "Departments & agencies", value: META.counts.depts_2024_25 },
@@ -143,6 +144,50 @@ export default function FrameView() {
               );
             })}
           </ul>
+        </div>
+      </section>
+
+      {/* CPA-wide employee experience — aggregate context, not a ranking signal */}
+      <section className="border-t border-rule py-10">
+        <h3 className="font-display text-xl text-ink">
+          Employee experience, CPA-wide (context only)
+        </h3>
+        <p className="mt-1 max-w-2xl text-[13px] text-muted">
+          Unweighted average across the {SUBGROUP_PSES_META.coverage.departments_with_data}{" "}
+          of {SUBGROUP_PSES_META.coverage.departments_total} departments in a
+          cross-validated external source (2024 PSES cycle) — never used to rank
+          departments; see a department&apos;s own row in Explore for the
+          decision-relevant, per-department signal.
+        </p>
+        <div className="mt-5 overflow-x-auto">
+          <table className="w-full min-w-[640px] border-collapse text-[13px]">
+            <thead>
+              <tr className="border-b border-rule text-left text-[10px] tracking-cap text-faint">
+                <th className="py-2 pr-4 font-normal">Theme</th>
+                {GROUPS.map((g) => (
+                  <th key={g} className="py-2 pr-4 font-normal">
+                    {GROUP_SHORT[g]}
+                  </th>
+                ))}
+                <th className="py-2 pr-4 font-normal">PS-wide avg.</th>
+              </tr>
+            </thead>
+            <tbody>
+              {SUBGROUP_PSES_THEMES.map((theme) => (
+                <tr key={theme} className="border-b border-rule">
+                  <td className="py-2 pr-4 text-muted">{SUBGROUP_PSES_THEME_LABELS[theme]}</td>
+                  {cpaExperience.map(({ group, averages }) => (
+                    <td key={group} className="tnum py-2 pr-4 text-ink">
+                      {averages[theme] ? averages[theme]!.avg.toFixed(0) : "—"}
+                    </td>
+                  ))}
+                  <td className="tnum py-2 pr-4 text-faint">
+                    {SUBGROUP_PSES_META.ps_wide_average[theme]}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
