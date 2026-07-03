@@ -1,0 +1,6 @@
+{
+  "generated_by": "pipeline/build_service_wide_context.py",
+  "source": "BT1-28 annual reports (Treasury Board of Canada Secretariat), extracted tables from a teammate project's build process \u2014 real government data, not fabricated.",
+  "scope_note": "Service-wide only, not per-department \u2014 shown as reference context, never mixed into the per-department decision-support views (Explore, Compare, Track, Present). Subgroup and demographic representation does not exist at the department level in any available source.",
+  "data_quality_note": "The Indigenous-subgroups source table's most recent year (FY2024-25) is mislabeled in the original BT1-28 extraction \u2014 it lists racialized subgroup names under designated_group='Indigenous peoples'. The last correctly-labeled year (FY2023-24) is used instead; not corrected or reinterpreted, simply skipped."
+}

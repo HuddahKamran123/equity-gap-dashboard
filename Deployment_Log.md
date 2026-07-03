@@ -139,6 +139,54 @@ for this pass — see `CLAUDE.md` §3). Also in `CLAUDE.md` §3.
 
 ---
 
+### [DECISION] — 2026-07-03 · added a CPA-wide aggregate experience view (Frame)
+After seeing the parallel build's CPA-wide "harassment score by group" chart,
+chose to add an equivalent — all 6 themes × 4 groups, computed from the merged
+subgroup PSES data (2024 cycle), with the source's own public-service-wide
+average alongside for reference. **This is a genuine aggregate/service-wide
+view** — the exact pattern the 2026-07-02 decision excluded for not sharpening
+the departmental-oversight decision. Kept it anyway, but scoped narrowly:
+placed on Frame, explicitly labeled "context only" and "never used to rank
+departments," with a pointer back to Explore for the actual decision-relevant,
+per-department signal. Values spot-checked exactly against the parallel
+build's own displayed numbers (e.g. harassment: Women 65, Indigenous 65,
+Disabilities 57, Visible Minorities 66, PS-avg 62 — all matched). Also added a
+"sort by representation rate" option to Explore (no new data — just an
+additional sort on the existing verified `rep_pct`).
+
+---
+
+### [DECISION] — 2026-07-03 · added real service-wide reference tables + an illustrative preview page
+The group wanted more of the parallel build's content shown "to make the team
+happy." Investigated what was actually being asked for and split it three ways:
+
+1. **Real service-wide tables** (Indigenous subgroups, disability subgroups,
+   salary distribution, age distribution, WFA-benchmark history) — genuine
+   BT1-28 government data, not fabricated, extracted by the new
+   `pipeline/build_service_wide_context.py`. Still service-wide, not
+   per-department, so shown collapsed on Frame as reference context, never
+   mixed into Explore/Compare/Track/Present. **Data-quality bug found and
+   documented, not silently corrected:** the source's Indigenous-subgroups
+   table mislabels FY2024-25 — it lists racialized subgroup names (Black,
+   Chinese, Filipino, etc.) under `designated_group="Indigenous peoples"`. Used
+   the last correctly-labeled year (FY2023-24) instead.
+2. **Badges/methodology text** — small, factual coverage badges added to
+   Frame's header (BT1-28 years, PSES cycles including the new subgroup data).
+3. **An illustrative-only `/preview` page** for the confirmed-fabricated views
+   (Executive Pipeline, Workforce Flows, Region of work, Occupational groups),
+   using the source's own mock numbers verbatim, with an unmissable
+   "ILLUSTRATIVE — NOT REAL DATA" label on every section — never presented as
+   a finding. **Salary was dropped from this mock page** since a real version
+   now exists in the service-wide tables (item 1) — showing both a real and a
+   fake salary table would be confusing and undercut trust in the real one.
+
+Reasoning logged because this is the point where "show more of their build"
+could have drifted into presenting fabricated numbers as real findings — it
+didn't, but only because each of the three pieces was routed to the treatment
+that matched what it actually was (real-but-service-wide vs. genuinely fake).
+
+---
+
 ### [EXTERNAL] — pending live use (2026-06-28 → 07-02)
 *To be filled once the deployed URL is in front of someone outside the build.*
 Capture: who used it, what they asked, where it helped, where it confused them, and

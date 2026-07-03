@@ -4,6 +4,36 @@
 > looks like, scope, the data, the agentic capabilities, and where a human has the
 > final word. Revised at Day 3 — see the revision log at the end.
 
+## 0. User stories
+
+1. **Priya, OCHRO equity analyst (primary).** Every Tuesday morning, before her
+   weekly sync with the Director, she needs to scan all 71 departments × 4 groups
+   ranked by gap severity, so that she can flag the handful of combinations that
+   belong in this year's report or a deputy-head conversation — without manually
+   cross-referencing four separate published tables.
+2. **Marc, departmental EDI lead (secondary).** Ahead of his quarterly equity
+   committee meeting, he needs to see his department's gap and trend against the
+   service-wide WFA benchmark alongside PSES experience context, so that he can
+   brief his committee accurately without overstating what the data proves.
+3. **Priya, OCHRO equity analyst.** When a deputy head asks for a one-pager on a
+   specific department-group, she needs a five-block briefing (finding, evidence,
+   caveat, review required, next action) generated in under a minute, so that she
+   has defensible, guardrailed language ready instead of drafting it from scratch
+   each time.
+
+**Interrogation of story #1** (sharpest — it carries the objective's "under two
+minutes" claim and exercises the dashboard's primary view, Explore):
+- She's on the hook for directing OCHRO's limited oversight attention to the right
+  departments *before* the annual report ships — a missed severe gap surfaces later
+  in an audit or a minister's briefing instead of from her own triage.
+- Today, without this dashboard, she opens four separate flat tables (one per
+  designated group), manually cross-references department names and percentages,
+  and eyeballs a ranking — a process that doesn't scale across 71 departments and
+  can't be done in under half a day.
+- With it, she opens Explore, sorts by gap within a chosen group, and immediately
+  sees priority-flagged rows with N, WFA, and severity — turning that half-day
+  manual pass into the two-minute triage the objective claims.
+
 ## 1. Objective
 
 **Primary user.** An employment-equity analyst/advisor in the Treasury Board
@@ -146,6 +176,28 @@ representation/WFA remains out of scope** — it does not exist at the departmen
 level in any available source (confirmed by the source's own subgroup
 representation field always being empty). See `Deployment_Log.md` for the full
 cross-validation record.
+
+**Adding service-wide reference tables + an illustrative preview (2026-07-03).**
+Two further additions from the same parallel build, requested so the team's
+work is visible to reviewers who compare the two builds directly:
+- **Service-wide reference tables** — Indigenous subgroups, disability
+  subgroups, salary distribution, age distribution, and WFA-benchmark history.
+  These are **real** BT1-28 government data (not fabricated), extracted by
+  `pipeline/build_service_wide_context.py`, but they are service-wide, not
+  per-department — so they're shown collapsed, clearly labeled as reference
+  context, on Frame, and never mixed into the per-department decision-support
+  views. One data-quality issue was found and documented, not corrected: the
+  source's Indigenous-subgroups table mislabels its most recent year
+  (FY2024-25 lists racialized subgroup names) — the last correctly-labeled year
+  is used instead.
+- **An illustrative `/preview` page** — Executive Pipeline, Workforce Flows,
+  Region of work, and Occupational groups, using the source's own **fabricated
+  mock numbers**, verbatim, with an unmissable "ILLUSTRATIVE — NOT REAL DATA"
+  label on every section. This shows what these views would look like once
+  real per-department data exists, without presenting fake numbers as
+  findings. Salary distribution is deliberately **not** duplicated here —
+  a real version already exists in the service-wide reference tables above,
+  so the fake version was dropped rather than shown alongside a real one.
 
 ## 4. Data
 

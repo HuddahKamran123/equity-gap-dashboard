@@ -1,0 +1,390 @@
+{
+  "indigenous_subgroups": {
+    "fiscal_year": "2023-2024",
+    "rows": [
+      {
+        "subgroup": "Inuit",
+        "overall_n": 441,
+        "overall_pct": 0.2,
+        "executive_n": 8,
+        "executive_pct": 0.1
+      },
+      {
+        "subgroup": "M\u00e9tis",
+        "overall_n": 6083,
+        "overall_pct": 2.3,
+        "executive_n": 177,
+        "executive_pct": 2.3
+      },
+      {
+        "subgroup": "First Nations",
+        "overall_n": 5947,
+        "overall_pct": 2.2,
+        "executive_n": 197,
+        "executive_pct": 2.5
+      },
+      {
+        "subgroup": "Other",
+        "overall_n": 1681,
+        "overall_pct": 0.6,
+        "executive_n": 46,
+        "executive_pct": 0.6
+      }
+    ]
+  },
+  "disability_subgroups": {
+    "fiscal_year": "2024-2025",
+    "rows": [
+      {
+        "subgroup": "Coordination and dexterity",
+        "overall_n": 1480,
+        "overall_pct": 0.6,
+        "executive_n": 52,
+        "executive_pct": 0.7
+      },
+      {
+        "subgroup": "Mobility",
+        "overall_n": 3114,
+        "overall_pct": 1.2,
+        "executive_n": 102,
+        "executive_pct": 1.3
+      },
+      {
+        "subgroup": "Speech impairment",
+        "overall_n": 433,
+        "overall_pct": 0.2,
+        "executive_n": 20,
+        "executive_pct": 0.3
+      },
+      {
+        "subgroup": "Blind or visual impairment",
+        "overall_n": 1455,
+        "overall_pct": 0.5,
+        "executive_n": 80,
+        "executive_pct": 1.0
+      },
+      {
+        "subgroup": "Deaf or hard of hearing",
+        "overall_n": 2474,
+        "overall_pct": 0.9,
+        "executive_n": 126,
+        "executive_pct": 1.6
+      },
+      {
+        "subgroup": "Other disability",
+        "overall_n": 18548,
+        "overall_pct": 6.9,
+        "executive_n": 590,
+        "executive_pct": 7.4
+      }
+    ]
+  },
+  "salary_distribution": {
+    "fiscal_year": "2023-2024",
+    "rows": [
+      {
+        "band": "Under 50,000",
+        "all_employees": 1.7,
+        "women": 2.1,
+        "indigenous": 1.3,
+        "disability": null,
+        "visible_minorities": 1.6
+      },
+      {
+        "band": "50,000 to 54,999",
+        "all_employees": 0.9,
+        "women": 1.1,
+        "indigenous": 1.1,
+        "disability": null,
+        "visible_minorities": 1.2
+      },
+      {
+        "band": "55,000 to 59,999",
+        "all_employees": 2.7,
+        "women": 3.3,
+        "indigenous": 3.3,
+        "disability": null,
+        "visible_minorities": 2.7
+      },
+      {
+        "band": "60,000 to 64,999",
+        "all_employees": 9.4,
+        "women": 11.3,
+        "indigenous": 12.0,
+        "disability": null,
+        "visible_minorities": 10.5
+      },
+      {
+        "band": "65,000 to 69,999",
+        "all_employees": 9.1,
+        "women": 10.4,
+        "indigenous": 9.6,
+        "disability": null,
+        "visible_minorities": 9.9
+      },
+      {
+        "band": "70,000 to 74,999",
+        "all_employees": 9.1,
+        "women": 10.4,
+        "indigenous": 10.2,
+        "disability": null,
+        "visible_minorities": 9.6
+      },
+      {
+        "band": "75,000 to 79,999",
+        "all_employees": 7.6,
+        "women": 8.5,
+        "indigenous": 7.5,
+        "disability": null,
+        "visible_minorities": 7.4
+      },
+      {
+        "band": "80,000 to 84,999",
+        "all_employees": 8.6,
+        "women": 8.2,
+        "indigenous": 8.2,
+        "disability": null,
+        "visible_minorities": 8.2
+      },
+      {
+        "band": "85,000 to 89,999",
+        "all_employees": 6.4,
+        "women": 4.6,
+        "indigenous": 5.8,
+        "disability": null,
+        "visible_minorities": 4.9
+      },
+      {
+        "band": "90,000 to 94,999",
+        "all_employees": 4.6,
+        "women": 4.5,
+        "indigenous": 4.3,
+        "disability": null,
+        "visible_minorities": 4.4
+      },
+      {
+        "band": "95,000 to 99,999",
+        "all_employees": 5.1,
+        "women": 4.7,
+        "indigenous": 5.1,
+        "disability": null,
+        "visible_minorities": 4.9
+      },
+      {
+        "band": "100,000 to 104,999",
+        "all_employees": 7.6,
+        "women": 7.2,
+        "indigenous": 6.8,
+        "disability": null,
+        "visible_minorities": 7.8
+      },
+      {
+        "band": "105,000 to 109,999",
+        "all_employees": 3.9,
+        "women": 3.5,
+        "indigenous": 3.8,
+        "disability": null,
+        "visible_minorities": 3.6
+      },
+      {
+        "band": "110,000 to 114,999",
+        "all_employees": 4.5,
+        "women": 4.4,
+        "indigenous": 4.1,
+        "disability": null,
+        "visible_minorities": 4.6
+      },
+      {
+        "band": "115,000 to 119,999",
+        "all_employees": 2.4,
+        "women": 1.8,
+        "indigenous": 2.4,
+        "disability": null,
+        "visible_minorities": 1.8
+      },
+      {
+        "band": "120,000 to 124,999",
+        "all_employees": 3.6,
+        "women": 2.5,
+        "indigenous": 3.5,
+        "disability": null,
+        "visible_minorities": 3.1
+      },
+      {
+        "band": "125,000 to 149,999",
+        "all_employees": 9.2,
+        "women": 8.1,
+        "indigenous": 8.3,
+        "disability": null,
+        "visible_minorities": 9.2
+      },
+      {
+        "band": "150,000 and over",
+        "all_employees": 3.6,
+        "women": 3.3,
+        "indigenous": 2.6,
+        "disability": null,
+        "visible_minorities": 4.8
+      }
+    ]
+  },
+  "age_distribution": {
+    "fiscal_year": "2023-2024",
+    "rows": [
+      {
+        "band": "Under 20",
+        "all_employees": 0.1,
+        "women": 0.1,
+        "indigenous": 0.0,
+        "disability": null,
+        "visible_minorities": 0.0
+      },
+      {
+        "band": "20-24",
+        "all_employees": 2.5,
+        "women": 2.7,
+        "indigenous": 2.9,
+        "disability": null,
+        "visible_minorities": 2.5
+      },
+      {
+        "band": "25-29",
+        "all_employees": 10.4,
+        "women": 11.0,
+        "indigenous": 13.9,
+        "disability": null,
+        "visible_minorities": 10.1
+      },
+      {
+        "band": "30-34",
+        "all_employees": 12.3,
+        "women": 12.6,
+        "indigenous": 14.6,
+        "disability": null,
+        "visible_minorities": 11.0
+      },
+      {
+        "band": "35-39",
+        "all_employees": 13.1,
+        "women": 13.2,
+        "indigenous": 14.1,
+        "disability": null,
+        "visible_minorities": 11.5
+      },
+      {
+        "band": "40-44",
+        "all_employees": 15.2,
+        "women": 15.7,
+        "indigenous": 15.4,
+        "disability": null,
+        "visible_minorities": 13.9
+      },
+      {
+        "band": "45-49",
+        "all_employees": 15.2,
+        "women": 15.6,
+        "indigenous": 14.1,
+        "disability": null,
+        "visible_minorities": 15.2
+      },
+      {
+        "band": "50-54",
+        "all_employees": 13.2,
+        "women": 13.0,
+        "indigenous": 10.9,
+        "disability": null,
+        "visible_minorities": 14.7
+      },
+      {
+        "band": "55-59",
+        "all_employees": 10.0,
+        "women": 9.3,
+        "indigenous": 7.7,
+        "disability": null,
+        "visible_minorities": 11.2
+      },
+      {
+        "band": "60-64",
+        "all_employees": 5.6,
+        "women": 4.9,
+        "indigenous": 4.2,
+        "disability": null,
+        "visible_minorities": 6.8
+      },
+      {
+        "band": "65-69",
+        "all_employees": 1.9,
+        "women": 1.5,
+        "indigenous": 1.6,
+        "disability": null,
+        "visible_minorities": 2.3
+      },
+      {
+        "band": "70+",
+        "all_employees": 0.6,
+        "women": 0.4,
+        "indigenous": 0.5,
+        "disability": null,
+        "visible_minorities": 0.7
+      }
+    ]
+  },
+  "wfa_benchmark_history": [
+    {
+      "benchmark": "2016 Census and 2017 Canadian Survey on Disability (based on Canadian citizens and permanent residents) - based on population data as of March 31, 2023",
+      "women": 53.7,
+      "indigenous": 3.8,
+      "disability": 9.2,
+      "visible_minorities": 17.3
+    },
+    {
+      "benchmark": "2016 Census and 2017 Canadian Survey on Disability (based on Canadian citizens and permanent residents) - based on population data as of March 31, 2022",
+      "women": 53.3,
+      "indigenous": 3.8,
+      "disability": 9.1,
+      "visible_minorities": 17.2
+    },
+    {
+      "benchmark": "2016 Census and 2017 Canadian Survey on Disability (based on Canadian citizens only)",
+      "women": 52.7,
+      "indigenous": 4.0,
+      "disability": 9.0,
+      "visible_minorities": 15.3
+    },
+    {
+      "benchmark": "2011 National Household Survey and 2012 Canadian Survey on Disability",
+      "women": 52.5,
+      "indigenous": 3.4,
+      "disability": 4.4,
+      "visible_minorities": 13.0
+    },
+    {
+      "benchmark": "2006 Census and Participation and Activity Limitation Survey (PALS)",
+      "women": 52.3,
+      "indigenous": 3.0,
+      "disability": 4.0,
+      "visible_minorities": 12.4
+    },
+    {
+      "benchmark": "2001 Census and PALS",
+      "women": 52.2,
+      "indigenous": 2.5,
+      "disability": 3.6,
+      "visible_minorities": 10.4
+    },
+    {
+      "benchmark": "1996 Census and 1991 Health and Activity Limitation Survey (HALS)",
+      "women": 48.7,
+      "indigenous": 1.7,
+      "disability": 4.8,
+      "visible_minorities": 8.7
+    },
+    {
+      "benchmark": "1991 Census and HALS",
+      "women": 47.3,
+      "indigenous": 2.6,
+      "disability": 4.8,
+      "visible_minorities": 9.0
+    }
+  ]
+}

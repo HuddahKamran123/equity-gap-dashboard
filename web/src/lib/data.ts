@@ -7,7 +7,9 @@ import metaJson from "@/data/meta.json";
 import repHistoryJson from "@/data/rep_history.json";
 import subgroupPsesJson from "@/data/subgroup_pses.json";
 import subgroupPsesMetaJson from "@/data/subgroup_pses_meta.json";
-import { GROUPS, type Group, type HistoryEntry, type Meta, type Row, type SubgroupPsesEntry, type SubgroupPsesTheme, SUBGROUP_PSES_THEMES, type Year } from "./types";
+import serviceWideContextJson from "@/data/service_wide_context.json";
+import serviceWideContextMetaJson from "@/data/service_wide_context_meta.json";
+import { GROUPS, type Group, type HistoryEntry, type Meta, type Row, type ServiceWideContext, type SubgroupPsesEntry, type SubgroupPsesTheme, SUBGROUP_PSES_THEMES, type Year } from "./types";
 
 export const ROWS = equityJson as Row[];
 export const META = metaJson as Meta;
@@ -16,6 +18,12 @@ export const SUBGROUP_PSES = subgroupPsesJson as SubgroupPsesEntry[];
 export const SUBGROUP_PSES_META = subgroupPsesMetaJson as {
   coverage: { departments_with_data: number; departments_total: number };
   ps_wide_average: Record<SubgroupPsesTheme, number>;
+};
+export const SERVICE_WIDE_CONTEXT = serviceWideContextJson as ServiceWideContext;
+export const SERVICE_WIDE_CONTEXT_META = serviceWideContextMetaJson as {
+  source: string;
+  scope_note: string;
+  data_quality_note: string;
 };
 
 /** Multi-year representation trajectory for a department × group (2–4 years), or undefined. */

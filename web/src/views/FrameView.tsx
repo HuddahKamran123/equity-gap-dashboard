@@ -3,9 +3,25 @@
 import Link from "next/link";
 import { CountUp } from "@/components/ui/CountUp";
 import { SeverityTag } from "@/components/ui/SeverityTag";
-import { ROWS, META, SUBGROUP_PSES_META, cpaWideExperienceByGroup, rowsForYear } from "@/lib/data";
+import {
+  ROWS,
+  META,
+  SERVICE_WIDE_CONTEXT,
+  SERVICE_WIDE_CONTEXT_META,
+  SUBGROUP_PSES_META,
+  cpaWideExperienceByGroup,
+  rowsForYear,
+} from "@/lib/data";
 import { GROUP_SHORT, fmtInt } from "@/lib/format";
-import { CURRENT_YEAR, GROUPS, SUBGROUP_PSES_THEME_LABELS, SUBGROUP_PSES_THEMES, type Severity } from "@/lib/types";
+import {
+  CURRENT_YEAR,
+  GROUPS,
+  SUBGROUP_PSES_THEME_LABELS,
+  SUBGROUP_PSES_THEMES,
+  type DistributionRow,
+  type Severity,
+  type SubgroupBreakdownRow,
+} from "@/lib/types";
 
 const SEV_ORDER: Severity[] = ["severe", "substantial", "moderate", "slight", "above"];
 
@@ -48,6 +64,20 @@ export default function FrameView() {
           workforce would put them. This view helps an EDI policy lead decide
           where to direct limited review capacity next.
         </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {[
+            "BT1-28 FY 2021-22 → 2024-25",
+            "PSES 2024 (4 indicators)",
+            "PSES 2020 · 2022 · 2024 (subgroups, cross-validated)",
+          ].map((b) => (
+            <span
+              key={b}
+              className="rounded-sm border border-rule-strong px-2 py-0.5 text-[10px] tracking-wide text-faint"
+            >
+              {b}
+            </span>
+          ))}
+        </div>
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
             href="/explore"
@@ -191,6 +221,76 @@ export default function FrameView() {
         </div>
       </section>
 
+      {/* Service-wide reference tables — real BT1-28 data, but not per-department,
+          so kept out of the decision-support views and shown collapsed by default. */}
+      <section className="border-t border-rule py-10">
+        <details>
+          <summary className="cursor-pointer">
+            <h3 className="inline font-display text-xl text-ink">
+              Service-wide reference (not per-department)
+            </h3>
+          </summary>
+          <p className="mt-2 max-w-2xl text-[13px] leading-relaxed text-muted">
+            {SERVICE_WIDE_CONTEXT_META.scope_note}
+          </p>
+          <p className="mt-2 max-w-2xl text-[12px] leading-relaxed text-faint">
+            {SERVICE_WIDE_CONTEXT_META.data_quality_note}
+          </p>
+
+          <div className="mt-6 grid gap-8 lg:grid-cols-2">
+            <SubgroupTable
+              title={`Indigenous subgroups · ${SERVICE_WIDE_CONTEXT.indigenous_subgroups.fiscal_year}`}
+              rows={SERVICE_WIDE_CONTEXT.indigenous_subgroups.rows}
+            />
+            <SubgroupTable
+              title={`Disability subgroups · ${SERVICE_WIDE_CONTEXT.disability_subgroups.fiscal_year}`}
+              rows={SERVICE_WIDE_CONTEXT.disability_subgroups.rows}
+            />
+            <DistributionTable
+              title={`Salary distribution · ${SERVICE_WIDE_CONTEXT.salary_distribution.fiscal_year}`}
+              rows={SERVICE_WIDE_CONTEXT.salary_distribution.rows}
+            />
+            <DistributionTable
+              title={`Age distribution · ${SERVICE_WIDE_CONTEXT.age_distribution.fiscal_year}`}
+              rows={SERVICE_WIDE_CONTEXT.age_distribution.rows}
+            />
+          </div>
+
+          <div className="mt-8">
+            <h4 className="text-sm font-medium text-ink">
+              Workforce-availability benchmark history
+            </h4>
+            <p className="mt-1 text-[12px] text-muted">
+              How the census-based benchmark has shifted across survey editions.
+            </p>
+            <div className="mt-3 overflow-x-auto">
+              <table className="w-full min-w-[560px] border-collapse text-[12px]">
+                <thead>
+                  <tr className="border-b border-rule text-left text-[10px] tracking-cap text-faint">
+                    <th className="py-2 pr-4 font-normal">Benchmark</th>
+                    <th className="py-2 pr-4 font-normal">Women</th>
+                    <th className="py-2 pr-4 font-normal">Indigenous</th>
+                    <th className="py-2 pr-4 font-normal">Disability</th>
+                    <th className="py-2 pr-4 font-normal">Vis. minorities</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {SERVICE_WIDE_CONTEXT.wfa_benchmark_history.map((b) => (
+                    <tr key={b.benchmark} className="border-b border-rule">
+                      <td className="max-w-xs py-2 pr-4 text-muted">{b.benchmark}</td>
+                      <td className="tnum py-2 pr-4 text-ink">{b.women}</td>
+                      <td className="tnum py-2 pr-4 text-ink">{b.indigenous ?? "—"}</td>
+                      <td className="tnum py-2 pr-4 text-ink">{b.disability ?? "—"}</td>
+                      <td className="tnum py-2 pr-4 text-ink">{b.visible_minorities ?? "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </section>
+
       {/* how it's built — the capability flow + the output, in one line */}
       <section className="border-t border-rule py-10">
         <h3 className="font-display text-xl text-ink">How this is built</h3>
@@ -237,4 +337,76 @@ function severityFill(s: Severity): string {
     substantial: "bg-sev-substantial",
     severe: "bg-sev-severe",
   }[s];
+}
+
+function SubgroupTable({ title, rows }: { title: string; rows: SubgroupBreakdownRow[] }) {
+  return (
+    <div>
+      <h4 className="text-sm font-medium text-ink">{title}</h4>
+      <div className="mt-3 overflow-x-auto">
+        <table className="w-full min-w-[420px] border-collapse text-[12px]">
+          <thead>
+            <tr className="border-b border-rule text-left text-[10px] tracking-cap text-faint">
+              <th className="py-2 pr-4 font-normal">Subgroup</th>
+              <th className="py-2 pr-4 font-normal">Overall</th>
+              <th className="py-2 pr-4 font-normal">Executive</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.subgroup} className="border-b border-rule">
+                <td className="py-2 pr-4 text-muted">{r.subgroup}</td>
+                <td className="tnum py-2 pr-4 text-ink">
+                  {r.overall_pct !== null ? `${r.overall_pct}%` : "—"}
+                  {r.overall_n !== null && (
+                    <span className="text-faint"> ({r.overall_n.toLocaleString("en-CA")})</span>
+                  )}
+                </td>
+                <td className="tnum py-2 pr-4 text-ink">
+                  {r.executive_pct !== null ? `${r.executive_pct}%` : "—"}
+                  {r.executive_n !== null && (
+                    <span className="text-faint"> ({r.executive_n.toLocaleString("en-CA")})</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+function DistributionTable({ title, rows }: { title: string; rows: DistributionRow[] }) {
+  return (
+    <div>
+      <h4 className="text-sm font-medium text-ink">{title}</h4>
+      <div className="mt-3 max-h-64 overflow-y-auto overflow-x-auto">
+        <table className="w-full min-w-[420px] border-collapse text-[12px]">
+          <thead className="sticky top-0 bg-paper">
+            <tr className="border-b border-rule text-left text-[10px] tracking-cap text-faint">
+              <th className="py-2 pr-4 font-normal">Band</th>
+              <th className="py-2 pr-4 font-normal">All</th>
+              <th className="py-2 pr-4 font-normal">Women</th>
+              <th className="py-2 pr-4 font-normal">Indig.</th>
+              <th className="py-2 pr-4 font-normal">Disab.</th>
+              <th className="py-2 pr-4 font-normal">Vis. min.</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.band} className="border-b border-rule">
+                <td className="py-2 pr-4 text-muted">{r.band}</td>
+                <td className="tnum py-2 pr-4 text-ink">{r.all_employees ?? "—"}</td>
+                <td className="tnum py-2 pr-4 text-ink">{r.women ?? "—"}</td>
+                <td className="tnum py-2 pr-4 text-ink">{r.indigenous ?? "—"}</td>
+                <td className="tnum py-2 pr-4 text-ink">{r.disability ?? "—"}</td>
+                <td className="tnum py-2 pr-4 text-ink">{r.visible_minorities ?? "—"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }
