@@ -102,6 +102,43 @@ conscious choice, not an oversight. (Also in `CLAUDE.md` §3.)
 
 ---
 
+### [DECISION] — 2026-07-03 · reopened the service-wide-breadth call for per-department PSES experience data
+A teammate's parallel build (Lorraine, `ldzeble@ualberta.ca`) was investigated
+again after the group asked why our dashboard doesn't show its extra dimensions.
+Most of it — Executive Pipeline, Workforce Flows, Salary, Region, Occupation,
+subgroup headcount tables — turned out to be **hardcoded mock data**, self-
+disclosed in the source's own UI copy ("Prototype — data is mock") and citing
+source files that don't exist anywhere in that project. Not merged.
+
+One part is real and **per-department**, which is the specific bar the 2026-07-02
+decision above said the service-wide data didn't clear: PSES **workplace-
+experience** scores (harassment, belonging, career, leadership, workplace,
+wellbeing) for the 4 designated groups and 10 subgroups (Black, South Asian, East
+Asian, Arab, First Nations, Métis, Inuit, Cognitive, Mental health, Seeing), across
+survey cycles 2020/2022/2024, for 53 of our 71 departments.
+
+**Verification, since we cannot independently re-derive this data** (the source's
+raw 2020/2022 PSES microdata, demographic-recoding concordance, and department-
+name mapping files aren't available to us): extracted the source's representation
+data and cross-validated every resolvable department × group pair for FY2024-25
+against our own verified `equity.json`. **195 of 195 matched within 0.3 percentage
+points (100%)**, after normalizing one machinery-of-government rename
+("Infrastructure Canada" → "Housing, Infrastructure and Communities Canada"). This
+gate is re-run at build time by `pipeline/build_subgroup_pses.py` (hard-fails
+below 98% match) so a future refresh can't silently ship a regressed source.
+
+**Decision:** merge the experience data into Explore's row detail only, labeled
+explicitly as a cross-validated external source — not our own independently-
+verified figure, and never rendered next to or averaged with the existing 2024-only
+4-indicator PSES field. **Not merged:** subgroup representation/WFA (still doesn't
+exist at the department level in any source — the parallel build's own subgroup
+representation field is always empty); `GROUP_PARAMS` (the source's own UI
+color-threshold logic, not a data fact — this dashboard already has
+`DIVERGENCE_MARGIN` for that concept); Compare/Track/Present views (out of scope
+for this pass — see `CLAUDE.md` §3). Also in `CLAUDE.md` §3.
+
+---
+
 ### [EXTERNAL] — pending live use (2026-06-28 → 07-02)
 *To be filled once the deployed URL is in front of someone outside the build.*
 Capture: who used it, what they asked, where it helped, where it confused them, and

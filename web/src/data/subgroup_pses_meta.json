@@ -1,0 +1,37 @@
+{
+  "generated_by": "pipeline/build_subgroup_pses.py",
+  "source": "Teammate project (Lorraine, ldzeble@ualberta.ca), 'Employment Equity Intelligence Dashboard \u2014 TBS' \u2014 PSES workplace-experience data extracted from its deployed dashboard.",
+  "verification": "Not independently re-derived (source raw 2020/2022 PSES microdata, demographic-recoding concordance, and department-name mapping are unavailable to us). Cross-validated instead: representation values for every resolvable department x group pair matched our own verified 2024-2025 equity.json within 0.3pp \u2014 195/195 (100.0%).",
+  "coverage": {
+    "departments_with_data": 53,
+    "departments_total": 71,
+    "departments_skipped_no_survey_data": 0
+  },
+  "themes": [
+    "harassment",
+    "belonging",
+    "career",
+    "leadership",
+    "workplace",
+    "wellbeing"
+  ],
+  "years": [
+    2020,
+    2022,
+    2024
+  ],
+  "ps_wide_average": {
+    "harassment": 62,
+    "belonging": 74,
+    "career": 68,
+    "leadership": 67,
+    "workplace": 67,
+    "wellbeing": 68
+  },
+  "caveats": [
+    "No subgroup representation or workforce-availability data exists at the department level in any available source \u2014 this is experience scores only.",
+    "PSES renumbered its questions in 2024 and re-coded demographic BYCOND codes every cycle; group-level 3-cycle trends are honest only for Women per the source's own documented limitation (no overall Indigenous/disability/racialized code existed before 2024). Subgroup lineages (Black, First Nations, etc.) span all three cycles.",
+    "'suppressed' means surveyed but below the reporting threshold; null means not surveyed that cycle \u2014 these are not the same and must not be rendered identically.",
+    "Covers 53 of our 71 departments (the source's own scope)."
+  ]
+}

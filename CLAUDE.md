@@ -127,6 +127,26 @@ executive representation only **service-wide**, not per department, so it cannot
 built at this dashboard's per-department grain and stays out of scope until
 per-department executive data exists.
 
+**Revisiting the 2026-07-02 decision (2026-07-03).** That decision declined the
+parallel build's extra dimensions because they were **service-wide-only** and
+therefore didn't sharpen the departmental-oversight decision. Its PSES
+**workplace-experience** data (not representation) — subgroup breakdowns (Black,
+South Asian, East Asian, Arab, First Nations, Métis, Inuit, Cognitive, Mental
+health, Seeing) across 6 themes and 3 survey cycles (2020/2022/2024) — is
+**per-department** (53 of our 71), which is the specific bar the service-wide data
+didn't clear. Before merging, its representation data was cross-validated against
+our own verified `equity.json`: **195 of 195 comparable department × group pairs
+for 2024-25 matched within 0.3 percentage points.** That gives confidence the
+source pipeline is genuine, though the experience scores themselves cannot be
+independently re-derived by our own pipeline (the source's raw 2020/2022 PSES
+microdata, demographic-recoding concordance, and department-name mapping files
+aren't available to us) — shown in Explore's row detail only, labeled as a
+cross-validated external source, not our own verified figure. **Subgroup
+representation/WFA remains out of scope** — it does not exist at the department
+level in any available source (confirmed by the source's own subgroup
+representation field always being empty). See `Deployment_Log.md` for the full
+cross-validation record.
+
 ## 4. Data
 
 **Two sources, one reproducible pipeline** (`pipeline/`):

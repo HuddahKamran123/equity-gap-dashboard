@@ -5,11 +5,18 @@
 import equityJson from "@/data/equity.json";
 import metaJson from "@/data/meta.json";
 import repHistoryJson from "@/data/rep_history.json";
-import type { Group, HistoryEntry, Meta, Row, Year } from "./types";
+import subgroupPsesJson from "@/data/subgroup_pses.json";
+import subgroupPsesMetaJson from "@/data/subgroup_pses_meta.json";
+import { GROUPS, type Group, type HistoryEntry, type Meta, type Row, type SubgroupPsesEntry, type SubgroupPsesTheme, SUBGROUP_PSES_THEMES, type Year } from "./types";
 
 export const ROWS = equityJson as Row[];
 export const META = metaJson as Meta;
 export const REP_HISTORY = repHistoryJson as Record<string, HistoryEntry[]>;
+export const SUBGROUP_PSES = subgroupPsesJson as SubgroupPsesEntry[];
+export const SUBGROUP_PSES_META = subgroupPsesMetaJson as {
+  coverage: { departments_with_data: number; departments_total: number };
+  ps_wide_average: Record<SubgroupPsesTheme, number>;
+};
 
 /** Multi-year representation trajectory for a department × group (2–4 years), or undefined. */
 export function historyFor(department: string, group: Group): HistoryEntry[] | undefined {
@@ -79,4 +86,38 @@ export function divergenceRows(year: Year): Row[] {
   return rowsForYear(year)
     .filter((r) => r.divergence)
     .sort((a, b) => (b.divergence_shortfall ?? 0) - (a.divergence_shortfall ?? 0));
+}
+
+/** Group-level entry first, then subgroups — for a department × group, from the
+ * cross-validated external source (see subgroup_pses_meta.json). Empty for
+ * departments/groups outside that source's 53-department coverage. */
+export function subgroupPsesFor(department: string, group: Group): SubgroupPsesEntry[] {
+  return SUBGROUP_PSES.filter((e) => e.department === department && e.group === group).sort(
+    (a, b) => (a.subgroup === null ? -1 : b.subgroup === null ? 1 : a.subgroup.localeCompare(b.subgroup)),
+  );
+}
+
+/** CPA-wide average (2024 cycle) per group × theme, from the cross-validated
+ * external source's group-level entries (never subgroup rows — this is an
+ * aggregate, unweighted mean across the 53 covered departments, context only,
+ * never used to rank). Alongside each is the source's own public-service-wide
+ * average for comparison. Departments with a suppressed/not-surveyed 2024 cell
+ * for a theme are excluded from that theme's average, not counted as zero. */
+export function cpaWideExperienceByGroup(): {
+  group: Group;
+  averages: Partial<Record<SubgroupPsesTheme, { avg: number; n: number }>>;
+}[] {
+  return GROUPS.map((group) => {
+    const groupLevelEntries = SUBGROUP_PSES.filter((e) => e.group === group && e.subgroup === null);
+    const averages: Partial<Record<SubgroupPsesTheme, { avg: number; n: number }>> = {};
+    for (const theme of SUBGROUP_PSES_THEMES) {
+      const values = groupLevelEntries
+        .map((e) => e.themes[theme][2]) // index 2 = 2024
+        .filter((v): v is number => typeof v === "number");
+      if (values.length) {
+        averages[theme] = { avg: values.reduce((a, b) => a + b, 0) / values.length, n: values.length };
+      }
+    }
+    return { group, averages };
+  });
 }

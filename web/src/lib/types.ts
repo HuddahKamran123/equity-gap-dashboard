@@ -93,3 +93,49 @@ export const PSES_LABELS: Record<keyof PsesScores, string> = {
   pses_harassment: "Harassment (higher = less reported)",
   pses_discrimination: "Discrimination (higher = less reported)",
 };
+
+// Subgroup + multi-cycle (2020/2022/2024) PSES experience data. Structurally
+// separate from PsesScores/Row: sourced from a teammate's project, cross-validated
+// against our own verified representation data but not independently re-derived by
+// our own pipeline. See web/src/data/subgroup_pses_meta.json for provenance.
+// Shape mirrors web/src/data/subgroup_pses.json, produced by
+// pipeline/build_subgroup_pses.py.
+
+export type SubgroupPsesTheme =
+  | "harassment"
+  | "belonging"
+  | "career"
+  | "leadership"
+  | "workplace"
+  | "wellbeing";
+
+/** One survey cycle's score, or "suppressed" (surveyed, below reporting threshold), or null (not surveyed that cycle). */
+export type SubgroupPsesCell = number | "suppressed" | null;
+
+export interface SubgroupPsesEntry {
+  department: string;
+  group: Group;
+  subgroup: string | null; // null = group-level entry, else e.g. "Black", "First Nations"
+  n: number | "<10" | null;
+  themes: Record<SubgroupPsesTheme, [SubgroupPsesCell, SubgroupPsesCell, SubgroupPsesCell]>; // [2020, 2022, 2024]
+}
+
+export const SUBGROUP_PSES_YEARS = [2020, 2022, 2024] as const;
+
+export const SUBGROUP_PSES_THEMES: SubgroupPsesTheme[] = [
+  "harassment",
+  "belonging",
+  "career",
+  "leadership",
+  "workplace",
+  "wellbeing",
+];
+
+export const SUBGROUP_PSES_THEME_LABELS: Record<SubgroupPsesTheme, string> = {
+  harassment: "Harassment",
+  belonging: "Belonging & inclusion",
+  career: "Career development",
+  leadership: "Leadership",
+  workplace: "Workplace",
+  wellbeing: "Wellbeing",
+};
