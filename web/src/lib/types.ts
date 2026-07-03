@@ -131,6 +131,44 @@ export const SUBGROUP_PSES_THEMES: SubgroupPsesTheme[] = [
   "wellbeing",
 ];
 
+// Real, service-wide-only BT1-28 tables (not per-department) — reference
+// context only, never mixed into the per-department decision-support views.
+// Shape mirrors web/src/data/service_wide_context.json, produced by
+// pipeline/build_service_wide_context.py.
+
+export interface SubgroupBreakdownRow {
+  subgroup: string;
+  overall_n: number | null;
+  overall_pct: number | null;
+  executive_n: number | null;
+  executive_pct: number | null;
+}
+
+export interface DistributionRow {
+  band: string;
+  all_employees: number | null;
+  women: number | null;
+  indigenous: number | null;
+  disability: number | null;
+  visible_minorities: number | null;
+}
+
+export interface WfaBenchmarkHistoryRow {
+  benchmark: string;
+  women: number;
+  indigenous: number | null;
+  disability: number | null;
+  visible_minorities: number | null;
+}
+
+export interface ServiceWideContext {
+  indigenous_subgroups: { fiscal_year: string; rows: SubgroupBreakdownRow[] };
+  disability_subgroups: { fiscal_year: string; rows: SubgroupBreakdownRow[] };
+  salary_distribution: { fiscal_year: string; rows: DistributionRow[] };
+  age_distribution: { fiscal_year: string; rows: DistributionRow[] };
+  wfa_benchmark_history: WfaBenchmarkHistoryRow[];
+}
+
 export const SUBGROUP_PSES_THEME_LABELS: Record<SubgroupPsesTheme, string> = {
   harassment: "Harassment",
   belonging: "Belonging & inclusion",

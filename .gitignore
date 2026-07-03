@@ -17,6 +17,7 @@ web/.env.*
 Knowledge/data/raw/*
 !Knowledge/data/raw/bt1_28_representation_2021_2025.csv
 !Knowledge/data/raw/teammate_subgroup_pses_source.html
+!Knowledge/data/raw/service_wide
 
 # --- os / misc ---
 .DS_Store
