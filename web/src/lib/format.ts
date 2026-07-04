@@ -1,6 +1,14 @@
-import type { Group, Severity } from "./types";
+import type { Group, Severity, SubgroupPsesCell } from "./types";
 
 export const MINUS = "−"; // proper minus sign
+
+/** 2020/2022/2024 subgroup PSES cell, distinguishing suppressed (surveyed,
+ * below threshold) from null (not surveyed that cycle) — never the same. */
+export function fmtSubgroupCell(cell: SubgroupPsesCell): string {
+  if (cell === "suppressed") return "suppressed";
+  if (cell === null) return "n/s";
+  return cell.toFixed(0);
+}
 
 export function fmtInt(n: number | null | undefined): string {
   if (n === null || n === undefined) return "—";

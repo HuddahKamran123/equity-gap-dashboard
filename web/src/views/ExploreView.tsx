@@ -1,20 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { DeficitBar } from "@/components/ui/DeficitBar";
 import { PriorityFlag, SeverityTag } from "@/components/ui/SeverityTag";
 import { byGapAscending, rowsForYear, subgroupPsesFor } from "@/lib/data";
-import { GROUP_SHORT, fmtGap, fmtN, fmtPct, fmtPP } from "@/lib/format";
+import { GROUP_SHORT, fmtGap, fmtN, fmtPct, fmtPP, fmtSubgroupCell } from "@/lib/format";
 import { recommendReview, signalSentence } from "@/lib/signal";
-import {
-  CURRENT_YEAR,
-  GROUPS,
-  PSES_LABELS,
-  type Group,
-  type Row,
-  type SubgroupPsesCell,
-} from "@/lib/types";
+import { CURRENT_YEAR, GROUPS, PSES_LABELS, type Group, type Row } from "@/lib/types";
 
 type Filter = "all" | Group;
 type Sort = "gap" | "pp" | "rep";
@@ -124,14 +118,6 @@ export default function ExploreView() {
   );
 }
 
-/** 2020/2022/2024 harassment triplet, distinguishing suppressed (surveyed, below
- * threshold) from null (not surveyed that cycle) — never rendered the same way. */
-function fmtSubgroupCell(cell: SubgroupPsesCell): string {
-  if (cell === "suppressed") return "suppressed";
-  if (cell === null) return "n/s";
-  return cell.toFixed(0);
-}
-
 function ExploreRow({ row, rank, showGroup }: { row: Row; rank: number; showGroup: boolean }) {
   const rec = recommendReview(row);
   const subgroupEntries = subgroupPsesFor(row.department, row.group);
@@ -236,7 +222,10 @@ function ExploreRow({ row, rank, showGroup }: { row: Row; rank: number; showGrou
                     Not independently re-derived by this dashboard&apos;s own pipeline —
                     cross-validated against verified representation data. &quot;n/s&quot; =
                     not surveyed that cycle; &quot;suppressed&quot; = surveyed, below
-                    reporting threshold.
+                    reporting threshold.{" "}
+                    <Link href="/subgroups" className="text-accent underline underline-offset-2 hover:text-accent-bright">
+                      All 6 themes →
+                    </Link>
                   </p>
                 </div>
               )}
