@@ -7,20 +7,22 @@
 
 ## 0. User stories
 
-1. **Priya, OCHRO equity analyst (primary).** Every Tuesday morning, before her
-   weekly sync with the Director, she needs to scan all 72 departments × 4 groups
-   ranked by gap severity, so that she can flag the handful of combinations that
-   belong in this year's report or a deputy-head conversation — without manually
-   cross-referencing four separate published tables.
-2. **Marc, departmental EDI lead (secondary).** Ahead of his quarterly equity
-   committee meeting, he needs to see his department's gap and trend against the
-   service-wide WFA benchmark alongside PSES experience context, so that he can
-   brief his committee accurately without overstating what the data proves.
-3. **Priya, OCHRO equity analyst.** When a deputy head asks for a one-pager on a
-   specific department-group, she needs a five-block briefing (finding, evidence,
-   caveat, review required, next action) generated in under a minute, so that she
-   has defensible, guardrailed language ready instead of drafting it from scratch
-   each time.
+1. **Priya, OCHRO equity analyst (primary).** *As an OCHRO equity analyst, every
+   Tuesday morning before my weekly sync with the Director, I want to scan all 72
+   departments × 4 groups ranked by gap severity, so that I can flag the handful
+   of combinations that belong in this year's report or a deputy-head
+   conversation* — without manually cross-referencing four separate published
+   tables.
+2. **Marc, departmental EDI lead (secondary).** *As a departmental EDI lead,
+   ahead of my quarterly equity committee meeting, I want to see my department's
+   gap and trend against the service-wide WFA benchmark alongside PSES
+   experience context, so that I can brief my committee accurately without
+   overstating what the data proves.*
+3. **Priya, OCHRO equity analyst.** *As an OCHRO equity analyst, when a deputy
+   head asks for a one-pager on a specific department-group, I want a five-block
+   briefing (finding, evidence, caveat, review required, next action) generated
+   in under a minute, so that I have defensible, guardrailed language ready
+   instead of drafting it from scratch each time.*
 
 **Interrogation of story #1** (sharpest — it carries the objective's "under two
 minutes" claim and exercises the dashboard's primary view, Explore):
@@ -314,6 +316,21 @@ representation % (members/all) is benchmark-independent and is the clean trend.
 Five capabilities are installed as **real Claude Code skills** under
 `.claude/skills/<name>/SKILL.md`, and three are also wired as **subagents** under
 `.claude/agents/`. Each is placed at the simplest form that does its job.
+
+**Capability-to-form map** — every verb the app must perform, named before any
+tool, then matched to the cheapest of the five forms (native action, skill,
+subagent, connector, fixed pipeline) that does the job:
+
+| Verb | Form chosen | Why |
+|---|---|---|
+| Read the raw TBS CSV / PSES microdata | **Native action** | Claude Code already reads a local file well — nothing to build. |
+| Validate the dataset against its contract | **Skill** (`edi-data-guard`) | A rule that must hold every run, with a code check that blocks the build. |
+| Compute severity, priority, divergence, trends | **Fixed pipeline** (`pipeline/*.py`) | Identical inputs must always give identical outputs — hard-coded, ordered steps. |
+| Route a question to Answer / Reframe / Refuse | **Subagent** (`question-router`) | One distinct decision worth its own scoped attention. |
+| Classify year-over-year movement | **Subagent** (`trend-interpreter`) | A second distinct decision — is this genuine or benchmark-driven. |
+| Render the five-block briefing | **Subagent** (`presentation-summary-render`) | A third distinct decision — which language is defensible here. |
+| Enforce cautious language on every answer | **Skill** (`interpretation-guardrails`) | Advisory, not a hard gate — recurs everywhere the app writes a sentence. |
+| Reach a live outside system | **Connector: none, deliberately** | The pipeline reads a local/published file and writes a local file; nothing to reach at analysis time. |
 
 **The flow — validate → build → interpret → present.** Each stage names the
 capability that governs it:
