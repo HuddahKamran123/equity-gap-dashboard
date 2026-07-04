@@ -352,6 +352,29 @@ oracle), both signal sentences spot-checked against the source data by hand.
 
 ---
 
+### [EPISODE] — 2026-07-04 · Subgroups "By department" table: years as column headers (no new data)
+User feedback on the by-department table (each theme cell read "n/s · n/s ·
+52" with a footnote explaining the 2020/2022/2024 order): pull the years out
+of the cell text and make them real column headers instead.
+
+Restructured `SubgroupsView.tsx`'s table to a two-row `<thead>` — each theme
+name spans `colSpan={3}` in the first row, with 2020/2022/2024 as individual
+sub-columns in the second row — and each data row now emits one `<td>` per
+year (using `SUBGROUP_PSES_YEARS` and the existing positional `[2020, 2022,
+2024]` shape of `SubgroupPsesEntry.themes`) instead of one joined
+`"n/s · n/s · 52"` string. The footnote is trimmed to just the n/s-vs-
+suppressed distinction, since the year order is no longer implicit.
+
+No data changed — purely a table markup change. Verified via DOM inspection
+(header `colSpan`/text and per-year cell values) rather than a screenshot,
+confirming Harassment 2024 = 52 for RCMP × Persons with Disabilities lands in
+the correct year column, matching the existing oracle.
+
+Verification: `npm run build` clean, `eval/run_eval.py` still 10/10 (UI-only
+change).
+
+---
+
 ### [EXTERNAL] — pending live use (2026-06-28 → 07-02)
 *To be filled once the deployed URL is in front of someone outside the build.*
 Capture: who used it, what they asked, where it helped, where it confused them, and

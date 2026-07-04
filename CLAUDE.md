@@ -2,7 +2,8 @@
 
 > The single source of truth for this project. It states the objective, what good
 > looks like, scope, the data, the agentic capabilities, and where a human has the
-> final word. Revised at Day 3 — see the revision log at the end.
+> final word. Rebuilt at Day 3 and revised repeatedly since — see the revision log
+> at the end.
 
 ## 0. User stories
 
@@ -137,9 +138,12 @@ Severe ≥10); WFA and raw N beside every representation figure; multi-year
 representation trends over up to four years (2021-22 → 2024-25) with the 2023-24
 benchmark rebase marked and gaps never compared across it;
 a cross-group compare view (compounding shortfalls **plus a divergence lens** —
-representation met but experience below the peer-group average); a five-block
-briefing generator; a real, guardrailed conversational Ask tab; a permanently
-visible responsible-use caveat.
+representation met but experience below the peer-group average); a dedicated
+**Subgroups** tab (per-department subgroup workplace-experience across 6 themes
+and 3 survey cycles, plus service-wide subgroup/salary/age/WFA-history reference
+tables, with bar-chart visualizations and computed within-dataset signals); a
+five-block briefing generator; a real, guardrailed conversational Ask tab; a
+permanently visible responsible-use caveat.
 
 **Out of scope (do not build):** individual-level data; causal/regression analysis;
 automated policy or staffing recommendations; any view that collapses the groups
@@ -188,9 +192,10 @@ work is visible to reviewers who compare the two builds directly:
   subgroups, salary distribution, age distribution, and WFA-benchmark history.
   These are **real** BT1-28 government data (not fabricated), extracted by
   `pipeline/build_service_wide_context.py`, but they are service-wide, not
-  per-department — so they're shown collapsed, clearly labeled as reference
-  context, on Frame, and never mixed into the per-department decision-support
-  views. One data-quality issue was found and documented, not corrected: the
+  per-department — so they're shown clearly labeled as reference context
+  (originally collapsed on Frame; later moved to the dedicated Subgroups tab —
+  see below), and never mixed into the per-department decision-support views.
+  One data-quality issue was found and documented, not corrected: the
   source's Indigenous-subgroups table mislabels its most recent year
   (FY2024-25 lists racialized subgroup names) — the last correctly-labeled year
   is used instead.
@@ -212,11 +217,55 @@ the occasion to add the one service-wide subgroup table that was missing:
 **racialized subgroups** (Black, Chinese, Filipino, South Asian, Korean,
 Japanese, Southeast Asian, West Asian/Arab, Latin American, mixed origin) —
 same treatment as Indigenous and disability subgroups: real, service-wide,
-collapsed on Frame, not per-department. Same mislabeling bug found in this
+not per-department (shown collapsed on Frame at the time; later moved to the
+dedicated Subgroups tab — see below). Same mislabeling bug found in this
 table's FY2024-25 rows (lists Indigenous subgroup names) — FY2023-24 used
-instead, consistent with the Indigenous-subgroups fix. `build_dataset.py`,
-`build_history.py`, and `build_subgroup_pses.py` remain broken by the
-Knowledge/ replacement — not addressed in this pass.
+instead, consistent with the Indigenous-subgroups fix. At this point
+`build_dataset.py`, `build_history.py`, and `build_subgroup_pses.py` were
+still broken by the Knowledge/ replacement — fixed next, same day.
+
+**Fixing the remaining pipeline scripts + expanding department coverage
+(2026-07-04).** `build_subgroup_pses.py` and `build_history.py` needed only
+path fixes. `build_dataset.py` needed more: its canonical long-format CSV no
+longer existed in the relocated Knowledge/ folder, only the raw wide-format
+`bt1_28_representation.csv` (one row per department per year, no
+pre-computed gap/expected). Added `pipeline/extract_bt1_28_representation.py`
+to reshape wide → long and compute derived fields, still gated by
+`edi-data-guard`. The relocated source turned out to have fuller department
+coverage than previously used — 72 departments per year, not 35 (2023-24) /
+71 (2024-25); confirmed as real coverage, not a data error, and the user
+confirmed expanding to full coverage rather than filtering back down (see §4;
+`eval/run_eval.py` and this doc's counts updated accordingly, 424→576 rows,
+29→77 suppressed). The larger department set surfaced two real source-data
+bugs, both fixed with an explicit, documented correction rather than a silent
+guess: a source PDF OCR typo ("lmpact Assessment Agency of Canada", lowercase
+L) across 3 fiscal years, and the current-year RCMP entity named "Royal
+Canadian Mounted Police (RCMP)" in the new source vs. the bare name used
+everywhere else in the app (would have silently broken the RCMP subgroup
+panel via exact-string match). Also fixed a `build_dataset.py` bug — a
+department present in both years but whose *prior*-year cell was itself
+suppressed was still marked `has_trend: true` with a null `prior_gap` — caught
+by `eval/run_eval.py` check 9. Verified: RCMP × Persons with Disabilities ×
+2024-25 still matches the oracle exactly; `equity.json` and `rep_history.json`
+agree on all 536 overlapping keys; `eval/run_eval.py` 10/10.
+
+**Consolidating subgroup data into a dedicated tab + adding visual insights
+(2026-07-04).** Subgroup data was reachable but split — a harassment-only
+panel buried in Explore's row detail, and a service-wide reference section
+collapsed by default on Frame — so a new **Subgroups** tab (nav position 04)
+consolidates both into one place: a department/group picker showing the full
+6-theme experience breakdown (not just harassment), and the service-wide
+subgroup/salary/age/WFA-history reference tables moved (not duplicated) from
+Frame. No new data — a fuller view of what `subgroup_pses.json` and
+`service_wide_context.json` already held. User feedback that the tab read as
+a plain data dump led to two added, purely descriptive, within-dataset
+comparisons (no new data, no causal language, no composite score): a
+divergence-within-group signal (flags the subgroup whose harassment score
+sits ≥5pp below its own group's overall score — the same floor as
+`DIVERGENCE_MARGIN`), and an executive-representation-gap signal (flags the
+subgroup with the largest gap between overall and executive representation
+in the service-wide table), each paired with a horizontal bar chart. Both
+signal sentences were spot-checked against the raw source numbers by hand.
 
 ## 4. Data
 
@@ -358,3 +407,29 @@ match what was actually built and to fix inaccuracies the deployment week surfac
 - **Executive-pipeline** investigated and left out of scope: the source publishes
   executive representation service-wide only, not per department, so it cannot be
   built at this dashboard's grain.
+
+**2026-07-03 → 07-04 (teammate's parallel build integrated, cross-validated).**
+- Reopened the 07-02 "not built" decision for one dimension that changed status:
+  the parallel build's PSES **workplace-experience** subgroup data is
+  per-department (unlike region/age/executive, which stayed out of scope) —
+  cross-validated 195/195 on overlap with our verified data before merging (§3).
+- Added real, service-wide-only **reference tables** (Indigenous, disability, and
+  racialized subgroups; salary and age distribution; WFA-benchmark history) and a
+  clearly labeled, fabricated-data **`/preview`** page — kept structurally
+  separate from the per-department decision-support views (§3).
+- Replaced `Knowledge/` wholesale with the teammate's fuller project sync at the
+  user's explicit request (after being warned it would break the pipeline);
+  repointed every broken pipeline script and, in the process, discovered the
+  relocated source has fuller department coverage than we'd been using —
+  expanded from 35/71 to **72/72 departments** (user-confirmed), fixing two real
+  source-data bugs (an OCR typo, an RCMP naming mismatch) and one pipeline bug
+  (`has_trend` not checking for a suppressed prior-year cell) along the way (§3, §4).
+- Consolidated subgroup data (previously split across Explore and Frame) into a
+  dedicated **Subgroups** tab, then added bar-chart visualizations and two
+  computed, within-dataset signals (subgroup divergence-from-own-group;
+  subgroup executive-representation gap) after feedback that the tab read as a
+  plain data dump (§3).
+- Throughout: every external addition was cross-validated against already-
+  verified figures before being trusted, and confirmed-fabricated mock data
+  (Executive Pipeline, Workforce Flows, Region, Occupation) was refused as a
+  real finding and shown only on `/preview`, explicitly labeled as illustrative.

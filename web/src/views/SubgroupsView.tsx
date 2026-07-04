@@ -14,6 +14,7 @@ import {
   GROUPS,
   SUBGROUP_PSES_THEME_LABELS,
   SUBGROUP_PSES_THEMES,
+  SUBGROUP_PSES_YEARS,
   type DistributionRow,
   type Group,
   type SubgroupBreakdownRow,
@@ -189,15 +190,33 @@ function DepartmentSubgroupSection() {
           )}
 
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[720px] border-collapse text-[13px]">
+            <table className="w-full min-w-[1080px] border-collapse text-[13px]">
               <thead>
-                <tr className="border-b border-rule-strong text-left text-[10px] tracking-cap text-faint">
-                  <th className="py-2 pr-4 font-normal">Subgroup</th>
+                <tr className="text-left text-[10px] tracking-cap text-faint">
+                  <th rowSpan={2} className="border-b border-rule-strong py-2 pr-4 align-bottom font-normal">
+                    Subgroup
+                  </th>
                   {SUBGROUP_PSES_THEMES.map((t) => (
-                    <th key={t} className="py-2 pr-4 font-normal">
+                    <th
+                      key={t}
+                      colSpan={SUBGROUP_PSES_YEARS.length}
+                      className="border-b border-rule-strong border-l border-rule py-2 pl-4 pr-4 text-center font-normal"
+                    >
                       {SUBGROUP_PSES_THEME_LABELS[t]}
                     </th>
                   ))}
+                </tr>
+                <tr className="border-b border-rule-strong text-left text-[10px] tracking-cap text-faint">
+                  {SUBGROUP_PSES_THEMES.map((t) =>
+                    SUBGROUP_PSES_YEARS.map((y, i) => (
+                      <th
+                        key={`${t}-${y}`}
+                        className={`py-1.5 pr-4 text-right font-normal ${i === 0 ? "border-l border-rule pl-4" : ""}`}
+                      >
+                        {y}
+                      </th>
+                    )),
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -209,19 +228,23 @@ function DepartmentSubgroupSection() {
                         <span className="ml-1 text-faint">(n={e.n})</span>
                       )}
                     </td>
-                    {SUBGROUP_PSES_THEMES.map((t) => (
-                      <td key={t} className="tnum py-2 pr-4 text-muted">
-                        {e.themes[t].map(fmtSubgroupCell).join(" · ")}
-                      </td>
-                    ))}
+                    {SUBGROUP_PSES_THEMES.map((t) =>
+                      e.themes[t].map((cell, i) => (
+                        <td
+                          key={`${t}-${i}`}
+                          className={`tnum py-2 pr-4 text-right text-muted ${i === 0 ? "border-l border-rule pl-4" : ""}`}
+                        >
+                          {fmtSubgroupCell(cell)}
+                        </td>
+                      )),
+                    )}
                   </tr>
                 ))}
               </tbody>
             </table>
             <p className="mt-2 text-[11px] leading-relaxed text-faint">
-              Each cell reads 2020 · 2022 · 2024. &quot;n/s&quot; = not surveyed
-              that cycle; &quot;suppressed&quot; = surveyed, below reporting
-              threshold — the two are not the same.
+              &quot;n/s&quot; = not surveyed that cycle; &quot;suppressed&quot; =
+              surveyed, below reporting threshold — the two are not the same.
             </p>
           </div>
         </>
