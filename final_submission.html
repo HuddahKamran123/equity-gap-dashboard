@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MMA 616 Group AI Project — Final Submission — The Equity Gap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --ink:#1b1b18; --ink-soft:#4a4740; --muted:#6b6860; --faint:#948f84;
+    --paper:#faf7f0; --paper-raised:#ffffff; --rule:#e4ddd0; --rule-strong:#cdc3ae;
+    --accent:#2f6a55; --sev-severe:#9c1a1a; --sev-substantial:#bc451a;
+    --sev-moderate:#d2741f; --sev-slight:#b08a1f; --sev-above:#2f6a55;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height:1.6; font-size:16px;
+  }
+  code, pre, .mono { font-family: "SF Mono", Menlo, Consolas, monospace; }
+  header.masthead {
+    background:var(--ink); color:var(--paper); padding:2.5rem 1.5rem;
+  }
+  header.masthead .kicker { letter-spacing:.12em; text-transform:uppercase; font-size:.75rem; color:#c9c2b3; }
+  header.masthead h1 { margin:.3rem 0 0; font-size:2rem; font-family: Georgia, serif; }
+  header.masthead p.sub { color:#d8d3c6; max-width:60ch; margin-top:.6rem; }
+  header.masthead a.applink {
+    display:inline-block; margin-top:1rem; background:var(--accent); color:#fff;
+    padding:.6rem 1.1rem; border-radius:4px; text-decoration:none; font-family:sans-serif;
+    font-weight:600; font-size:.95rem;
+  }
+  nav.toc {
+    background:var(--paper-raised); border-bottom:1px solid var(--rule-strong);
+    padding:1rem 1.5rem; position:sticky; top:0; z-index:10; font-family:sans-serif; font-size:.85rem;
+  }
+  nav.toc ol { margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:.4rem 1rem; }
+  nav.toc a { color:var(--ink-soft); text-decoration:none; }
+  nav.toc a:hover { color:var(--accent); text-decoration:underline; }
+  main { max-width:920px; margin:0 auto; padding:0 1.5rem 5rem; }
+  section { padding-top:3rem; border-top:1px solid var(--rule); margin-top:1rem; }
+  section:first-of-type { border-top:none; }
+  h2 { font-size:1.5rem; color:var(--ink); margin-bottom:.3rem; }
+  h2 .num { color:var(--faint); font-family:sans-serif; font-size:.9rem; font-weight:normal; margin-right:.5rem; }
+  h3 { font-size:1.1rem; margin-top:2rem; color:var(--ink-soft); }
+  p { color:var(--ink-soft); }
+  table { border-collapse:collapse; width:100%; margin:1rem 0 1.5rem; font-size:.92rem; }
+  th, td { border:1px solid var(--rule-strong); padding:.5rem .6rem; text-align:left; vertical-align:top; }
+  th { background:#efe9db; font-family:sans-serif; font-size:.78rem; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); }
+  tr:nth-child(even) td { background:#fbf9f4; }
+  .tag { display:inline-block; font-family:sans-serif; font-size:.72rem; font-weight:700; padding:.15rem .5rem; border-radius:3px; text-transform:uppercase; letter-spacing:.03em; }
+  .tag-held { background:#e3ede8; color:var(--sev-above); }
+  .tag-broken { background:#f6e2da; color:var(--sev-substantial); }
+  .tag-minor { background:#f3ecd9; color:var(--sev-moderate); }
+  .tag-fixed { background:#e3ede8; color:var(--accent); }
+  .tag-open { background:#efe9db; color:var(--muted); }
+  blockquote {
+    border-left:3px solid var(--accent); margin:1rem 0; padding:.3rem 1rem;
+    color:var(--ink-soft); background:#f3efe4; font-style:italic;
+  }
+  pre.codeblock {
+    background:#1e1c17; color:#e9e4d8; padding:1.2rem; border-radius:6px;
+    overflow-x:auto; font-size:.8rem; line-height:1.55; max-height:640px; overflow-y:auto;
+  }
+  pre.filetree {
+    background:#f3efe4; border:1px solid var(--rule-strong); padding:1rem;
+    overflow-x:auto; font-size:.82rem; border-radius:4px;
+  }
+  .callout {
+    background:#fbf3df; border:1px solid #e3d2a0; border-radius:4px; padding:.9rem 1.1rem; margin:1rem 0;
+    font-family:sans-serif; font-size:.9rem;
+  }
+  .missing { background:#faeae6; border:1px solid #e3b3a0; border-radius:4px; padding:.9rem 1.1rem; margin:1rem 0; font-family:sans-serif; font-size:.9rem; }
+  .skill-card { border:1px solid var(--rule-strong); border-radius:6px; padding:1.1rem 1.3rem; margin:1rem 0; background:var(--paper-raised); }
+  .skill-card h4 { margin:0 0 .3rem; font-family:sans-serif; }
+  .skill-card .form-tag { font-family:sans-serif; font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; color:var(--accent); font-weight:700; }
+  .skill-card dl { margin:.6rem 0 0; }
+  .skill-card dt { font-family:sans-serif; font-size:.75rem; text-transform:uppercase; color:var(--faint); margin-top:.5rem; }
+  .skill-card dd { margin:.1rem 0 0; }
+  .checklist { list-style:none; padding:0; font-family:sans-serif; font-size:.95rem; }
+  .checklist li { padding:.35rem 0 .35rem 1.6rem; position:relative; }
+  .checklist li::before { content:"\2713"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+  footer.page-footer { text-align:center; color:var(--faint); font-family:sans-serif; font-size:.8rem; padding:2rem 1.5rem; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <p class="kicker">MMA 616 · Managing Intelligence — Group AI Project — Final Submission</p>
+  <h1>The Equity Gap</h1>
+  <p class="sub">An employment-equity oversight dashboard for the Treasury Board Secretariat's Office of the Chief Human Resources Officer (OCHRO), built, deployed, used for a week, and evaluated end to end with Claude Code.</p>
+  <a class="applink" href="https://equity-gap-dashboard.vercel.app" target="_blank" rel="noopener">Open the live dashboard &rarr;</a>
+</header>
+
+<nav class="toc">
+  <ol>
+    <li><a href="#exec-summary">Executive Summary</a></li>
+    <li><a href="#criteria">Evaluation Criteria</a></li>
+    <li><a href="#evidence-map">Evidence Map</a></li>
+    <li><a href="#opportunity">Opportunity &amp; Creativity</a></li>
+    <li><a href="#spec-summary">Specification / CLAUDE.md</a></li>
+    <li><a href="#full-claude-md">Full CLAUDE.md</a></li>
+    <li><a href="#data-context">Data &amp; Context</a></li>
+    <li><a href="#the-build">The Build</a></li>
+    <li><a href="#agentic-workspace">Agentic Workspace</a></li>
+    <li><a href="#folder-evidence">Folder Evidence</a></li>
+    <li><a href="#evaluation">Evaluation &amp; Governance</a></li>
+    <li><a href="#presentation">Presentation &amp; Defense</a></li>
+    <li><a href="#limitations">Limitations</a></li>
+    <li><a href="#checklist">Final Checklist</a></li>
+  </ol>
+</nav>
+
+<main>
+<section id="exec-summary">
+<h2><span class="num">01</span>Executive Summary</h2>
+<p>We built <strong>The Equity Gap</strong>, a deployed decision-support dashboard for a Treasury Board Secretariat (TBS) equity analyst in the Office of the Chief Human Resources Officer (OCHRO) &mdash; the federal body statutorily responsible for monitoring employment equity across the public service. Today that analyst opens four separate published tables (one per designated equity group: Women, Indigenous Peoples, Persons with Disabilities, Members of Visible Minorities), cross-references department names and percentages by hand, and eyeballs a ranking &mdash; a half-day process that does not scale across 72 departments. The dashboard answers the same question &mdash; which department&times;group combinations sit furthest below their workforce-availability (WFA) benchmark, and which way are they trending &mdash; in the two minutes the analyst actually has before a weekly sync.</p>
+<p>The dashboard is built on two real government sources: Treasury Board Employment Equity representation data (BT1-28, 2021-22 &rarr; 2024-25, 576 department&times;group&times;year rows) and the 2024 Public Service Employee Survey (PSES) Employment Equity Derived Variable dataset, joined by a reproducible Python pipeline gated by a runnable validator, never hand-pasted. Its output surfaces as ranked triage (Explore), cross-cutting patterns (Compare, including a divergence lens), per-department subgroup detail (Subgroups), year-over-year movement (Track), a generated five-block briefing (Present), and a real, guardrailed conversational assistant (Ask) &mdash; every output a signal for human review, never an automated decision.</p>
+<p>Claude Code built this end to end from a living specification (<code>CLAUDE.md</code>) that was rewritten and extended repeatedly as real defects and new evidence surfaced &mdash; not written once and forgotten. Five Claude Skills and three subagents govern validation, cautious language, question routing, trend interpretation, and briefing generation; a reproducible pipeline (a fixed-order set of Python scripts) computes every derived field. After the deployment week, an independent governance-critic agent &mdash; with no memory of how the app was built &mdash; attacked the live app against its own written promises. Ten of eleven directly testable claims held with concrete evidence; one real, low-severity defect (a missing <code>robots.txt</code>) was found, fixed, and verified; one apparent failure turned out, on investigation, to be a deliberate animation the critic's non-JS tooling misread as missing data. That triage record and the fix are documented in full in <code>Deployment_Assessment.md</code>.</p>
+<p><strong>Live dashboard:</strong> <a href="https://equity-gap-dashboard.vercel.app" target="_blank" rel="noopener">https://equity-gap-dashboard.vercel.app</a></p>
+</section>
+
+<section id="criteria">
+<h2><span class="num">02</span>Group Project Evaluation Criteria</h2>
+<p>The six graded components, their official meaning as stated in the course's Group AI Project assignment, and how this project addresses each one.</p>
+<table>
+<thead><tr><th>Component</th><th>Weight</th><th>Official meaning</th><th>How this project addresses it</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr>
+<td>Opportunity and creativity</td><td>20%</td>
+<td>A clear user and decision, and judgment about what decision the dashboard serves &mdash; rather than a project built around whatever data was at hand.</td>
+<td>The primary user (an OCHRO equity analyst) and the decision (where to direct limited oversight attention) were named before any column was read. The benchmark choice (service-wide WFA, not departmental WFA) is an explicit, documented judgment call about what the ranking can and cannot claim &mdash; not a default.</td>
+<td><code>CLAUDE.md</code> &sect;0&ndash;1 (user stories, objective, "deliberate judgment &mdash; the benchmark"); see &sect;4 below.</td>
+</tr>
+<tr>
+<td>Specification (the CLAUDE.md)</td><td>15%</td>
+<td>A usable specification: objective, scope, what is out of scope, the data, and testable success criteria, revised as the project develops.</td>
+<td><code>CLAUDE.md</code> carries all six required parts, a dated revision log spanning Day&nbsp;3 through 2026-07-04, and an explicit "considered and deliberately not built" record with reasons, later reopened with new evidence and reasoned again.</td>
+<td>Full text reproduced in &sect;6 below; revision log at the end of the document.</td>
+</tr>
+<tr>
+<td>Data and context</td><td>10%</td>
+<td>Data connected directly (file, tool, API, or connector) rather than pasted in, kept relevant and current, with the dashboard's output grounded in it.</td>
+<td>Two real sources (TBS BT1-28, PSES microdata) read by a reproducible pipeline, not pasted; every number re-derivable independently by <code>eval/run_eval.py</code>; suppression, benchmark rebasing, and self-identification undercounting documented as data-quality caveats rather than smoothed over.</td>
+<td>&sect;7 below; <code>pipeline/</code>; <code>eval/run_eval.py</code> (10/10 passing).</td>
+</tr>
+<tr>
+<td>The build</td><td>30%</td>
+<td>A working, deployed dashboard, and how well the agentic workspace was used to build it: skills, subagents, workflows, and connectors used where they help.</td>
+<td>Eight working views, live at a public URL with branch-protected deploys; five Claude Skills and three subagents, each chosen as the simplest of the course's five capability forms (native action, skill, subagent, connector, fixed pipeline) that does the job; the empty connector form is a documented, deliberate choice, not an oversight.</td>
+<td>&sect;8&ndash;9 below; <code>.claude/skills/</code>, <code>.claude/agents/</code>, <code>pipeline/</code>.</td>
+</tr>
+<tr>
+<td>Evaluation and governance</td><td>15%</td>
+<td>A real test of the output with before-and-after results, a deployment log read for what it reveals, and sensible human review and override points.</td>
+<td>A machine-recomputed harness (<code>eval/run_eval.py</code>, 10/10, with two documented found&rarr;fixed&rarr;re-passed loops) plus an independent, blind governance-critic agent run against the live app, triaged by a human, with one real fix applied and re-verified; a 16-entry deployment log with real failures, overrides, and decisions, each with a reason.</td>
+<td>&sect;11 below; <code>eval/results.md</code>; <code>Deployment_Assessment.md</code>; <code>Deployment_Log.md</code>.</td>
+</tr>
+<tr>
+<td>Presentation and defense</td><td>10%</td>
+<td>A clear, well-paced presentation, a reasoned walkthrough of the agentic workspace, a working dashboard demonstration, and accurate answers in Q&amp;A from every member.</td>
+<td>Demo path, workspace walkthrough, and anticipated Q&amp;A are documented in &sect;12 below, built directly from what was actually shipped rather than written as a slide-deck afterthought.</td>
+<td>&sect;12 below.</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section id="evidence-map">
+<h2><span class="num">03</span>Evidence Map</h2>
+<table>
+<thead><tr><th>Evidence item</th><th>File / folder / location</th><th>What it proves</th><th>Rubric component supported</th></tr></thead>
+<tbody>
+<tr><td>Evaluation criteria reproduced</td><td>&sect;2 of this document</td><td>The team read the actual rubric, not a paraphrase</td><td>All six components</td></tr>
+<tr><td><code>CLAUDE.md</code></td><td>Repo root; full text in &sect;6</td><td>A living, revised specification governed real build decisions</td><td>Specification (15%)</td></tr>
+<tr><td>Deployed dashboard</td><td><a href="https://equity-gap-dashboard.vercel.app" target="_blank" rel="noopener">equity-gap-dashboard.vercel.app</a></td><td>A working, public, deployed app &mdash; not a local demo</td><td>The build (30%)</td></tr>
+<tr><td>Dashboard source files</td><td><code>web/src/app/</code>, <code>web/src/views/</code>, <code>web/src/components/</code>, <code>web/src/lib/</code></td><td>Eight real views, each reading typed data, not hardcoded content</td><td>The build (30%)</td></tr>
+<tr><td>Data connection / source files</td><td><code>pipeline/*.py</code>, <code>web/src/data/*.json</code>, <code>Knowledge/</code></td><td>Data is read from source files and reshaped by code, not pasted</td><td>Data and context (10%)</td></tr>
+<tr><td>Skills / subagents / fixed pipeline</td><td><code>.claude/skills/</code>, <code>.claude/agents/</code>, <code>pipeline/</code></td><td>Five skills, three subagents, one fixed pipeline &mdash; each the simplest form for its job</td><td>The build (30%)</td></tr>
+<tr><td>Evaluation results</td><td><code>eval/run_eval.py</code>, <code>eval/results.md</code></td><td>Every shown number is independently re-derivable; a documented Day-2&rarr;Day-3 before/after</td><td>Evaluation and governance (15%)</td></tr>
+<tr><td>Governance critique + triage</td><td><code>Deployment_Assessment.md</code></td><td>An independent, blind critic tested the live app against its own spec; findings were triaged by a human; one real fix was applied and verified</td><td>Evaluation and governance (15%)</td></tr>
+<tr><td>Deployment log</td><td><code>Deployment_Log.md</code></td><td>16 dated entries &mdash; real failures caught, overrides with reasons, and decisions revisited as evidence changed</td><td>Evaluation and governance (15%)</td></tr>
+<tr><td>Folder / structure evidence</td><td>&sect;10 of this document</td><td>The project's actual shape, not an idealized description</td><td>The build (30%)</td></tr>
+<tr><td>README / run instructions</td><td><code>web/README.md</code>, <code>DEPLOY.md</code></td><td>The project can be run and understood by someone who did not build it</td><td>The build (30%)</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="opportunity">
+<h2><span class="num">04</span>Opportunity and Creativity</h2>
+<p><strong>The intended user:</strong> a TBS/OCHRO employment-equity analyst &mdash; the central function statutorily accountable for monitoring equity across the federal public service and reporting on it annually. A secondary user is a departmental EDI lead who reads their own department's rows against the service-wide picture.</p>
+<p><strong>The decision the dashboard supports:</strong> where OCHRO directs its limited oversight attention &mdash; which department&times;group combinations to surface in the annual report, raise with a deputy head, or prioritize for engagement in the coming year. OCHRO does not run hiring inside departments; its lever is oversight, not operations, and the dashboard is built around that lever specifically.</p>
+<p><strong>Why this decision matters:</strong> the data already exists, published annually as four separate flat tables with no ranked, filterable, cross-group view. A missed severe gap surfaces later in an audit or a minister's briefing instead of from the analyst's own triage &mdash; the dashboard's whole value is closing that two-minutes-versus-half-a-day gap.</p>
+<p><strong>Why a dashboard is useful here:</strong> the underlying comparison &mdash; 72 departments &times; 4 designated groups, each against its own benchmark, in two dimensions (representation and trend) &mdash; is exactly the kind of multi-dimensional ranking a flat table cannot show at a glance but a filterable, sortable dashboard can.</p>
+<p><strong>Avoiding "charts from available data":</strong> the project explicitly declined to build several things the source data made easy &mdash; a composite equity score across groups, service-wide subgroup/region/age breakdowns that don't exist at the department level, and a fabricated executive-pipeline view &mdash; because none of them sharpen the specific departmental-oversight decision the dashboard exists to serve. Each refusal is dated and reasoned in <code>CLAUDE.md</code> &sect;3, and one was later reopened only when new evidence (a per-department, cross-validated data source) actually cleared the bar the earlier refusal set.</p>
+<blockquote>The dashboard helps an OCHRO equity analyst decide where to direct oversight attention by making the ranked, benchmarked distance-from-target visible across all 72 departments and 4 designated groups at once &mdash; something four separate published tables do not allow.</blockquote>
+</section>
+
+<section id="spec-summary">
+<h2><span class="num">05</span>Specification / CLAUDE.md</h2>
+<p><code>CLAUDE.md</code> is the single file Claude Code re-reads at the start of every session in this project. It is not documentation written after the fact &mdash; it is the standard the agent is held to, and every major build decision in this project traces back to a line in it.</p>
+<ul>
+<li><strong>Objective:</strong> where OCHRO directs its limited oversight attention, stated as a "no-dataset sentence" that names the decision without naming a single column.</li>
+<li><strong>Scope:</strong> a "Shipped" list, an "Out of scope (do not build)" list, and a running, dated log of things "considered and deliberately not built" &mdash; several of which were later revisited and reasoned again as new evidence arrived (a teammate's cross-validated data source clearing a bar an earlier refusal had set).</li>
+<li><strong>Data:</strong> two sources, one reproducible pipeline, with explicit "do not guess" rules (suppression means blank never zero; the WFA benchmark was rebased in 2023-24 and a gap change across that boundary reflects the rebase, not hiring; self-identification undercounts, especially for Persons with Disabilities).</li>
+<li><strong>Success criteria:</strong> a runnable, independently re-derivable evaluation harness (<code>eval/run_eval.py</code>, 10/10 checks) plus a pinned, verified "gold example" oracle &mdash; not prose claims.</li>
+<li><strong>Evaluation:</strong> &sect;2's "How the thresholds were determined" documents every judgment call (the priority-flag quartile, the severity bands, the suppression rule, the divergence margin) with its source and its status as policy-vs-convention.</li>
+</ul>
+<p><strong>How it changed as the project developed</strong> (full detail in the revision log at the end of &sect;6): the gold example was replaced once a hand-picked value turned out not to exist in the real data; PSES coverage was corrected from a claimed five indicators to the four that are actually reproducible from source; the capabilities section was rewritten to describe what the app's skills and subagents actually do, rather than an aspirational runtime story; and, most recently, the user stories were reworded into the course's taught "As a X, I want to Y, so that Z" template and the capability-to-form map was added explicitly naming which of the five capability forms (native action, skill, subagent, connector, fixed pipeline) each part of the app uses.</p>
+</section>
+
+<section id="full-claude-md">
+<h2><span class="num">06</span>Full CLAUDE.md Specification</h2>
+<p>The complete, current contents of <code>CLAUDE.md</code>, reproduced verbatim below &mdash; not a summary. This is the exact file Claude Code reads at the start of every session in this project.</p>
+<pre class="codeblock"><code># Employment Equity Gap Dashboard — Living Spec (CLAUDE.md)
+
+&gt; The single source of truth for this project. It states the objective, what good
+&gt; looks like, scope, the data, the agentic capabilities, and where a human has the
+&gt; final word. Rebuilt at Day 3 and revised repeatedly since — see the revision log
+&gt; at the end.
+
+## 0. User stories
+
+1. **Priya, OCHRO equity analyst (primary).** *As an OCHRO equity analyst, every
+   Tuesday morning before my weekly sync with the Director, I want to scan all 72
+   departments × 4 groups ranked by gap severity, so that I can flag the handful
+   of combinations that belong in this year&#x27;s report or a deputy-head
+   conversation* — without manually cross-referencing four separate published
+   tables.
+2. **Marc, departmental EDI lead (secondary).** *As a departmental EDI lead,
+   ahead of my quarterly equity committee meeting, I want to see my department&#x27;s
+   gap and trend against the service-wide WFA benchmark alongside PSES
+   experience context, so that I can brief my committee accurately without
+   overstating what the data proves.*
+3. **Priya, OCHRO equity analyst.** *As an OCHRO equity analyst, when a deputy
+   head asks for a one-pager on a specific department-group, I want a five-block
+   briefing (finding, evidence, caveat, review required, next action) generated
+   in under a minute, so that I have defensible, guardrailed language ready
+   instead of drafting it from scratch each time.*
+
+**Interrogation of story #1** (sharpest — it carries the objective&#x27;s &quot;under two
+minutes&quot; claim and exercises the dashboard&#x27;s primary view, Explore):
+- She&#x27;s on the hook for directing OCHRO&#x27;s limited oversight attention to the right
+  departments *before* the annual report ships — a missed severe gap surfaces later
+  in an audit or a minister&#x27;s briefing instead of from her own triage.
+- Today, without this dashboard, she opens four separate flat tables (one per
+  designated group), manually cross-references department names and percentages,
+  and eyeballs a ranking — a process that doesn&#x27;t scale across 72 departments and
+  can&#x27;t be done in under half a day.
+- With it, she opens Explore, sorts by gap within a chosen group, and immediately
+  sees priority-flagged rows with N, WFA, and severity — turning that half-day
+  manual pass into the two-minute triage the objective claims.
+
+## 1. Objective
+
+**Primary user.** An employment-equity analyst/advisor in the Treasury Board
+Secretariat&#x27;s Office of the Chief Human Resources Officer (OCHRO) — the central
+function statutorily accountable for monitoring employment equity across the federal
+public service and reporting on it each year. (Secondary user: a *departmental* EDI
+lead who reads their own rows against the service-wide picture.)
+
+**Their lever is oversight, not operations.** OCHRO does not run hiring inside
+departments — departments do. So the decision this dashboard changes is **where the
+central function directs its limited attention**: which department × group
+combinations to surface in the annual report, raise with a deputy head, or
+prioritize for engagement and challenge in the coming year.
+
+The data is published annually as four separate flat tables (one per designated
+group) with no ranked, filterable, cross-group view. This dashboard answers in under
+two minutes: **which departments, for which designated groups, are furthest below
+their workforce-availability benchmark, and which way are they trending — so
+attention goes where the signal is strongest.**
+
+No-dataset sentence: *this lets a central employment-equity analyst triage 72
+departments × 4 groups for where to direct oversight attention in two minutes, which
+the four separate published tables do not allow.*
+
+**Deliberate judgment — the benchmark.** Workforce availability (WFA) is the only
+valid benchmark, but this dashboard uses the **service-wide** WFA for every
+department, not departmental WFA (which reflects each department&#x27;s occupational mix
+and is not in the published cross-department data). That makes the ranking a
+**triage signal, not a precise league table** — a heavily-operational department is
+measured against the same bar as a policy shop. A high ranking means &quot;look here,&quot;
+to be refined with departmental WFA before any conclusion. Combined with voluntary
+self-identification (which undercounts, especially Persons with Disabilities), the
+honest claim is *directional prioritization*, not exact placement.
+
+**The output, in one line.** A deployed decision-support dashboard whose unit of
+output is a **department × designated-group row** — representation % (with raw N),
+the WFA benchmark, the signed gap, a severity band, a priority flag, year-over-year
+movement, and PSES experience context — surfaced these ways: **ranked triage**
+(Explore), **cross-cutting patterns** (Compare — compounding shortfalls + a
+divergence lens), **subgroup detail** (Subgroups — per-department experience by
+subgroup plus service-wide subgroup reference tables), **year-over-year** (Track),
+and a generated **five-block briefing** (Present) — plus a grounded, guardrailed
+**Q&amp;A** (Ask). Every output is a signal for
+human review; the project produces no decisions, no composite scores, and no causal
+claims.
+
+## 2. What good looks like
+
+A good output row gives a policy lead everything needed to decide whether to act,
+without leaving the screen.
+
+**Gold example (verified — re-derived by `eval/run_eval.py`):**
+&gt; Royal Canadian Mounted Police · Persons with Disabilities · Representation **5.5%
+&gt; (N=590 of 10,822)** · WFA **12.0%** · Gap **−709** · Severity **Substantial** ·
+&gt; ⚑ Priority · Signal: *substantially below the workforce-availability benchmark;
+&gt; recommended focus: recruitment pipeline review, accessibility review.*
+
+**Every figure must show:** the representation %, the raw N it came from, and the
+WFA benchmark beside it. A percentage without its N, or a gap without its benchmark,
+fails.
+
+**Testable success criteria:** `eval/run_eval.py` re-derives every shown number and
+passes 10/10 checks, including the oracle above; `edi-data-guard` passes on the real
+data and blocks a broken file; the Ask assistant grounds every figure and refuses
+causal/staffing requests (see `eval/results.md`).
+
+**Must never produce:** causal claims (&quot;caused by&quot;, &quot;proves discrimination&quot;); blame
+or moral ranking of departments; any inference about individuals; automated hiring/
+firing/staffing recommendations; a composite score averaging across the four groups
+(each is benchmarked against a different labour market).
+
+### How the thresholds were determined
+
+- **Priority flag — data-driven, not asserted.** A row is flagged when its gap sits
+  in the **bottom quartile within its own equity-group × fiscal-year cohort**. The
+  cutoff is computed from the actual distribution (`eval/run_eval.py` re-derives it),
+  so it adapts to each group — whose benchmarks and spreads differ — rather than
+  imposing one arbitrary number across groups.
+- **Severity bands — a documented interpretability scale.** Slight &lt;2 / Moderate
+  2–4.9 / Substantial 5–9.9 / Severe ≥10 **percentage points below WFA**. This is a
+  fixed *communication* scale (like a heat scale) chosen for legibility, not a
+  statistical claim; the cut points are shown on screen and are tunable in one place
+  (`pipeline/build_dataset.py`). Distance is always in pp of representation below the
+  benchmark, so a band means the same thing for every group.
+- **Suppression — an external policy rule, not ours.** Small-population cells are
+  suppressed per Statistics Canada / Employment-Equity publication policy; the
+  dashboard shows them as suppressed, never zero, and `edi-data-guard` enforces it.
+- **Divergence margin — a documented floor, ranking is the emphasis.** A department
+  is flagged for divergence when it is at/above benchmark **and** ≥5 pp below the
+  *same group&#x27;s* public-service average on harassment or discrimination. 5 pp is a
+  conservative &quot;meaningfully below peer&quot; floor; results are ranked by shortfall so
+  the magnitude carries the signal, not the cutoff.
+
+## 3. Scope
+
+**Shipped:** department-level gap table for all four designated groups (Women,
+Indigenous Peoples, Persons with Disabilities, Members of Visible Minorities),
+filterable by group and ranked by gap; priority flag (bottom quartile of gap per
+group × year); severity scale (Slight &lt;2pp / Moderate 2–4.9 / Substantial 5–9.9 /
+Severe ≥10); WFA and raw N beside every representation figure; multi-year
+representation trends over up to four years (2021-22 → 2024-25) with the 2023-24
+benchmark rebase marked and gaps never compared across it;
+a cross-group compare view (compounding shortfalls **plus a divergence lens** —
+representation met but experience below the peer-group average); a dedicated
+**Subgroups** tab (per-department subgroup workplace-experience across 6 themes
+and 3 survey cycles, plus service-wide subgroup/salary/age/WFA-history reference
+tables, with bar-chart visualizations and computed within-dataset signals); a
+five-block briefing generator; a real, guardrailed conversational Ask tab; a
+permanently visible responsible-use caveat.
+
+**Out of scope (do not build):** individual-level data; causal/regression analysis;
+automated policy or staffing recommendations; any view that collapses the groups
+into one scale.
+
+**Considered and deliberately not built (recorded decision, 2026-07-02).**
+Service-wide **subgroup** breakdowns (racialized subgroups, Indigenous subgroups),
+**region-of-work**, and **age-distribution** tables. They exist in the published
+source (and a parallel build surfaces them), but only at the *service-wide* level —
+they are **not per-department**, so they do not serve this dashboard&#x27;s decision,
+which is directing *departmental* oversight attention. Adding them would widen the
+surface without sharpening the decision — the &quot;clever build with no clear decision&quot;
+failure mode. **Multi-year representation trends** — which *do* serve the decision —
+were subsequently built (2021-22 → 2024-25; see §4). The **executive-pipeline gap**
+(overall vs. leadership representation) would also serve it, but the source publishes
+executive representation only **service-wide**, not per department, so it cannot be
+built at this dashboard&#x27;s per-department grain and stays out of scope until
+per-department executive data exists.
+
+**Revisiting the 2026-07-02 decision (2026-07-03).** That decision declined the
+parallel build&#x27;s extra dimensions because they were **service-wide-only** and
+therefore didn&#x27;t sharpen the departmental-oversight decision. Its PSES
+**workplace-experience** data (not representation) — subgroup breakdowns (Black,
+South Asian, East Asian, Arab, First Nations, Métis, Inuit, Cognitive, Mental
+health, Seeing) across 6 themes and 3 survey cycles (2020/2022/2024) — is
+**per-department** (53 of our 72), which is the specific bar the service-wide data
+didn&#x27;t clear. Before merging, its representation data was cross-validated against
+our own verified `equity.json`: **195 of 195 comparable department × group pairs
+for 2024-25 matched within 0.3 percentage points.** That gives confidence the
+source pipeline is genuine, though the experience scores themselves cannot be
+independently re-derived by our own pipeline (the source&#x27;s raw 2020/2022 PSES
+microdata, demographic-recoding concordance, and department-name mapping files
+aren&#x27;t available to us) — shown in Explore&#x27;s row detail (harassment only) and,
+in full 6-theme detail with a department/group picker, on the dedicated
+**Subgroups** tab (2026-07-04) — both labeled as a cross-validated external
+source, not our own verified figure. **Subgroup
+representation/WFA remains out of scope** — it does not exist at the department
+level in any available source (confirmed by the source&#x27;s own subgroup
+representation field always being empty). See `Deployment_Log.md` for the full
+cross-validation record.
+
+**Adding service-wide reference tables + an illustrative preview (2026-07-03).**
+Two further additions from the same parallel build, requested so the team&#x27;s
+work is visible to reviewers who compare the two builds directly:
+- **Service-wide reference tables** — Indigenous subgroups, disability
+  subgroups, salary distribution, age distribution, and WFA-benchmark history.
+  These are **real** BT1-28 government data (not fabricated), extracted by
+  `pipeline/build_service_wide_context.py`, but they are service-wide, not
+  per-department — so they&#x27;re shown clearly labeled as reference context
+  (originally collapsed on Frame; later moved to the dedicated Subgroups tab —
+  see below), and never mixed into the per-department decision-support views.
+  One data-quality issue was found and documented, not corrected: the
+  source&#x27;s Indigenous-subgroups table mislabels its most recent year
+  (FY2024-25 lists racialized subgroup names) — the last correctly-labeled year
+  is used instead.
+- **An illustrative `/preview` page** — Executive Pipeline, Workforce Flows,
+  Region of work, and Occupational groups, using the source&#x27;s own **fabricated
+  mock numbers**, verbatim, with an unmissable &quot;ILLUSTRATIVE — NOT REAL DATA&quot;
+  label on every section. This shows what these views would look like once
+  real per-department data exists, without presenting fake numbers as
+  findings. Salary distribution is deliberately **not** duplicated here —
+  a real version already exists in the service-wide reference tables above,
+  so the fake version was dropped rather than shown alongside a real one.
+
+**Adding racialized subgroups + repointing the pipeline (2026-07-04).** The
+project&#x27;s `Knowledge/` folder was subsequently replaced wholesale with a fuller
+sync of the parallel build (see `Deployment_Log.md`), which moved the source
+tables to `Knowledge/EMPLYOMENT EQUITY-TBS/knowledge/tables/` and broke
+`pipeline/build_service_wide_context.py`&#x27;s old path. Fixed the path and used
+the occasion to add the one service-wide subgroup table that was missing:
+**racialized subgroups** (Black, Chinese, Filipino, South Asian, Korean,
+Japanese, Southeast Asian, West Asian/Arab, Latin American, mixed origin) —
+same treatment as Indigenous and disability subgroups: real, service-wide,
+not per-department (shown collapsed on Frame at the time; later moved to the
+dedicated Subgroups tab — see below). Same mislabeling bug found in this
+table&#x27;s FY2024-25 rows (lists Indigenous subgroup names) — FY2023-24 used
+instead, consistent with the Indigenous-subgroups fix. At this point
+`build_dataset.py`, `build_history.py`, and `build_subgroup_pses.py` were
+still broken by the Knowledge/ replacement — fixed next, same day.
+
+**Fixing the remaining pipeline scripts + expanding department coverage
+(2026-07-04).** `build_subgroup_pses.py` and `build_history.py` needed only
+path fixes. `build_dataset.py` needed more: its canonical long-format CSV no
+longer existed in the relocated Knowledge/ folder, only the raw wide-format
+`bt1_28_representation.csv` (one row per department per year, no
+pre-computed gap/expected). Added `pipeline/extract_bt1_28_representation.py`
+to reshape wide → long and compute derived fields, still gated by
+`edi-data-guard`. The relocated source turned out to have fuller department
+coverage than previously used — 72 departments per year, not 35 (2023-24) /
+71 (2024-25); confirmed as real coverage, not a data error, and the user
+confirmed expanding to full coverage rather than filtering back down (see §4;
+`eval/run_eval.py` and this doc&#x27;s counts updated accordingly, 424→576 rows,
+29→77 suppressed). The larger department set surfaced two real source-data
+bugs, both fixed with an explicit, documented correction rather than a silent
+guess: a source PDF OCR typo (&quot;lmpact Assessment Agency of Canada&quot;, lowercase
+L) across 3 fiscal years, and the current-year RCMP entity named &quot;Royal
+Canadian Mounted Police (RCMP)&quot; in the new source vs. the bare name used
+everywhere else in the app (would have silently broken the RCMP subgroup
+panel via exact-string match). Also fixed a `build_dataset.py` bug — a
+department present in both years but whose *prior*-year cell was itself
+suppressed was still marked `has_trend: true` with a null `prior_gap` — caught
+by `eval/run_eval.py` check 9. Verified: RCMP × Persons with Disabilities ×
+2024-25 still matches the oracle exactly; `equity.json` and `rep_history.json`
+agree on all 536 overlapping keys; `eval/run_eval.py` 10/10.
+
+**Consolidating subgroup data into a dedicated tab + adding visual insights
+(2026-07-04).** Subgroup data was reachable but split — a harassment-only
+panel buried in Explore&#x27;s row detail, and a service-wide reference section
+collapsed by default on Frame — so a new **Subgroups** tab (nav position 04)
+consolidates both into one place: a department/group picker showing the full
+6-theme experience breakdown (not just harassment), and the service-wide
+subgroup/salary/age/WFA-history reference tables moved (not duplicated) from
+Frame. No new data — a fuller view of what `subgroup_pses.json` and
+`service_wide_context.json` already held. User feedback that the tab read as
+a plain data dump led to two added, purely descriptive, within-dataset
+comparisons (no new data, no causal language, no composite score): a
+divergence-within-group signal (flags the subgroup whose harassment score
+sits ≥5pp below its own group&#x27;s overall score — the same floor as
+`DIVERGENCE_MARGIN`), and an executive-representation-gap signal (flags the
+subgroup with the largest gap between overall and executive representation
+in the service-wide table), each paired with a horizontal bar chart. Both
+signal sentences were spot-checked against the raw source numbers by hand.
+
+## 4. Data
+
+**Two sources, one reproducible pipeline** (`pipeline/`):
+- **Representation &amp; benchmark** — Treasury Board Employment Equity data, 2023-24
+  and 2024-25. The input of record is `Knowledge/EMPLYOMENT EQUITY-TBS/knowledge/
+  bt1_28_representation.csv` (283 rows, FY2021-22 → FY2024-25, wide format — one
+  row per department per year), reshaped into the long-format canonical CSV
+  `pipeline/extract_bt1_28_representation.py` produces and `edi-data-guard`
+  validates: 576 rows = 288 (2023-24, 72 depts × 4) + 288 (2024-25, 72 depts × 4);
+  77 suppressed. (2026-07-04: expanded from an earlier 35/71-department extract of
+  the same source family to this source&#x27;s full department coverage — see
+  `Deployment_Log.md`.) A **four-year series** (2021-22 → 2024-25,
+  `pipeline/build_history.py`, same source file) feeds the Track view: verified
+  identical to the canonical data on the two overlap years (536/536 keys, 0
+  mismatches), gated by `edi-data-guard`, and stitched across years **only where a
+  department is unambiguously the same entity** — the RCMP&#x27;s reported population
+  changed across years (Civilian Staff → full force), so it is
+  not stitched and stays current-year only.
+- **Employee experience** — the **2024 Public Service Employee Survey**, Employment
+  Equity Derived Variable dataset (`EEINFODV.csv`, fetched from open.canada.ca).
+  `pipeline/extract_pses.py` reads the raw microdata; `pipeline/build_dataset.py`
+  joins it, gated by `edi-data-guard`, and emits `web/src/data/equity.json`.
+
+**PSES — four indicators (method documented in `web/src/data/meta.json`):**
+engagement, diversity &amp; inclusion, harassment, discrimination. Each subindicator
+score is the mean of its **non-suppressed** SCORE100 questions at the department ×
+equity-group level. **Mobility &amp; retention is omitted** — its questions are
+suppressed (code 9999) at this breakdown, so it cannot be computed and is not
+fabricated. PSES is **context only**: never combined with representation in a
+formula, never used to rank.
+
+**Do not guess:** WFA is the only valid benchmark (service-wide values per group ×
+year, in `meta.json` and `edi-data-guard`&#x27;s `references/columns.json`); blank means
+suppressed for privacy, never zero; self-identification is voluntary, so groups —
+especially Persons with Disabilities — may be undercounted; trends only for
+departments present in both years; two data points are not a trend. **WFA is
+periodically rebased**: the availability benchmark was substantially updated in
+2023-24 (Persons with Disabilities 9.2 → 12.0, Members of Visible Minorities
+17.3 → 22.7). Across that boundary a *gap* change reflects the rebase, not hiring —
+the Track view marks it and never classifies a cross-boundary change as improvement;
+representation % (members/all) is benchmark-independent and is the clean trend.
+
+## 5. Capabilities (the agentic workspace)
+
+Five capabilities are installed as **real Claude Code skills** under
+`.claude/skills/&lt;name&gt;/SKILL.md`, and three are also wired as **subagents** under
+`.claude/agents/`. Each is placed at the simplest form that does its job.
+
+**Capability-to-form map** — every verb the app must perform, named before any
+tool, then matched to the cheapest of the five forms (native action, skill,
+subagent, connector, fixed pipeline) that does the job:
+
+| Verb | Form chosen | Why |
+|---|---|---|
+| Read the raw TBS CSV / PSES microdata | **Native action** | Claude Code already reads a local file well — nothing to build. |
+| Validate the dataset against its contract | **Skill** (`edi-data-guard`) | A rule that must hold every run, with a code check that blocks the build. |
+| Compute severity, priority, divergence, trends | **Fixed pipeline** (`pipeline/*.py`) | Identical inputs must always give identical outputs — hard-coded, ordered steps. |
+| Route a question to Answer / Reframe / Refuse | **Subagent** (`question-router`) | One distinct decision worth its own scoped attention. |
+| Classify year-over-year movement | **Subagent** (`trend-interpreter`) | A second distinct decision — is this genuine or benchmark-driven. |
+| Render the five-block briefing | **Subagent** (`presentation-summary-render`) | A third distinct decision — which language is defensible here. |
+| Enforce cautious language on every answer | **Skill** (`interpretation-guardrails`) | Advisory, not a hard gate — recurs everywhere the app writes a sentence. |
+| Reach a live outside system | **Connector: none, deliberately** | The pipeline reads a local/published file and writes a local file; nothing to reach at analysis time. |
+
+**The flow — validate → build → interpret → present.** Each stage names the
+capability that governs it:
+
+```
+  raw sources            edi-data-guard            build_dataset.py            interpretation-guardrails
+  TBS CSV +        ─▶    Skill + validate.py  ─▶   severity · priority   ─▶    trend-interpreter
+  PSES EEINFODV          (blocks a bad file)       divergence · trends         question-router
+                                                          │                    presentation-summary-render
+                                                          ▼                              │
+                                                  web/src/data/*.json  ────────▶   dashboard + Ask
+                                                                                  (guardrails live)
+```
+
+The guard **gates** the data; the pipeline **computes** the derived fields; the
+guardrail skills + subagents **shape** every interpretation and answer; the
+dashboard and the Ask route are where it **reaches a human**.
+
+| Capability | Form | Where it runs | What it does |
+|---|---|---|---|
+| `edi-data-guard` | **Skill + runnable check** | build / pipeline gate | `scripts/validate.py` runs 7 checks and **exits non-zero** on a bad dataset, blocking the build. Demonstrable on a deliberately broken CSV. |
+| `interpretation-guardrails` | **Skill** | Ask route system prompt; signal logic | Enforces cautious language: no causal claim, no blame, WFA named, bounded action vocabulary, PwD caveat. |
+| `question-router` | **Skill + Subagent** | Ask route (runtime); `.claude/agents/question-router.md` | Routes a question to Answer / Reframe / Refuse. Enforced live in `web/src/app/api/ask/route.ts`. |
+| `trend-interpreter` | **Skill + Subagent** | dashboard code; `.claude/agents/trend-interpreter.md` | Classifies YoY movement (genuine / benchmark-driven / worsening / stable). Realized deterministically in `web/src/lib/signal.ts`; the subagent is the workspace tool. |
+| `presentation-summary-render` | **Skill + Subagent** | Present view; `.claude/agents/presentation-summary-render.md` | The fixed 5-block briefing. Realized in `web/src/views/PresentView.tsx`. |
+
+**Connector:** none, and that is deliberate — the pipeline reads a local/published
+file and writes a local data file; there is no live external system to reach at
+analysis time. (The Ask route reaches the Claude API, which is the reasoning layer,
+not a data connector.)
+
+**The honest runtime picture:** the deployed dashboard is a static Next.js app; its
+deterministic logic (severity, priority, trend classification, the 5-block summary)
+ships in code. The **Ask route is the live agentic surface** — it calls Claude with
+`question-router` + `interpretation-guardrails` in the system prompt and the data as
+grounded context. The skills/subagents are the build-time contracts and workspace
+tools that produced and govern that behaviour. Nothing in the UI claims a runtime
+capability the source does not have.
+
+## 6. Human-in-the-loop &amp; governance
+
+The dashboard is a **signal surface, not a decision engine** — a human makes every
+consequential call.
+- Priority flags surface *candidates* for review; an EDI policy lead or HR executive
+  must review before any action. The UI and the Ask assistant both state this.
+- The Ask assistant **refuses** staffing/hiring/firing/individual-promotion requests
+  and **reframes** causal questions; it never asserts cause.
+- `edi-data-guard` is the data membrane: a bad dataset is blocked before it reaches
+  the dashboard.
+- Overrides (a dismissed flag, a replaced number) are logged with a reason in
+  `Deployment_Log.md`.
+- Deployment governance: changes reach the live site only through a reviewed pull
+  request to `main` (branch protection); a human owns what crosses into production.
+
+---
+
+## Revision log
+
+**Day 3 — 2026-06-29 (rebuild).** This spec was rewritten from the Day-1 version to
+match what was actually built and to fix inaccuracies the deployment week surfaced
+(see `Deployment_Log.md`):
+- **Gold example** changed from RCMP · Indigenous (WFA 3.8%, a value not present in
+  the data) to the **verified** RCMP · Persons with Disabilities oracle.
+- **PSES** corrected from five claimed indicators to **four** that are reproducible
+  from source; mobility/retention documented as suppressed at this breakdown.
+  Discrimination — previously empty — is now backfilled from the raw microdata.
+- **Capabilities** rewritten to describe real installed skills + subagents and where
+  each runs, replacing the Day-1 claims that the dashboard invoked them at runtime.
+- **Data** section now describes a reproducible pipeline (data connected, not
+  pasted), gated by a runnable guard.
+- **Success criteria** are now an executable harness (`eval/run_eval.py`, 10/10)
+  plus the guard, rather than prose.
+
+**Day 3 addendum — 2026-07-02 (response to instructor feedback).**
+- **Capability flow** made explicit (validate → build → interpret → present), in §5
+  and surfaced in the app.
+- **Project output** stated in one line at the end of §1.
+- **Threshold determination** documented (§2 &quot;How the thresholds were determined&quot;):
+  priority is a data-driven quartile; severity is a documented interpretability
+  scale; suppression is external policy; divergence uses a documented floor + ranking.
+- **Divergence lens** added: representation met but experience below the same group&#x27;s
+  public-service average — two signals shown separately, never a composite (§2, §3).
+- **Census-rebase** discontinuity documented as a trend caveat (§4).
+- Chat already works via the Claude API (Ollama was the instructor&#x27;s suggestion for a
+  local option; the API route is grounded and deploys — Ollama would not run on the
+  serverless host).
+- **Multi-year trends** added (2021-22 → 2024-25) after verifying the team&#x27;s 4-year
+  file matches ours on the two overlap years (420/420 keys, 0 mismatches); stitched
+  only where a department is unambiguously the same entity across years, gated by the
+  guard; the 2023-24 benchmark rebase is marked and never crossed for gap claims.
+- **Executive-pipeline** investigated and left out of scope: the source publishes
+  executive representation service-wide only, not per department, so it cannot be
+  built at this dashboard&#x27;s grain.
+
+**2026-07-03 → 07-04 (teammate&#x27;s parallel build integrated, cross-validated).**
+- Reopened the 07-02 &quot;not built&quot; decision for one dimension that changed status:
+  the parallel build&#x27;s PSES **workplace-experience** subgroup data is
+  per-department (unlike region/age/executive, which stayed out of scope) —
+  cross-validated 195/195 on overlap with our verified data before merging (§3).
+- Added real, service-wide-only **reference tables** (Indigenous, disability, and
+  racialized subgroups; salary and age distribution; WFA-benchmark history) and a
+  clearly labeled, fabricated-data **`/preview`** page — kept structurally
+  separate from the per-department decision-support views (§3).
+- Replaced `Knowledge/` wholesale with the teammate&#x27;s fuller project sync at the
+  user&#x27;s explicit request (after being warned it would break the pipeline);
+  repointed every broken pipeline script and, in the process, discovered the
+  relocated source has fuller department coverage than we&#x27;d been using —
+  expanded from 35/71 to **72/72 departments** (user-confirmed), fixing two real
+  source-data bugs (an OCR typo, an RCMP naming mismatch) and one pipeline bug
+  (`has_trend` not checking for a suppressed prior-year cell) along the way (§3, §4).
+- Consolidated subgroup data (previously split across Explore and Frame) into a
+  dedicated **Subgroups** tab, then added bar-chart visualizations and two
+  computed, within-dataset signals (subgroup divergence-from-own-group;
+  subgroup executive-representation gap) after feedback that the tab read as a
+  plain data dump (§3).
+- Throughout: every external addition was cross-validated against already-
+  verified figures before being trusted, and confirmed-fabricated mock data
+  (Executive Pipeline, Workforce Flows, Region, Occupation) was refused as a
+  real finding and shown only on `/preview`, explicitly labeled as illustrative.
+</code></pre>
+</section>
+
+<section id="data-context">
+<h2><span class="num">07</span>Data and Context</h2>
+<p><strong>Sources:</strong></p>
+<ul>
+<li><strong>Representation &amp; benchmark</strong> &mdash; Treasury Board Employment Equity data (BT1-28), FY2021-22 through FY2024-25. The input of record is a wide-format government CSV (one row per department per year); <code>pipeline/extract_bt1_28_representation.py</code> reshapes it to long format and computes gap/expected/severity, gated by the <code>edi-data-guard</code> skill. 576 rows = 288 (2023-24) + 288 (2024-25), 72 departments &times; 4 groups each, 77 suppressed. A separate four-year series feeds the Track view.</li>
+<li><strong>Employee experience</strong> &mdash; the 2024 Public Service Employee Survey (PSES), Employment Equity Derived Variable dataset. <code>pipeline/extract_pses.py</code> reads the raw microdata; <code>pipeline/build_dataset.py</code> joins it at the department&times;equity-group level.</li>
+</ul>
+<p><strong>Connection type:</strong> file-based, through a reproducible pipeline &mdash; not pasted into a prompt and not a live API call at analysis time. The one live connection in the whole system is the Ask route, which calls the Claude API at request time with the pre-computed data as grounded context.</p>
+<p><strong>Fields that matter most:</strong> representation % (with its raw N), the WFA benchmark, the signed gap (headcount), a severity band, a priority flag (bottom-quartile gap within its own equity-group&times;year cohort), year-over-year movement, and PSES context (engagement, diversity &amp; inclusion, harassment, discrimination &mdash; mobility/retention is honestly omitted because it is structurally suppressed at this breakdown, not fabricated).</p>
+<p><strong>Cleaning / transformation:</strong> department-name normalization across fiscal years (to catch real trend lines that a naive exact-string join would silently drop), an explicit correction for a source PDF OCR typo found in three fiscal years, and an explicit correction for a department entity named inconsistently across the source's own tables &mdash; each documented, not silently guessed.</p>
+<p><strong>Limitations:</strong> the WFA benchmark is service-wide, not departmental, which makes the ranking a triage signal rather than a precise league table; self-identification is voluntary, so groups &mdash; especially Persons with Disabilities &mdash; may be undercounted; the WFA benchmark was substantially rebased in 2023-24, so a gap change across that boundary reflects the rebase, not hiring, and the Track view marks this explicitly; per-department subgroup representation (e.g. Black, First Nations, Métis representation by department) does not exist in any available source and is out of scope for that reason, not by oversight.</p>
+</section>
+
+<section id="the-build">
+<h2><span class="num">08</span>The Build</h2>
+<p><strong>Live dashboard:</strong> <a href="https://equity-gap-dashboard.vercel.app" target="_blank" rel="noopener">https://equity-gap-dashboard.vercel.app</a> &mdash; a static Next.js 16 / React 19 app deployed on Vercel, auto-deploying from <code>main</code> on every merged pull request.</p>
+<p>What the user sees first (Frame, the landing view): how many of the 288 current department&times;group combinations sit below benchmark, how many are severely below, a severity-distribution bar, and a per-group breakdown &mdash; the headline numbers before any filtering.</p>
+<h3>Dashboard Features</h3>
+<div class="skill-card">
+<h4>Explore &mdash; ranked triage</h4>
+<p>Shows what it shows: every department&times;group row for the current year, filterable by group and sortable by gap (headcount), distance below benchmark (pp), or representation rate. What decision signal it provides: which combinations are furthest below benchmark right now, with a priority flag for the bottom quartile within each group. How to interpret it: a high rank means "look here first," refined against departmental context before any conclusion &mdash; the benchmark is service-wide, not departmental. Caution: suppressed cells show as suppressed, never as zero.</p>
+</div>
+<div class="skill-card">
+<h4>Compare &mdash; cross-cutting patterns and the divergence lens</h4>
+<p>Shows compounding shortfalls across groups within a department, plus a divergence lens: departments at or above benchmark on representation but whose PSES harassment/discrimination scores sit meaningfully below the same group's public-service-wide average. Signal: representation meeting a benchmark does not necessarily mean the workplace experience is good &mdash; two separate signals, never merged into one score. Caution: this is a floor-based flag (&ge;5pp below peer average), not a statistical claim.</p>
+</div>
+<div class="skill-card">
+<h4>Subgroups &mdash; per-department experience detail plus service-wide reference</h4>
+<p>A department/group picker showing workplace-experience scores (harassment, belonging, career, leadership, workplace, wellbeing) by subgroup, across three survey cycles (2020/2022/2024), from a cross-validated external source; below it, real but service-wide-only reference tables (racialized, Indigenous, and disability subgroups; salary and age distribution; WFA-benchmark history). Signal: within-group divergence (a subgroup reporting notably worse harassment scores than its group's overall figure) and an executive-representation-gap flag. Caution: neither table contains per-department subgroup representation &mdash; that data does not exist in any available source.</p>
+</div>
+<div class="skill-card">
+<h4>Track &mdash; year-over-year movement with a benchmark-rebase filter</h4>
+<p>A sparkline of representation vs. benchmark over up to four fiscal years per department&times;group, classified as genuine improvement, benchmark-driven narrowing, worsening, or stable. A "Compare years" control lets a user pick any two of the four years and see the movement &mdash; and the headcount gap &mdash; between exactly that pair. Signal: a narrowing gap across the 2023-24 benchmark rebase is never classified as improvement if the benchmark moved, not the hiring. Caution: two data points are not a trend; the label only applies within a single benchmark era.</p>
+</div>
+<div class="skill-card">
+<h4>Present &mdash; the five-block briefing generator</h4>
+<p>Pick a department and group; the app renders a fixed five-block summary (Key Finding, Evidence, Caveat, Human Review Required, Next Action) in cautious, bounded language, ending with a data-attribution line. Signal: a ready-to-brief document for a deputy-head conversation, generated in place of drafting cautious language from scratch each time. Caution: the structure and vocabulary are fixed by the <code>presentation-summary-render</code> skill/subagent &mdash; it never varies the block order or introduces unapproved language.</p>
+</div>
+<div class="skill-card">
+<h4>Ask &mdash; a real, guardrailed conversational assistant</h4>
+<p>A live Claude API route, not a keyword matcher. Grounds every figure it cites in the underlying dataset, refuses to produce a composite score across the four designated groups, and refuses or reframes causal and staffing questions rather than answering them directly. Signal: an analyst's own question, answered defensibly. Caution: it will not name individuals, recommend specific hires, or assert a cause for a gap &mdash; by design, and independently verified to actually behave this way at runtime (see &sect;11).</p>
+</div>
+<div class="skill-card">
+<h4>Preview &mdash; clearly labeled illustrative mockups</h4>
+<p>Shows what an Executive Pipeline, Workforce Flows, Region-of-work, and Occupational-groups view would look like once real per-department data exists for them, using a source's own placeholder numbers, labeled as concept-only on every section &mdash; never presented as a finding.</p>
+</div>
+<h3>Project Structure</h3>
+<p>See &sect;10 for the full annotated folder tree. In short: <code>web/</code> is the Next.js app (<code>src/app</code> routes, <code>src/views</code> per-tab components, <code>src/lib</code> typed data access and the deterministic signal logic, <code>src/data</code> the generated JSON the pipeline produces); <code>pipeline/</code> is the reproducible Python pipeline; <code>.claude/skills/</code> and <code>.claude/agents/</code> are the installed Claude Skills and subagents; <code>eval/</code> is the independent recomputation harness; <code>Deployment_Log.md</code>, <code>Deployment_Assessment.md</code>, and <code>CLAUDE.md</code> are the governance record.</p>
+<h3>Deployment</h3>
+<p>The dashboard is deployed on Vercel at <a href="https://equity-gap-dashboard.vercel.app" target="_blank" rel="noopener">https://equity-gap-dashboard.vercel.app</a>, connected to this project's GitHub repository for automatic deploys on every merge to <code>main</code>. <code>main</code> is protected: every change reaches production only through a reviewed pull request, never a direct push. To run it locally: clone the repository, run <code>npm install</code> and <code>npm run dev</code> inside <code>web/</code>, and set an <code>ANTHROPIC_API_KEY</code> environment variable for the Ask route to work.</p>
+</section>
+
+<section id="agentic-workspace">
+<h2><span class="num">09</span>Agentic Workspace: Skills, Capabilities, and Subagents</h2>
+<p>Five capabilities are installed as real Claude Code Skills under <code>.claude/skills/&lt;name&gt;/SKILL.md</code>, three of which are also wired as subagents under <code>.claude/agents/</code>. Each was chosen as the simplest of the course's five capability forms (native action, skill, subagent, connector, fixed pipeline) that does its job &mdash; not the most impressive one available.</p>
+
+<div class="skill-card">
+<h4>edi-data-guard <span class="form-tag">Skill + runnable check (hard gate)</span></h4>
+<dl>
+<dt>Location</dt><dd><code>.claude/skills/edi-data-guard/</code> (<code>SKILL.md</code>, <code>scripts/validate.py</code>, <code>references/columns.json</code>)</dd>
+<dt>Input</dt><dd>The representation CSV (or a candidate replacement) before it enters the pipeline</dd>
+<dt>Output</dt><dd>Per-check PASS/WARN/FAIL lines and a process exit code &mdash; 0 clean, 1 blocked</dd>
+<dt>What it does</dt><dd>Runs seven checks against the dataset before any dashboard build: required columns present, equity-group labels canonical, numeric fields are clean floats (not "4.1%" as a string), suppressed cells are genuinely blank rather than a hidden zero, the WFA benchmark matches the known service-wide value for that group and year, the gap/expected arithmetic reconciles independently, and departments present in both fiscal years are correctly identified for trend eligibility.</dd>
+<dt>Why it was useful</dt><dd>This is the one government-numbers rule that cannot be left to hope: a wrong column, a substituted benchmark, or a suppressed cell silently read as zero would ship as a "correct" number and misdirect a real oversight review. The rule is written once in <code>references/columns.json</code> and enforced in code on every run, demonstrably &mdash; it has actually caught real defects in this project (see &sect;11), not just in a hypothetical broken-file test.</dd>
+<dt>How it contributed</dt><dd>It gates every pipeline run; a bad dataset cannot reach <code>web/src/data/equity.json</code>.</dd>
+</dl>
+</div>
+
+<div class="skill-card">
+<h4>interpretation-guardrails <span class="form-tag">Skill (advisory)</span></h4>
+<dl>
+<dt>Location</dt><dd><code>.claude/skills/interpretation-guardrails/SKILL.md</code></dd>
+<dt>Input</dt><dd>A draft sentence describing a gap, severity, or recommendation</dd>
+<dt>Output</dt><dd>Approved, cautious phrasing, or a rejection with the violated check named</dd>
+<dt>What it does</dt><dd>Enforces five checks on any language the app produces about a gap: no causal claim ("caused by", "proves discrimination"), no blame or moral ranking of a department, the WFA benchmark always named alongside a percentage, recommended actions limited to a fixed, approved vocabulary (recruitment pipeline review, retention review, promotion pipeline review, accessibility review, workplace inclusion review), and a mandatory self-identification caveat whenever Persons with Disabilities is discussed.</dd>
+<dt>Why it was useful</dt><dd>This is the difference between a dashboard that flags a pattern and one that quietly implies a verdict. It is the reason the Ask assistant can be asked a leading, adversarial question and still answer defensibly.</dd>
+<dt>How it contributed</dt><dd>Its rules are the system prompt for the Ask route and the vocabulary baked into <code>web/src/lib/signal.ts</code>'s deterministic sentence-generation.</dd>
+</dl>
+</div>
+
+<div class="skill-card">
+<h4>question-router <span class="form-tag">Skill + Subagent</span></h4>
+<dl>
+<dt>Location</dt><dd><code>.claude/skills/question-router/SKILL.md</code>, <code>.claude/agents/question-router.md</code>; enforced live in <code>web/src/app/api/ask/route.ts</code></dd>
+<dt>Input</dt><dd>A free-text question from a user of the Ask tab</dd>
+<dt>Output</dt><dd>One of three dispositions &mdash; Answer, Reframe, or Refuse &mdash; plus the response text itself</dd>
+<dt>What it does</dt><dd>Decides, before answering, whether a question is in scope (answerable from the approved dataset), whether it requires causal inference (always out of scope, regardless of confidence), and whether the answer is actually computable. A factual question about a specific department's numbers gets Answered, grounded in the data; a "why does this gap exist" question gets Reframed with the factual data plus an explanation of what the data cannot say; a staffing or individual-level question gets Refused outright.</dd>
+<dt>Why it was useful</dt><dd>This is the one place in the app where a user could plausibly phrase a request cleverly enough to extract exactly what the spec forbids &mdash; a caused-by claim or a staffing recommendation. Routing the decision to a dedicated subagent, rather than hoping a single system prompt holds under adversarial pressure, is what makes the refusal reliable rather than best-effort.</dd>
+<dt>How it contributed</dt><dd>It is the live agentic surface of the whole project &mdash; independently verified at runtime (not just in a spec) to refuse a composite-score request and a causal request when directly provoked (see &sect;11).</dd>
+</dl>
+</div>
+
+<div class="skill-card">
+<h4>trend-interpreter <span class="form-tag">Skill + Subagent</span></h4>
+<dl>
+<dt>Location</dt><dd><code>.claude/skills/trend-interpreter/SKILL.md</code>, <code>.claude/agents/trend-interpreter.md</code>; realized deterministically in <code>web/src/lib/signal.ts</code></dd>
+<dt>Input</dt><dd>A department&times;group's representation and WFA benchmark at two points in time</dd>
+<dt>Output</dt><dd>One of four classifications (genuine improvement, benchmark-driven narrowing, worsening, stable) plus a one-sentence, non-causal explanation</dd>
+<dt>What it does</dt><dd>Distinguishes a real representation change from a shift in the benchmark itself &mdash; the specific judgment a formula alone cannot make, since a narrowing gap can be driven entirely by the benchmark moving rather than by hiring or retention. Never attributes a change to a specific policy or program.</dd>
+<dt>Why it was useful</dt><dd>The 2023-24 WFA rebase (Persons with Disabilities 9.2%&rarr;12.0%, Members of Visible Minorities 17.3%&rarr;22.7%) made this distinction load-bearing: without it, a rebase-driven gap widening could easily be misread on-screen as the department getting worse at hiring.</dd>
+<dt>How it contributed</dt><dd>Powers the Track view's classification badges and its generalized year-range comparison (any two of the four fiscal years, not just current-vs-prior).</dd>
+</dl>
+</div>
+
+<div class="skill-card">
+<h4>presentation-summary-render <span class="form-tag">Skill + Subagent</span></h4>
+<dl>
+<dt>Location</dt><dd><code>.claude/skills/presentation-summary-render/SKILL.md</code>, <code>.claude/agents/presentation-summary-render.md</code>; realized in <code>web/src/views/PresentView.tsx</code></dd>
+<dt>Input</dt><dd>A chosen department&times;group's full row of computed fields (representation, WFA, gap, severity, rank, trend)</dd>
+<dt>Output</dt><dd>A fixed five-block briefing, capped at roughly 300 words, ending with a data-attribution line</dd>
+<dt>What it does</dt><dd>Produces the same five blocks &mdash; Key Finding, Evidence, Caveat, Human Review Required, Next Action &mdash; in the same order, every time, in cautious language. The structure is fixed (a skill's job); choosing what to say within each block for a specific department&times;group is a judgment call (a subagent's job) &mdash; which finding matters most, what the trend means here, what a concrete, bounded next step looks like.</dd>
+<dt>Why it was useful</dt><dd>Turns "draft defensible language for a deputy-head conversation" from a five-minute manual task into a one-click, consistently-worded briefing &mdash; directly serving user story #3 in <code>CLAUDE.md</code>.</dd>
+<dt>How it contributed</dt><dd>Powers the entire Present tab.</dd>
+</dl>
+</div>
+
+<div class="skill-card">
+<h4>The reproducible pipeline <span class="form-tag">Fixed pipeline</span></h4>
+<dl>
+<dt>Location</dt><dd><code>pipeline/extract_bt1_28_representation.py</code>, <code>pipeline/extract_pses.py</code>, <code>pipeline/build_dataset.py</code>, <code>pipeline/build_history.py</code>, <code>pipeline/build_subgroup_pses.py</code>, <code>pipeline/build_service_wide_context.py</code></dd>
+<dt>Input</dt><dd>Raw government source files (the BT1-28 CSV, the PSES microdata, a teammate's cross-validated subgroup-experience source)</dd>
+<dt>Output</dt><dd><code>web/src/data/*.json</code> &mdash; every JSON file the dashboard reads</dd>
+<dt>What it does</dt><dd>A hard-coded, ordered sequence of steps &mdash; reshape, join, compute severity/priority/divergence/trend, validate, write &mdash; that always produces the same output from the same input. Chosen as a fixed pipeline (rather than, say, a subagent) precisely because identical inputs must always give identical outputs for a government dataset; no judgment should enter this stage.</dd>
+<dt>Why it was useful</dt><dd>Every derived field the dashboard shows &mdash; severity, priority, divergence, trend classification &mdash; is computed once, in code, the same way every time, and is independently re-derivable by <code>eval/run_eval.py</code>. This is what makes the numbers auditable rather than asserted.</dd>
+<dt>How it contributed</dt><dd>It is the entire data layer of the dashboard.</dd>
+</dl>
+</div>
+
+<div class="skill-card">
+<h4>Reading the raw source files <span class="form-tag">Native action</span></h4>
+<p>Reading a local CSV or a PSES microdata file is something Claude Code already does well without any package wrapped around it &mdash; the cheapest capability is the one that is not built. No skill, subagent, or connector was created for this step.</p>
+</div>
+
+<div class="skill-card">
+<h4>Reaching a live outside system <span class="form-tag">Connector: none, deliberately</span></h4>
+<p>While this project does not contain a connector, the capability that would need one &mdash; a live external data or tool connection during analysis &mdash; does not exist in this project's design. The pipeline reads a local/published file and writes a local file; there is no live external system to reach at analysis time. The one live call in the whole system is the Ask route calling the Claude API, which is the reasoning layer, not a data connector. This is a documented, deliberate choice in <code>CLAUDE.md</code> &sect;5, not an unexplored gap.</p>
+</div>
+</section>
+
+<section id="folder-evidence">
+<h2><span class="num">10</span>Project Structure and Folder Evidence</h2>
+<div class="missing">[Missing evidence: actual Finder/VS&nbsp;Code screenshots of key folders were not available in this session. Smallest realistic fix: before presenting, take screenshots of <code>web/src/</code>, <code>pipeline/</code>, <code>.claude/skills/</code>, and the repo root open in an editor, and drop them into a <code>screenshots/</code> folder referenced from this section. In their place, below is the project's actual file tree, generated directly from the filesystem rather than typed by hand.]</div>
+<pre class="filetree">.
+./.claude
+./.claude/agents
+./.claude/agents/presentation-summary-render.md
+./.claude/agents/question-router.md
+./.claude/agents/trend-interpreter.md
+./.claude/launch.json
+./.claude/settings.local.json
+./.claude/skills
+./.claude/skills/edi-data-guard
+./.claude/skills/interpretation-guardrails
+./.claude/skills/presentation-summary-render
+./.claude/skills/question-router
+./.claude/skills/trend-interpreter
+./.vercel
+./.vercel/project.json
+./.vercelignore
+./AUDIT.md
+./CLAUDE.md
+./DEPLOY.md
+./Deployment_Assessment.md
+./Deployment_Log.md
+./IMPLEMENTATION_PLAN.md
+./MMA 616 - Group AI Project vF (1) (1).pdf
+./eval
+./eval/results.md
+./eval/run_eval.py
+./final_submission_body.html.part
+./overview.md
+./pipeline
+./pipeline/build_dataset.py
+./pipeline/build_history.py
+./pipeline/build_service_wide_context.py
+./pipeline/build_subgroup_pses.py
+./pipeline/extract_bt1_28_representation.py
+./pipeline/extract_pses.py
+./pipeline/pses_dept_scores.json
+./web
+./web/.env.local
+./web/.gitignore
+./web/.vercel
+./web/.vercel/README.txt
+./web/.vercel/project.json
+./web/AGENTS.md
+./web/README.md
+./web/eslint.config.mjs
+./web/next-env.d.ts
+./web/next.config.ts
+./web/package-lock.json
+./web/package.json
+./web/postcss.config.mjs
+./web/public
+./web/public/file.svg
+./web/public/globe.svg
+./web/public/next.svg
+./web/public/vercel.svg
+./web/public/window.svg
+./web/src
+./web/src/app
+./web/src/components
+./web/src/data
+./web/src/lib
+./web/src/views
+./web/tsconfig.json
+./web/tsconfig.tsbuildinfo</pre>
+<table>
+<thead><tr><th>Folder / file</th><th>What it contains</th><th>Why it matters</th><th>Rubric component</th></tr></thead>
+<tbody>
+<tr><td><code>CLAUDE.md</code>, <code>Deployment_Log.md</code>, <code>Deployment_Assessment.md</code></td><td>The living spec and the governance record</td><td>Proves the spec governed real decisions and every override/finding has a written reason</td><td>Specification (15%); Evaluation &amp; governance (15%)</td></tr>
+<tr><td><code>.claude/skills/</code>, <code>.claude/agents/</code></td><td>Five Claude Skills, three of them also wired as subagents</td><td>The installed capabilities described in &sect;9, not just claimed</td><td>The build (30%)</td></tr>
+<tr><td><code>pipeline/</code></td><td>Six Python scripts forming the reproducible fixed pipeline</td><td>Data is connected and transformed by code, not pasted</td><td>Data and context (10%); The build (30%)</td></tr>
+<tr><td><code>web/src/app/</code></td><td>Next.js App Router routes &mdash; one per dashboard view, plus the live <code>/api/ask</code> route</td><td>The actual deployed application code</td><td>The build (30%)</td></tr>
+<tr><td><code>web/src/data/</code></td><td>Generated JSON files (<code>equity.json</code>, <code>rep_history.json</code>, <code>subgroup_pses.json</code>, <code>meta.json</code>, etc.)</td><td>The pipeline's real output &mdash; what the dashboard actually reads</td><td>Data and context (10%)</td></tr>
+<tr><td><code>eval/</code></td><td><code>run_eval.py</code> and <code>results.md</code> &mdash; the independent recomputation harness</td><td>Ten checks re-derive every shown number from raw fields</td><td>Evaluation and governance (15%)</td></tr>
+<tr><td><code>Knowledge/</code></td><td>The raw and processed source data, and course/reference materials</td><td>Where the pipeline's inputs live &mdash; the project's stocked, curated Knowledge</td><td>Data and context (10%)</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="evaluation">
+<h2><span class="num">11</span>Evaluation and Governance</h2>
+
+<h3>Evaluation Purpose</h3>
+<p>Two independent evaluations were run on this project, each testing the dashboard's <em>output</em>, not its code. The first is a machine-recomputed harness comparing the Day-2 baseline against the Day-3 rebuild. The second, run specifically ahead of this final submission, is a blind, independent governance-critic agent testing the live, currently-deployed app against its own written spec &mdash; a different kind of evidence than the harness, aimed at the behaviors a numeric recomputation cannot see (does the Ask assistant actually refuse a leading question; is a suppressed cell actually rendered as suppressed; is the responsible-use caveat actually visible everywhere).</p>
+
+<h3>Baseline Evaluation (Day 2 &rarr; Day 3 harness)</h3>
+<p><code>eval/run_eval.py</code> re-derives representation %, expected-at-benchmark, gap, severity, and the priority quartile independently from raw fields and checks them against a pinned oracle (RCMP &middot; Persons with Disabilities &middot; 2024-25 = 5.5%, N=590 of 10,822, WFA 12.0%, gap &minus;709). At the Day-2 baseline, three of ten checks could not pass: severity and priority were pre-computed offline and not reproducible from the delivered files, and two PSES columns were 100% empty while the documentation claimed five indicators.</p>
+
+<h3>Revisions Made</h3>
+<ul>
+<li>Rebuilt severity and priority as pipeline-computed, reproducible fields.</li>
+<li>Traced the two empty PSES columns to the raw microdata; backfilled discrimination (computable) and documented mobility/retention as genuinely suppressed at this breakdown (not fabricated).</li>
+<li>Replaced the keyword-matched Ask tab with a real Claude API route carrying the guardrail skills in its system prompt.</li>
+<li>Normalized department names across fiscal years so real trend lines were not silently dropped by an exact-string join.</li>
+</ul>
+
+<h3>After-Revision Evaluation</h3>
+<p>All ten checks now pass, re-run most recently against the current 576-row, 72-department dataset (expanded from an earlier 35/71-department extract after a later source-relocation episode &mdash; see <code>Deployment_Log.md</code>).</p>
+
+<h3>Before-and-After Results</h3>
+<table>
+<thead><tr><th>Test case</th><th>Baseline result</th><th>Revision made</th><th>Final result</th><th>What improved</th></tr></thead>
+<tbody>
+<tr><td>Severity reproducibility</td><td>Baked offline in HTML, not checkable</td><td>Computed in the pipeline from documented thresholds</td><td>Pass</td><td>Auditable, not asserted</td></tr>
+<tr><td>Priority-flag reproducibility</td><td>Baked offline, not checkable</td><td>Computed as bottom-quartile-per-cohort in code</td><td>Pass</td><td>Data-driven, adapts per group</td></tr>
+<tr><td>PSES indicators</td><td>2 of 5 columns 100% empty; docs claimed 5</td><td>Backfilled discrimination from raw microdata; documented mobility/retention as suppressed, not fabricated</td><td>Pass (4 real indicators)</td><td>Docs now match what exists</td></tr>
+<tr><td>Trend coverage</td><td>~32 of 35 departments matched (name variants)</td><td>Name normalization before joining years</td><td>Pass (all recovered, now 72/72 base)</td><td>No silent data loss</td></tr>
+<tr><td>The "Ask" tab</td><td>Keyword regex over canned strings</td><td>Real Claude API route + guardrail skills in system prompt</td><td>Pass, independently re-verified (see below)</td><td>Genuinely grounded and guardrailed, not simulated</td></tr>
+<tr><td><code>/robots.txt</code></td><td>Not tested at baseline</td><td>Found broken by the post-deployment critic (served the site's 404 HTML instead of plain text); added a native Next.js <code>robots.ts</code> route</td><td>Fixed, verified <code>200 text/plain</code></td><td>A real, trivial defect closed before submission</td></tr>
+</tbody>
+</table>
+
+<h3>Independent Governance Critique (ahead of final submission)</h3>
+<p>Following the course's Day-3 method, a governance-critic agent was designed and run with no memory of this build, no access to source code or git history, given only the persona (the OCHRO analyst from user story #1), the full <code>CLAUDE.md</code> text, and the live URL. It tested 11 specific claims plus one bonus observation. Full detail, the triage, and the fix are in <code>Deployment_Assessment.md</code>; the summary:</p>
+<table>
+<thead><tr><th>Claim</th><th>Verdict</th><th>Triage</th></tr></thead>
+<tbody>
+<tr><td>Gold-example oracle (RCMP &times; Persons with Disabilities)</td><td><span class="tag tag-held">Held</span></td><td>Confirmed working</td></tr>
+<tr><td>Every figure shows %, N, and WFA together</td><td><span class="tag tag-held">Held</span></td><td>Confirmed working</td></tr>
+<tr><td>Suppressed cells never show as zero</td><td><span class="tag tag-held">Held</span></td><td>Confirmed working</td></tr>
+<tr><td>Severity bands match pp-below-WFA thresholds</td><td><span class="tag tag-held">Held</span></td><td>Confirmed working</td></tr>
+<tr><td>No composite score, no causal claims (adversarially provoked)</td><td><span class="tag tag-held">Held</span></td><td>Confirmed working</td></tr>
+<tr><td>Compare view's divergence lens</td><td><span class="tag tag-held">Held</span></td><td>Confirmed working</td></tr>
+<tr><td>Ask tab grounds facts, refuses causal &amp; staffing questions</td><td><span class="tag tag-held">Held</span></td><td>Confirmed working, with direct HTTP evidence</td></tr>
+<tr><td>Track marks the 2023-24 benchmark rebase</td><td><span class="tag tag-held">Held</span></td><td>Confirmed working</td></tr>
+<tr><td>Present generates the five-block briefing</td><td><span class="tag tag-held">Held</span></td><td>Confirmed working (structure/content; latency not directly measurable by the critic's tooling)</td></tr>
+<tr><td>Responsible-use caveat on every page</td><td><span class="tag tag-held">Held</span></td><td>Confirmed working, incl. the 404 page</td></tr>
+<tr><td>Frame's headline KPI tiles read "0" on a cold fetch</td><td><span class="tag tag-broken">Broken (Moderate)</span></td><td><span class="tag tag-open">Rejected</span> &mdash; a deliberate mount-animation (<code>CountUp.tsx</code>), not missing data; confirmed in source and respects <code>prefers-reduced-motion</code></td></tr>
+<tr><td><code>/explore</code> ships a loading fallback, not full content, before JS runs</td><td><span class="tag tag-broken">Broken (Moderate)</span></td><td><span class="tag tag-open">Deferred</span> &mdash; real, but inherent to how any client-rendered SPA works; does not block the primary user story for a realistic user; verified interactively that the promised sort/filter/priority-flag experience works correctly once JS loads</td></tr>
+<tr><td><code>/robots.txt</code> convention (not a spec claim)</td><td><span class="tag tag-minor">Broken (Minor)</span></td><td><span class="tag tag-fixed">Accepted &amp; fixed</span> &mdash; native Next.js <code>robots.ts</code> route added and verified</td></tr>
+</tbody>
+</table>
+
+<h3>Deployment Log Summary</h3>
+<table>
+<thead><tr><th>Episode</th><th>What we tested / used</th><th>What worked</th><th>What fell short</th><th>Human override</th><th>Change made</th></tr></thead>
+<tbody>
+<tr><td>2026-06-29 &middot; Year-over-year coverage</td><td><code>edi-data-guard</code> coverage check</td><td>Caught a silent data-loss risk before shipping</td><td>32 of 35 departments matched by exact name; 3 would have silently lost their trend line</td><td>No</td><td>Normalize department names before joining fiscal years</td></tr>
+<tr><td>2026-06-29 &middot; Empty PSES columns</td><td>Oracle + PSES checks</td><td>Caught docs claiming data that did not exist</td><td>2 of 5 claimed PSES indicators were 100% empty</td><td>No</td><td>Backfilled discrimination from raw microdata; documented mobility/retention as suppressed, not fabricated</td></tr>
+<tr><td>2026-06-29 &middot; Hand-transcribed PSES numbers</td><td>Manual review against source</td><td>&mdash;</td><td>Original scores did not reproduce from source by any standard method</td><td>Yes &mdash; replaced with reproducibly-computed values, reason logged</td><td>Values now computed as the mean of non-suppressed SCORE100 questions</td></tr>
+<tr><td>2026-06-29 &middot; The Ask tab</td><td>Hand-reviewed test question</td><td>Grounded every figure; correctly refused a causal "why"</td><td>Original version was keyword-matched, not real AI</td><td>No</td><td>Rebuilt as a real Claude API route with guardrails in the system prompt</td></tr>
+<tr><td>2026-07-02 &middot; Multi-year trajectory</td><td>Cross-checking a 4-year stitch against known populations</td><td>Caught a false trend before it shipped</td><td>RCMP's Civilian-Staff-era figure would have been stitched to its full-force-era figure as one line</td><td>No</td><td>Trajectories stitch only where the department name is unambiguously identical across years</td></tr>
+<tr><td>2026-07-02 &ndash; 2026-07-04 &middot; Teammate's parallel build</td><td>Cross-validation of every overlapping value</td><td>195 of 195 comparable rows matched within 0.3pp &mdash; confidence to merge the one genuinely per-department dataset</td><td>Most of the parallel build was confirmed hardcoded mock data (self-disclosed in its own UI copy)</td><td>Yes &mdash; refused to present the mock data as real findings; shown only on a clearly labeled <code>/preview</code> page</td><td>Merged only the cross-validated, per-department subgroup-experience data; added service-wide reference tables labeled as such</td></tr>
+<tr><td>2026-07-04 &middot; Knowledge/ folder replacement</td><td>User-requested wholesale replacement</td><td>Did not affect the live site (deployed JSON untouched)</td><td>Broke 4 pipeline scripts, since their source files moved</td><td>Yes &mdash; user confirmed after being warned of the consequences</td><td>Repointed all four scripts; expanded department coverage 35/71 &rarr; 72/72 after confirming it was real coverage, not a data error</td></tr>
+<tr><td>2026-07-04 &middot; Governance critique (this submission)</td><td>Independent, blind critic agent vs. the live app</td><td>10 of 11 tested claims held with direct evidence</td><td>One trivial <code>/robots.txt</code> defect; one false positive; one deferred, non-blocking SPA characteristic</td><td>No overrides &mdash; findings triaged with written reasons</td><td>Added a real <code>robots.txt</code> route; documented the rest in <code>Deployment_Assessment.md</code></td></tr>
+</tbody>
+</table>
+
+<h3>Governance and Human Review</h3>
+<ul>
+<li><strong>Where human judgment is still needed:</strong> every priority flag surfaces a <em>candidate</em> for review; an EDI policy lead or HR executive must review before any action, exactly as the UI and the Ask assistant both state.</li>
+<li><strong>What should not be automated:</strong> any staffing, hiring, firing, or individual-promotion decision &mdash; the Ask assistant is built to refuse these outright, and this was independently verified, not just claimed.</li>
+<li><strong>Where the dashboard could mislead:</strong> the service-wide (not departmental) WFA benchmark can make an operationally-heavy department look worse than a policy shop under the same bar; this is documented explicitly in <code>CLAUDE.md</code> rather than left implicit.</li>
+<li><strong>What assumptions should be checked:</strong> a gap change across the 2023-24 benchmark rebase reflects the rebase, not hiring; self-identification undercounts, especially for Persons with Disabilities.</li>
+<li><strong>When a user should override the dashboard:</strong> whenever departmental context (occupational mix, a known data-quality issue, a recent reorganization) contradicts what the service-wide ranking implies &mdash; the dashboard is explicit that its ranking is directional, not exact.</li>
+<li><strong>How the dashboard supports decisions without replacing the decision-maker:</strong> every output ends at a signal &mdash; a flag, a caveat, a recommended review type &mdash; never a decision, a composite score, or a causal claim.</li>
+</ul>
+<div class="callout">Honesty note: this project's evidence is strong on two of the three evaluation streams the course describes &mdash; the machine harness and the deployment week/blind critic pass. The third stream, a live human pitch reviewed by an outside expert plus five peer teams' cold reads, requires an actual class session and has not happened at the time of writing. It is marked as missing evidence in <code>Deployment_Assessment.md</code> rather than fabricated.</div>
+</section>
+
+<section id="presentation">
+<h2><span class="num">12</span>Presentation and Defense Support</h2>
+<h3>Recommended live demo path</h3>
+<ol>
+<li>Open Frame (the landing view) &mdash; state the headline numbers and the decision the dashboard exists to change.</li>
+<li>Open Explore, filter to Persons with Disabilities, sort by gap &mdash; land on the RCMP row and read its full signal aloud (this is the pinned oracle, so every number can be defended on the spot).</li>
+<li>Open Compare and show the divergence lens &mdash; a department at benchmark but with a bad harassment score, shown as two separate signals.</li>
+<li>Open Track, use the "Compare years" control across the 2023-24 boundary, and explain why a narrowing gap there is not automatically called an improvement.</li>
+<li>Open Present for the same RCMP row and read the five-block briefing aloud.</li>
+<li>Open Ask and, live, ask it a leading causal question and a staffing question &mdash; show it refuse/reframe both in real time.</li>
+</ol>
+<h3>Agentic workspace walkthrough path</h3>
+<ol>
+<li><code>CLAUDE.md</code> &mdash; read the objective and the "deliberate judgment — the benchmark" paragraph aloud; point at the dated revision log as proof it changed as evidence came in.</li>
+<li><code>.claude/skills/edi-data-guard/scripts/validate.py</code> &mdash; show it exit non-zero on a deliberately broken copy of the CSV.</li>
+<li><code>.claude/agents/question-router.md</code> and <code>web/src/app/api/ask/route.ts</code> &mdash; show where the skill becomes a runtime guardrail, not just a document.</li>
+<li><code>pipeline/</code> &mdash; walk through the fixed order (extract &rarr; build &rarr; validate) and point at <code>eval/run_eval.py</code> re-deriving the same numbers independently.</li>
+<li><code>Deployment_Assessment.md</code> &mdash; the independent critic's brief and findings, and the one real fix that came out of it.</li>
+</ol>
+<h3>Files to have open</h3>
+<p><code>CLAUDE.md</code>, <code>Deployment_Log.md</code>, <code>Deployment_Assessment.md</code>, <code>eval/results.md</code>, <code>.claude/skills/edi-data-guard/scripts/validate.py</code>, and the live dashboard in a browser tab.</p>
+<h3>What each team member should be prepared to explain</h3>
+<p>Every member should be able to explain: who the dashboard's user is and what decision it changes; why the WFA benchmark is service-wide and what that trade-off costs; what a priority flag actually means (bottom-quartile-per-cohort, not an assertion); why the Ask assistant refuses certain questions and how that was verified, not just designed; and at least one real entry from <code>Deployment_Log.md</code> in detail.</p>
+<h3>Likely Q&amp;A and short defensible answers</h3>
+<table>
+<thead><tr><th>Likely question</th><th>Short defensible answer</th></tr></thead>
+<tbody>
+<tr><td>Why service-wide WFA and not departmental WFA?</td><td>Departmental WFA is not in the published cross-department data; using it would require a different, unpublished benchmark per department. Service-wide WFA is the only benchmark available at this grain, documented explicitly as a triage signal, not a precise league table.</td></tr>
+<tr><td>How do you know the Ask assistant actually refuses staffing questions, not just claims to?</td><td>An independent, blind critic agent directly provoked it with a staffing question and a causal question and recorded the verbatim refusal text, via direct HTTP calls to the live API route &mdash; not a claim, a re-run test.</td></tr>
+<tr><td>Why isn't there per-department subgroup representation (e.g. Black, First Nations representation by department)?</td><td>Checked explicitly against two independent sources; that data does not exist at the department level anywhere available &mdash; confirmed by the field always being empty in the one source that publishes any subgroup data at all.</td></tr>
+<tr><td>What happens if the underlying government data changes next year?</td><td><code>edi-data-guard</code> re-validates any new file against the same seven checks before it can reach the dashboard; the pipeline is reproducible, not a one-time manual transformation.</td></tr>
+<tr><td>What's the one thing you'd fix with more time?</td><td>Restructure Explore's URL-param handling so its ranked table renders in the initial server response rather than a client-side loading fallback &mdash; deferred this pass because it does not block the primary task for any realistic user, and named honestly in the Deployment Assessment rather than left undiscovered.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="limitations">
+<h2><span class="num">13</span>Limitations</h2>
+<ul>
+<li><strong>Data limitations:</strong> the WFA benchmark is service-wide, not departmental, making the ranking directional rather than exact; self-identification undercounts some groups, especially Persons with Disabilities; PSES mobility/retention is structurally suppressed at this breakdown and is honestly omitted; per-department subgroup representation does not exist in any available source.</li>
+<li><strong>Evaluation limitations:</strong> the machine harness (<code>eval/run_eval.py</code>) verifies arithmetic and structural correctness, not narrative quality, which is reviewed by hand instead; the independent governance critic could not test JS-interactive behavior directly (no browser tool was available to it that session), so several claims were closed out by the team's own follow-up checks instead of the critic's &mdash; a real gap in independence, disclosed rather than hidden.</li>
+<li><strong>Deployment limitations:</strong> one week of real use produced impressions, not statistics, consistent with the course's own framing of the deployment week; the human evaluation pass (an outside pitch review plus peer cold-reads) has not occurred as of this submission.</li>
+<li><strong>What the dashboard cannot conclude:</strong> it cannot establish why a gap exists, whether discrimination occurred, or which specific employee to hire or promote &mdash; by design, and enforced at the Ask route, not merely stated.</li>
+<li><strong>Future work:</strong> a real human critique pass (investor-style pitch plus peer cold-reads); departmental (not just service-wide) WFA benchmarks, if TBS ever publishes them; resolving the Explore route's client-render-only initial state.</li>
+</ul>
+</section>
+
+<section id="checklist">
+<h2><span class="num">14</span>Final Submission Checklist</h2>
+<ul class="checklist">
+<li>Dashboard works &mdash; verified live and via independent governance critique</li>
+<li>Deployed link included as a clickable hyperlink: <a href="https://equity-gap-dashboard.vercel.app" target="_blank" rel="noopener">https://equity-gap-dashboard.vercel.app</a></li>
+<li><code>CLAUDE.md</code> is included in full (&sect;6) and current as of this submission</li>
+<li>Data source is connected via a reproducible pipeline, not pasted (&sect;7)</li>
+<li>Skills, subagents, and the fixed pipeline are described in plain language, not just listed by filename (&sect;9)</li>
+<li>Evaluation results are included, with a genuine before-and-after (&sect;11)</li>
+<li>Deployment log is summarized, including real failures and overrides (&sect;11)</li>
+<li>Folder evidence is included (file tree; screenshots marked as missing with a fix, &sect;10)</li>
+<li>Governance and human-override points are included (&sect;11)</li>
+<li>Limitations are clearly and professionally stated (&sect;13)</li>
+<li>Unsupported claims were removed &mdash; the human pitch/peer-review evidence stream is marked missing rather than invented</li>
+</ul>
+</section>
+
+</main>
+<footer class="page-footer">
+  The Equity Gap · MMA 616 Group AI Project · Generated from the project's own CLAUDE.md, Deployment_Log.md, eval/results.md, and Deployment_Assessment.md — not hand-typed after the fact.
+</footer>
+</body>
+</html>
