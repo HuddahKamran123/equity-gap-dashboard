@@ -4,6 +4,7 @@ web/.next/
 web/out/
 web/.vercel/
 web/next-env.d.ts
+.vercel/
 
 # --- secrets: never commit ---
 .env
