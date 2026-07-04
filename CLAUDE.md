@@ -71,10 +71,12 @@ honest claim is *directional prioritization*, not exact placement.
 **The output, in one line.** A deployed decision-support dashboard whose unit of
 output is a **department × designated-group row** — representation % (with raw N),
 the WFA benchmark, the signed gap, a severity band, a priority flag, year-over-year
-movement, and PSES experience context — surfaced four ways: **ranked triage**
+movement, and PSES experience context — surfaced these ways: **ranked triage**
 (Explore), **cross-cutting patterns** (Compare — compounding shortfalls + a
-divergence lens), **year-over-year** (Track), and a generated **five-block briefing**
-(Present) — plus a grounded, guardrailed **Q&A** (Ask). Every output is a signal for
+divergence lens), **subgroup detail** (Subgroups — per-department experience by
+subgroup plus service-wide subgroup reference tables), **year-over-year** (Track),
+and a generated **five-block briefing** (Present) — plus a grounded, guardrailed
+**Q&A** (Ask). Every output is a signal for
 human review; the project produces no decisions, no composite scores, and no causal
 claims.
 
@@ -170,8 +172,10 @@ for 2024-25 matched within 0.3 percentage points.** That gives confidence the
 source pipeline is genuine, though the experience scores themselves cannot be
 independently re-derived by our own pipeline (the source's raw 2020/2022 PSES
 microdata, demographic-recoding concordance, and department-name mapping files
-aren't available to us) — shown in Explore's row detail only, labeled as a
-cross-validated external source, not our own verified figure. **Subgroup
+aren't available to us) — shown in Explore's row detail (harassment only) and,
+in full 6-theme detail with a department/group picker, on the dedicated
+**Subgroups** tab (2026-07-04) — both labeled as a cross-validated external
+source, not our own verified figure. **Subgroup
 representation/WFA remains out of scope** — it does not exist at the department
 level in any available source (confirmed by the source's own subgroup
 representation field always being empty). See `Deployment_Log.md` for the full

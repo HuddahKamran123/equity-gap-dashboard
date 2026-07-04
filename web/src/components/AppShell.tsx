@@ -7,10 +7,11 @@ const NAV = [
   { href: "/", label: "Frame", num: "01" },
   { href: "/explore", label: "Explore Gaps", num: "02" },
   { href: "/compare", label: "Compare", num: "03" },
-  { href: "/track", label: "Track", num: "04" },
-  { href: "/present", label: "Present", num: "05" },
-  { href: "/ask", label: "Ask", num: "06" },
-  { href: "/preview", label: "Preview", num: "07" },
+  { href: "/subgroups", label: "Subgroups", num: "04" },
+  { href: "/track", label: "Track", num: "05" },
+  { href: "/present", label: "Present", num: "06" },
+  { href: "/ask", label: "Ask", num: "07" },
+  { href: "/preview", label: "Preview", num: "08" },
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {

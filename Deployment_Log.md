@@ -293,6 +293,32 @@ its subgroup panel both confirmed rendering correctly in-browser.
 
 ---
 
+### [EPISODE] — 2026-07-04 · dedicated Subgroups tab (consolidation, no new data)
+Subgroup data was reachable but scattered — a compact harassment-only panel
+buried in Explore's row detail, and a full service-wide reference section
+collapsed by default on Frame. Added a new `/subgroups` tab (nav position 04,
+renumbering Track/Present/Ask/Preview to 05–08) consolidating both:
+
+- **By department**: a department + group picker showing the full 6-theme
+  (not just harassment) subgroup experience breakdown, reusing
+  `subgroupPsesFor()` — no new data, just a fuller view of what was already in
+  `subgroup_pses.json`.
+- **Service-wide reference**: the Racialized/Indigenous/Disability subgroup
+  tables, salary/age distribution, and WFA-benchmark history — moved
+  (not duplicated) from Frame, which now shows a one-line pointer link instead.
+
+Extracted the shared `fmtSubgroupCell` formatter (suppressed vs. not-surveyed
+distinction) from `ExploreView.tsx` into `lib/format.ts` so both views use the
+same logic rather than two copies drifting apart. Added a cross-link from
+Explore's compact panel to the new tab's full detail.
+
+Verification: `npm run build` clean (11 routes now), `eval/run_eval.py` still
+10/10 (no data changed), RCMP × Persons with Disabilities spot-checked on the
+new tab against the same oracle values, service-wide tables confirmed
+unchanged, Frame's pointer link confirmed present.
+
+---
+
 ### [EXTERNAL] — pending live use (2026-06-28 → 07-02)
 *To be filled once the deployed URL is in front of someone outside the build.*
 Capture: who used it, what they asked, where it helped, where it confused them, and
