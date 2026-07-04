@@ -1,0 +1,5 @@
+streamlit>=1.35
+pandas>=2.0,<3
+# pdfplumber is only needed for offline BT1-28 re-extraction (skills/extract_*.py),
+# not at app runtime — install locally if re-running extractions:
+# pip install pdfplumber>=0.10

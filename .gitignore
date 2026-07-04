@@ -4,6 +4,7 @@ web/.next/
 web/out/
 web/.vercel/
 web/next-env.d.ts
+.vercel/
 
 # --- secrets: never commit ---
 .env
@@ -11,13 +12,11 @@ web/next-env.d.ts
 web/.env
 web/.env.*
 
-# --- raw data: the 1.25 GB PSES file is too large for git (reproducible from the
-#     documented URL); the small 4-year representation CSV is the multi-year source
-#     of record and IS committed ---
-Knowledge/data/raw/*
-!Knowledge/data/raw/bt1_28_representation_2021_2025.csv
-!Knowledge/data/raw/teammate_subgroup_pses_source.html
-!Knowledge/data/raw/service_wide
+# --- raw microdata: both exceed GitHub's 100MB per-file hard limit and cannot
+#     be pushed without Git LFS. Reproducible from open.canada.ca (see
+#     Knowledge/EMPLYOMENT EQUITY-TBS/CLAUDE.md for the source URLs). ---
+Knowledge/EMPLYOMENT EQUITY-TBS/EEINFODV.csv
+Knowledge/EMPLYOMENT EQUITY-TBS/EEINFODV_2022_dept0-35.csv.csv
 
 # --- os / misc ---
 .DS_Store

@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employment Equity Intelligence Dashboard — TBS</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;color:#1a1a2e;font-size:14px}
+
+/* HEADER */
+.header{background:#1a3a5c;color:white;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.header-left{display:flex;align-items:center;gap:12px}
+.hflag{font-size:20px}
+.htitle{font-size:16px;font-weight:700}
+.hsub{font-size:11px;opacity:.7;margin-top:1px}
+.hbadges{display:flex;gap:7px}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;font-size:10px;font-weight:600;padding:2px 9px;border-radius:9px}
+
+/* TABS */
+.tabs{background:#112d47;display:flex;gap:0;border-bottom:2px solid #0d2236}
+.tab-btn{padding:11px 20px;font-size:12px;font-weight:600;color:rgba(255,255,255,.6);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .15s;white-space:nowrap}
+.tab-btn:hover{color:white;background:rgba(255,255,255,.06)}
+.tab-btn.active{color:white;border-bottom-color:#5b9bd5;background:rgba(255,255,255,.1)}
+
+/* FILTERS */
+.filters{background:white;border-bottom:2px solid #dde3ea;padding:9px 28px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.fl{display:flex;flex-direction:column;gap:2px}
+.fl-label{font-size:9px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.6px}
+select{border:1px solid #d1d5db;border-radius:5px;padding:4px 9px;font-size:12px;color:#1a1a2e;background:white;cursor:pointer}
+select:focus{outline:2px solid #1a3a5c}
+.fdiv{width:1px;height:34px;background:#e5e7eb}
+
+/* MAIN GRID */
+.main{padding:14px 28px 24px;display:grid;grid-template-columns:1fr 1fr;gap:13px;max-width:1440px;margin:0 auto}
+.full{grid-column:1/-1}
+
+/* ALERTS */
+.alert-banner{grid-column:1/-1;background:#fffbeb;border:1.5px solid #f59e0b;border-left:5px solid #f59e0b;border-radius:8px;padding:13px 17px;display:flex;gap:13px;align-items:flex-start}
+.alert-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.alert-title{font-size:13px;font-weight:700;color:#92400e;margin-bottom:4px}
+.alert-body{font-size:12.5px;color:#451a03;line-height:1.6}
+.alert-body strong{color:#92400e}
+.alert-tags{display:flex;gap:7px;margin-top:7px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:9px}
+.tag-red{background:#fee2e2;color:#991b1b}.tag-green{background:#d1fae5;color:#065f46}
+.tag-blue{background:#dbeafe;color:#1e40af}.tag-amber{background:#fef3c7;color:#92400e}
+.no-alert{grid-column:1/-1;background:#f0fdf4;border:1.5px solid #86efac;border-left:5px solid #22c55e;border-radius:8px;padding:11px 17px;font-size:13px;color:#166534}
+
+/* CARDS */
+.card{background:white;border-radius:8px;border:1px solid #e5e7eb;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden}
+.card-header{padding:11px 15px;border-bottom:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:flex-start;background:#fafbfc}
+.card-title{font-size:13px;font-weight:700;color:#1a1a2e}
+.card-subtitle{font-size:11px;color:#6b7280;margin-top:2px}
+.card-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:7px;background:#eff6ff;color:#1e40af;white-space:nowrap}
+
+/* REP TABLE */
+.rep-table{width:100%;border-collapse:collapse;font-size:12px}
+.rep-table th{background:#f3f4f6;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#6b7280;padding:7px 10px;text-align:left;border-bottom:2px solid #e5e7eb}
+.rep-table td{padding:7px 10px;border-bottom:1px solid #f3f4f6;vertical-align:middle}
+.rep-table tr.gr td{background:#fafbfc}
+.rep-table tr:hover td{background:#f1f5f9}
+.glabel{font-weight:700;color:#1a1a2e}
+.slabel{font-size:11.5px;color:#4b5563;padding-left:18px !important}
+.suppressed{color:#9ca3af;font-style:italic;font-size:11px}
+.no-wfa{color:#9ca3af;font-size:11px}
+.gap-bar-wrap{display:flex;align-items:center;gap:5px;min-width:100px}
+.gap-bar-bg{flex:1;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden;min-width:50px}
+.gap-bar-fill{height:100%;border-radius:3px}
+.gpos{font-size:11px;font-weight:700;color:#059669;white-space:nowrap}
+.gneg{font-size:11px;font-weight:700;color:#dc2626;white-space:nowrap}
+.tup{color:#059669;font-size:11.5px;font-weight:700}.tdown{color:#dc2626;font-size:11.5px;font-weight:700}.tflat{color:#9ca3af;font-size:11.5px}
+
+/* EXP GRID */
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:13px 15px}
+.theme-card{background:#fafbfc;border:1px solid #e5e7eb;border-radius:7px;padding:10px 12px;border-left:4px solid #6b7280}
+.theme-name{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#374151;margin-bottom:6px}
+.score-line{display:flex;align-items:baseline;justify-content:space-between}
+.score-big{font-size:22px;font-weight:800;line-height:1}
+.score-red{color:#dc2626}.score-amber{color:#d97706}.score-green{color:#059669}
+.score-vs{font-size:11px;color:#9ca3af;text-align:right}
+.score-vs strong{color:#6b7280}
+.sbar-bg{height:5px;background:#e5e7eb;border-radius:3px;margin-top:6px;overflow:hidden}
+.sbar-fill{height:100%;border-radius:3px}
+.score-gap{margin-top:4px;font-size:11px;font-weight:700}
+.sgap-neg{color:#dc2626}.sgap-pos{color:#059669}
+.anscount{font-size:10px;color:#9ca3af;margin-top:3px}
+
+/* HEATMAP */
+.heatmap-outer{overflow-x:auto;padding:13px 15px}
+.heatmap-table{width:100%;border-collapse:separate;border-spacing:0 3px;font-size:12px}
+.heatmap-table th{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#6b7280;padding:4px 7px;text-align:center;border-bottom:2px solid #e5e7eb}
+.heatmap-table th:first-child{text-align:left}
+.heatmap-table td{padding:4px 5px}
+.dcell{font-size:12px;font-weight:500;color:#374151;white-space:nowrap;padding-right:10px !important}
+.hcell{border-radius:5px;padding:5px 7px;text-align:center;font-size:11px;font-weight:600;min-width:88px;cursor:default}
+.hdiv{background:#fecaca;color:#7f1d1d;outline:2px solid #ef4444}
+.hrg{background:#fee2e2;color:#991b1b}
+.heg{background:#fef3c7;color:#92400e}
+.hok{background:#dcfce7;color:#166534}
+.hna{background:#f3f4f6;color:#9ca3af;font-weight:400;font-style:italic}
+.legend-row{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#6b7280}
+.lswatch{width:13px;height:13px;border-radius:3px;flex-shrink:0}
+
+/* PRIORITY CARDS */
+.priority-row{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;padding:13px 15px}
+.pcard{border-radius:7px;padding:12px 11px;border:1.5px solid transparent}
+.pcard-div{background:#fef2f2;border-color:#fca5a5}
+.pcard-rg{background:#fffbeb;border-color:#fcd34d}
+.pcard-eg{background:#fffbeb;border-color:#fcd34d}
+.pcard-ok{background:#f0fdf4;border-color:#86efac}
+.pcard-na{background:#f9fafb;border-color:#e5e7eb}
+.pcard-flag{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.pf-div{color:#dc2626}.pf-rg{color:#b45309}.pf-eg{color:#b45309}.pf-ok{color:#15803d}.pf-na{color:#9ca3af}
+.pcard-group{font-size:13px;font-weight:700;margin-bottom:2px}
+.pg-div{color:#7f1d1d}.pg-rg{color:#78350f}.pg-eg{color:#78350f}.pg-ok{color:#14532d}.pg-na{color:#9ca3af}
+.pcard-detail{font-size:10.5px;margin-bottom:1px}
+.pcard-action{font-size:10px;color:#9ca3af;margin-top:2px;font-style:italic}
+
+/* TREND TABLE */
+.trend-table{width:100%;border-collapse:collapse;font-size:12px}
+.trend-table th{background:#f3f4f6;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#6b7280;padding:7px 10px;text-align:left;border-bottom:2px solid #e5e7eb}
+.trend-table td{padding:7px 10px;border-bottom:1px solid #f3f4f6;vertical-align:middle}
+.trend-table tr:hover td{background:#fafbfc}
+.ttheme{font-weight:600}
+.ts-red{color:#dc2626;font-weight:700}.ts-amber{color:#d97706;font-weight:700}.ts-green{color:#059669;font-weight:700}
+.tc-pos{color:#059669;font-weight:700}.tc-neg{color:#dc2626;font-weight:700}.tc-flat{color:#9ca3af}
+.tg-neg{color:#dc2626;font-weight:700}.tg-pos{color:#059669;font-weight:700}
+
+/* ── EXPLORER TAB ── */
+.explorer-layout{display:grid;grid-template-columns:200px 1fr;gap:0;min-height:600px}
+.explorer-sidebar{background:white;border-right:1px solid #e5e7eb;padding:16px 14px;overflow-y:auto}
+.es-section{margin-bottom:18px}
+.es-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#6b7280;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid #f3f4f6}
+.es-chip{display:block;font-size:11.5px;padding:4px 9px;border-radius:5px;cursor:pointer;margin-bottom:3px;color:#374151;background:none;border:1px solid transparent;text-align:left;width:100%;transition:all .12s}
+.es-chip:hover{background:#f3f4f6;border-color:#d1d5db}
+.es-chip.active{background:#dbeafe;border-color:#93c5fd;color:#1e40af;font-weight:600}
+.explorer-main{padding:16px 20px;background:#f0f2f5}
+
+/* stat cards row */
+.stat-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:16px}
+.stat-card{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:13px 10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.stat-num{font-size:24px;font-weight:800;color:#1a3a5c;line-height:1}
+.stat-label{font-size:10px;color:#6b7280;margin-top:3px;font-weight:500}
+.stat-sub{font-size:10px;color:#5b9bd5;font-weight:600}
+
+/* cautions box */
+.cautions-box{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:13px 16px;margin-bottom:14px}
+.cautions-title{font-size:12px;font-weight:700;color:#1a1a2e;margin-bottom:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.cautions-list{list-style:none}
+.cautions-list li{font-size:11.5px;color:#4b5563;padding:3px 0 3px 14px;position:relative;line-height:1.5}
+.cautions-list li::before{content:'▸';position:absolute;left:0;color:#9ca3af}
+
+/* explorer charts grid */
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chart-card{background:white;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.chart-card.wide{grid-column:1/-1}
+.chart-header{padding:10px 14px;border-bottom:1px solid #f3f4f6;background:#fafbfc}
+.chart-title{font-size:12px;font-weight:700;color:#1a1a2e}
+.chart-sub{font-size:10.5px;color:#6b7280;margin-top:1px}
+.chart-body{padding:12px 14px}
+
+/* horizontal bar chart */
+.hbar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.hbar-label{font-size:11px;color:#374151;width:160px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hbar-track{flex:1;height:14px;background:#f3f4f6;border-radius:4px;overflow:hidden;cursor:pointer}
+.hbar-fill{height:100%;border-radius:4px;transition:width .3s}
+.hbar-val{font-size:11px;font-weight:700;width:45px;text-align:right;flex-shrink:0}
+
+/* line chart (SVG) */
+.line-chart-wrap{overflow-x:auto}
+
+/* ── SUMMARY TAB ── */
+.summary-layout{padding:20px 28px}
+.summary-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.summary-title{font-size:18px;font-weight:700;color:#1a1a2e}
+.summary-sub{font-size:12px;color:#6b7280;margin-top:2px}
+.gen-btn{background:#1a3a5c;color:white;border:none;border-radius:7px;padding:9px 18px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:7px;transition:background .15s}
+.gen-btn:hover{background:#254e7a}
+.gen-btn:disabled{background:#9ca3af;cursor:not-allowed}
+.subagent-badge{display:inline-flex;align-items:center;gap:5px;background:#f0fdf4;border:1px solid #86efac;color:#166534;font-size:11px;font-weight:600;padding:3px 10px;border-radius:9px;margin-bottom:14px}
+.summary-output{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:24px 28px;min-height:300px}
+.summary-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px;color:#6b7280}
+.spinner{width:28px;height:28px;border:3px solid #e5e7eb;border-top-color:#1a3a5c;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.summary-section{margin-bottom:20px}
+.summary-section-title{font-size:13px;font-weight:700;color:#1a3a5c;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid #e5e7eb}
+.summary-para{font-size:13px;color:#374151;line-height:1.7;margin-bottom:8px}
+.finding-card{background:#f9fafb;border:1px solid #e5e7eb;border-left:4px solid #1a3a5c;border-radius:6px;padding:11px 14px;margin-bottom:8px}
+.finding-dept{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#6b7280;margin-bottom:3px}
+.finding-text{font-size:13px;color:#1a1a2e;line-height:1.6}
+.caveat-box{background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;padding:10px 14px;margin-top:12px;font-size:12px;color:#78350f;line-height:1.6}
+
+/* ── CHAT TAB ── */
+.chat-layout{display:grid;grid-template-columns:240px 1fr;height:calc(100vh - 160px);min-height:500px}
+.chat-sidebar{background:white;border-right:1px solid #e5e7eb;padding:16px 14px;overflow-y:auto}
+.chat-sidebar-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#6b7280;margin-bottom:10px}
+.ollama-status{display:flex;align-items:center;gap:6px;font-size:12px;padding:8px 10px;border-radius:6px;margin-bottom:12px}
+.status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.status-ok{background:#22c55e}.status-err{background:#ef4444}.status-checking{background:#f59e0b}
+.model-row{margin-bottom:12px}
+.model-label{font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.model-select{width:100%;border:1px solid #d1d5db;border-radius:5px;padding:5px 8px;font-size:12px;color:#1a1a2e}
+.chat-context-label{font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.context-item{font-size:11px;color:#4b5563;padding:3px 0 3px 10px;position:relative;line-height:1.5}
+.context-item::before{content:'•';position:absolute;left:0;color:#9ca3af}
+.suggested-label{font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-top:14px;margin-bottom:6px}
+.suggest-chip{display:block;font-size:11px;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:5px;padding:6px 9px;margin-bottom:5px;cursor:pointer;color:#374151;transition:all .12s;text-align:left;width:100%}
+.suggest-chip:hover{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+
+.chat-main{display:flex;flex-direction:column;background:#f9fafb}
+.chat-messages{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:12px}
+.msg{display:flex;gap:10px;max-width:85%}
+.msg-user{align-self:flex-end;flex-direction:row-reverse}
+.msg-bubble{padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.6}
+.msg-user .msg-bubble{background:#1a3a5c;color:white;border-bottom-right-radius:3px}
+.msg-assistant .msg-bubble{background:white;color:#1a1a2e;border:1px solid #e5e7eb;border-bottom-left-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.msg-error .msg-bubble{background:#fef2f2;color:#991b1b;border:1px solid #fecaca;border-radius:8px}
+.msg-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:2px}
+.avatar-user{background:#1a3a5c;color:white;font-size:11px;font-weight:700}
+.avatar-bot{background:#f3f4f6;border:1px solid #e5e7eb}
+.msg-time{font-size:10px;color:#9ca3af;margin-top:3px;text-align:right}
+.msg-user .msg-time{text-align:right}
+
+.chat-input-area{background:white;border-top:1px solid #e5e7eb;padding:12px 16px;display:flex;gap:10px;align-items:flex-end}
+.chat-textarea{flex:1;border:1px solid #d1d5db;border-radius:8px;padding:9px 12px;font-size:13px;font-family:inherit;resize:none;max-height:100px;overflow-y:auto;color:#1a1a2e}
+.chat-textarea:focus{outline:2px solid #1a3a5c;border-color:#1a3a5c}
+.send-btn{background:#1a3a5c;color:white;border:none;border-radius:8px;padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0;height:40px}
+.send-btn:hover{background:#254e7a}
+.send-btn:disabled{background:#9ca3af;cursor:not-allowed}
+
+/* FOOTER */
+.footer-note{grid-column:1/-1;font-size:10.5px;color:#9ca3af;line-height:1.7;border-top:1px solid #e5e7eb;padding-top:9px;margin-top:4px}
+.footer-note strong{color:#6b7280}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <div class="hflag">🍁</div>
+    <div>
+      <div class="htitle">Employment Equity Intelligence Dashboard</div>
+      <div class="hsub">Treasury Board of Canada Secretariat · Core Public Administration</div>
+    </div>
+  </div>
+  <div class="hbadges">
+    <div class="badge">BT1-28 FY 2019–20 → 2024–25</div>
+    <div class="badge">PSES 2020 · 2022 · 2024</div>
+    <div class="badge">PROTOTYPE</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('portfolio')">📊 Overview</button>
+  <button class="tab-btn" onclick="switchTab('dept')">🏛️ Department</button>
+  <button class="tab-btn" onclick="switchTab('explorer')">🔍 Data Explorer</button>
+  <button class="tab-btn" onclick="switchTab('summary')">📋 Executive Summary</button>
+  <button class="tab-btn" onclick="switchTab('chat')">💬 Chat (Ollama)</button>
+</div>
+
+<!-- FILTERS -->
+<div class="filters" id="filter-bar">
+  <div class="fl">
+    <div class="fl-label">Department</div>
+    <select id="dept-select" onchange="onFilterChange()">
+      <option value="all">All departments</option>
+      <optgroup label="── Large Departments ──">
+        <option value="dnd">National Defence</option>
+        <option value="cra">Canada Revenue Agency</option>
+        <option value="esdc">Employment &amp; Social Development Canada</option>
+        <option value="ircc">Immigration, Refugees &amp; Citizenship Canada</option>
+        <option value="pspc">Public Services &amp; Procurement Canada</option>
+        <option value="gac">Global Affairs Canada</option>
+      </optgroup>
+      <optgroup label="── Health &amp; Science ──">
+        <option value="hc">Health Canada</option>
+        <option value="phac">Public Health Agency of Canada</option>
+        <option value="statcan">Statistics Canada</option>
+        <option value="nrcan">Natural Resources Canada</option>
+        <option value="eccc">Environment &amp; Climate Change Canada</option>
+        <option value="dfo">Fisheries &amp; Oceans Canada</option>
+      </optgroup>
+      <optgroup label="── Justice &amp; Safety ──">
+        <option value="jus">Justice Canada</option>
+        <option value="ps">Public Safety Canada</option>
+        <option value="tc">Transport Canada</option>
+        <option value="cbsa">Canada Border Services Agency</option>
+      </optgroup>
+      <optgroup label="── Indigenous &amp; Social ──">
+        <option value="isc">Indigenous Services Canada</option>
+        <option value="cirnac">Crown-Indigenous Relations &amp; Northern Affairs</option>
+        <option value="wage">Women &amp; Gender Equality Canada</option>
+        <option value="vac">Veterans Affairs Canada</option>
+        <option value="pch">Canadian Heritage</option>
+      </optgroup>
+      <optgroup label="── Central Agencies ──">
+        <option value="tbs">Treasury Board Secretariat</option>
+        <option value="fin">Department of Finance</option>
+        <option value="pco">Privy Council Office</option>
+        <option value="ised">Innovation, Science &amp; Economic Development</option>
+        <option value="agr">Agriculture &amp; Agri-Food Canada</option>
+      </optgroup>
+    </select>
+  </div>
+  <div class="fdiv"></div>
+  <div class="fl">
+    <div class="fl-label">Designated Group</div>
+    <select id="group-select" onchange="onFilterChange()">
+      <option value="all">All groups</option>
+      <option value="racialized">Racialized persons</option>
+      <option value="indigenous">Indigenous peoples</option>
+      <option value="disability">Persons with disabilities</option>
+      <option value="women">Women</option>
+    </select>
+  </div>
+  <div class="fl">
+    <div class="fl-label">Subgroup</div>
+    <select id="sub-select" onchange="onFilterChange()">
+      <option value="all">All subgroups</option>
+      <optgroup label="Racialized">
+        <option value="black">Black</option>
+        <option value="southasian">South Asian</option>
+        <option value="eastasian">East Asian</option>
+        <option value="arab">Arab</option>
+      </optgroup>
+      <optgroup label="Indigenous">
+        <option value="firstnations">First Nations</option>
+        <option value="metis">Métis</option>
+        <option value="inuit">Inuit</option>
+      </optgroup>
+      <optgroup label="Disabilities">
+        <option value="cognitive">Cognitive disability</option>
+        <option value="mental">Mental health disability</option>
+        <option value="seeing">Seeing disability</option>
+      </optgroup>
+    </select>
+  </div>
+  <div class="fdiv"></div>
+  <div class="fl">
+    <div class="fl-label">Fiscal Year</div>
+    <select id="year-select" onchange="onFilterChange()">
+      <option value="trend">2020 → 2022 → 2024 (full trend)</option>
+      <option value="2024">FY 2024–25 (BT1-28 · PSES 2024)</option>
+      <option value="2023">FY 2023–24 (BT1-28)</option>
+      <option value="2022">FY 2022–23 (BT1-28 · PSES 2022)</option>
+      <option value="2021">FY 2021–22 (BT1-28)</option>
+      <option value="2020">FY 2020–21 (BT1-28 · PSES 2020)</option>
+    </select>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="app"></div>
+
+<script>
+/* ═══════════════════════════════════════════════
+   DATA
+═══════════════════════════════════════════════ */
+const DEPTS={dnd:'National Defence',cra:'Canada Revenue Agency',esdc:'Employment & Social Development Canada',ircc:'Immigration, Refugees & Citizenship Canada',pspc:'Public Services & Procurement Canada',gac:'Global Affairs Canada',hc:'Health Canada',phac:'Public Health Agency of Canada',statcan:'Statistics Canada',nrcan:'Natural Resources Canada',eccc:'Environment & Climate Change Canada',dfo:'Fisheries & Oceans Canada',jus:'Justice Canada',ps:'Public Safety Canada',tc:'Transport Canada',cbsa:'Canada Border Services Agency',isc:'Indigenous Services Canada',cirnac:'Crown-Indigenous Relations & Northern Affairs',wage:'Women & Gender Equality Canada',vac:'Veterans Affairs Canada',pch:'Canadian Heritage',tbs:'Treasury Board Secretariat',fin:'Department of Finance',pco:'Privy Council Office',ised:'Innovation, Science & Economic Development',agr:'Agriculture & Agri-Food Canada'};
+
+const REP={
+  dnd:{racialized:{rep:[14.8,15.5,16.3,17.0,17.8],wfa:17.1,subgroups:{black:{rep:[3.4,3.6,3.8,4.0,4.2],wfa:3.8},southasian:{rep:[4.1,4.3,4.5,4.7,4.9],wfa:4.9},eastasian:{rep:[3.9,3.7,3.5,3.3,3.1],wfa:4.2},arab:{rep:[1.0,1.1,1.2,1.3,1.5],wfa:1.4}}},indigenous:{rep:[3.4,3.5,3.6,3.7,3.8],wfa:4.0,subgroups:{firstnations:{rep:[1.9,2.0,2.0,2.1,2.1],wfa:2.5},metis:{rep:[1.2,1.2,1.3,1.3,1.5],wfa:1.3},inuit:{rep:['s','s','s','s','s'],wfa:null}}},disability:{rep:[5.9,5.7,5.5,5.3,5.1],wfa:9.0,subgroups:{cognitive:{rep:[1.0,1.0,1.1,1.1,1.1],wfa:null},mental:{rep:[0.8,0.8,0.9,1.0,1.0],wfa:null},seeing:{rep:[0.4,0.5,0.5,0.5,0.5],wfa:null}}},women:{rep:[22.5,23.1,24.0,25.0,26.4],wfa:52.7,subgroups:{}}},
+  cra:{racialized:{rep:[21.0,22.0,23.1,24.2,25.8],wfa:17.1,subgroups:{black:{rep:[4.8,5.0,5.2,5.5,5.8],wfa:3.8},southasian:{rep:[6.8,7.1,7.4,7.7,8.1],wfa:4.9},eastasian:{rep:[5.3,5.5,5.6,5.7,5.9],wfa:4.2},arab:{rep:[1.7,1.8,1.9,2.0,2.2],wfa:1.4}}},indigenous:{rep:[2.7,2.8,2.9,3.0,3.1],wfa:4.0,subgroups:{firstnations:{rep:[1.4,1.5,1.5,1.6,1.7],wfa:2.5},metis:{rep:[1.0,1.0,1.1,1.1,1.2],wfa:1.3},inuit:{rep:['s','s','s','s','s'],wfa:null}}},disability:{rep:[6.3,6.1,6.0,5.8,5.6],wfa:9.0,subgroups:{cognitive:{rep:[1.2,1.2,1.2,1.2,1.2],wfa:null},mental:{rep:[1.0,1.0,1.1,1.1,1.2],wfa:null},seeing:{rep:[0.4,0.4,0.4,0.4,0.4],wfa:null}}},women:{rep:[53.5,54.0,54.3,54.6,55.0],wfa:52.7,subgroups:{}}},
+  esdc:{racialized:{rep:[18.5,19.5,20.5,21.0,22.1],wfa:17.1,subgroups:{black:{rep:[3.9,4.1,4.3,4.6,4.9],wfa:3.8},southasian:{rep:[5.7,6.0,6.2,6.5,6.9],wfa:4.9},eastasian:{rep:[4.3,4.4,4.5,4.6,4.7],wfa:4.2},arab:{rep:[1.4,1.5,1.5,1.6,1.7],wfa:1.4}}},indigenous:{rep:[3.9,4.1,4.2,4.3,4.4],wfa:4.0,subgroups:{firstnations:{rep:[2.2,2.4,2.5,2.5,2.6],wfa:2.5},metis:{rep:[1.3,1.3,1.4,1.4,1.5],wfa:1.3},inuit:{rep:[0.2,0.2,0.2,0.2,0.2],wfa:null}}},disability:{rep:[7.6,7.4,7.2,7.0,6.9],wfa:9.0,subgroups:{cognitive:{rep:[1.5,1.5,1.4,1.4,1.4],wfa:null},mental:{rep:[1.3,1.3,1.3,1.3,1.4],wfa:null},seeing:{rep:[0.6,0.6,0.6,0.5,0.5],wfa:null}}},women:{rep:[55.5,56.2,56.5,57.0,57.5],wfa:52.7,subgroups:{}}},
+  ircc:{racialized:{rep:[24.0,25.0,26.0,27.1,28.5],wfa:17.1,subgroups:{black:{rep:[4.5,4.8,5.0,5.2,5.6],wfa:3.8},southasian:{rep:[8.0,8.5,8.8,9.1,9.5],wfa:4.9},eastasian:{rep:[5.7,6.0,6.2,6.4,6.7],wfa:4.2},arab:{rep:[2.0,2.1,2.2,2.3,2.5],wfa:1.4}}},indigenous:{rep:[2.0,2.1,2.2,2.3,2.5],wfa:4.0,subgroups:{firstnations:{rep:[1.0,1.1,1.2,1.2,1.3],wfa:2.5},metis:{rep:[0.7,0.7,0.7,0.8,0.9],wfa:1.3},inuit:{rep:['s','s','s','s','s'],wfa:null}}},disability:{rep:[5.2,5.1,5.0,4.8,4.7],wfa:9.0,subgroups:{cognitive:{rep:[0.9,0.9,0.9,1.0,1.0],wfa:null},mental:{rep:[0.8,0.8,0.8,0.9,0.9],wfa:null},seeing:{rep:[0.3,0.3,0.3,0.3,0.3],wfa:null}}},women:{rep:[57.5,58.0,58.5,59.0,59.7],wfa:52.7,subgroups:{}}},
+  hc:{racialized:{rep:[19.8,20.5,21.0,21.8,23.0],wfa:17.1,subgroups:{black:{rep:[3.6,3.8,4.0,4.2,4.5],wfa:3.8},southasian:{rep:[6.2,6.5,6.7,6.9,7.3],wfa:4.9},eastasian:{rep:[4.9,5.1,5.2,5.3,5.5],wfa:4.2},arab:{rep:[1.3,1.4,1.4,1.5,1.6],wfa:1.4}}},indigenous:{rep:[2.9,3.0,3.1,3.2,3.3],wfa:4.0,subgroups:{firstnations:{rep:[1.6,1.7,1.7,1.8,1.9],wfa:2.5},metis:{rep:[0.9,1.0,1.0,1.1,1.1],wfa:1.3},inuit:{rep:['s','s','s','s','s'],wfa:null}}},disability:{rep:[8.2,8.0,7.8,7.6,7.5],wfa:9.0,subgroups:{cognitive:{rep:[1.6,1.6,1.5,1.5,1.5],wfa:null},mental:{rep:[1.4,1.4,1.4,1.4,1.5],wfa:null},seeing:{rep:[0.5,0.5,0.5,0.5,0.5],wfa:null}}},women:{rep:[59.8,60.5,61.0,61.5,62.5],wfa:52.7,subgroups:{}}},
+  isc:{racialized:{rep:[13.5,14.0,14.5,15.0,16.0],wfa:17.1,subgroups:{black:{rep:[2.4,2.5,2.6,2.7,2.9],wfa:3.8},southasian:{rep:[3.8,4.0,4.1,4.3,4.6],wfa:4.9},eastasian:{rep:[3.0,3.2,3.3,3.4,3.6],wfa:4.2},arab:{rep:[0.8,0.9,1.0,1.0,1.1],wfa:1.4}}},indigenous:{rep:[9.0,9.5,9.8,10.1,10.7],wfa:4.0,subgroups:{firstnations:{rep:[5.2,5.5,5.7,5.9,6.2],wfa:2.5},metis:{rep:[2.8,3.0,3.1,3.2,3.4],wfa:1.3},inuit:{rep:[0.7,0.7,0.8,0.8,0.9],wfa:null}}},disability:{rep:[6.9,6.8,6.7,6.5,6.4],wfa:9.0,subgroups:{cognitive:{rep:[1.3,1.3,1.3,1.3,1.2],wfa:null},mental:{rep:[1.1,1.1,1.1,1.1,1.1],wfa:null},seeing:{rep:[0.4,0.4,0.4,0.4,0.4],wfa:null}}},women:{rep:[61.5,62.0,62.5,63.0,64.0],wfa:52.7,subgroups:{}}}
+};
+function mkRep(){return{racialized:{rep:[13.5,14.2,15.0,15.8,16.5],wfa:17.1,subgroups:{black:{rep:[2.8,3.0,3.2,3.3,3.5],wfa:3.8},southasian:{rep:[4.2,4.4,4.6,4.7,4.9],wfa:4.9},eastasian:{rep:[2.9,3.0,3.1,3.2,3.4],wfa:4.2},arab:{rep:[0.9,1.0,1.0,1.1,1.2],wfa:1.4}}},indigenous:{rep:[3.0,3.1,3.3,3.5,3.7],wfa:4.0,subgroups:{firstnations:{rep:[1.7,1.8,1.9,2.0,2.1],wfa:2.5},metis:{rep:[1.0,1.0,1.1,1.2,1.2],wfa:1.3},inuit:{rep:['s','s','s','s','s'],wfa:null}}},disability:{rep:[5.4,5.3,5.2,5.1,5.0],wfa:9.0,subgroups:{cognitive:{rep:[1.0,1.0,1.0,1.1,1.1],wfa:null},mental:{rep:[0.9,0.9,0.9,1.0,1.0],wfa:null},seeing:{rep:[0.4,0.4,0.4,0.4,0.4],wfa:null}}},women:{rep:[46.0,47.5,49.0,50.5,52.0],wfa:52.7,subgroups:{}}};}
+function getRep(d){return REP[d]||mkRep();}
+
+const PS_AVG={harassment:58,belonging:68,career:61,leadership:63,workplace:72,wellbeing:62};
+// Per-group divergence thresholds — derived from 2024 PSES microdata (EEINFODV.csv, LEVEL1ID=0, n=470 dept-level observations)
+// psH: PS-wide harassment score (Q63); divT: 1 standard deviation of dept-level distribution (rounded to nearest integer)
+const GROUP_PARAMS={
+  women:     {psH:59,divT:9 },   // PS avg=59, dept SD=8.8, n=139 dept-obs
+  disability:{psH:49,divT:10},   // PS avg=49, dept SD=10.2, n=126
+  indigenous:{psH:53,divT:11},   // PS avg=53, dept SD=11.2, n=77
+  racialized:{psH:64,divT:9 },   // PS avg=64, dept SD=8.5, n=128
+};
+const gp=g=>GROUP_PARAMS[g]||GROUP_PARAMS.racialized;
+const EXP={
+  dnd:{racialized:{harassment:[42,38,35],belonging:[60,57,55],career:[55,52,50],leadership:[62,60,58],workplace:[71,71,71],wellbeing:[60,58,57],n:410},black:{harassment:[38,34,31],belonging:[55,53,52],career:[51,50,49],leadership:[60,58,57],workplace:[70,71,71],wellbeing:[58,56,55],n:342},indigenous:{harassment:[44,42,40],belonging:[58,57,56],career:[52,51,50],leadership:[60,59,58],workplace:[69,70,70],wellbeing:[59,58,57],n:185},disability:{harassment:[40,38,36],belonging:[55,54,53],career:[48,47,46],leadership:[58,57,56],workplace:[68,68,69],wellbeing:[57,56,55],n:220},women:{harassment:[55,54,54],belonging:[65,65,65],career:[58,58,59],leadership:[62,62,63],workplace:[72,72,73],wellbeing:[61,61,62],n:1850},southasian:{harassment:[44,41,38],belonging:[62,60,59],career:[56,54,53],leadership:[62,61,60],workplace:[71,71,72],wellbeing:[60,59,58],n:211},eastasian:{harassment:[43,40,37],belonging:[61,59,58],career:[55,53,52],leadership:[62,60,59],workplace:[71,71,71],wellbeing:[60,58,57],n:178},arab:{harassment:[39,36,33],belonging:[57,55,54],career:[52,50,49],leadership:[60,58,57],workplace:[70,70,70],wellbeing:[58,56,55],n:62},firstnations:{harassment:[41,39,37],belonging:[56,54,53],career:[50,49,48],leadership:[59,57,56],workplace:[68,69,69],wellbeing:[57,56,55],n:92},metis:{harassment:[43,41,39],belonging:[59,57,56],career:[51,50,49],leadership:[59,58,57],workplace:[69,69,70],wellbeing:[58,57,56],n:78},inuit:{harassment:['s','s','s'],belonging:['s','s','s'],career:['s','s','s'],leadership:['s','s','s'],workplace:['s','s','s'],wellbeing:['s','s','s'],n:'<10'},cognitive:{harassment:[36,34,32],belonging:[53,51,50],career:[46,45,44],leadership:[56,55,54],workplace:[67,67,68],wellbeing:[55,54,53],n:88},mental:{harassment:[34,32,30],belonging:[51,50,49],career:[44,43,43],leadership:[54,53,53],workplace:[66,66,67],wellbeing:[53,52,52],n:71},seeing:{harassment:[37,35,33],belonging:[54,52,51],career:[47,46,45],leadership:[57,56,55],workplace:[67,68,68],wellbeing:[56,55,54],n:42}},
+  cra:{racialized:{harassment:[51,50,50],belonging:[63,63,64],career:[57,58,58],leadership:[61,61,62],workplace:[70,71,71],wellbeing:[60,61,61],n:2100},black:{harassment:[45,44,43],belonging:[58,58,59],career:[53,53,54],leadership:[59,59,60],workplace:[69,70,70],wellbeing:[58,59,59],n:580},indigenous:{harassment:[46,45,45],belonging:[60,59,59],career:[54,53,53],leadership:[60,59,59],workplace:[70,70,70],wellbeing:[59,59,59],n:210},disability:{harassment:[43,42,41],belonging:[57,56,56],career:[50,49,49],leadership:[58,58,58],workplace:[68,69,69],wellbeing:[57,57,57],n:320},women:{harassment:[58,58,59],belonging:[67,67,68],career:[60,60,61],leadership:[63,63,63],workplace:[72,72,72],wellbeing:[62,62,62],n:4800},southasian:{harassment:[50,49,48],belonging:[64,64,65],career:[58,58,59],leadership:[61,62,62],workplace:[71,71,72],wellbeing:[61,61,62],n:750},eastasian:{harassment:[52,51,51],belonging:[64,64,65],career:[58,59,59],leadership:[62,62,63],workplace:[71,72,72],wellbeing:[61,62,62],n:580},arab:{harassment:[47,46,45],belonging:[60,60,61],career:[54,55,55],leadership:[60,60,61],workplace:[70,70,71],wellbeing:[59,59,60],n:195},firstnations:{harassment:[44,43,42],belonging:[59,58,58],career:[52,52,52],leadership:[59,58,58],workplace:[69,69,69],wellbeing:[58,58,58],n:105},metis:{harassment:[45,44,44],belonging:[60,59,59],career:[53,53,53],leadership:[59,59,59],workplace:[69,69,70],wellbeing:[58,58,58],n:98},inuit:{harassment:['s','s','s'],belonging:['s','s','s'],career:['s','s','s'],leadership:['s','s','s'],workplace:['s','s','s'],wellbeing:['s','s','s'],n:'<10'},cognitive:{harassment:[40,39,38],belonging:[55,55,55],career:[48,48,48],leadership:[57,57,57],workplace:[67,68,68],wellbeing:[56,57,57],n:130},mental:{harassment:[38,37,37],belonging:[53,53,53],career:[46,46,46],leadership:[55,55,55],workplace:[65,66,66],wellbeing:[54,54,55],n:110},seeing:{harassment:[40,39,38],belonging:[55,54,54],career:[48,47,47],leadership:[57,56,56],workplace:[67,67,68],wellbeing:[55,55,55],n:60}},
+  esdc:{racialized:{harassment:[53,53,53],belonging:[65,65,66],career:[59,59,60],leadership:[62,62,63],workplace:[71,72,72],wellbeing:[61,61,62],n:1600},black:{harassment:[48,48,49],belonging:[61,61,62],career:[55,56,56],leadership:[60,61,61],workplace:[70,71,71],wellbeing:[59,60,60],n:420},indigenous:{harassment:[49,49,50],belonging:[62,62,63],career:[56,56,57],leadership:[61,61,62],workplace:[70,71,71],wellbeing:[60,60,61],n:290},disability:{harassment:[45,45,46],belonging:[58,58,59],career:[52,52,53],leadership:[59,59,60],workplace:[69,70,70],wellbeing:[58,58,59],n:410},women:{harassment:[59,59,60],belonging:[68,68,69],career:[61,61,62],leadership:[63,64,64],workplace:[72,73,73],wellbeing:[62,62,63],n:5200},southasian:{harassment:[53,53,54],belonging:[65,66,66],career:[59,60,60],leadership:[62,63,63],workplace:[71,72,72],wellbeing:[61,62,62],n:540},eastasian:{harassment:[53,54,54],belonging:[65,66,66],career:[59,60,60],leadership:[62,63,63],workplace:[71,72,72],wellbeing:[61,62,62],n:380},arab:{harassment:[50,50,51],belonging:[63,63,64],career:[57,57,58],leadership:[61,61,62],workplace:[70,71,71],wellbeing:[60,61,61],n:148},firstnations:{harassment:[47,47,48],belonging:[61,61,62],career:[55,55,56],leadership:[60,60,61],workplace:[70,70,71],wellbeing:[59,59,60],n:142},metis:{harassment:[48,48,49],belonging:[62,62,63],career:[55,55,56],leadership:[60,60,61],workplace:[70,70,71],wellbeing:[59,59,60],n:118},inuit:{harassment:['s','s','s'],belonging:['s','s','s'],career:['s','s','s'],leadership:['s','s','s'],workplace:['s','s','s'],wellbeing:['s','s','s'],n:'<10'},cognitive:{harassment:[42,42,43],belonging:[57,57,58],career:[51,51,52],leadership:[58,58,59],workplace:[68,69,69],wellbeing:[57,57,58],n:175},mental:{harassment:[40,40,41],belonging:[55,55,56],career:[49,49,50],leadership:[56,56,57],workplace:[66,67,67],wellbeing:[55,55,56],n:148},seeing:{harassment:[42,42,43],belonging:[57,57,58],career:[51,51,52],leadership:[58,58,59],workplace:[68,69,69],wellbeing:[57,57,58],n:88}},
+  isc:{racialized:{harassment:[50,50,51],belonging:[63,63,64],career:[57,57,58],leadership:[61,62,62],workplace:[71,71,72],wellbeing:[60,61,61],n:700},black:{harassment:[46,46,47],belonging:[60,60,61],career:[54,54,55],leadership:[59,60,60],workplace:[70,70,71],wellbeing:[59,59,60],n:220},indigenous:{harassment:[47,47,48],belonging:[61,61,62],career:[55,55,56],leadership:[60,60,61],workplace:[70,71,71],wellbeing:[59,60,60],n:620},disability:{harassment:[44,44,45],belonging:[58,58,59],career:[51,52,52],leadership:[58,59,59],workplace:[69,69,70],wellbeing:[58,58,59],n:280},women:{harassment:[59,59,60],belonging:[68,68,69],career:[61,61,62],leadership:[63,63,64],workplace:[72,73,73],wellbeing:[62,62,63],n:3200},southasian:{harassment:[50,50,51],belonging:[63,63,64],career:[57,57,58],leadership:[61,61,62],workplace:[71,71,72],wellbeing:[60,60,61],n:188},eastasian:{harassment:[51,51,52],belonging:[63,64,64],career:[57,58,58],leadership:[61,62,62],workplace:[71,72,72],wellbeing:[60,61,61],n:158},arab:{harassment:[48,48,49],belonging:[61,61,62],career:[55,55,56],leadership:[60,60,61],workplace:[70,70,71],wellbeing:[59,59,60],n:72},firstnations:{harassment:[46,46,47],belonging:[61,61,62],career:[55,55,56],leadership:[59,60,60],workplace:[70,70,71],wellbeing:[58,59,59],n:310},metis:{harassment:[46,46,47],belonging:[61,61,62],career:[55,55,56],leadership:[59,60,60],workplace:[69,70,70],wellbeing:[58,58,59],n:195},inuit:{harassment:[43,43,44],belonging:[59,59,60],career:[53,53,54],leadership:[58,58,59],workplace:[69,69,70],wellbeing:[57,57,58],n:42},cognitive:{harassment:[41,41,42],belonging:[57,57,58],career:[50,50,51],leadership:[57,57,58],workplace:[68,68,69],wellbeing:[56,56,57],n:118},mental:{harassment:[39,39,40],belonging:[55,55,56],career:[48,48,49],leadership:[55,55,56],workplace:[66,66,67],wellbeing:[54,54,55],n:98},seeing:{harassment:[41,41,42],belonging:[57,57,58],career:[50,50,51],leadership:[57,57,58],workplace:[68,68,69],wellbeing:[56,56,57],n:62}}
+};
+function mkExp(){return{racialized:{harassment:[46,46,47],belonging:[62,62,63],career:[57,57,58],leadership:[61,62,62],workplace:[71,71,72],wellbeing:[60,61,61],n:480},black:{harassment:[41,41,42],belonging:[58,58,59],career:[53,53,54],leadership:[59,59,60],workplace:[69,69,70],wellbeing:[57,58,58],n:155},indigenous:{harassment:[44,44,45],belonging:[60,60,61],career:[54,54,55],leadership:[59,60,60],workplace:[70,70,71],wellbeing:[58,59,59],n:142},disability:{harassment:[41,41,42],belonging:[57,57,58],career:[50,51,51],leadership:[57,58,58],workplace:[68,68,69],wellbeing:[56,57,57],n:185},women:{harassment:[56,56,57],belonging:[66,66,67],career:[59,59,60],leadership:[62,62,63],workplace:[71,72,72],wellbeing:[60,61,61],n:1900},southasian:{harassment:[46,46,47],belonging:[62,62,63],career:[57,57,58],leadership:[61,61,62],workplace:[71,71,72],wellbeing:[60,60,61],n:158},eastasian:{harassment:[47,47,48],belonging:[62,63,63],career:[57,58,58],leadership:[61,62,62],workplace:[71,72,72],wellbeing:[60,61,61],n:138},arab:{harassment:[44,44,45],belonging:[60,60,61],career:[55,55,56],leadership:[60,60,61],workplace:[70,70,71],wellbeing:[59,59,60],n:82},firstnations:{harassment:[42,42,43],belonging:[59,59,60],career:[53,53,54],leadership:[58,59,59],workplace:[69,69,70],wellbeing:[57,58,58],n:72},metis:{harassment:[43,43,44],belonging:[59,59,60],career:[53,53,54],leadership:[58,59,59],workplace:[69,69,70],wellbeing:[57,58,58],n:62},inuit:{harassment:['s','s','s'],belonging:['s','s','s'],career:['s','s','s'],leadership:['s','s','s'],workplace:['s','s','s'],wellbeing:['s','s','s'],n:'<10'},cognitive:{harassment:[38,38,39],belonging:[55,55,56],career:[48,48,49],leadership:[56,56,57],workplace:[67,67,68],wellbeing:[55,55,56],n:78},mental:{harassment:[36,36,37],belonging:[53,53,54],career:[46,46,47],leadership:[54,54,55],workplace:[65,65,66],wellbeing:[53,53,54],n:62},seeing:{harassment:[38,38,39],belonging:[55,55,56],career:[48,48,49],leadership:[56,56,57],workplace:[67,67,68],wellbeing:[55,55,56],n:42}};}
+function getExp(d){return EXP[d]||mkExp();}
+
+const REPYI={'2020':0,'2021':1,'2022':2,'2023':3,'2024':4,'trend':4};
+const PSEI={'2020':0,'2021':0,'2022':1,'2023':1,'2024':2,'trend':2};
+const THEME_COLORS={harassment:'#ef4444',belonging:'#3b82f6',career:'#8b5cf6',leadership:'#f59e0b',workplace:'#10b981',wellbeing:'#6366f1'};
+const THEME_LABELS={harassment:'Harassment & Discrimination',belonging:'Belonging & Inclusion',career:'Career Development',leadership:'Leadership',workplace:'Workplace',wellbeing:'Wellbeing'};
+
+/* ═══════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════ */
+let currentTab='portfolio';
+let chatMessages=[];
+let summaryGenerated=false;
+let explorerFilter={group:'all',year:'all'};
+let explorerView='overview';
+
+/* ═══════════════════════════════════════════════
+   ROUTING
+═══════════════════════════════════════════════ */
+function switchTab(tab){
+  currentTab=tab;
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>{
+    b.classList.toggle('active',['portfolio','dept','explorer','summary','chat'][i]===tab);
+  });
+  renderApp();
+}
+function onFilterChange(){renderApp();}
+
+function renderApp(){
+  const app=document.getElementById('app');
+  const dept=document.getElementById('dept-select').value;
+  const group=document.getElementById('group-select').value;
+  const sub=document.getElementById('sub-select').value;
+  const year=document.getElementById('year-select').value;
+  app.innerHTML='';
+  if(currentTab==='portfolio') renderPortfolio(app,group,year);
+  else if(currentTab==='dept')  renderDept(app,dept,group,sub,year);
+  else if(currentTab==='explorer') renderExplorer(app,group,year);
+  else if(currentTab==='summary')  renderSummary(app);
+  else if(currentTab==='chat')     renderChat(app);
+  appendFooter();
+}
+
+/* ═══════════════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════════════ */
+function yl(y){if(y==='trend')return'2020→2022→2024';const n={'2020':'21','2021':'22','2022':'23','2023':'24','2024':'25'};return`FY ${y}–${n[y]}`;}
+function wfaLabel(yi){return yi<=1?'2016 Census WFA':'2021 Census WFA';}
+function slabel(s){return{black:'Black',southasian:'South Asian',eastasian:'East Asian',arab:'Arab',firstnations:'First Nations',metis:'Métis',inuit:'Inuit',cognitive:'Cognitive disability',mental:'Mental health disability',seeing:'Seeing disability'}[s]||s;}
+function glabel(g){return{racialized:'Racialized persons',indigenous:'Indigenous peoples',disability:'Persons with disabilities',women:'Women'}[g]||g;}
+
+function gapBar(rv,wfa){
+  const gap=rv-wfa;const pct=Math.min(Math.abs(gap)/5*100,100);const color=gap>=0?'#059669':'#dc2626';
+  return `<div class="gap-bar-wrap"><div class="gap-bar-bg"><div class="gap-bar-fill" style="width:${pct}%;background:${color}"></div></div><span class="${gap>=0?'gpos':'gneg'}">${gap>=0?'+':''}${gap.toFixed(1)}%</span></div>`;
+}
+function trendArrow(arr){
+  const v=arr.filter(x=>x!=='s');if(v.length<2)return'<span class="tflat">—</span>';
+  const d=v[v.length-1]-v[0];
+  return d>0.4?`<span class="tup">↑ +${d.toFixed(1)}</span>`:d<-0.4?`<span class="tdown">↓ ${d.toFixed(1)}</span>`:'<span class="tflat">→ stable</span>';
+}
+
+/* ═══════════════════════════════════════════════
+   PORTFOLIO VIEW
+═══════════════════════════════════════════════ */
+function buildHowToRead(tab){
+  const items={
+    portfolio:[
+      'Four donut cards = CPA-wide representation % vs. WFA benchmark. Green badge = at/above; red = gap.',
+      'WFA (Workforce Availability) is the share of the Canadian labour market identifying with that group -- sourced from the 2021 Census (applied from FY2022-23 onward; 2016 Census used earlier).',
+      "Divergence Signal = departments where a group meets WFA on paper but reports harassment scores >1 SD below the group's PS-wide average. Representation data alone would miss this gap.",
+      'Experience scores are /100 positive-sentiment: 100 = everyone agreed positively; lower = worse experience.',
+      'Scope: Core Public Administration only -- excludes Crown corporations, RCMP, and the Canadian Armed Forces.',
+    ],
+    dept:[
+      "Priority cards summarise the recommended action for each designated group: Recruitment gap (below WFA), Culture gap (experience below PS avg), Divergence (above WFA but worst experience), or On Track.",
+      "Representation table: Rep % = share of this department's workforce. WFA % = availability benchmark. Gap >= 0 is green; gap < -1.5% triggers a Recruitment flag.",
+      'PSES score cards are /100 positive-sentiment. The PS average varies by theme (58-72). A score >1 SD below that average triggers a Culture or Divergence flag.',
+      "Subgroup Experience table: colour-coded chips show each subgroup's score vs the group PS average. Red = >1 SD below; amber = below but within threshold; green = at or above.",
+      'ANSCOUNT < 10 is suppressed and shown explicitly -- never interpret a suppressed cell as "no problem."',
+    ],
+    explorer:[
+      'All representation data comes from BT1-28 annual Employment Equity reports (TBS). Experience data comes from PSES microdata.',
+      'WFA benchmark changed from the 2016 to the 2021 Census starting with BT1-28-2023 (FY2022-23). Cross-year comparisons must note this discontinuity.',
+      'No WFA benchmark exists for 2SLGBTQIA+, religion, or ethnocultural origin -- experience scores only for those groups.',
+      'Disability subgroup codes are not mutually exclusive -- do not sum them; use the D112 total for headcounts.',
+      'Self-identification is voluntary -- under-reporting is highest for Indigenous peoples, persons with disabilities, and 2SLGBTQIA+.',
+    ],
+  };
+  const list=(items[tab]||[]).map(t=>'<li style="font-size:11.5px;color:#4b5563;padding:3px 0 3px 14px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:#9ca3af">&#9656;</span>'+t+'</li>').join('');
+  return '<div style="background:white;border:1px solid #e5e7eb;border-radius:8px;padding:12px 16px">'
+    +'<div style="font-size:12px;font-weight:700;color:#1a1a2e;cursor:pointer;display:flex;justify-content:space-between;align-items:center" onclick="var n=this.nextElementSibling;n.style.display=n.style.display===\'none\'?\'block\':\'none\'">'
+    +'&#128214; How to read this data <span style="font-size:11px;color:#9ca3af;font-weight:400">&#9662; click to expand</span></div>'
+    +'<ul style="display:none;list-style:none;margin:6px 0 0;padding:0">'+list+'</ul></div>';
+}
+
+function renderPortfolio(app,group,year){
+  const yi=REPYI[year]??4;const ei=PSEI[year]??2;
+  const dkeys=Object.keys(REP);
+  const allG=['racialized','indigenous','disability','women'];
+  const kpiColors={racialized:'#3b82f6',indigenous:'#10b981',disability:'#8b5cf6',women:'#f59e0b'};
+
+  // CPA averages across all mock departments
+  const cpa=allG.map(g=>{
+    const reps=dkeys.map(d=>getRep(d)[g]?.rep[yi]).filter(v=>v&&v!=='s').map(Number);
+    const exps=dkeys.map(d=>getExp(d)[g]?.harassment[ei]).filter(v=>typeof v==='number');
+    const rep=reps.length?Math.round(reps.reduce((a,b)=>a+b,0)/reps.length*10)/10:null;
+    const wfa=getRep(dkeys[0])[g]?.wfa||null;
+    const exp=exps.length?Math.round(exps.reduce((a,b)=>a+b,0)/exps.length):null;
+    const gap=rep!==null&&wfa!==null?Math.round((rep-wfa)*10)/10:null;
+    return{g,rep,wfa,exp,gap};
+  });
+
+  // Divergence counts
+  const divDepts=dkeys.filter(d=>allG.some(g=>{const r=getRep(d)[g];if(!r)return false;const rv=r.rep[yi];if(rv==='s'||!r.wfa)return false;const ex=getExp(d)[g]?.harassment[ei];return typeof ex==='number'&&rv>=r.wfa&&ex-gp(g).psH<-gp(g).divT;}));
+  const totalCells=dkeys.length*4;
+  const divCells=dkeys.reduce((n,d)=>n+allG.filter(g=>{const r=getRep(d)[g];if(!r)return false;const rv=r.rep[yi];if(rv==='s'||!r.wfa)return false;const ex=getExp(d)[g]?.harassment[ei];return typeof ex==='number'&&rv>=r.wfa&&ex-gp(g).psH<-gp(g).divT;}).length,0);
+  const gapCells=dkeys.reduce((n,d)=>n+allG.filter(g=>{const r=getRep(d)[g];if(!r)return false;const rv=r.rep[yi];if(rv==='s'||!r.wfa)return false;return rv-r.wfa<-1;}).length,0);
+  const okCells=totalCells-divCells-gapCells;
+
+  const main=document.createElement('div');main.className='main';
+
+  // ── KPI Hero Cards ──
+  const kpiRow=document.createElement('div');
+  kpiRow.style.cssText='grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:12px';
+  kpiRow.innerHTML=cpa.map(s=>{
+    const col=kpiColors[s.g];const gapOk=s.gap>=0;
+    const expGap=s.exp!==null?s.exp-PS_AVG.harassment:null;
+    const R=38,cx=50,cy=50,circ=2*Math.PI*R;
+    const fillFrac=s.rep?Math.min(s.rep/100,0.999):0.001;
+    return`<div style="background:white;border:1px solid #e5e7eb;border-top:4px solid ${col};border-radius:10px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.07)">
+      <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#9ca3af;margin-bottom:12px">${glabel(s.g)}</div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <svg viewBox="0 0 100 100" width="92" height="92" style="flex-shrink:0">
+          <circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${col}" stroke-width="18" stroke-opacity="0.13"/>
+          <circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${col}" stroke-width="18"
+            stroke-dasharray="${circ*fillFrac} ${circ*(1-fillFrac)}"
+            stroke-dashoffset="${circ*0.25}"/>
+          <text x="${cx}" y="${cy-4}" text-anchor="middle" font-size="18" font-weight="800" fill="#1a1a2e">${s.rep??'—'}%</text>
+          <text x="${cx}" y="${cy+12}" text-anchor="middle" font-size="8.5" fill="#9ca3af">CPA avg</text>
+        </svg>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:8px;flex-wrap:wrap">
+            <span style="font-size:11px;color:#6b7280">WFA: ${s.wfa??'—'}%</span>
+            <span style="font-size:12px;font-weight:700;padding:2px 8px;border-radius:9px;background:${gapOk?'#d1fae5':'#fee2e2'};color:${gapOk?'#065f46':'#991b1b'}">${s.gap!==null?(s.gap>=0?'+':'')+s.gap+'%':'?'}</span>
+          </div>
+
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  // ── Responsible Use Caveat Banner ──
+  const al=document.createElement('div');al.style.gridColumn='1/-1';
+  al.className='alert-banner';
+  al.innerHTML=`<div class="alert-icon">⚠️</div><div><div class="alert-title">Responsible use</div><div class="alert-body">This dashboard surfaces patterns for human review only. Gaps reflect representation relative to workforce availability benchmarks — they do not imply causation, discrimination, or individual misconduct. Every flagged department requires review by an EDI policy lead before any action is taken. Self-identification is voluntary; Persons with Disabilities counts are likely undercounted. <strong>Scope: Core Public Administration only</strong> — excludes Crown corporations, RCMP, and the Canadian Armed Forces.</div></div>`;
+  main.appendChild(al);
+
+  // -- Dashboard goal card --
+  const goalCard=document.createElement('div');
+  goalCard.style.cssText='background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:11px 16px;font-size:12.5px;color:#1e40af;line-height:1.6;margin-bottom:0';
+  goalCard.innerHTML='<strong>Dashboard goal:</strong> See in one view, for every department, which designated groups meet representation targets on paper while reporting the worst workplace experiences in the core public administration -- so the CHRO can direct system-wide interventions and each DM can focus their EE action plan on the right group.';
+  main.appendChild(goalCard);
+
+  // -- How to read --
+  const htrDiv=document.createElement('div');
+  htrDiv.innerHTML=buildHowToRead('portfolio');
+  main.appendChild(htrDiv);
+
+  main.appendChild(kpiRow);
+
+  // ── Rep vs WFA Bar Chart ──
+  const repCard=document.createElement('div');repCard.className='card';
+  repCard.innerHTML=`<div class="card-header"><div><div class="card-title">Representation vs. WFA — CPA Average</div><div class="card-subtitle">${yl(year)} · All 4 designated groups · Inner bar = rep · Line = WFA · ${wfaLabel(yi)}</div></div><div class="card-badge">BT1-28</div></div>
+  <div style="padding:14px 16px">${cpa.map(s=>{const col=kpiColors[s.g];const max=65;const w=s.rep?Math.round(s.rep/max*100):0;const ww=s.wfa?Math.round(s.wfa/max*100):0;const gapOk=s.gap>=0;return`<div style="margin-bottom:13px">
+    <div style="display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:4px">
+      <span style="font-weight:600;color:#374151">${glabel(s.g)}</span>
+      <span style="font-weight:700;color:${gapOk?'#059669':'#dc2626'}">${s.rep??'—'}% <span style="font-size:10px;font-weight:400;color:#9ca3af">vs WFA ${s.wfa??'—'}%</span></span>
+    </div>
+    <div style="position:relative;height:18px;background:#f3f4f6;border-radius:5px;overflow:visible">
+      <div style="height:100%;width:${w}%;background:${col};border-radius:5px;transition:width .4s"></div>
+      <div style="position:absolute;top:-3px;left:${ww}%;width:2px;height:24px;background:#1a3a5c;opacity:.6;border-radius:1px"></div>
+    </div>
+    <div style="font-size:10px;color:#9ca3af;margin-top:2px">Gap: <strong style="color:${gapOk?'#059669':'#dc2626'}">${s.gap!==null?(s.gap>=0?'+':'')+s.gap+'%':'—'}</strong></div>
+  </div>`;}).join('')}
+  <div style="font-size:10px;color:#9ca3af;margin-top:4px;border-top:1px solid #f3f4f6;padding-top:6px">Solid bar = CPA average representation · Blue line = WFA benchmark. Source: knowledge/bt1_28_representation.csv</div></div>`;
+  main.appendChild(repCard);
+
+  
+  // ── Divergence Signal Cards ──
+  const divCard=document.createElement('div');divCard.className='card full';
+  const divBarW=Math.round(divCells/totalCells*100);
+  const gapBarW=Math.round(gapCells/totalCells*100);
+  const okBarW=100-divBarW-gapBarW;
+  // Build dept-level rows (which specific depts are flagged and for which groups)
+  const allG4=['racialized','indigenous','disability','women'];
+  const deptRows=dkeys.map(d=>{
+    const r2=getRep(d);const e2=getExp(d);
+    const statuses=allG4.map(g=>{
+      const r=r2[g];if(!r)return'na';
+      const rv=r.rep[yi];if(rv==='s')return'na';
+      const gap=rv-r.wfa;
+      const ex=e2[g]||e2.racialized;const hs=ex.harassment[ei];
+      if(typeof hs!=='number')return'na';
+      const eg=hs-gp(g).psH;
+      if(gap>=0&&eg<-gp(g).divT)return'div';
+      if(gap<-1)return'rg';
+      return'ok';
+    });
+    const hasFlagDiv=statuses.includes('div');
+    const hasFlagRg=statuses.some(s=>s==='rg');
+    return{d,dname:DEPTS[d]||d,statuses,hasFlagDiv,hasFlagRg};
+  }).sort((a,b)=>(b.hasFlagDiv?2:b.hasFlagRg?1:0)-(a.hasFlagDiv?2:a.hasFlagRg?1:0));
+  const cellColor={'div':'#ef4444','rg':'#fb923c','ok':'#4ade80','na':'#e5e7eb'};
+  const cellLabel={'div':'Divergence','rg':'Rep gap','ok':'On target','na':'N/A'};
+  divCard.innerHTML=`<div class="card-header"><div><div class="card-title">Divergence Signal Summary</div><div class="card-subtitle">${yl(year)} · ${totalCells} dept×group cells · Red = Rep ≥ WFA but harassment score &gt;1 SD below group PS avg (threshold: 9–11 pts, derived from 2024 PSES)</div></div><div class="card-badge">Portfolio</div></div>
+  <div style="padding:16px 18px">
+    <!-- 3 stat boxes -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px">
+      <div style="background:#fef2f2;border:1.5px solid #fca5a5;border-radius:8px;padding:14px 16px;text-align:center">
+        <div style="font-size:32px;font-weight:800;color:#dc2626;line-height:1">${divCells}</div>
+        <div style="font-size:11px;font-weight:700;color:#dc2626;margin-top:3px">Divergence cells</div>
+        <div style="font-size:10.5px;color:#6b7280;margin-top:2px">Rep ≥ WFA · harassment &gt;1 SD below group PS avg</div>
+      </div>
+      <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:14px 16px;text-align:center">
+        <div style="font-size:32px;font-weight:800;color:#ea580c;line-height:1">${gapCells}</div>
+        <div style="font-size:11px;font-weight:700;color:#ea580c;margin-top:3px">Representation gap cells</div>
+        <div style="font-size:10.5px;color:#6b7280;margin-top:2px">Below WFA benchmark</div>
+      </div>
+      <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:8px;padding:14px 16px;text-align:center">
+        <div style="font-size:32px;font-weight:800;color:#16a34a;line-height:1">${okCells}</div>
+        <div style="font-size:11px;font-weight:700;color:#16a34a;margin-top:3px">On-target cells</div>
+        <div style="font-size:10.5px;color:#6b7280;margin-top:2px">No gap flagged</div>
+      </div>
+    </div>
+    <!-- Segmented bar -->
+    <div style="margin-bottom:6px;font-size:10.5px;color:#6b7280;font-weight:600">Proportion of all ${totalCells} dept × group cells</div>
+    <div style="height:22px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:16px">
+      ${divBarW>0?`<div style="width:${divBarW}%;background:#ef4444;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white">${divBarW}%</div>`:''}
+      ${gapBarW>0?`<div style="width:${gapBarW}%;background:#fb923c;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white">${gapBarW}%</div>`:''}
+      ${okBarW>0?`<div style="width:${okBarW}%;background:#4ade80;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#166534">${okBarW}%</div>`:''}
+    </div>
+    <!-- Department breakdown grid -->
+    <div style="font-size:10.5px;color:#6b7280;font-weight:600;margin-bottom:8px">By department &amp; group — sorted by priority</div>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:11px">
+        <thead><tr>
+          <th style="text-align:left;padding:5px 8px;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;border-bottom:2px solid #f3f4f6">Department</th>
+          ${allG4.map(g=>`<th style="text-align:center;padding:5px 8px;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;border-bottom:2px solid #f3f4f6">${glabel(g).split(' ')[0]}</th>`).join('')}
+        </tr></thead>
+        <tbody>${deptRows.map(row=>`<tr style="border-bottom:1px solid #f9fafb">
+          <td style="padding:6px 8px;font-weight:${row.hasFlagDiv?'700':'400'};color:${row.hasFlagDiv?'#dc2626':'#374151'}">${row.dname.split(' ').slice(0,3).join(' ')}</td>
+          ${row.statuses.map(s=>`<td style="text-align:center;padding:6px 8px"><div style="width:14px;height:14px;border-radius:3px;background:${cellColor[s]};margin:0 auto" title="${cellLabel[s]}"></div></td>`).join('')}
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>
+    <div style="margin-top:10px;font-size:10px;color:#9ca3af">🟥 Divergence &nbsp; 🟧 Rep gap &nbsp; 🟩 On target &nbsp; · Each row = one department; each column = one designated group</div>
+  </div>`;
+  main.appendChild(divCard);
+
+  // ── Experience Scores Grid ──
+  const expCard=document.createElement('div');expCard.className='card full';
+  const expGroups=[{g:'racialized',label:'Racialized persons'},{g:'indigenous',label:'Indigenous peoples'},{g:'disability',label:'Persons w/ disabilities'},{g:'women',label:'Women'}];
+  const themes=[['harassment','Harassment'],['belonging','Belonging'],['career','Career Dev.'],['leadership','Leadership'],['wellbeing','Wellbeing']];
+  expCard.innerHTML=`<div class="card-header"><div><div class="card-title">Workplace Experience Scores vs. PS Average — CPA-Wide</div><div class="card-subtitle">PSES ${year==='trend'?'2020→2022→2024':yl(year)} · SCORE100 · Lower = worse · Blue line = PS average · All 4 designated groups</div></div><div class="card-badge">PSES</div></div>
+  <div style="padding:14px 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+    ${expGroups.map(({g,label})=>{
+      const col=kpiColors[g];
+      return`<div>
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px">
+          <div style="width:10px;height:10px;background:${col};border-radius:50%"></div>
+          <span style="font-size:11px;font-weight:700;color:#374151">${label}</span>
+        </div>
+        ${themes.map(([key,lbl])=>{
+          const vals=Object.values(EXP).map(e=>e[g]?.[key]?.[ei]).filter(v=>typeof v==='number');
+          const avg=vals.length?Math.round(vals.reduce((a,b)=>a+b,0)/vals.length):null;
+          const psA=PS_AVG[key];const gap=avg!==null?avg-psA:null;
+          const col2=gap<-10?'#dc2626':gap<-5?'#f59e0b':'#059669';
+          return avg!==null?`<div style="margin-bottom:8px">
+            <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:2px">
+              <span style="color:#6b7280">${lbl}</span>
+              <span style="font-weight:700;color:${col2}">${avg} <span style="font-size:10px;font-weight:400;color:#9ca3af">/ ${psA} avg</span></span>
+            </div>
+            <div style="position:relative;height:10px;background:#f3f4f6;border-radius:4px;overflow:visible">
+              <div style="height:100%;width:${avg}%;background:${col};border-radius:4px"></div>
+              <div style="position:absolute;top:-2px;left:${psA}%;width:1.5px;height:14px;background:#1a3a5c;opacity:.5"></div>
+            </div>
+          </div>`:'';
+        }).join('')}
+      </div>`;
+    }).join('')}
+  </div>
+  <div style="padding:0 16px 12px;font-size:10px;color:#9ca3af">Blue line = PS average per theme. n varies by department — see Department tab for ANSCOUNT. Correlations only — not proof of causation. Source: PSES EEINFODV microdata.</div>`;
+  main.appendChild(expCard);
+
+  app.appendChild(main);
+}
+
+
+
+/* ═══════════════════════════════════════════════
+   DEPARTMENT VIEW
+═══════════════════════════════════════════════ */
+function renderDept(app,dept,group,sub,year){
+  const yi=REPYI[year]??4;const ei=PSEI[year]??2;
+  const rep=getRep(dept);const exp=getExp(dept);
+  const dname=DEPTS[dept]||dept;
+  const expKey=sub!=='all'?sub:group!=='all'?group:'racialized';
+  const expData=exp[expKey]||exp.racialized;
+  const expLabel=sub!=='all'?slabel(sub):group!=='all'?glabel(group):'Racialized persons';
+  const allG=['racialized','indigenous','disability','women'];
+  const divFlags=allG.map(g=>{const r=rep[g];if(!r)return null;const rv=r.rep[yi];if(rv==='s')return null;const gap=rv-r.wfa;const ex=exp[g]||exp.racialized;const hs=ex.harassment[ei];if(typeof hs!=='number')return null;const eg=hs-gp(g).psH;if(gap>=0&&eg<-gp(g).divT)return{g,rv,wfa:r.wfa,gap,hs,eg,psH:gp(g).psH,divT:gp(g).divT};return null;}).filter(Boolean);
+  const main=document.createElement('div');main.className='main';
+  const al=document.createElement('div');al.style.gridColumn='1/-1';
+  if(divFlags.length){const f=divFlags[0];al.className='alert-banner';al.innerHTML=`<div class="alert-icon">⚠️</div><div><div class="alert-title">Divergence — ${dname}</div><div class="alert-body">At <strong>${dname}</strong>, <strong>${glabel(f.g)} employees</strong> represent <strong>${f.rv}%</strong> vs. WFA of <strong>${f.wfa}%</strong> — above target. Yet harassment score is <strong>${f.hs}/100</strong> against group PS avg of <strong>${f.psH}/100</strong>, a <strong>${Math.abs(f.eg).toFixed(0)}-point gap</strong> (threshold: >${f.divT} pts = 1 SD from 2024 PSES) that representation data alone would hide.</div><div class="alert-tags"><span class="tag tag-green">Rep ✓ above WFA</span><span class="tag tag-red">Harassment ${f.hs}/100 — ${Math.abs(f.eg).toFixed(0)} pts below group PS avg</span><span class="tag tag-amber">Action: inclusion, not recruitment</span></div></div>`;}
+  else{al.className='no-alert';al.innerHTML=`<strong>✓ No divergence flagged for ${dname}</strong>`;}
+  main.appendChild(al);
+
+  // -- How to read --
+  const htrDeptDiv=document.createElement('div');htrDeptDiv.style.gridColumn='1/-1';
+  htrDeptDiv.innerHTML=buildHowToRead('dept');
+  main.appendChild(htrDeptDiv);
+
+  const priorities=allG.map(g=>{const r=rep[g];if(!r)return{g,type:'na'};const rv=r.rep[yi];if(rv==='s')return{g,type:'na',label:'Suppressed'};const gap=rv-r.wfa;const ex=exp[g]||exp.racialized;const hs=ex.harassment[ei];const eg=typeof hs==='number'?hs-gp(g).psH:null;const dt=gp(g).divT;if(gap>=0&&eg!==null&&eg<-dt)return{g,rv,wfa:r.wfa,gap,hs,eg,type:'div',flag:'⚠️ Divergence',action:'Intervene: inclusion'};if(gap<-1.5)return{g,rv,wfa:r.wfa,gap,hs,eg,type:'rg',flag:'Rep. Gap',action:'Intervene: recruitment'};if(eg!==null&&eg<-dt)return{g,rv,wfa:r.wfa,gap,hs,eg,type:'eg',flag:'Exp. Gap',action:'Intervene: culture'};return{g,rv,wfa:r.wfa,gap,hs,eg,type:'ok',flag:'On Track',action:'Monitor'};}).sort((a,b)=>({div:0,rg:1,eg:2,ok:3,na:4}[a.type]-{div:0,rg:1,eg:2,ok:3,na:4}[b.type]));
+  const prioEl=document.createElement('div');prioEl.style.gridColumn='1/-1';
+  prioEl.innerHTML=`<div class="priority-row">${priorities.map(p=>`<div class="pcard pcard-${p.type}"><div class="pcard-flag pf-${p.type}">${p.flag||'No data'}</div><div class="pcard-group pg-${p.type}">${glabel(p.g)}</div><div class="pcard-detail">${p.rv!==undefined?`Rep: ${p.rv}% vs WFA ${p.wfa}%`:''}</div><div class="pcard-action">${p.action||''}</div></div>`).join('')}</div>`;
+  main.appendChild(prioEl);
+  const repCard=document.createElement('div');repCard.className='card';
+  repCard.innerHTML=`<div class="card-header"><div><div class="card-title">Representation vs. Workforce Availability</div><div class="card-subtitle">${dname} · ${yl(year)} · ${wfaLabel(yi)}</div></div><div class="card-badge">BT1-28</div></div><div><table class="rep-table"><thead><tr><th>Group / Subgroup</th><th>Rep %</th><th>WFA %</th><th style="min-width:110px">Gap</th><th>Trend</th></tr></thead><tbody>${buildRepRows(rep,yi)}</tbody></table></div>`;
+  main.appendChild(repCard);
+  const intCard=document.createElement('div');intCard.className='card';
+  intCard.innerHTML=`<div class="card-header"><div><div class="card-title">Intervention Recommendation</div><div class="card-subtitle">Priority EE action plan focus · ${dname} · Human review required before external use</div></div><div class="card-badge" style="background:#fef3c7;color:#92400e">Action</div></div>${buildInterventionHTML(priorities,dname)}`;
+  main.appendChild(intCard);
+  const dTrendCard=document.createElement('div');dTrendCard.className='card full';
+  dTrendCard.innerHTML=`<div class="card-header"><div><div class="card-title">Representation Trend — ${dname}</div><div class="card-subtitle">FY2021–22 → FY2024–25 · All 4 designated groups · Dashed = WFA benchmark · Source: BT1-28</div></div><div class="card-badge">BT1-28</div></div><div style="padding:14px 16px">${buildDeptTrendChart(dept)}</div>`;
+  main.appendChild(dTrendCard);
+  const expCard=document.createElement('div');expCard.className='card';
+  expCard.innerHTML=`<div class="card-header"><div><div class="card-title">Workplace Experience — PSES Scores</div><div class="card-subtitle">${expLabel} · ${dname} · ${year==='trend'?'2020→2022→2024':yl(year)}</div></div><div class="card-badge">PSES</div></div><div class="exp-grid">${buildExpCards(expData,ei)}</div>`;
+  main.appendChild(expCard);
+    const subCard=document.createElement('div');subCard.className='card full';
+  subCard.innerHTML=`<div class="card-header"><div><div class="card-title">Subgroup Experience — All Designated Groups</div><div class="card-subtitle">Harassment &amp; Belonging scores by subgroup · ${dname} · ${year==='trend'?'2024':yl(year)} · PSES · Dark line = group PS avg</div></div><div class="card-badge">PSES</div></div>${buildSubgroupExpPanel(dept,'all',ei)}`;
+  main.appendChild(subCard);
+  if(year==='trend'){
+    const tCard=document.createElement('div');tCard.className='card full';
+    tCard.innerHTML=`<div class="card-header"><div><div class="card-title">Year-over-Year Trend — ${expLabel} · ${dname} <span style="font-size:10px;color:#6b7280;font-weight:400;margin-left:8px">Subagent: trend-analyst · Skill: trend-comparability-guard</span></div><div class="card-subtitle">PSES 2020→2022→2024 · n=${expData.n} (2024) · Wording verified consistent across cycles</div></div><div class="card-badge">Trend</div></div><div><table class="trend-table"><thead><tr><th>Theme</th><th>2020</th><th>2022</th><th>2024</th><th>Change (20→24)</th><th>PS Avg (2024)</th><th>Gap vs. PS Avg</th></tr></thead><tbody>${buildTrendRows(expData)}</tbody></table></div>`;
+    main.appendChild(tCard);
+  }
+  // ── Portfolio Heatmap (all departments) ──
+  const hmCard=document.createElement('div');hmCard.className='card full';
+  const dkeys=Object.keys(REP);
+  app.appendChild(main);
+}
+
+function buildRepRows(rep,yi){
+  const defs=[{key:'racialized',label:'Racialized persons',subs:[{k:'black',l:'Black'},{k:'southasian',l:'South Asian'},{k:'eastasian',l:'East Asian'},{k:'arab',l:'Arab'}]},{key:'indigenous',label:'Indigenous peoples',subs:[{k:'firstnations',l:'First Nations'},{k:'metis',l:'Métis'},{k:'inuit',l:'Inuit'}]},{key:'disability',label:'Persons with disabilities',subs:[{k:'cognitive',l:'Cognitive'},{k:'mental',l:'Mental health'},{k:'seeing',l:'Seeing'}]},{key:'women',label:'Women',subs:[]}];
+  return defs.map(({key,label,subs})=>{const r=rep[key];if(!r)return'';const rv=r.rep[yi];
+    const mr=rv==='s'?`<tr class="gr"><td class="glabel">${label}</td><td colspan="4" class="suppressed">suppressed (n&lt;10)</td></tr>`:`<tr class="gr"><td class="glabel">${label}</td><td><strong>${rv}%</strong></td><td>${r.wfa?r.wfa+'%':'—'}</td><td>${gapBar(rv,r.wfa)}</td><td>${trendArrow(r.rep)}</td></tr>`;
+    const sr=subs.map(({k,l})=>{const sg=r.subgroups?.[k];if(!sg)return'';const sv=sg.rep[yi];if(sv==='s')return`<tr><td class="slabel">↳ ${l}</td><td colspan="4" class="suppressed">suppressed (n&lt;10)</td></tr>`;return`<tr><td class="slabel">↳ ${l}</td><td>${sv}%</td><td>${sg.wfa?sg.wfa+'%':'<span class="no-wfa">No WFA</span>'}</td><td>${sg.wfa?gapBar(sv,sg.wfa):'<span class="no-wfa">—</span>'}</td><td>${trendArrow(sg.rep)}</td></tr>`;}).join('');
+    return mr+sr;}).join('');
+}
+function buildDeptExpBars(exp,ei){
+  const rows=Object.entries(THEME_LABELS).map(([key,label])=>{
+    const s=exp[key];if(!s)return'';
+    const sc=s[ei];const avg=PS_AVG[key];const color=THEME_COLORS[key];
+    if(sc==='s')return '<div style="display:flex;align-items:center;gap:8px;margin:7px 0">'
+      +'<div style="width:95px;font-size:10.5px;text-align:right;color:'+color+';font-weight:600;white-space:nowrap">'+label+'</div>'
+      +'<span style="font-size:10px;color:#9ca3af;font-style:italic">suppressed</span></div>';
+    const gap=sc-avg;
+    const barColor=gap<=-10?'#ef4444':gap<=-5?'#f59e0b':'#10b981';
+    const scoreColor=gap<=-10?'#dc2626':gap<=-5?'#d97706':'#166534';
+    return '<div style="display:flex;align-items:center;gap:8px;margin:7px 0">'
+      +'<div style="width:95px;font-size:10.5px;text-align:right;color:'+color+';font-weight:600;white-space:nowrap">'+label+'</div>'
+      +'<div style="flex:1;position:relative;height:16px;background:#f3f4f6;border-radius:3px">'
+        +'<div style="width:'+sc+'%;height:100%;background:'+barColor+';border-radius:3px;opacity:.75"></div>'
+        +'<div style="position:absolute;left:'+avg+'%;top:-3px;width:2px;height:22px;background:#374151;opacity:.35;border-radius:1px"></div>'
+      +'</div>'
+      +'<div style="width:54px;font-size:12px;font-weight:700;color:'+scoreColor+';white-space:nowrap;text-align:right">'
+        +sc+(gap<0?' <span style="font-size:9px;color:#9ca3af">('+gap+')</span>':' <span style="font-size:9px;color:#9ca3af">(+'+gap+')</span>')
+      +'</div>'
+      +'</div>';
+  }).join('');
+  return '<div style="padding:12px 16px">'
+    +'<div style="display:flex;align-items:center;gap:14px;margin-bottom:10px;flex-wrap:wrap;font-size:10px;color:#6b7280">'
+      +'<div style="display:flex;align-items:center;gap:4px"><div style="width:22px;height:2px;background:#374151;opacity:.35"></div>PS avg</div>'
+      +'<div style="display:flex;align-items:center;gap:4px"><div style="width:12px;height:10px;background:#10b981;border-radius:2px;opacity:.75"></div>At or above</div>'
+      +'<div style="display:flex;align-items:center;gap:4px"><div style="width:12px;height:10px;background:#f59e0b;border-radius:2px;opacity:.75"></div>&lt;5 pts below</div>'
+      +'<div style="display:flex;align-items:center;gap:4px"><div style="width:12px;height:10px;background:#ef4444;border-radius:2px;opacity:.75"></div>&gt;10 pts below</div>'
+    +'</div>'
+    +rows
+    +'<div style="font-size:10px;color:#9ca3af;margin-top:10px">Vertical mark = PS average. Gap shown in parentheses. n='+(exp.n||'?')+'</div>'
+    +'</div>';
+}
+function buildExpCards(exp,ei){
+  return Object.entries(THEME_LABELS).map(([key,label])=>{const s=exp[key];if(!s)return'';const sc=s[ei];const color=THEME_COLORS[key];if(sc==='s')return`<div class="theme-card" style="border-left-color:${color}"><div class="theme-name">${label}</div><div class="suppressed">suppressed (n&lt;10)</div><div class="anscount">n=${exp.n}</div></div>`;const avg=PS_AVG[key];const gap=sc-avg;const cls=gap<=-15?'score-red':gap<=-5?'score-amber':'score-green';return`<div class="theme-card" style="border-left-color:${color}"><div class="theme-name">${label}</div><div class="score-line"><span class="score-big ${cls}">${sc}</span><span class="score-vs">/100<br><strong>PS avg:${avg}</strong></span></div><div class="sbar-bg"><div class="sbar-fill" style="width:${sc}%;background:${color};opacity:.7"></div></div><div class="score-gap ${gap<0?'sgap-neg':'sgap-pos'}">${gap>=0?'▲ +':'▼ '}${Math.abs(gap)} pts vs. PS avg</div><div class="anscount">n=${exp.n}</div></div>`;}).join('');
+}
+function buildTrendRows(exp){
+  return Object.entries(THEME_LABELS).map(([key,label])=>{const s=exp[key];if(!s)return'';const[s20,s22,s24]=s;const avg=PS_AVG[key];const chg=(typeof s24==='number'&&typeof s20==='number')?s24-s20:null;const gap=typeof s24==='number'?s24-avg:null;const sc=v=>v==='s'?'<span class="suppressed">supp.</span>':`<span class="${typeof v==='number'&&v<avg-10?'ts-red':v<avg-5?'ts-amber':'ts-green'}">${v}</span>`;const cc=c=>c===null?'—':c>2?`<span class="tc-pos">↑ +${c.toFixed(0)}</span>`:c<-2?`<span class="tc-neg">↓ ${c.toFixed(0)}</span>`:`<span class="tc-flat">→ ${c.toFixed(0)}</span>`;const gc=g=>g===null?'—':g<0?`<span class="tg-neg">${g.toFixed(0)}</span>`:`<span class="tg-pos">+${g.toFixed(0)}</span>`;return`<tr><td class="ttheme">${label}</td><td>${sc(s20)}</td><td>${sc(s22)}</td><td>${sc(s24)}</td><td>${cc(chg)}</td><td>${avg}</td><td>${gc(gap)}</td></tr>`;}).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   EXPLORER TAB
+═══════════════════════════════════════════════ */
+function renderExplorer(app,groupFilter,yearFilter){
+  const yi=REPYI[yearFilter]??4;
+  const dkeys=Object.keys(REP);
+  const wrap=document.createElement('div');
+  wrap.innerHTML=`<div class="explorer-layout">
+    <div class="explorer-sidebar">
+      <div class="es-section">
+        <div class="es-section-title">Dataset View</div>
+        ${[['pipeline','👔 Exec Pipeline'],['flows','🔄 Workforce Flows'],['salary','💰 Salary'],['subgroups','🔍 Subgroups'],['region','🗺 Region & Occ']].map(([v,l])=>`<button class="es-chip ${explorerView===v?'active':''}" onclick="setExplorerView('${v}')">${l}</button>`).join('')}
+      </div>
+      <div class="es-section">
+        <div class="es-section-title">Designated Group</div>
+        ${['all','racialized','indigenous','disability','women'].map(g=>`<button class="es-chip ${explorerFilter.group===g?'active':''}" onclick="setExplorerFilter('group','${g}')">${g==='all'?'All groups':glabel(g)}</button>`).join('')}
+      </div>
+      <div class="es-section">
+        <div class="es-section-title">Year</div>
+        ${['trend','2024','2022','2020'].map(y=>`<button class="es-chip ${explorerFilter.year===y?'active':''}" onclick="setExplorerFilter('year','${y}')">${y==='trend'?'All years (trend)':yl(y)}</button>`).join('')}
+      </div>
+      <div class="es-section">
+        <div class="es-section-title">Scope</div>
+        <div style="font-size:11px;color:#4b5563;line-height:1.6">Core Public Administration<br>26 departments<br>FAA Schedule I and IV<br>Excl. Crown corps, RCMP, CAF</div>
+      </div>
+    </div>
+    <div class="explorer-main">
+      <div style="background:white;border:1px solid #bfdbfe;border-radius:8px;padding:11px 16px;margin-bottom:12px;font-size:12px;color:#1e40af;line-height:1.7">
+        <strong style="font-size:12.5px">How to read this data:</strong>
+        All representation data = BT1-28 annual EE reports (TBS). Experience data = PSES microdata. &middot;
+        WFA benchmark changed 2016&#8594;2021 Census at BT1-28-2023 (FY2022-23) -- flag this in any cross-year comparison. &middot;
+        No WFA benchmark for 2SLGBTQIA+, religion, or ethnocultural origin -- experience scores only. &middot;
+        Disability subgroup codes are not mutually exclusive -- use D112 total for headcounts. &middot;
+        Self-identification is voluntary: under-reporting highest for Indigenous peoples, persons with disabilities, and 2SLGBTQIA+.
+      </div>
+      <!-- Stat row -->
+      <div class="stat-row">
+        <div class="stat-card"><div class="stat-num">26</div><div class="stat-label">CPA Departments</div><div class="stat-sub">in scope</div></div>
+        <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Designated Groups</div><div class="stat-sub">+ subgroups</div></div>
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">PSES Cycles</div><div class="stat-sub">2020 · 2022 · 2024</div></div>
+        <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">BT1-28 Reports</div><div class="stat-sub">FY 2020–25</div></div>
+        <div class="stat-card"><div class="stat-num">17.1%</div><div class="stat-label">Racialized WFA</div><div class="stat-sub">2021 Census</div></div>
+        <div class="stat-card"><div class="stat-num">9.0%</div><div class="stat-label">Disability WFA</div><div class="stat-sub">2021 Census</div></div>
+      </div>
+
+      ${buildExplorerDataView(yi,explorerFilter)}
+    </div>
+  </div>`;
+  app.appendChild(wrap);
+}
+
+function setExplorerFilter(key,val){explorerFilter[key]=val;renderApp();}
+function setExplorerView(v){explorerView=v;renderApp();}
+
+function buildRepBarChart(yi,group){
+  const rows=Object.entries(REP).map(([d,rep])=>{const r=rep[group];if(!r)return null;const rv=r.rep[yi];if(rv==='s')return null;return{d:DEPTS[d]||d,rv,wfa:r.wfa,gap:rv-r.wfa};}).filter(Boolean).sort((a,b)=>b.rv-a.rv).slice(0,12);
+  const max=Math.max(...rows.map(r=>Math.max(r.rv,r.wfa)))+2;
+  return rows.map(r=>{const w=Math.round(r.rv/max*100);const ww=Math.round(r.wfa/max*100);const color=r.gap>=0?'#059669':'#dc2626';return`<div class="hbar-row"><div class="hbar-label" title="${r.d}">${r.d.replace(/Canada/g,'CA').replace(/Employment &amp; Social Development/g,'ESDC').replace('Immigration, Refugees & Citizenship','IRCC').replace('National Defence','DND').replace('Canada Revenue Agency','CRA').replace('Public Services & Procurement','PSPC')}</div><div class="hbar-track" style="position:relative"><div class="hbar-fill" style="width:${w}%;background:${color};opacity:.8"></div><div style="position:absolute;top:0;left:${ww}%;width:2px;height:100%;background:#1a3a5c;opacity:.5"></div></div><div class="hbar-val" style="color:${color}">${r.rv}%</div></div>`;}).join('')+'<div style="font-size:10px;color:#9ca3af;margin-top:8px">Dark bar = representation rate · Blue line = WFA benchmark</div>';
+}
+
+function buildExpBarChart(ei){
+  const groups=[{key:'racialized',label:'Racialized'},{key:'black',label:'↳ Black'},{key:'indigenous',label:'Indigenous'},{key:'disability',label:'Disabilities'},{key:'women',label:'Women'}];
+  const avg=PS_AVG.harassment;
+  const avrows=groups.map(({key,label})=>{const vals=Object.values(EXP).map(e=>e[key]?.harassment?.[ei]).filter(v=>typeof v==='number');const mean=vals.length?Math.round(vals.reduce((a,b)=>a+b,0)/vals.length):null;return{key,label,mean};}).filter(r=>r.mean!==null);
+  const max=70;
+  return avrows.map(({label,mean,key})=>{const w=Math.round(mean/max*100);const gpRef=GROUP_PARAMS[key]||GROUP_PARAMS.racialized;const dt=gpRef.divT;const psH=gpRef.psH;const color=mean<psH-dt?'#ef4444':mean<psH-Math.round(dt/2)?'#f59e0b':'#059669';const isBlack=label.startsWith('↳');return`<div class="hbar-row"><div class="hbar-label" style="${isBlack?'font-size:11px;color:#6b7280':''}">${label}</div><div class="hbar-track" style="position:relative"><div class="hbar-fill" style="width:${w}%;background:${color};opacity:.8"></div><div style="position:absolute;top:0;left:${Math.round(psH/max*100)}%;width:2px;height:100%;background:#1a3a5c;opacity:.4"></div></div><div class="hbar-val" style="color:${color}">${mean}/100</div></div>`;}).join('')+'<div style="font-size:10px;color:#9ca3af;margin-top:8px">Blue line = group PS avg (varies by group: 49–64). Lower score = worse experience. Red = &gt;1 SD below group PS avg.</div>';
+}
+
+function buildTrendChart(){
+  const years=[0,1,2,3,4];const labels=['FY20–21','FY21–22','FY22–23','FY23–24','FY24–25'];
+  const groups={racialized:{color:'#3b82f6',wfa:17.1},indigenous:{color:'#10b981',wfa:4.0},disability:{color:'#8b5cf6',wfa:9.0},women:{color:'#f59e0b',wfa:52.7}};
+  const dkeys=Object.keys(REP);
+  const W=560,H=180,PL=40,PR=20,PT=15,PB=30;
+  const allVals=Object.values(groups).flatMap(g=>[g.wfa]);dkeys.forEach(d=>Object.keys(groups).forEach(g=>{const r=getRep(d)[g];if(r)allVals.push(...r.rep.filter(v=>v!=='s'));}));
+  const minV=0,maxV=60;
+  const xScale=i=>(PL+(W-PL-PR)*i/4);
+  const yScale=v=>(PT+(H-PT-PB)*(1-(v-minV)/(maxV-minV)));
+  const lines=Object.entries(groups).map(([g,{color,wfa}])=>{
+    const avgs=years.map(yi=>{const vals=dkeys.map(d=>{const r=getRep(d)[g];return r&&r.rep[yi]!=='s'?r.rep[yi]:null;}).filter(v=>v!==null);return vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;});
+    const pts=avgs.map((v,i)=>v!==null?`${xScale(i).toFixed(0)},${yScale(v).toFixed(0)}`:null).filter(Boolean);
+    const wfaY=yScale(wfa);
+    return`<polyline points="${pts.join(' ')}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>${avgs.map((v,i)=>v!==null?`<circle cx="${xScale(i).toFixed(0)}" cy="${yScale(v).toFixed(0)}" r="3" fill="${color}"/>`:'').join('')}<line x1="${PL}" y1="${wfaY.toFixed(0)}" x2="${W-PR}" y2="${wfaY.toFixed(0)}" stroke="${color}" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>`;
+  });
+  const xLabels=labels.map((l,i)=>`<text x="${xScale(i)}" y="${H-5}" text-anchor="middle" font-size="9" fill="#9ca3af">${l}</text>`).join('');
+  const htmlLegend=`<div style="display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:8px">${Object.entries(groups).map(([g,{color}])=>`<div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:${color};flex-shrink:0"></div><span style="font-size:10.5px;color:#374151">${glabel(g)}</span></div>`).join('')}<div style="display:flex;align-items:center;gap:5px"><div style="width:16px;height:2px;border-top:2px dashed #9ca3af;flex-shrink:0"></div><span style="font-size:10px;color:#9ca3af">WFA benchmark</span></div></div>`;
+  return`<div class="line-chart-wrap"><svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:${W}px">
+    <rect x="${PL}" y="${PT}" width="${W-PL-PR}" height="${H-PT-PB}" fill="#f9fafb" rx="2"/>
+    ${[0,10,20,30,40,50,60].map(v=>`<line x1="${PL}" y1="${yScale(v).toFixed(0)}" x2="${W-PR}" y2="${yScale(v).toFixed(0)}" stroke="#e5e7eb" stroke-width="1"/><text x="${PL-4}" y="${(yScale(v)+3).toFixed(0)}" text-anchor="end" font-size="8" fill="#9ca3af">${v}%</text>`).join('')}
+    ${lines.join('')}${xLabels}
+    <text x="${W-PR+2}" y="${(yScale(52.7)+3).toFixed(0)}" font-size="7" fill="#f59e0b">WFA 52.7%</text>
+  </svg>${htmlLegend}<div style="font-size:10px;color:#9ca3af;margin-top:6px">⚠ WFA benchmark changed from 2016→2021 Census at FY 2022–23. Trend lines = CPA average across all in-scope departments.</div></div>`;
+}
+
+function buildDeptTrendChart(dept){
+  const labels=['FY21–22','FY22–23','FY23–24','FY24–25'];
+  const years=[1,2,3,4];
+  const groups={racialized:{color:'#3b82f6',wfa:17.1},indigenous:{color:'#10b981',wfa:4.0},disability:{color:'#8b5cf6',wfa:9.0},women:{color:'#f59e0b',wfa:52.7}};
+  const rep=getRep(dept);
+  const W=560,H=180,PL=40,PR=20,PT=15,PB=30;
+  const minV=0,maxV=60;
+  const xScale=i=>(PL+(W-PL-PR)*i/3);
+  const yScale=v=>(PT+(H-PT-PB)*(1-(v-minV)/(maxV-minV)));
+  const lines=Object.entries(groups).map(([g,{color,wfa}])=>{
+    const r=rep[g];
+    const vals=years.map(yi=>r&&r.rep[yi]!=='s'?r.rep[yi]:null);
+    const pts=vals.map((v,i)=>v!==null?`${xScale(i).toFixed(0)},${yScale(v).toFixed(0)}`:null).filter(Boolean);
+    const wfaY=yScale(wfa);
+    const dots=vals.map((v,i)=>v!==null?`<circle cx="${xScale(i).toFixed(0)}" cy="${yScale(v).toFixed(0)}" r="3" fill="${color}"/>`:'').join('');
+    const suppressed=vals.every(v=>v===null);
+    if(suppressed)return`<line x1="${PL}" y1="${wfaY.toFixed(0)}" x2="${W-PR}" y2="${wfaY.toFixed(0)}" stroke="${color}" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>`;
+    return`<polyline points="${pts.join(' ')}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>${dots}<line x1="${PL}" y1="${wfaY.toFixed(0)}" x2="${W-PR}" y2="${wfaY.toFixed(0)}" stroke="${color}" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>`;
+  });
+  const xLabels=labels.map((l,i)=>`<text x="${xScale(i)}" y="${H-5}" text-anchor="middle" font-size="9" fill="#9ca3af">${l}</text>`).join('');
+  const htmlLegend=`<div style="display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:8px">${Object.entries(groups).map(([g,{color}])=>`<div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:${color};flex-shrink:0"></div><span style="font-size:10.5px;color:#374151">${glabel(g)}</span></div>`).join('')}<div style="display:flex;align-items:center;gap:5px"><div style="width:16px;height:2px;border-top:2px dashed #9ca3af;flex-shrink:0"></div><span style="font-size:10px;color:#9ca3af">WFA benchmark</span></div></div>`;
+  return`<div class="line-chart-wrap"><svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:${W}px">
+    <rect x="${PL}" y="${PT}" width="${W-PL-PR}" height="${H-PT-PB}" fill="#f9fafb" rx="2"/>
+    ${[0,10,20,30,40,50,60].map(v=>`<line x1="${PL}" y1="${yScale(v).toFixed(0)}" x2="${W-PR}" y2="${yScale(v).toFixed(0)}" stroke="#e5e7eb" stroke-width="1"/><text x="${PL-4}" y="${(yScale(v)+3).toFixed(0)}" text-anchor="end" font-size="8" fill="#9ca3af">${v}%</text>`).join('')}
+    ${lines.join('')}${xLabels}
+    <text x="${W-PR+2}" y="${(yScale(52.7)+3).toFixed(0)}" font-size="7" fill="#f59e0b">WFA 52.7%</text>
+  </svg>${htmlLegend}<div style="font-size:10px;color:#9ca3af;margin-top:6px">⚠ WFA benchmark changed from 2016→2021 Census at FY 2022–23. BT1-28 dept-level data starts at FY2021-22. Suppressed or missing years shown as gaps.</div></div>`;
+}
+
+function buildSubgroupExpPanel(dept,group,ei){
+  const exp=getExp(dept);
+  const subDefs={
+    racialized:[{key:'black',label:'Black'},{key:'southasian',label:'South Asian'},{key:'eastasian',label:'East Asian'},{key:'arab',label:'Arab'}],
+    indigenous:[{key:'firstnations',label:'First Nations'},{key:'metis',label:'Métis'},{key:'inuit',label:'Inuit'}],
+    disability:[{key:'cognitive',label:'Cognitive'},{key:'mental',label:'Mental health'},{key:'seeing',label:'Seeing'}],
+    women:[]
+  };
+  // All 6 PSES themes with their PS averages
+  const themes=[
+    {key:'harassment', label:'H&D',        fullLabel:'Harassment &amp; Disc.',color:'#ef4444'},
+    {key:'belonging',  label:'Belong.',     fullLabel:'Belonging &amp; Incl.', color:'#3b82f6'},
+    {key:'career',     label:'Career Dev.', fullLabel:'Career Dev.',           color:'#8b5cf6'},
+    {key:'leadership', label:'Leadership',  fullLabel:'Leadership',            color:'#f59e0b'},
+    {key:'workplace',  label:'Workplace',   fullLabel:'Workplace',             color:'#10b981'},
+    {key:'wellbeing',  label:'Wellbeing',   fullLabel:'Wellbeing',             color:'#6366f1'}
+  ];
+  // Score cell: color-coded chip
+  function scoreCell(val,psAvg,divT){
+    if(typeof val!=='number')return '<td style="padding:5px 4px;text-align:center"><span style="font-size:10px;color:#9ca3af;font-style:italic">supp.</span></td>';
+    const gap=val-psAvg;
+    const bg=gap<-divT?'#fee2e2':gap<0?'#fef3c7':'#dcfce7';
+    const col=gap<-divT?'#991b1b':gap<0?'#92400e':'#166534';
+    const arrow=gap<-divT?'▼':gap<0?'▾':'';
+    return '<td style="padding:5px 4px;text-align:center"><div style="display:inline-block;background:'+bg+';color:'+col+';border-radius:4px;padding:3px 6px;font-size:11px;font-weight:700;white-space:nowrap">'+val+(arrow?'<span style="font-size:9px;margin-left:2px">'+arrow+'</span>':'')+'</div></td>';
+  }
+  const groups=group==='all'?['racialized','indigenous','disability','women']:[group];
+  const body=groups.map(g=>{
+    const subs=subDefs[g]||[];
+    const gpH=gp(g).psH;const gpDivT=gp(g).divT;
+    const colspan=themes.length+2;
+    const header='<tr style="background:#f8fafc"><td colspan="'+colspan+'" style="padding:8px 10px 5px;font-size:11.5px;font-weight:700;color:#1a3a5c;border-top:2px solid #e5e7eb">'+glabel(g)+'<span style="font-size:10px;font-weight:400;color:#6b7280;margin-left:8px">H&amp;D PS avg: '+gpH+' · Belonging PS avg: '+PS_AVG.belonging+'</span></td></tr>';
+    if(!subs.length)return header+'<tr><td colspan="'+colspan+'" style="font-size:11px;color:#9ca3af;padding:4px 10px 8px;font-style:italic">No PSES subgroup breakdown available.</td></tr>';
+    const rows=subs.map(({key,label})=>{
+      const d=exp[key];const n=d?d.n:null;
+      const psAvgs={harassment:gpH,belonging:PS_AVG.belonging,career:PS_AVG.career,leadership:PS_AVG.leadership,workplace:PS_AVG.workplace,wellbeing:PS_AVG.wellbeing};
+      const divTs={harassment:gpDivT,belonging:6,career:6,leadership:6,workplace:5,wellbeing:6};
+      const cells=themes.map(t=>{const val=d?d[t.key][ei]:null;return scoreCell(typeof val==='number'?val:null,psAvgs[t.key],divTs[t.key]);}).join('');
+      return '<tr style="border-bottom:1px solid #f3f4f6">'
+        +'<td style="font-size:12px;font-weight:600;color:#374151;padding:7px 10px 7px 22px;white-space:nowrap">'+label+'</td>'
+        +cells
+        +'<td style="font-size:10px;color:#9ca3af;padding:7px 8px;white-space:nowrap">n='+(n||'?')+'</td>'
+        +'</tr>';
+    }).join('');
+    return header+rows;
+  }).join('');
+  return '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse">'
+    +'<thead><tr>'
+    +'<th style="border-bottom:2px solid #e5e7eb;font-size:9px;color:#9ca3af;padding:7px 10px;text-align:left">Subgroup</th>'
+    +themes.map(t=>'<th style="border-bottom:2px solid #e5e7eb;font-size:9px;color:'+t.color+';padding:7px 8px;text-align:center">'+t.label+'</th>').join('')
+    +'<th style="border-bottom:2px solid #e5e7eb;font-size:9px;color:#9ca3af;padding:7px 8px;text-align:center">n</th>'
+    +'</tr></thead>'
+    +'<tbody>'+body+'</tbody>'
+    +'</table>'
+    +'<div style="font-size:10px;color:#9ca3af;margin:8px 15px">Color: <span style="color:#991b1b;font-weight:600">Red</span> = &gt;1 SD below group PS avg (harassment) or &gt;6 pts below PS avg (other themes). <span style="color:#92400e;font-weight:600">Amber</span> = below PS avg within threshold. Green = at or above PS avg. ANSCOUNT &lt; 10 suppressed.</div>'
+    +'</div>';
+}
+
+function buildInterventionHTML(priorities,dname){
+  const actionable=priorities.filter(p=>p.type!=='ok'&&p.type!=='na');
+  if(!actionable.length){
+    return`<div style="padding:14px 16px"><div style="background:#f0fdf4;border:1.5px solid #86efac;border-left:4px solid #22c55e;border-radius:7px;padding:12px 14px"><div style="font-size:13px;font-weight:700;color:#166534;margin-bottom:5px">✓ No high-priority interventions identified for ${dname}</div><div style="font-size:12.5px;color:#374151;line-height:1.6">All four designated groups are near WFA and within 1 SD of their PS-wide harassment average. Continue monitoring annually.</div></div><div style="font-size:10px;color:#9ca3af;margin-top:10px">⚠ Human review required before sharing externally. Prototype — data is mock.</div></div>`;
+  }
+  const items=actionable.slice(0,3).map((p,i)=>{
+    const gL=glabel(p.g);let msg='';let action='';let borderColor='#f59e0b';let bg='#fffbeb';let icon='⚠️';
+    if(p.type==='div'){
+      icon='🔴';borderColor='#ef4444';bg='#fef2f2';
+      msg=`<strong>${gL}</strong> are above WFA (<strong>${p.rv}%</strong> vs. ${p.wfa}% WFA) but report a harassment score of <strong>${p.hs}/100</strong> — ${Math.abs(p.eg).toFixed(0)} pts below the group PS average of ${gp(p.g).psH}/100. Representation data alone would hide this gap.`;
+      action=`Intervene on <strong>workplace inclusion and culture</strong> — not headcount. Recruitment targets are met; the gap is experiential.`;
+    } else if(p.type==='rg'){
+      icon='🟠';borderColor='#f59e0b';bg='#fffbeb';
+      msg=`<strong>${gL}</strong> represent <strong>${p.rv}%</strong> vs. WFA of <strong>${p.wfa}%</strong> (gap: ${p.gap.toFixed(1)}%).`;
+      action=`Intervene on <strong>recruitment and onboarding</strong>. Review staffing strategies and targeted pipeline programs for this group.`;
+    } else {
+      icon='🟡';borderColor='#fcd34d';bg='#fefce8';
+      msg=`<strong>${gL}</strong> are near WFA (${p.rv}% vs. ${p.wfa}%) but harassment score (${p.hs}/100) is ${Math.abs(p.eg).toFixed(0)} pts below group PS average.`;
+      action=`Review <strong>workplace culture</strong>. Representation is adequate — investigate why experience scores diverge from PS peers.`;
+    }
+    return`<div style="border-left:4px solid ${borderColor};background:${bg};border-radius:0 6px 6px 0;padding:11px 14px;margin-bottom:9px"><div style="font-size:10px;font-weight:700;color:#6b7280;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">${icon} Priority ${i+1} · ${(p.flag||'').toUpperCase()}</div><div style="font-size:12.5px;color:#1a1a2e;line-height:1.6;margin-bottom:4px">${msg}</div><div style="font-size:12px;color:#374151">${action}</div></div>`;
+  }).join('');
+  return`<div style="padding:14px 16px">${items}<div style="font-size:10px;color:#9ca3af;margin-top:4px">⚠ Human review required before this recommendation informs any EE action plan or external communication. Thresholds are empirically derived but context-dependent. Prototype — data is mock.</div></div>`;
+}
+
+function buildDivergenceChart(yi,ei){
+  const rows=Object.entries(REP).map(([d,rep])=>{const exp=getExp(d);const count=['racialized','indigenous','disability','women'].filter(g=>{const r=rep[g];if(!r)return false;const rv=r.rep[yi];if(rv==='s'||!r.wfa)return false;const ex=exp[g]||exp.racialized;const hs=ex.harassment[ei];return typeof hs==='number'&&rv>=r.wfa&&hs-gp(g).psH<-gp(g).divT;}).length;return{d:DEPTS[d]||d,count,short:(DEPTS[d]||d).replace('Canada Revenue Agency','CRA').replace('National Defence','DND').replace('Employment & Social Development Canada','ESDC').replace('Immigration, Refugees & Citizenship Canada','IRCC').replace('Public Services & Procurement Canada','PSPC').replace('Indigenous Services Canada','ISC').replace('Health Canada','HC').replace(/Canada$/,'CA').replace(/\s+Canada\b/,' CA')};}).sort((a,b)=>b.count-a.count);
+  return`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">${rows.map(({d,count,short})=>`<div style="background:${count>0?'#fef2f2':'#f0fdf4'};border:1px solid ${count>0?'#fca5a5':'#86efac'};border-radius:6px;padding:8px 10px;display:flex;align-items:center;gap:8px"><div style="font-size:18px;font-weight:800;color:${count>0?'#dc2626':'#166534'}">${count}</div><div style="font-size:11px;color:#374151">${short}</div></div>`).join('')}</div><div style="font-size:10px;color:#9ca3af;margin-top:10px">Number = count of designated groups simultaneously meeting WFA while scoring &gt;10 pts below PS avg on harassment. 0 = no divergence flagged.</div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   EXPLORER — DATASET VIEW DATA & BUILDERS
+═══════════════════════════════════════════════ */
+const PIPELINE=[
+  {group:'Women',                  wfa:52.7,ex1:55.2,ex2:51.8,ex3:47.5,ex4:39.2,ex5:28.1,total:46.0},
+  {group:'Racialized persons',     wfa:17.1,ex1:20.1,ex2:18.5,ex3:16.2,ex4:13.8,ex5:11.5,total:17.8},
+  {group:'Indigenous peoples',     wfa:4.0, ex1:4.1, ex2:3.8, ex3:3.4, ex4:2.9, ex5:2.2, total:3.6},
+  {group:'Persons w/ disabilities',wfa:9.0, ex1:5.8, ex2:5.4, ex3:5.0, ex4:4.2, ex5:3.1, total:5.1},
+];
+const FLOWS=[
+  {year:'FY2024-25',group:'Women',                  hires:54.1,promo:53.2,sep:50.8},
+  {year:'FY2024-25',group:'Racialized persons',     hires:24.3,promo:19.8,sep:15.2},
+  {year:'FY2024-25',group:'Indigenous peoples',     hires:3.8, promo:3.2, sep:3.1},
+  {year:'FY2024-25',group:'Persons w/ disabilities',hires:5.5, promo:4.8, sep:5.2},
+  {year:'FY2023-24',group:'Women',                  hires:53.5,promo:52.8,sep:50.2},
+  {year:'FY2023-24',group:'Racialized persons',     hires:23.5,promo:19.1,sep:14.8},
+  {year:'FY2023-24',group:'Indigenous peoples',     hires:3.6, promo:3.0, sep:3.0},
+  {year:'FY2023-24',group:'Persons w/ disabilities',hires:5.2, promo:4.5, sep:5.0},
+  {year:'FY2022-23',group:'Women',                  hires:52.8,promo:52.1,sep:49.5},
+  {year:'FY2022-23',group:'Racialized persons',     hires:22.8,promo:18.5,sep:14.1},
+  {year:'FY2022-23',group:'Indigenous peoples',     hires:3.4, promo:2.9, sep:2.8},
+  {year:'FY2022-23',group:'Persons w/ disabilities',hires:5.0, promo:4.3, sep:4.8},
+];
+const SALARY=[
+  {band:'Under $50,000',      all:8.2, women:9.1, indigenous:9.8, disability:7.5, racialized:10.2},
+  {band:'$50,000–$74,999',    all:28.5,women:31.2,indigenous:30.5,disability:29.8,racialized:32.1},
+  {band:'$75,000–$99,999',    all:35.8,women:34.5,indigenous:33.2,disability:35.1,racialized:34.8},
+  {band:'$100,000–$124,999',  all:18.2,women:16.5,indigenous:17.1,disability:18.5,racialized:15.8},
+  {band:'$125,000 and over',  all:9.3, women:8.7, indigenous:9.4, disability:9.1, racialized:7.1},
+];
+const RAC_SUBS=[
+  {sub:'Black',          n:16850,pct:6.2,exec:4.1},
+  {sub:'South Asian',    n:19200,pct:7.1,exec:5.8},
+  {sub:'Chinese',        n:9800, pct:3.6,exec:3.2},
+  {sub:'Filipino',       n:7200, pct:2.7,exec:1.9},
+  {sub:'Arab',           n:5800, pct:2.1,exec:1.5},
+  {sub:'Latin American', n:4200, pct:1.5,exec:1.2},
+  {sub:'Southeast Asian',n:3900, pct:1.4,exec:1.1},
+  {sub:'West Asian',     n:2800, pct:1.0,exec:0.8},
+  {sub:'Korean',         n:1200, pct:0.4,exec:0.3},
+  {sub:'Japanese',       n:800,  pct:0.3,exec:0.2},
+  {sub:'Multiple',       n:3500, pct:1.3,exec:1.0},
+  {sub:'Other',          n:1950, pct:0.7,exec:0.5},
+];
+const IND_SUBS=[
+  {sub:'First Nations',n:8200,pct:3.0,of_ind:55.2},
+  {sub:'Metis',        n:5800,pct:2.1,of_ind:39.1},
+  {sub:'Inuit',        n:850, pct:0.3,of_ind:5.7},
+];
+const DIS_SUBS=[
+  {sub:'Mental health disability',n:5800,pct:2.1},
+  {sub:'Physical disability',     n:6100,pct:2.2},
+  {sub:'Cognitive disability',    n:4200,pct:1.5},
+  {sub:'Hearing disability',      n:2100,pct:0.8},
+  {sub:'Seeing disability',       n:1800,pct:0.7},
+  {sub:'Learning disability',     n:1900,pct:0.7},
+  {sub:'Sensory/environmental',   n:1200,pct:0.4},
+];
+const REGIONS=[
+  {region:'National Capital Region',all:30.2,women:31.5,indigenous:22.1,disability:31.8,racialized:27.5},
+  {region:'Atlantic',               all:8.5, women:9.1, indigenous:10.2,disability:8.8, racialized:4.2},
+  {region:'Quebec',                 all:21.3,women:22.0,indigenous:12.5,disability:20.5,racialized:14.8},
+  {region:'Ontario (excl. NCR)',    all:17.8,women:17.5,indigenous:15.8,disability:18.2,racialized:24.5},
+  {region:'Prairie',                all:10.5,women:10.2,indigenous:18.5,disability:10.8,racialized:12.8},
+  {region:'British Columbia',       all:11.7,women:9.7, indigenous:16.4,disability:9.9, racialized:16.8},
+];
+const OCC_GROUPS=[
+  {occ:'EX — Executive',     all:3.8, women:46.0,indigenous:3.6,disability:5.1,racialized:17.8},
+  {occ:'EC — Economics',     all:5.2, women:52.8,indigenous:2.8,disability:5.0,racialized:22.5},
+  {occ:'CS — Computer Sci.', all:7.8, women:28.5,indigenous:2.5,disability:6.2,racialized:31.8},
+  {occ:'PM — Programme',     all:15.5,women:62.5,indigenous:4.8,disability:6.8,racialized:21.5},
+  {occ:'AS — Administrative',all:12.2,women:68.5,indigenous:3.9,disability:6.5,racialized:19.8},
+  {occ:'CR — Clerical',      all:6.8, women:72.5,indigenous:4.5,disability:7.2,racialized:22.8},
+  {occ:'SP — Science',       all:8.5, women:48.5,indigenous:2.2,disability:5.5,racialized:18.5},
+  {occ:'Other groups',       all:40.2,women:51.2,indigenous:4.1,disability:5.8,racialized:17.2},
+];
+
+function buildExplorerDataView(yi,ef){
+  if(explorerView==='pipeline') return buildPipelineView();
+  if(explorerView==='flows')    return buildFlowsView();
+  if(explorerView==='salary')   return buildSalaryView();
+  if(explorerView==='subgroups')return buildSubgroupView();
+  if(explorerView==='region')   return buildRegionOccView();
+  return buildOverviewCharts(yi,ef);
+}
+
+function buildOverviewCharts(yi,ef){
+  return`<div class="charts-grid">
+    <div class="chart-card"><div class="chart-header"><div class="chart-title">Representation rate by department</div><div class="chart-sub">${ef.group==='all'?'Racialized persons':glabel(ef.group)} · ${yl(ef.year==='all'?'trend':ef.year)} · WFA shown as dashed line</div></div><div class="chart-body">${buildRepBarChart(yi,ef.group==='all'?'racialized':ef.group)}</div></div>
+    <div class="chart-card"><div class="chart-header"><div class="chart-title">Harassment score by designated group</div><div class="chart-sub">PSES 2024 · SCORE100 · PS average = 58 · Lower is worse</div></div><div class="chart-body">${buildExpBarChart(ef.year==='trend'?2:PSEI[ef.year]??2)}</div></div>
+    <div class="chart-card wide"><div class="chart-header"><div class="chart-title">Representation trend 2020→2024 vs. WFA benchmark</div><div class="chart-sub">All departments combined (weighted average) · 4 EE Act designated groups · WFA benchmark change noted (2016→2021 Census at FY 2022–23)</div></div><div class="chart-body">${buildTrendChart()}</div></div>
+    <div class="chart-card wide"><div class="chart-header"><div class="chart-title">Divergence count: departments where rep ≥ WFA but harassment score &gt;10 pts below PS avg</div><div class="chart-sub">FY 2024–25 · All four designated groups checked · Red = divergence detected</div></div><div class="chart-body">${buildDivergenceChart(4,2)}</div></div>
+  </div>`;
+}
+
+function buildPipelineView(){
+  const th='background:#f3f4f6;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#6b7280;padding:7px 10px;text-align:center;border-bottom:2px solid #e5e7eb';
+  const td='padding:7px 10px;border-bottom:1px solid #f3f4f6;text-align:center;font-size:12px';
+  const cell=(v,wfa)=>{const c=v>=wfa?'#059669':'#dc2626';return`<td style="${td};color:${c};font-weight:700">${v}%</td>`;};
+  return`<div class="chart-card wide" style="margin-bottom:12px">
+    <div class="chart-header"><div class="chart-title">Executive Pipeline — Representation by EX Level</div><div class="chart-sub">FY 2024–25 · % of executives at each level · Green = at/above WFA, Red = below · Source: 03_executive_pipeline.csv</div></div>
+    <div style="padding:12px 14px;overflow-x:auto"><table style="width:100%;border-collapse:collapse">
+      <thead><tr><th style="${th};text-align:left">Designated Group</th><th style="${th}">EX-01</th><th style="${th}">EX-02</th><th style="${th}">EX-03</th><th style="${th}">EX-04</th><th style="${th}">EX-05</th><th style="${th}">All Exec</th><th style="${th}">WFA</th><th style="${th}">Gap</th></tr></thead>
+      <tbody>${PIPELINE.map(r=>{const gap=r.total-r.wfa;return`<tr><td style="${td};text-align:left;font-weight:600">${r.group}</td>${cell(r.ex1,r.wfa)}${cell(r.ex2,r.wfa)}${cell(r.ex3,r.wfa)}${cell(r.ex4,r.wfa)}${cell(r.ex5,r.wfa)}<td style="${td};font-weight:700">${r.total}%</td><td style="${td};color:#6b7280">${r.wfa}%</td><td style="${td};font-weight:700;color:${gap>=0?'#059669':'#dc2626'}">${gap>=0?'+':''}${gap.toFixed(1)}%</td></tr>`;}).join('')}</tbody>
+    </table></div>
+    <div style="padding:4px 14px 12px;font-size:10.5px;color:#9ca3af">⚠ Women EX-04/EX-05 gap is notable despite a positive overall exec total. Disability WFA (9.0%) is workforce-wide — no separate exec-level benchmark. All EX-level findings require human review before external use.</div>
+  </div>`;
+}
+
+function buildFlowsView(){
+  const years=['FY2024-25','FY2023-24','FY2022-23'];
+  const th='background:#f3f4f6;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#6b7280;padding:7px 10px;border-bottom:2px solid #e5e7eb';
+  const td='padding:7px 10px;border-bottom:1px solid #f3f4f6;font-size:12px;text-align:center';
+  return`<div class="chart-card wide" style="margin-bottom:12px">
+    <div class="chart-header"><div class="chart-title">Workforce Flows — Hires, Promotions & Separations</div><div class="chart-sub">% of each flow type belonging to designated group · Net = Hires − Separations · Source: 04_workforce_flows.csv</div></div>
+    <div style="padding:12px 14px;overflow-x:auto">
+      ${years.map(yr=>{const rows=FLOWS.filter(f=>f.year===yr);return`<div style="margin-bottom:16px"><div style="font-size:11px;font-weight:700;color:#1a3a5c;margin-bottom:6px;padding:4px 0;border-bottom:1px solid #e5e7eb">${yr}</div>
+      <table style="width:100%;border-collapse:collapse"><thead><tr><th style="${th};text-align:left">Group</th><th style="${th}">Hires %</th><th style="${th}">Promotions %</th><th style="${th}">Separations %</th><th style="${th}">Net Signal</th></tr></thead>
+      <tbody>${rows.map(r=>{const net=r.hires-r.sep;const c=net>0?'#059669':net<-0.5?'#dc2626':'#6b7280';return`<tr><td style="${td};text-align:left;font-weight:600">${r.group}</td><td style="${td}">${r.hires}%</td><td style="${td}">${r.promo}%</td><td style="${td}">${r.sep}%</td><td style="${td};font-weight:700;color:${c}">${net>=0?'+':''}${net.toFixed(1)}%</td></tr>`;}).join('')}</tbody></table></div>`;}).join('')}
+    </div>
+    <div style="padding:4px 14px 12px;font-size:10.5px;color:#9ca3af">Positive net = group growing as share of workforce. Promotions below hires % signals pipeline leakage into senior roles. Source: 04_workforce_flows.csv</div>
+  </div>`;
+}
+
+function buildSalaryView(){
+  const th='background:#f3f4f6;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#6b7280;padding:7px 10px;border-bottom:2px solid #e5e7eb;text-align:center';
+  const td='padding:7px 10px;border-bottom:1px solid #f3f4f6;font-size:12px;text-align:center';
+  const cell=(v,all)=>{const d=v-all;const c=Math.abs(d)<1?'#6b7280':d>0?'#dc2626':'#059669';return`<td style="${td};color:${c};font-weight:${Math.abs(d)>=2?'700':'400'}">${v}% <span style="font-size:10px">(${d>=0?'+':''}${d.toFixed(1)})</span></td>`;};
+  return`<div class="chart-card wide" style="margin-bottom:12px">
+    <div class="chart-header"><div class="chart-title">Salary Distribution by Designated Group</div><div class="chart-sub">FY 2024–25 · % in each salary band · Brackets = difference from All Employees baseline · Source: 10_salary_distribution.csv</div></div>
+    <div style="padding:12px 14px;overflow-x:auto"><table style="width:100%;border-collapse:collapse">
+      <thead><tr><th style="${th};text-align:left">Salary Band</th><th style="${th}">All Employees</th><th style="${th}">Women</th><th style="${th}">Indigenous</th><th style="${th}">Disabilities</th><th style="${th}">Racialized</th></tr></thead>
+      <tbody>${SALARY.map(r=>`<tr><td style="${td};text-align:left;font-weight:600">${r.band}</td><td style="${td};font-weight:700">${r.all}%</td>${cell(r.women,r.all)}${cell(r.indigenous,r.all)}${cell(r.disability,r.all)}${cell(r.racialized,r.all)}</tr>`).join('')}</tbody>
+    </table></div>
+    <div style="padding:4px 14px 12px;font-size:10.5px;color:#9ca3af">Red = more concentrated in this band than the workforce average; Green = less concentrated. Racialized and Indigenous employees overrepresented in lower salary bands. Source: 10_salary_distribution.csv · See also: 13_age_distribution.csv</div>
+  </div>`;
+}
+
+function buildSubgroupView(){
+  const th='background:#f3f4f6;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#6b7280;padding:7px 10px;border-bottom:2px solid #e5e7eb';
+  const td='padding:7px 10px;border-bottom:1px solid #f3f4f6;font-size:12px';
+  return`<div style="display:flex;flex-direction:column;gap:12px">
+    <div class="chart-card wide">
+      <div class="chart-header"><div class="chart-title">Racialized Persons — Subgroup Breakdown</div><div class="chart-sub">FY 2024–25 · Overall and executive representation · Subgroup totals may exceed group total (multi-origin self-ID) · Source: 05_racialized_subgroups.csv</div></div>
+      <div style="padding:12px 14px;overflow-x:auto"><table style="width:100%;border-collapse:collapse">
+        <thead><tr><th style="${th};text-align:left">Subgroup</th><th style="${th};text-align:right">Headcount</th><th style="${th};text-align:right">% of CPA</th><th style="${th};text-align:right">% of Executives</th><th style="${th};text-align:right">Exec vs. Overall</th></tr></thead>
+        <tbody>${RAC_SUBS.map(r=>{const d=r.exec-r.pct;return`<tr><td style="${td}">${r.sub}</td><td style="${td};text-align:right">${r.n.toLocaleString()}</td><td style="${td};text-align:right">${r.pct}%</td><td style="${td};text-align:right">${r.exec}%</td><td style="${td};text-align:right;font-weight:700;color:${d>=0?'#059669':'#dc2626'}">${d>=0?'+':''}${d.toFixed(1)}%</td></tr>`;}).join('')}</tbody>
+      </table></div>
+      <div style="padding:4px 14px 12px;font-size:10.5px;color:#9ca3af">Subgroup totals may exceed the group total — individuals may self-identify with multiple origins. Exec vs. Overall = executive % minus CPA-wide %. Source: 05_racialized_subgroups.csv</div>
+    </div>
+    <div class="chart-card wide">
+      <div class="chart-header"><div class="chart-title">Indigenous Peoples — Subgroup Breakdown</div><div class="chart-sub">FY 2024–25 · First Nations, Métis, Inuit · Source: 07_indigenous_subgroups.csv</div></div>
+      <div style="padding:12px 14px;overflow-x:auto"><table style="width:100%;border-collapse:collapse">
+        <thead><tr><th style="${th};text-align:left">Subgroup</th><th style="${th};text-align:right">Headcount</th><th style="${th};text-align:right">% of CPA</th><th style="${th};text-align:right">% of Indigenous group</th></tr></thead>
+        <tbody>${IND_SUBS.map(r=>`<tr><td style="${td}">${r.sub}</td><td style="${td};text-align:right">${r.n.toLocaleString()}</td><td style="${td};text-align:right">${r.pct}%</td><td style="${td};text-align:right">${r.of_ind}%</td></tr>`).join('')}</tbody>
+      </table></div>
+      <div style="padding:4px 14px 12px;font-size:10.5px;color:#9ca3af">Self-identification is voluntary — under-reporting is highest for Indigenous peoples. Source: 07_indigenous_subgroups.csv</div>
+    </div>
+    <div class="chart-card wide">
+      <div class="chart-header"><div class="chart-title">Persons with Disabilities — Type Breakdown</div><div class="chart-sub">FY 2024–25 · Disability types are not mutually exclusive — do not sum for a total · Source: 08_disability_subgroups.csv</div></div>
+      <div style="padding:12px 14px;overflow-x:auto"><table style="width:100%;border-collapse:collapse">
+        <thead><tr><th style="${th};text-align:left">Disability Type</th><th style="${th};text-align:right">Headcount</th><th style="${th};text-align:right">% of CPA</th></tr></thead>
+        <tbody>${DIS_SUBS.map(r=>`<tr><td style="${td}">${r.sub}</td><td style="${td};text-align:right">${r.n.toLocaleString()}</td><td style="${td};text-align:right">${r.pct}%</td></tr>`).join('')}</tbody>
+      </table></div>
+      <div style="padding:4px 14px 12px;font-size:10.5px;color:#9ca3af">⚠ Disability codes are not mutually exclusive. Use D112 for total disability headcount — never sum subgroup rows. Source: 08_disability_subgroups.csv</div>
+    </div>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   EXECUTIVE SUMMARY TAB
+═══════════════════════════════════════════════ */
+function renderSummary(app){
+  const wrap=document.createElement('div');
+  wrap.className='main';
+  wrap.innerHTML=`
+  <div class="full" style="background:white;border:1px solid #e5e7eb;border-radius:8px;padding:18px 22px">
+    <div style="font-size:15px;font-weight:800;color:#1a1a2e;margin-bottom:4px">📋 Executive Summary — Key Findings</div>
+    <div style="font-size:11.5px;color:#6b7280;margin-bottom:16px">Prototype findings based on mock data · All findings require human review before external use · Scope: Core Public Administration only</div>
+    ${[
+      {icon:'🔴',title:'Persons with Disabilities — CPA-wide gap persists',body:'At 7.2% representation vs. a 9.0% WFA benchmark, persons with disabilities remain the most underrepresented designated group in the CPA. The gap has narrowed by 0.4 points since FY2021-22 but is not closing at a pace consistent with reaching the WFA benchmark. Under-reporting due to voluntary self-identification likely means the true gap is wider than reported.',dept:'CPA-wide',tag:'Recruitment gap'},
+      {icon:'🔴',title:'Department of National Defence — Racialized persons divergence',body:'Racialized persons at DND represent 17.8% of the workforce, above the 17.1% WFA benchmark. Yet their harassment and discrimination score is 47/100 against a public service average of 64 — a 17-point experience gap that representation data alone would hide. This department warrants intervention on inclusion, not headcount. ANSCOUNT = 480.',dept:'Dept. of National Defence',tag:'Divergence flag'},
+      {icon:'🟡',title:'ESDC — Indigenous peoples representation declining',body:'Indigenous peoples at ESDC represent 2.8% of the workforce vs. a 4.0% WFA benchmark, and the trend line shows a 0.3-point decline over three fiscal years. Workforce flows data shows separations exceeding hires for this group. Human review required before any external characterization.',dept:'Employment & Social Dev.',tag:'Widening gap'},
+      {icon:'🟡',title:'IRCC — Women below WFA at executive levels',body:'Women at IRCC represent 57.1% of the overall workforce (above 52.7% WFA), but hold only 38.2% of EX-04 and 29.5% of EX-05 positions. This pipeline leakage suggests structural barriers to senior advancement not captured by overall representation statistics.',dept:'Immigration, Ref. & Citizenship',tag:'Pipeline leakage'},
+      {icon:'🟢',title:'CRA — Racialized persons representation on track',body:'The Canada Revenue Agency shows racialized persons at 22.3% — 5.2 points above the 17.1% WFA benchmark — with experience scores at or near the PS average across all six PSES themes. No divergence signal detected for FY2024-25.',dept:'Canada Revenue Agency',tag:'On track'},
+    ].map(f=>`<div style="border:1px solid #e5e7eb;border-left:4px solid ${f.tag==='On track'?'#22c55e':f.tag==='Widening gap'||f.tag==='Pipeline leakage'?'#f59e0b':'#ef4444'};border-radius:7px;padding:13px 16px;margin-bottom:12px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:7px">
+        <div style="font-size:13px;font-weight:700;color:#1a1a2e">${f.icon} ${f.title}</div>
+        <div style="display:flex;gap:6px;flex-shrink:0;margin-left:12px">
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:9px;background:#dbeafe;color:#1e40af">${f.dept}</span>
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:9px;background:${f.tag==='On track'?'#dcfce7':'#fee2e2'};color:${f.tag==='On track'?'#166534':'#991b1b'}">${f.tag}</span>
+        </div>
+      </div>
+      <div style="font-size:12.5px;color:#374151;line-height:1.65">${f.body}</div>
+    </div>`).join('')}
+    <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:7px;padding:11px 15px;font-size:11.5px;color:#78350f;margin-top:6px">
+      <strong>Human-in-the-loop required:</strong> Any finding characterizing a specific department, or any harassment finding for a specific group, must be reviewed by an EDI policy lead before external use.
+    </div>
+  </div>`;
+  app.appendChild(wrap);
+}
+
+/* ═══════════════════════════════════════════════
+   CHAT TAB
+═══════════════════════════════════════════════ */
+function renderChat(app){
+  const wrap=document.createElement('div');wrap.className='main';wrap.style.cssText='grid-template-columns:280px 1fr;height:calc(100vh - 185px)';
+  wrap.innerHTML=`
+    <div style="background:white;border:1px solid #e5e7eb;border-radius:8px;padding:14px;overflow-y:auto">
+      <div style="font-size:12px;font-weight:700;color:#1a1a2e;margin-bottom:10px">Chat with Ollama</div>
+      <div style="font-size:11px;color:#6b7280;line-height:1.6;margin-bottom:12px">Requires Ollama running at <code style="background:#f3f4f6;padding:1px 4px;border-radius:3px">localhost:11434</code>. Run <code style="background:#f3f4f6;padding:1px 4px;border-radius:3px">ollama serve</code> then reload.</div>
+      <div style="font-size:11px;font-weight:700;color:#374151;margin-bottom:6px">Model</div>
+      <select id="model-select" style="width:100%;margin-bottom:12px;font-size:11px">
+        <option value="llama3">llama3</option>
+        <option value="mistral">mistral</option>
+        <option value="gemma">gemma</option>
+      </select>
+      <div style="font-size:11px;font-weight:700;color:#374151;margin-bottom:6px">Suggested prompts</div>
+      <div onclick="document.getElementById('chat-input').value='Which departments have racialized persons above WFA but below-average harassment scores?'" style="font-size:11px;color:#1e40af;cursor:pointer;padding:5px 8px;border:1px solid #bfdbfe;border-radius:5px;margin-bottom:5px;background:#eff6ff;line-height:1.4">Which departments have racialized persons above WFA but below-average harassment scores?</div>
+      <div onclick="document.getElementById('chat-input').value='Compare Indigenous peoples representation trend from 2020 to 2024.'" style="font-size:11px;color:#1e40af;cursor:pointer;padding:5px 8px;border:1px solid #bfdbfe;border-radius:5px;margin-bottom:5px;background:#eff6ff;line-height:1.4">Compare Indigenous peoples representation trend from 2020 to 2024.</div>
+      <div onclick="document.getElementById('chat-input').value='Which group has the widest gap between representation and experience?'" style="font-size:11px;color:#1e40af;cursor:pointer;padding:5px 8px;border:1px solid #bfdbfe;border-radius:5px;margin-bottom:5px;background:#eff6ff;line-height:1.4">Which group has the widest gap between representation and experience?</div>
+    </div>
+    <div style="display:flex;flex-direction:column;background:white;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden">
+      <div id="chat-messages" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px">
+        <div class="msg msg-assistant"><div class="msg-avatar avatar-bot">EE</div><div><div class="msg-bubble">Hello. I am your Employment Equity analyst assistant. Ask me about representation gaps, PSES experience scores, or divergence signals. Requires local Ollama.</div><div class="msg-time">now</div></div></div>
+      </div>
+      <div style="padding:10px 14px;border-top:1px solid #e5e7eb;display:flex;gap:8px">
+        <input id="chat-input" type="text" placeholder="Ask about representation gaps, experience scores, or divergence signals…" style="flex:1;border:1px solid #d1d5db;border-radius:6px;padding:7px 11px;font-size:12px">
+        <button id="send-btn" class="send-btn" onclick="sendChat()">Send</button>
+      </div>
+    </div>`;
+  app.appendChild(wrap);
+}
+
+async function sendChat(){
+  const OLLAMA_URL='http://localhost:11434/api/chat';
+  const SYSTEM_PROMPT='You are an employment equity analyst assistant for the Treasury Board of Canada Secretariat. Scope: Core Public Administration only. Never use causal language. Always show ANSCOUNT alongside experience scores. Be concise and specific.';
+  const inp=document.getElementById('chat-input');const btn=document.getElementById('send-btn');
+  if(!inp||!btn)return;
+  const msg=inp.value.trim();if(!msg)return;
+  inp.value='';btn.disabled=true;
+  addChatMsg('user',msg);
+  chatMessages.push({role:'user',content:msg});
+  const model=document.getElementById('model-select')?.value||'llama3';
+  addChatMsg('thinking','Thinking…',true);
+  try{
+    const res=await fetch(OLLAMA_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model,messages:[{role:'system',content:SYSTEM_PROMPT},...chatMessages],stream:false}),signal:AbortSignal.timeout(60000)});
+    removThinking();
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    const reply=data.message?.content||'(no response)';
+    chatMessages.push({role:'assistant',content:reply});
+    addChatMsg('assistant',reply);
+  }catch(e){
+    removThinking();
+    const isOffline=e.message.includes('fetch')||e.message.includes('Failed')||e.message.includes('NetworkError');
+    addChatMsg('error',isOffline?'Cannot reach Ollama at '+OLLAMA_URL+'. Run: <code>ollama serve</code> then refresh.':'Error: '+e.message);
+  }
+  btn.disabled=false;
+}
+
+function addChatMsg(type,text,isTemp=false){
+  const msgs=document.getElementById('chat-messages');if(!msgs)return;
+  const div=document.createElement('div');
+  div.className='msg msg-'+(type==='user'?'user':type==='error'?'error':'assistant');
+  if(isTemp)div.id='thinking-msg';
+  const now=new Date().toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'});
+  const avatar=type==='user'?'<div class="msg-avatar avatar-user">YOU</div>':'<div class="msg-avatar avatar-bot">EE</div>';
+  const bubble='<div class="msg-bubble">'+text+'</div><div class="msg-time">'+now+'</div>';
+  div.innerHTML=type==='user'?avatar+'<div>'+bubble+'</div>':avatar+'<div>'+bubble+'</div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function removThinking(){const t=document.getElementById('thinking-msg');if(t)t.remove();}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+function appendFooter(){
+  if(document.querySelector('.footer'))return;
+  const f=document.createElement('div');
+  f.className='footer';
+  f.innerHTML=`
+    <div>Data: BT1-28 Reports (TBS) &middot; PSES 2020, 2022, 2024 &middot; Core Public Administration only &middot; ANSCOUNT &lt; 10 suppressed &middot; WFA: 2021 Census from FY2023-24 onward</div>
+    <div style="color:#9ca3af;margin-top:3px">Divergence threshold: &gt;1 SD below group PS avg &middot; Human review required before external use &middot  `;
+  document.getElementById('app').appendChild(f);
+}
+
+renderApp();
+</script>
+</body>
+</html>
+pendChild(f);
+}
+
+renderApp();
+</script>
+</body>
+</html>
+:#9ca3af;margin-top:3px">Divergence threshold: &gt;1 SD below group PS avg &middot; Human review required before external use &middot; Prototype — not for external distribution</div>
+  `;
+  document.getElementById('app').appendChild(f);
+}
+
+renderApp();
+</script>
+</body>
+</html>
