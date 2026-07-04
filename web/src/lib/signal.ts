@@ -9,7 +9,7 @@
 
 import { META } from "./data";
 import { severityMeta } from "./format";
-import type { Row, Year } from "./types";
+import type { HistoryEntry, Row, Year } from "./types";
 
 // The complete approved vocabulary. Nothing outside this set is emitted.
 export const REVIEW_VOCAB = [
@@ -109,25 +109,27 @@ export interface TrendResult {
 }
 
 /**
- * Classify year-over-year movement for a 2024-25 row that has a 2023-24 match.
+ * Shared core: classify movement between any two (wfa, representation) points.
  * Reasons in percentage-point terms (representation vs. its benchmark) so a
  * benchmark shift is never mistaken for a representation change. Two data points
  * only — never extrapolated, never attributed to a specific policy or program.
  */
-export function classifyTrend(row: Row): TrendResult | null {
-  if (!row.has_trend || row.rep_pct === null || row.prior_rep_pct === null || row.wfa === null) {
-    return null;
-  }
-  const priorWfa = META.wfa_by_year["2023-2024"][row.group];
-  const priorPP = priorWfa - row.prior_rep_pct; // pp below benchmark, last year
-  const currPP = row.wfa - row.rep_pct; // pp below benchmark, this year
+function classifyByPoints(
+  fromWfa: number,
+  fromRep: number,
+  toWfa: number,
+  toRep: number,
+  benchNoteSuffix: string,
+): TrendResult {
+  const priorPP = fromWfa - fromRep; // pp below benchmark, earlier point
+  const currPP = toWfa - toRep; // pp below benchmark, later point
   const ppChange = currPP - priorPP; // negative = moved toward benchmark
-  const repChange = row.rep_pct - row.prior_rep_pct;
-  const wfaChange = row.wfa - priorWfa;
+  const repChange = toRep - fromRep;
+  const wfaChange = toWfa - fromWfa;
 
   const benchNote =
     Math.abs(wfaChange) >= 0.05
-      ? ` The benchmark itself ${wfaChange < 0 ? "fell" : "rose"} ${Math.abs(wfaChange).toFixed(1)} pp this year, which affects the gap independently of representation.`
+      ? ` The benchmark itself ${wfaChange < 0 ? "fell" : "rose"} ${Math.abs(wfaChange).toFixed(1)} pp${benchNoteSuffix}, which affects the gap independently of representation.`
       : "";
 
   if (Math.abs(ppChange) < 0.2) {
@@ -150,6 +152,27 @@ export function classifyTrend(row: Row): TrendResult | null {
     label: "Worsening",
     detail: `The distance below benchmark widened (representation ${repChange >= 0 ? "+" : ""}${repChange.toFixed(1)} pp).${benchNote}`,
   };
+}
+
+/**
+ * Classify year-over-year movement for a 2024-25 row that has a 2023-24 match.
+ */
+export function classifyTrend(row: Row): TrendResult | null {
+  if (!row.has_trend || row.rep_pct === null || row.prior_rep_pct === null || row.wfa === null) {
+    return null;
+  }
+  const priorWfa = META.wfa_by_year["2023-2024"][row.group];
+  return classifyByPoints(priorWfa, row.prior_rep_pct, row.wfa, row.rep_pct, " this year");
+}
+
+/**
+ * Same classification, generalized to any two points on a department's
+ * multi-year trajectory — used by Track's year-range filter to compare an
+ * arbitrary pair of years without inventing a second scoring system.
+ */
+export function classifyTrendBetween(from: HistoryEntry, to: HistoryEntry): TrendResult | null {
+  if (from.rep === null || to.rep === null) return null;
+  return classifyByPoints(from.wfa, from.rep, to.wfa, to.rep, " over this span");
 }
 
 export function currentYear(): Year {

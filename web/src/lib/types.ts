@@ -42,8 +42,26 @@ export interface Row {
   divergence_indicator: keyof PsesScores | null;
 }
 
+// The Track view's multi-year series spans more fiscal years than the
+// current-vs-prior `Year` type covers.
+export type HistoryYear = "2021-2022" | "2022-2023" | "2023-2024" | "2024-2025";
+
+export const HISTORY_YEARS: HistoryYear[] = [
+  "2021-2022",
+  "2022-2023",
+  "2023-2024",
+  "2024-2025",
+];
+
+export const HISTORY_YEAR_LABELS: Record<HistoryYear, string> = {
+  "2021-2022": "2021–22",
+  "2022-2023": "2022–23",
+  "2023-2024": "2023–24",
+  "2024-2025": "2024–25",
+};
+
 export interface HistoryEntry {
-  year: Year;
+  year: HistoryYear;
   rep: number | null;
   wfa: number;
   gap: number | null;
