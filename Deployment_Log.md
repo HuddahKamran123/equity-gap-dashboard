@@ -319,6 +319,39 @@ unchanged, Frame's pointer link confirmed present.
 
 ---
 
+### [EPISODE] — 2026-07-04 · added visualizations + computed insights to Subgroups (no new data)
+The Subgroups tab (added same day) was pure tables — user feedback: it read
+as a data dump. Added two new computed signals, both descriptive comparisons
+of numbers already in the dataset, not new data or causal claims:
+
+1. **By-department theme chart**: horizontal bars for the selected
+   department × group's 6 theme scores (2024), with a tick mark for the
+   public-service-wide average — a visual "at a glance" read before the
+   detailed per-subgroup table below it.
+2. **Divergence-within-group signal**: flags the subgroup whose harassment
+   score sits ≥5 points below the group's own overall score (same floor as
+   `DIVERGENCE_MARGIN` in `pipeline/build_dataset.py`) — e.g. "Mental health
+   disability reports a harassment score 5 points below the group's own
+   overall score (47 vs. 52)."
+3. **Service-wide bar charts**: horizontal bars for overall representation %
+   per subgroup, with a marker for executive representation %, replacing the
+   plain 3-column tables.
+4. **Executive-gap signal**: flags the subgroup with the largest gap between
+   overall and executive representation per table — e.g. "Black shows the
+   widest overall-to-executive gap here: 5% overall vs. 3% executive."
+
+Both signal computations are within-dataset comparisons (subgroup vs. its own
+group; overall % vs. executive % for the same subgroup) — no new data
+ingested, no causal language, no composite score. Verified both against the
+raw source numbers by hand before trusting the auto-generated sentences.
+
+Verification: `npm run build` clean, `eval/run_eval.py` still 10/10 (UI-only
+change), bar widths confirmed via DOM inspection against known values (e.g.
+RCMP × Persons with Disabilities harassment = 52%, matching the existing
+oracle), both signal sentences spot-checked against the source data by hand.
+
+---
+
 ### [EXTERNAL] — pending live use (2026-06-28 → 07-02)
 *To be filled once the deployed URL is in front of someone outside the build.*
 Capture: who used it, what they asked, where it helped, where it confused them, and
