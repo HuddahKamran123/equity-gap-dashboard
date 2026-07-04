@@ -239,6 +239,10 @@ export default function FrameView() {
 
           <div className="mt-6 grid gap-8 lg:grid-cols-2">
             <SubgroupTable
+              title={`Racialized subgroups · ${SERVICE_WIDE_CONTEXT.racialized_subgroups.fiscal_year}`}
+              rows={SERVICE_WIDE_CONTEXT.racialized_subgroups.rows}
+            />
+            <SubgroupTable
               title={`Indigenous subgroups · ${SERVICE_WIDE_CONTEXT.indigenous_subgroups.fiscal_year}`}
               rows={SERVICE_WIDE_CONTEXT.indigenous_subgroups.rows}
             />

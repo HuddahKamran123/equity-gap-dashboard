@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-build_service_wide_context.py — extract 5 real, service-wide-only BT1-28 tables
-(Indigenous subgroups, disability subgroups, salary distribution, age
-distribution, WFA benchmark history) for reference display.
+build_service_wide_context.py — extract 6 real, service-wide-only BT1-28 tables
+(racialized subgroups, Indigenous subgroups, disability subgroups, salary
+distribution, age distribution, WFA benchmark history) for reference display.
 
 These are genuinely real government tables (not fabricated), sourced from the
 same "parallel build" investigated in the 2026-07-03 decisions (CLAUDE.md §3,
@@ -26,7 +26,7 @@ import csv, json, re
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-RAW = REPO / "Knowledge" / "data" / "raw" / "service_wide"
+RAW = REPO / "Knowledge" / "EMPLYOMENT EQUITY-TBS" / "knowledge" / "tables"
 OUT_DIR = REPO / "web" / "src" / "data"
 
 
@@ -52,6 +52,25 @@ def num(v):
         return int(v)
     except ValueError:
         return None
+
+
+def racialized_subgroups():
+    # Same mislabeling bug as the Indigenous table: FY2024-25 rows here list
+    # Indigenous subgroup names (Inuit, Métis, First Nations) instead of
+    # racialized ones — use FY2023-24 instead, the last correctly-labeled year
+    # with a complete "Total" row. Columns 4/5 = overall n/%, 6/7 = executive n/%.
+    out = []
+    for r in rows("05_racialized_subgroups.csv")[1:]:
+        if len(r) < 8 or r[0] != "FY2023-24" or r[3] == "Total" or r[3].startswith("Note"):
+            continue
+        out.append({
+            "subgroup": r[3],
+            "overall_n": num(r[4]),
+            "overall_pct": pct(r[5]),
+            "executive_n": num(r[6]),
+            "executive_pct": pct(r[7]),
+        })
+    return {"fiscal_year": "2023-2024", "rows": out}
 
 
 def indigenous_subgroups():
@@ -154,6 +173,7 @@ def wfa_benchmark_history():
 
 def main():
     data = {
+        "racialized_subgroups": racialized_subgroups(),
         "indigenous_subgroups": indigenous_subgroups(),
         "disability_subgroups": disability_subgroups(),
         "salary_distribution": salary_distribution(),
@@ -180,6 +200,8 @@ def main():
     (OUT_DIR / "service_wide_context_meta.json").write_text(json.dumps(meta, indent=2))
 
     print(f"✓ wrote {OUT_DIR/'service_wide_context.json'}")
+    print(f"  racialized_subgroups: {len(data['racialized_subgroups']['rows'])} rows "
+          f"({data['racialized_subgroups']['fiscal_year']})")
     print(f"  indigenous_subgroups: {len(data['indigenous_subgroups']['rows'])} rows "
           f"({data['indigenous_subgroups']['fiscal_year']})")
     print(f"  disability_subgroups: {len(data['disability_subgroups']['rows'])} rows "
