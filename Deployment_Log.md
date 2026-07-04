@@ -187,6 +187,55 @@ that matched what it actually was (real-but-service-wide vs. genuinely fake).
 
 ---
 
+### [OVERRIDE] — 2026-07-04 · Knowledge/ folder replaced wholesale, on request, after consequences confirmed
+Explicit user request to replace the project's curated `Knowledge/` folder
+with a Downloads folder containing course PDFs and the parallel-build
+teammate's full project. Warned before acting: this breaks all 4 pipeline
+scripts (`build_dataset.py`, `build_history.py`, `build_subgroup_pses.py`,
+`build_service_wide_context.py`), since their source files
+(`Knowledge/data/processed/employment_equity_department_gaps.csv`,
+`Knowledge/data/raw/*`) no longer exist at those paths. User confirmed after
+the warning. Does **not** affect the deployed site — `web/src/data/*.json`
+untouched, `eval/run_eval.py` still 10/10. Two raw microdata files (823MB,
+492MB) excluded via `.gitignore`/`.vercelignore` — over GitHub's and Vercel's
+100MB limits. Landed on an isolated branch (`replace-knowledge-folder`), not
+`main`, pending review.
+
+### [DECISION] — 2026-07-04 · repointed build_service_wide_context.py, added racialized subgroups
+A follow-up sync (`knowledge 7`) filled in files the earlier research
+confirmed missing: `bt1_28_representation.csv`, `dept_name_mapping.csv`,
+`demographic_concordance.csv`, `data-cautions.md`, and tables 01–06/09/11/12
+(previously we only had 07/08/10/13/14). Merged into
+`Knowledge/EMPLYOMENT EQUITY-TBS/knowledge/` — additive only, every
+overlapping file was byte-identical to what was already there, and the real
+`pses_prepared/*.gz` files were preserved (the new sync's copy of that folder
+was empty).
+
+Checked `bt1_28_representation.csv` and `dept_name_mapping.csv` for
+per-department subgroup data specifically, since that was the open question
+from the 2026-07-03 decisions: **still doesn't exist.**
+`bt1_28_representation.csv` is department × the 4 main groups only (same
+grain we already have); tables 05/06/07/08 (all subgroup breakdowns) have no
+department column — confirmed CPA-wide only, same as before.
+
+Since the Knowledge/ replacement (see `[OVERRIDE]` above) broke
+`pipeline/build_service_wide_context.py`'s source path, fixed it to point at
+the new location and used the occasion to add the one subgroup table that was
+missing from the service-wide reference section: **racialized subgroups**
+(table 05 — Black, Chinese, Filipino, South Asian, Korean, Japanese,
+Southeast Asian, West Asian/Arab, Latin American, mixed origin). Same
+mislabeling bug as the Indigenous table: FY2024-25 rows here list Indigenous
+subgroup names instead of racialized ones — FY2023-24 used instead. Verified
+output against source (10 subgroups, values match exactly) and in-browser.
+`build_dataset.py`, `build_history.py`, and `build_subgroup_pses.py` remain
+broken — out of scope for this pass, since fixing them means re-deriving
+`equity.json` from a differently-shaped source
+(`bt1_28_representation.csv` has `women_n/pct/wfa`-style columns, not the
+pre-computed `gap`/`expected`/`severity` columns the pipeline currently
+expects).
+
+---
+
 ### [EXTERNAL] — pending live use (2026-06-28 → 07-02)
 *To be filled once the deployed URL is in front of someone outside the build.*
 Capture: who used it, what they asked, where it helped, where it confused them, and

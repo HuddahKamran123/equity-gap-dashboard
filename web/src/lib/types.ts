@@ -162,6 +162,7 @@ export interface WfaBenchmarkHistoryRow {
 }
 
 export interface ServiceWideContext {
+  racialized_subgroups: { fiscal_year: string; rows: SubgroupBreakdownRow[] };
   indigenous_subgroups: { fiscal_year: string; rows: SubgroupBreakdownRow[] };
   disability_subgroups: { fiscal_year: string; rows: SubgroupBreakdownRow[] };
   salary_distribution: { fiscal_year: string; rows: DistributionRow[] };

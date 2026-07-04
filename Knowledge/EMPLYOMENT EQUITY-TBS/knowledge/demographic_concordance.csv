@@ -1,0 +1,15 @@
+canonical_key,level,parent,label,bycond_2020,bycond_2022,bycond_2024,note
+women,group,,Women,D115B = 1,EEDV_02 = 1,D111A = 1,2020 label is 'Female gender' — definitional variance vs 'Woman'; flag beside any 3-cycle trend
+indigenous,group,,Indigenous peoples,,,D113 = 1,NO overall Indigenous code in 2020/2022 microdata — only subgroups; group-level experience exists for 2024 only
+disability,group,,Persons with disabilities,,,D112 = 1,NO overall disability code in 2020/2022 microdata — only subgroups (not summable; overlapping); 2024 only
+racialized,group,,Racialized persons,,EEDV_21 = 1,D114 = 1,2020 has no overall code — visible-minority subgroups only; 2-cycle trend (2022-2024) max
+black,subgroup,racialized,Black,D121A = 1,EEDV_07 = 1,EEDV_19 = 1,full 3-cycle lineage
+southasian,subgroup,racialized,South Asian,D121F = 1,EEDV_15 = 1,EEDV_24 = 1,2020 label 'South Asian/East Indian'
+eastasian,subgroup,racialized,East Asian,,,EEDV_20 = 1,2020 splits by ethnicity (Chinese/Japanese/Korean); 2022 combines East+Southeast Asian — 2024 only
+arab,subgroup,racialized,Arab,,,EEDV_23 = 1,2020 'West Asian/North African or Arab' and 2022 'Middle Eastern' are broader definitions — 2024 only
+firstnations,subgroup,indigenous,First Nations,D117A = 1,EEDV_04 = 1,EEDV_16 = 1,full 3-cycle lineage
+metis,subgroup,indigenous,Métis,D117B = 1,EEDV_06 = 1,EEDV_18 = 1,full 3-cycle lineage
+inuit,subgroup,indigenous,Inuit,D117C = 1,EEDV_05 = 1,EEDV_17 = 1,full 3-cycle lineage
+cognitive,subgroup,disability,Cognitive disability,D119H = 1,EEDV_60 = 1,EEDV_11 = 1,full 3-cycle lineage
+mental,subgroup,disability,Mental health-related disability,D119E = 1,EEDV_54 = 1,EEDV_07 = 1,wording varies: issue (2020) / condition (2022) / related disability (2024)
+seeing,subgroup,disability,Seeing disability,D119A = 1,EEDV_44 = 1,EEDV_01 = 1,full 3-cycle lineage

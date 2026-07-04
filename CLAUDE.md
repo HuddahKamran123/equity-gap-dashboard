@@ -199,6 +199,21 @@ work is visible to reviewers who compare the two builds directly:
   a real version already exists in the service-wide reference tables above,
   so the fake version was dropped rather than shown alongside a real one.
 
+**Adding racialized subgroups + repointing the pipeline (2026-07-04).** The
+project's `Knowledge/` folder was subsequently replaced wholesale with a fuller
+sync of the parallel build (see `Deployment_Log.md`), which moved the source
+tables to `Knowledge/EMPLYOMENT EQUITY-TBS/knowledge/tables/` and broke
+`pipeline/build_service_wide_context.py`'s old path. Fixed the path and used
+the occasion to add the one service-wide subgroup table that was missing:
+**racialized subgroups** (Black, Chinese, Filipino, South Asian, Korean,
+Japanese, Southeast Asian, West Asian/Arab, Latin American, mixed origin) —
+same treatment as Indigenous and disability subgroups: real, service-wide,
+collapsed on Frame, not per-department. Same mislabeling bug found in this
+table's FY2024-25 rows (lists Indigenous subgroup names) — FY2023-24 used
+instead, consistent with the Indigenous-subgroups fix. `build_dataset.py`,
+`build_history.py`, and `build_subgroup_pses.py` remain broken by the
+Knowledge/ replacement — not addressed in this pass.
+
 ## 4. Data
 
 **Two sources, one reproducible pipeline** (`pipeline/`):

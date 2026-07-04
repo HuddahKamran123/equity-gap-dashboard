@@ -1,4 +1,79 @@
 {
+  "racialized_subgroups": {
+    "fiscal_year": "2023-2024",
+    "rows": [
+      {
+        "subgroup": "Black",
+        "overall_n": 13270,
+        "overall_pct": 5.0,
+        "executive_n": 233,
+        "executive_pct": 3.0
+      },
+      {
+        "subgroup": "Non-White Latin American",
+        "overall_n": 2947,
+        "overall_pct": 1.1,
+        "executive_n": 42,
+        "executive_pct": 0.5
+      },
+      {
+        "subgroup": "Person of mixed origin",
+        "overall_n": 4657,
+        "overall_pct": 1.7,
+        "executive_n": 163,
+        "executive_pct": 2.1
+      },
+      {
+        "subgroup": "Chinese",
+        "overall_n": 8803,
+        "overall_pct": 3.3,
+        "executive_n": 130,
+        "executive_pct": 1.7
+      },
+      {
+        "subgroup": "Japanese",
+        "overall_n": 311,
+        "overall_pct": 0.1,
+        "executive_n": 10,
+        "executive_pct": 0.1
+      },
+      {
+        "subgroup": "Korean",
+        "overall_n": 885,
+        "overall_pct": 0.3,
+        "executive_n": 17,
+        "executive_pct": 0.2
+      },
+      {
+        "subgroup": "Filipino",
+        "overall_n": 2440,
+        "overall_pct": 0.9,
+        "executive_n": 18,
+        "executive_pct": 0.2
+      },
+      {
+        "subgroup": "South Asian / East Indian",
+        "overall_n": 11334,
+        "overall_pct": 4.3,
+        "executive_n": 250,
+        "executive_pct": 3.2
+      },
+      {
+        "subgroup": "Non-White West Asian, North African or Arab",
+        "overall_n": 7355,
+        "overall_pct": 2.8,
+        "executive_n": 212,
+        "executive_pct": 2.7
+      },
+      {
+        "subgroup": "Southeast Asian",
+        "overall_n": 3038,
+        "overall_pct": 1.1,
+        "executive_n": 63,
+        "executive_pct": 0.8
+      }
+    ]
+  },
   "indigenous_subgroups": {
     "fiscal_year": "2023-2024",
     "rows": [
