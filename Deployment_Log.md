@@ -236,6 +236,63 @@ expects).
 
 ---
 
+### [DECISION] — 2026-07-04 · rebuilt build_dataset.py + build_history.py + build_subgroup_pses.py against the relocated source, expanded department coverage
+Finished repairing the three pipeline scripts left broken by the Knowledge/
+replacement.
+
+**build_subgroup_pses.py, build_history.py:** one-line path fixes — their
+source files (`Knowledge/EMPLYOMENT EQUITY-TBS/index.html` and
+`.../knowledge/bt1_28_representation.csv`) moved but are otherwise unchanged.
+`build_history.py`'s output (`rep_history.json`) matched the previously-live
+file byte-for-byte before the department-scope expansion below, confirming
+zero regression from the relocation itself.
+
+**build_dataset.py:** bigger fix. The original canonical CSV
+(`Knowledge/data/processed/employment_equity_department_gaps.csv`, long
+format, pre-computed) no longer exists — only the newly-restored
+`bt1_28_representation.csv` (wide format, raw n/%/WFA per group, no
+pre-computed gap/expected) does. Wrote a new
+`pipeline/extract_bt1_28_representation.py` to reshape wide → long and
+compute the derived fields, gated by `edi-data-guard` same as before.
+
+**Verified before trusting the new source:** RCMP × Persons with Disabilities
+× 2024-25 in the raw wide file — 590 of 10,822 (5.5%), WFA 12.0% — matches the
+long-standing oracle exactly.
+
+**Found the new source has fuller department coverage than we'd been using:**
+72 departments for 2023-24 (not 35) and 72 for 2024-25 (not 71) — confirmed
+this is real added coverage, not a data error, by checking the newly-included
+2023-24 departments' figures are continuous with their 2024-25 figures.
+**Decision (user-confirmed): expand to the full coverage** rather than filter
+down to the old 35/71 scope. Updated the hardcoded counts in
+`eval/run_eval.py` (424→576 rows, 35/71→72/72 depts, 29→77 suppressed) and the
+prose in `CLAUDE.md` §0/§1/§4 accordingly.
+
+**Two real bugs found and fixed along the way, both pre-existing but only
+triggered by the larger department set:**
+1. Source PDF OCR typo: "lmpact Assessment Agency of Canada" (lowercase L)
+   for three fiscal years running, correct spelling only in FY2024-25.
+   Explicit, documented one-string correction — not fuzzy matching.
+2. The current-year RCMP entity is named "Royal Canadian Mounted Police
+   (RCMP)" in the new source (vs. the bare name used everywhere else in the
+   app — `subgroup_pses.json`, the oracle, `PresentView`'s default). Left
+   unfixed, this would have silently broken the RCMP subgroup panel (exact
+   string match). Added an explicit name correction.
+3. `build_dataset.py`'s year-over-year `has_trend` logic set `has_trend=true`
+   whenever a department existed in both years, without checking whether the
+   *prior* year's cell was itself suppressed — producing `has_trend: true`
+   rows with `prior_gap: null`. Caught by `eval/run_eval.py` check 9 once the
+   larger, sparser department set exercised the edge case for the first time.
+   Fixed to require the prior year's gap/rep_pct to be non-null.
+
+**Verification:** `eval/run_eval.py` 10/10 (was 9/10 before the `has_trend`
+fix), oracle re-confirmed after every pipeline rerun, `equity.json` and
+`rep_history.json` agree on all 536 overlapping keys (0 mismatches, up from
+420 previously — larger department set), `npm run build` clean, RCMP row and
+its subgroup panel both confirmed rendering correctly in-browser.
+
+---
+
 ### [EXTERNAL] — pending live use (2026-06-28 → 07-02)
 *To be filled once the deployed URL is in front of someone outside the build.*
 Capture: who used it, what they asked, where it helped, where it confused them, and

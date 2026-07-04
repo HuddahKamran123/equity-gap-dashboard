@@ -38,7 +38,7 @@ import json, re, sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-SOURCE_HTML = REPO / "Knowledge" / "data" / "raw" / "teammate_subgroup_pses_source.html"
+SOURCE_HTML = REPO / "Knowledge" / "EMPLYOMENT EQUITY-TBS" / "index.html"
 EQUITY_JSON = REPO / "web" / "src" / "data" / "equity.json"
 OUT_DIR = REPO / "web" / "src" / "data"
 
@@ -210,10 +210,13 @@ def main():
         sys.exit(1)
     print("✓ cross-validation passed\n")
 
-    # --- map department codes to our canonical names ---
+    # --- map department codes to our canonical names (current year only —
+    # some departments in 2023-2024 don't carry into 2024-2025, e.g. renames,
+    # so counting across both years would overstate the current department total) ---
     our_dept_by_key = {}
     for row in our_rows:
-        our_dept_by_key[norm(row["department"])] = row["department"]
+        if row["year"] == "2024-2025":
+            our_dept_by_key[norm(row["department"])] = row["department"]
 
     entries, skipped_no_data = build_entries(depts, exp)
 

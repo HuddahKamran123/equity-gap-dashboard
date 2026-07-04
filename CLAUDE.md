@@ -7,7 +7,7 @@
 ## 0. User stories
 
 1. **Priya, OCHRO equity analyst (primary).** Every Tuesday morning, before her
-   weekly sync with the Director, she needs to scan all 71 departments × 4 groups
+   weekly sync with the Director, she needs to scan all 72 departments × 4 groups
    ranked by gap severity, so that she can flag the handful of combinations that
    belong in this year's report or a deputy-head conversation — without manually
    cross-referencing four separate published tables.
@@ -28,7 +28,7 @@ minutes" claim and exercises the dashboard's primary view, Explore):
   in an audit or a minister's briefing instead of from her own triage.
 - Today, without this dashboard, she opens four separate flat tables (one per
   designated group), manually cross-references department names and percentages,
-  and eyeballs a ranking — a process that doesn't scale across 71 departments and
+  and eyeballs a ranking — a process that doesn't scale across 72 departments and
   can't be done in under half a day.
 - With it, she opens Explore, sorts by gap within a chosen group, and immediately
   sees priority-flagged rows with N, WFA, and severity — turning that half-day
@@ -54,7 +54,7 @@ two minutes: **which departments, for which designated groups, are furthest belo
 their workforce-availability benchmark, and which way are they trending — so
 attention goes where the signal is strongest.**
 
-No-dataset sentence: *this lets a central employment-equity analyst triage 71
+No-dataset sentence: *this lets a central employment-equity analyst triage 72
 departments × 4 groups for where to direct oversight attention in two minutes, which
 the four separate published tables do not allow.*
 
@@ -163,7 +163,7 @@ therefore didn't sharpen the departmental-oversight decision. Its PSES
 **workplace-experience** data (not representation) — subgroup breakdowns (Black,
 South Asian, East Asian, Arab, First Nations, Métis, Inuit, Cognitive, Mental
 health, Seeing) across 6 themes and 3 survey cycles (2020/2022/2024) — is
-**per-department** (53 of our 71), which is the specific bar the service-wide data
+**per-department** (53 of our 72), which is the specific bar the service-wide data
 didn't clear. Before merging, its representation data was cross-validated against
 our own verified `equity.json`: **195 of 195 comparable department × group pairs
 for 2024-25 matched within 0.3 percentage points.** That gives confidence the
@@ -218,13 +218,19 @@ Knowledge/ replacement — not addressed in this pass.
 
 **Two sources, one reproducible pipeline** (`pipeline/`):
 - **Representation & benchmark** — Treasury Board Employment Equity data, 2023-24
-  and 2024-25; the verified processed CSV is the input of record. 424 rows = 140
-  (2023-24, 35 depts × 4) + 284 (2024-25, 71 depts × 4); 29 suppressed. A **four-year
-  series** (2021-22 → 2024-25, `bt1_28_representation`, `pipeline/build_history.py`)
-  feeds the Track view: verified identical to the canonical data on the two overlap
-  years (420/420 keys, 0 mismatches), gated by `edi-data-guard`, and stitched across
-  years **only where a department is unambiguously the same entity** — the RCMP's
-  reported population changed across years (Civilian Staff → full force), so it is
+  and 2024-25. The input of record is `Knowledge/EMPLYOMENT EQUITY-TBS/knowledge/
+  bt1_28_representation.csv` (283 rows, FY2021-22 → FY2024-25, wide format — one
+  row per department per year), reshaped into the long-format canonical CSV
+  `pipeline/extract_bt1_28_representation.py` produces and `edi-data-guard`
+  validates: 576 rows = 288 (2023-24, 72 depts × 4) + 288 (2024-25, 72 depts × 4);
+  77 suppressed. (2026-07-04: expanded from an earlier 35/71-department extract of
+  the same source family to this source's full department coverage — see
+  `Deployment_Log.md`.) A **four-year series** (2021-22 → 2024-25,
+  `pipeline/build_history.py`, same source file) feeds the Track view: verified
+  identical to the canonical data on the two overlap years (536/536 keys, 0
+  mismatches), gated by `edi-data-guard`, and stitched across years **only where a
+  department is unambiguously the same entity** — the RCMP's reported population
+  changed across years (Civilian Staff → full force), so it is
   not stitched and stays current-year only.
 - **Employee experience** — the **2024 Public Service Employee Survey**, Employment
   Equity Derived Variable dataset (`EEINFODV.csv`, fetched from open.canada.ca).

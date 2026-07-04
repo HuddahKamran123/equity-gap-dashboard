@@ -36,7 +36,7 @@ from collections import defaultdict
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-RAW = REPO / "Knowledge" / "data" / "raw" / "bt1_28_representation_2021_2025.csv"
+RAW = REPO / "Knowledge" / "EMPLYOMENT EQUITY-TBS" / "knowledge" / "bt1_28_representation.csv"
 EQUITY = REPO / "web" / "src" / "data" / "equity.json"
 OUT_CSV = REPO / "Knowledge" / "data" / "processed" / "representation_multiyear.csv"
 OUT_JSON = REPO / "web" / "src" / "data" / "rep_history.json"

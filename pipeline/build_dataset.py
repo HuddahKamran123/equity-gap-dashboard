@@ -160,7 +160,10 @@ def main():
         rec["prior_rep_pct"] = None
         if rec["year"] == "2024-2025":
             p = prior.get((rec["department_key"], rec["group"]))
-            if p:
+            # A trend needs the prior year's own gap/rep_pct, not just a
+            # matching department — a suppressed prior-year cell (blank gap)
+            # is not a usable trend point even though the department existed.
+            if p and p["gap"] is not None and p["rep_pct"] is not None:
                 rec["has_trend"] = True
                 rec["prior_gap"] = p["gap"]
                 rec["prior_rep_pct"] = p["rep_pct"]

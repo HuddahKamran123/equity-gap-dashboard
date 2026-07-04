@@ -88,17 +88,17 @@ def t_oracle(rows):
 @check("2. Counts match documentation")
 def t_counts(rows):
     f = []
-    if len(rows) != 424:
-        f.append(f"total rows {len(rows)} != 424")
+    if len(rows) != 576:
+        f.append(f"total rows {len(rows)} != 576")
     d24 = {r["department"] for r in rows if r["year"] == "2024-2025"}
     d23 = {r["department"] for r in rows if r["year"] == "2023-2024"}
-    if len(d24) != 71:
-        f.append(f"2024-25 depts {len(d24)} != 71")
-    if len(d23) != 35:
-        f.append(f"2023-24 depts {len(d23)} != 35")
+    if len(d24) != 72:
+        f.append(f"2024-25 depts {len(d24)} != 72")
+    if len(d23) != 72:
+        f.append(f"2023-24 depts {len(d23)} != 72")
     supp = sum(1 for r in rows if r["suppressed"])
-    if supp != 29:
-        f.append(f"suppressed rows {supp} != 29")
+    if supp != 77:
+        f.append(f"suppressed rows {supp} != 77")
     return f
 
 

@@ -4,7 +4,7 @@
   "verification": "Not independently re-derived (source raw 2020/2022 PSES microdata, demographic-recoding concordance, and department-name mapping are unavailable to us). Cross-validated instead: representation values for every resolvable department x group pair matched our own verified 2024-2025 equity.json within 0.3pp \u2014 195/195 (100.0%).",
   "coverage": {
     "departments_with_data": 53,
-    "departments_total": 71,
+    "departments_total": 72,
     "departments_skipped_no_survey_data": 0
   },
   "themes": [

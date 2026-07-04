@@ -64,13 +64,13 @@
     }
   },
   "counts": {
-    "rows": 424,
+    "rows": 576,
     "divergence_rows": 24,
-    "depts_2024_25": 71,
-    "depts_2023_24": 35,
-    "suppressed_rows": 29,
+    "depts_2024_25": 72,
+    "depts_2023_24": 72,
+    "suppressed_rows": 77,
     "pses_enriched_rows": 191,
-    "trend_eligible_rows": 140,
-    "priority_rows": 102
+    "trend_eligible_rows": 241,
+    "priority_rows": 130
   }
 }
