@@ -375,6 +375,47 @@ change).
 
 ---
 
+### [EPISODE] — 2026-07-04 · Track: year-range filter to compare any two years' gap
+User feedback: Track always compared the full trajectory end-to-end, and the
+representation-%-only summary made it easy to lose track of whether a change
+in the *gap* was hiring or the benchmark rebase. Added a "Compare years"
+control (two `<select>`s, `TrackView.tsx`) so a user can pick any two of the
+four fiscal years and see the movement between exactly that pair, plus the
+headcount gap at each endpoint.
+
+- `HistoryEntry.year` was typed as the 2-value `Year` union even though
+  `rep_history.json` carries four fiscal years — a latent type bug, not
+  previously load-bearing since nothing sliced by year. Introduced a proper
+  `HistoryYear` union + `HISTORY_YEARS`/`HISTORY_YEAR_LABELS` in `types.ts`
+  and retyped `HistoryEntry.year` to it.
+- `signal.ts`'s `classifyTrend` (representation vs. benchmark, worsening /
+  stable / benchmark-driven narrowing / genuine improvement) was hardcoded to
+  the current-vs-prior fiscal year. Extracted its scoring core into
+  `classifyByPoints` and added `classifyTrendBetween(from, to)`, which applies
+  the identical logic to any two `HistoryEntry` points — same vocabulary, same
+  "don't mistake a benchmark shift for hiring" guard, just generalized rather
+  than duplicated.
+- The default (no selection) view is unchanged: each row still shows its
+  existing latest-year classification. Selecting a "from"/"to" pair switches
+  that row to `classifyTrendBetween` for exactly those two years and slices
+  the sparkline to that span; a pair a department has no data for (e.g.
+  picking 2021-22 for a department only stitched from 2023-24) shows "No data
+  for [range] for this department" rather than silently mis-plotting.
+- Added an explicit `Gap {from} → {to} (Δ)` line (headcount, `fmtGap`) next to
+  the existing representation-% delta, for both the default and a selected
+  range — the literal ask ("show the gap between the years") — computed from
+  the same two endpoints as the % delta so the two numbers always describe
+  the same span.
+- The two selects filter each other's options (picking "From" hides "To"
+  years at or before it, and vice versa) so an invalid pair can't be
+  selected in the first place.
+
+Verification: `npx tsc --noEmit` clean, `npm run build` clean, `eval/run_eval.py`
+still 10/10 (no data changed — this only reads existing `rep_history.json`
+fields differently).
+
+---
+
 ### [EXTERNAL] — pending live use (2026-06-28 → 07-02)
 *To be filled once the deployed URL is in front of someone outside the build.*
 Capture: who used it, what they asked, where it helped, where it confused them, and

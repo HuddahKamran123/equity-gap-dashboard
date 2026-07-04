@@ -2,11 +2,31 @@
 
 import { useMemo, useState } from "react";
 import { historyFor, rowsForYear } from "@/lib/data";
-import { GROUP_SHORT, MINUS, fmtPct, severityMeta } from "@/lib/format";
-import { classifyTrend, type TrendLabel } from "@/lib/signal";
-import { CURRENT_YEAR, GROUPS, type Group, type HistoryEntry, type Row } from "@/lib/types";
+import { GROUP_SHORT, MINUS, fmtGap, fmtPct, severityMeta } from "@/lib/format";
+import { classifyTrend, classifyTrendBetween, type TrendLabel } from "@/lib/signal";
+import {
+  CURRENT_YEAR,
+  GROUPS,
+  HISTORY_YEARS,
+  HISTORY_YEAR_LABELS,
+  type Group,
+  type HistoryEntry,
+  type HistoryYear,
+  type Row,
+} from "@/lib/types";
 
 type Filter = "all" | Group;
+type YearRange = { from: HistoryYear; to: HistoryYear };
+const FULL = "__full__";
+
+/** Entries from `range.from` through `range.to` inclusive, or [] if either
+ * year isn't present in this department's history (e.g. a 2-year fallback). */
+function sliceHistory(hist: HistoryEntry[], range: YearRange): HistoryEntry[] {
+  const i0 = hist.findIndex((e) => e.year === range.from);
+  const i1 = hist.findIndex((e) => e.year === range.to);
+  if (i0 === -1 || i1 === -1 || i0 >= i1) return [];
+  return hist.slice(i0, i1 + 1);
+}
 
 const TREND_RANK: Record<TrendLabel, number> = {
   Worsening: 0,
@@ -37,6 +57,15 @@ function fallbackHistory(row: Row): HistoryEntry[] {
 
 export default function TrackView() {
   const [filter, setFilter] = useState<Filter>("all");
+  const [fromSel, setFromSel] = useState<string>(FULL);
+  const [toSel, setToSel] = useState<string>(FULL);
+
+  const range: YearRange | null =
+    fromSel !== FULL &&
+    toSel !== FULL &&
+    HISTORY_YEARS.indexOf(fromSel as HistoryYear) < HISTORY_YEARS.indexOf(toSel as HistoryYear)
+      ? { from: fromSel as HistoryYear, to: toSel as HistoryYear }
+      : null;
 
   const items = useMemo(() => {
     let r = rowsForYear(CURRENT_YEAR).filter((x) => x.has_trend && x.rep_pct !== null);
@@ -70,55 +99,124 @@ export default function TrackView() {
           <strong className="text-ink">rebased in 2023-24</strong> (marked ⟩ on the
           line), so a gap change across that point reflects the benchmark, not
           hiring. Representation % itself is benchmark-independent — that trend is
-          clean. The label classifies only the latest same-benchmark year.
+          clean. By default each row classifies only its latest same-benchmark
+          year; pick two specific years below to compare that pair instead.
         </p>
       </header>
 
-      <div className="my-4 flex flex-wrap gap-1.5">
-        {([{ key: "all", label: "All groups" }, ...GROUPS.map((g) => ({ key: g, label: GROUP_SHORT[g] }))] as { key: Filter; label: string }[]).map(
-          (f) => (
-            <button
-              key={f.key}
-              onClick={() => setFilter(f.key)}
-              aria-pressed={filter === f.key}
-              className={`rounded-sm border px-2.5 py-1 text-[12px] transition-colors ${
-                filter === f.key
-                  ? "border-ink bg-ink text-paper"
-                  : "border-rule-strong text-muted hover:border-ink hover:text-ink"
-              }`}
-            >
-              {f.label}
-            </button>
-          ),
-        )}
+      <div className="my-4 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap gap-1.5">
+          {([{ key: "all", label: "All groups" }, ...GROUPS.map((g) => ({ key: g, label: GROUP_SHORT[g] }))] as { key: Filter; label: string }[]).map(
+            (f) => (
+              <button
+                key={f.key}
+                onClick={() => setFilter(f.key)}
+                aria-pressed={filter === f.key}
+                className={`rounded-sm border px-2.5 py-1 text-[12px] transition-colors ${
+                  filter === f.key
+                    ? "border-ink bg-ink text-paper"
+                    : "border-rule-strong text-muted hover:border-ink hover:text-ink"
+                }`}
+              >
+                {f.label}
+              </button>
+            ),
+          )}
+        </div>
+
+        <div className="flex items-center gap-2 text-[12px] text-muted">
+          <span className="tracking-cap text-[10px] text-faint">Compare years</span>
+          <select
+            value={fromSel}
+            onChange={(e) => {
+              const v = e.target.value;
+              setFromSel(v);
+              // keep "to" valid if it's no longer after the new "from"
+              if (v !== FULL && toSel !== FULL && HISTORY_YEARS.indexOf(toSel as HistoryYear) <= HISTORY_YEARS.indexOf(v as HistoryYear)) {
+                setToSel(FULL);
+              }
+            }}
+            className="rounded-sm border border-rule-strong bg-paper-raised px-2 py-1 text-ink"
+            aria-label="Compare from year"
+          >
+            <option value={FULL}>Full range</option>
+            {HISTORY_YEARS.filter((y) => toSel === FULL || HISTORY_YEARS.indexOf(y) < HISTORY_YEARS.indexOf(toSel as HistoryYear)).map((y) => (
+              <option key={y} value={y}>
+                {HISTORY_YEAR_LABELS[y]}
+              </option>
+            ))}
+          </select>
+          <span aria-hidden>→</span>
+          <select
+            value={toSel}
+            onChange={(e) => {
+              const v = e.target.value;
+              setToSel(v);
+              // keep "from" valid if it's no longer before the new "to"
+              if (v !== FULL && fromSel !== FULL && HISTORY_YEARS.indexOf(fromSel as HistoryYear) >= HISTORY_YEARS.indexOf(v as HistoryYear)) {
+                setFromSel(FULL);
+              }
+            }}
+            className="rounded-sm border border-rule-strong bg-paper-raised px-2 py-1 text-ink"
+            aria-label="Compare to year"
+          >
+            <option value={FULL}>Full range</option>
+            {HISTORY_YEARS.filter((y) => fromSel === FULL || HISTORY_YEARS.indexOf(y) > HISTORY_YEARS.indexOf(fromSel as HistoryYear)).map((y) => (
+              <option key={y} value={y}>
+                {HISTORY_YEAR_LABELS[y]}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <ul className="divide-y divide-rule">
-        {items.map(({ row, trend, hist }) => (
-          <li
-            key={`${row.department}-${row.group}`}
-            className="grid grid-cols-1 gap-3 py-4 sm:grid-cols-[1.2fr_minmax(170px,1fr)_1.4fr] sm:items-center"
-          >
-            <div className="min-w-0">
-              <p className="truncate text-[14px] text-ink">{row.department}</p>
-              <p className="text-[12px] text-muted">
-                {GROUP_SHORT[row.group]}
-                {hist.length >= 3 && <span className="text-faint"> · {hist.length}-year</span>}
-              </p>
-            </div>
+        {items.map(({ row, trend, hist }) => {
+          const sliced = range ? sliceHistory(hist, range) : hist;
+          const unavailable = range !== null && sliced.length < 2;
+          const rangeTrend = range ? (unavailable ? null : classifyTrendBetween(sliced[0], sliced[sliced.length - 1])) : trend;
 
-            <Trajectory hist={hist} severity={severityMeta(row.severity).fill} />
+          return (
+            <li
+              key={`${row.department}-${row.group}`}
+              className="grid grid-cols-1 gap-3 py-4 sm:grid-cols-[1.2fr_minmax(170px,1fr)_1.4fr] sm:items-center"
+            >
+              <div className="min-w-0">
+                <p className="truncate text-[14px] text-ink">{row.department}</p>
+                <p className="text-[12px] text-muted">
+                  {GROUP_SHORT[row.group]}
+                  {hist.length >= 3 && <span className="text-faint"> · {hist.length}-year</span>}
+                </p>
+              </div>
 
-            <div>
-              <span
-                className={`inline-flex rounded-sm border px-1.5 py-0.5 text-[11px] font-medium ${TREND_STYLE[trend.label]}`}
-              >
-                {trend.label}
-              </span>
-              <p className="mt-1.5 text-[12px] leading-relaxed text-muted">{trend.detail}</p>
-            </div>
-          </li>
-        ))}
+              {unavailable ? (
+                <p className="text-[12px] text-faint sm:col-span-2">
+                  No data for {HISTORY_YEAR_LABELS[range!.from]}–{HISTORY_YEAR_LABELS[range!.to]}
+                  {" "}for this department.
+                </p>
+              ) : (
+                <>
+                  <Trajectory hist={sliced} severity={severityMeta(row.severity).fill} />
+
+                  <div>
+                    {rangeTrend ? (
+                      <>
+                        <span
+                          className={`inline-flex rounded-sm border px-1.5 py-0.5 text-[11px] font-medium ${TREND_STYLE[rangeTrend.label]}`}
+                        >
+                          {rangeTrend.label}
+                        </span>
+                        <p className="mt-1.5 text-[12px] leading-relaxed text-muted">{rangeTrend.detail}</p>
+                      </>
+                    ) : (
+                      <span className="text-[12px] text-faint">Not enough data to classify this pair.</span>
+                    )}
+                  </div>
+                </>
+              )}
+            </li>
+          );
+        })}
       </ul>
 
       {!anyFourYear && (
@@ -196,15 +294,39 @@ function Trajectory({ hist, severity }: { hist: HistoryEntry[]; severity: string
           ),
         )}
       </svg>
-      <span className="tnum w-20 shrink-0 text-[12px] text-muted">
-        {fmtPct(withRep[0].rep, 1)} →{" "}
-        <span className="text-ink">{fmtPct(withRep[withRep.length - 1].rep, 1)}</span>
-        <span className={delta >= 0 ? "text-sev-above" : "text-sev-severe"}>
-          {" "}
-          ({delta >= 0 ? "+" : MINUS}
-          {Math.abs(delta).toFixed(1)})
+      <div className="flex w-24 shrink-0 flex-col gap-1">
+        <span className="tnum text-[12px] text-muted">
+          {fmtPct(withRep[0].rep, 1)} →{" "}
+          <span className="text-ink">{fmtPct(withRep[withRep.length - 1].rep, 1)}</span>
+          <span className={delta >= 0 ? "text-sev-above" : "text-sev-severe"}>
+            {" "}
+            ({delta >= 0 ? "+" : MINUS}
+            {Math.abs(delta).toFixed(1)})
+          </span>
         </span>
-      </span>
+        <GapDelta from={withRep[0].gap} to={withRep[withRep.length - 1].gap} />
+      </div>
     </div>
+  );
+}
+
+/** Headcount gap at the two compared years, e.g. "Gap −709 → −650 (+59)". */
+function GapDelta({ from, to }: { from: number | null; to: number | null }) {
+  if (from === null || to === null) {
+    return (
+      <span className="tnum text-[11px] text-faint">
+        Gap {fmtGap(from)} → {fmtGap(to)}
+      </span>
+    );
+  }
+  const d = to - from;
+  return (
+    <span className="tnum text-[11px] text-faint">
+      Gap {fmtGap(from)} → {fmtGap(to)}{" "}
+      <span className={d >= 0 ? "text-sev-above" : "text-sev-severe"}>
+        ({d >= 0 ? "+" : MINUS}
+        {Math.abs(d).toLocaleString("en-CA")})
+      </span>
+    </span>
   );
 }
