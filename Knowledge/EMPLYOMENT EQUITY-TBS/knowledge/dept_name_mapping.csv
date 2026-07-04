@@ -1,0 +1,80 @@
+bt128_name_raw,bt128_name_clean,pses_level1id,pses_dept_name,match_type,note
+Administrative Tribunals Support Service of Canada,Administrative Tribunals Support Service of Canada,91,Administrative Tribunals Support Service of Canada,exact,
+Agriculture and Agri-Food Canada,Agriculture and Agri-Food Canada,09,Agriculture and Agri-Food Canada,exact,
+Atlantic Canada Opportunities Agency,Atlantic Canada Opportunities Agency,32,Atlantic Canada Opportunities Agency,exact,
+Canada Border Services Agency,Canada Border Services Agency,83,Canada Border Services Agency,exact,
+Canada Economic Development for Quebec Regions,Canada Economic Development for Quebec Regions,34,Canada Economic Development for Quebec Regions,exact,
+Canada School of Public Service,Canada School of Public Service,78,Canada School of Public Service,exact,
+Canadian Grain Commission,Canadian Grain Commission,25,Canadian Grain Commission,exact,
+Canadian Heritage,Canadian Heritage,20,Canadian Heritage,exact,
+Canadian Human Rights Commission,Canadian Human Rights Commission,41,Canadian Human Rights Commission,exact,
+Canadian Radio-television and Telecommunications Commission,Canadian Radio-television and Telecommunications Commission,31,Canadian Radio-television and Telecommunications Commission,exact,
+Canadian Space Agency,Canadian Space Agency,33,Canadian Space Agency,exact,
+Canadian Transportation Agency,Canadian Transportation Agency,54,Canadian Transportation Agency,exact,
+Correctional Service Canada,Correctional Service Canada,04,Correctional Service Canada,exact,
+Courts Administration Service,Courts Administration Service,30,Courts Administration Service,exact,
+Crown-Indigenous Relations and Northern Affairs Canada,Crown-Indigenous Relations and Northern Affairs Canada,22,Crown-Indigenous Relations and Northern Affairs Canada,exact,
+Crown-Indigenous Relations and Northern Affairs Canada¥,Crown-Indigenous Relations and Northern Affairs Canada¥,22,Crown-Indigenous Relations and Northern Affairs Canada,exact,
+Department of Finance Canada,Department of Finance Canada,24,Department of Finance Canada,exact,
+Department of Justice Canada,Department of Justice Canada,19,Department of Justice Canada,exact,
+Employment and Social Development Canada,Employment and Social Development Canada,02,Employment and Social Development Canada,exact,
+Environment and Climate Change Canada,Environment and Climate Change Canada,11,Environment and Climate Change Canada,exact,
+Federal Economic Development Agency for Southern Ontario,Federal Economic Development Agency for Southern Ontario,93,Federal Economic Development Agency for Southern Ontario,exact,
+Fisheries and Oceans Canada,Fisheries and Oceans Canada,05,Fisheries and Oceans Canada,exact,
+Global Affairs Canada,Global Affairs Canada,14,Global Affairs Canada,exact,
+Health Canada,Health Canada,06,Health Canada,exact,
+Health Canada¥,Health Canada¥,06,Health Canada,exact,
+"Housing, Infrastructure and Communities Canada","Housing, Infrastructure and Communities Canada",82,"Housing, Infrastructure and Communities Canada",exact,
+Immigration and Refugee Board of Canada,Immigration and Refugee Board of Canada,23,Immigration and Refugee Board of Canada,exact,
+"Immigration, Refugees and Citizenship Canada","Immigration, Refugees and Citizenship Canada",13,"Immigration, Refugees and Citizenship Canada",exact,
+Indigenous Services Canada,Indigenous Services Canada,17,Indigenous Services Canada,exact,
+"Innovation, Science and Economic Development Canada","Innovation, Science and Economic Development Canada",10,"Innovation, Science and Economic Development Canada",exact,
+Library and Archives Canada,Library and Archives Canada,74,Library and Archives Canada,exact,
+National Defence,National Defence,03,National Defence,exact,
+Natural Resources Canada,Natural Resources Canada,15,Natural Resources Canada,exact,
+Office of the Commissioner of Official Languages,Office of the Commissioner of Official Languages,42,Office of the Commissioner of Official Languages,exact,
+Office of the Secretary to the Governor General,Office of the Secretary to the Governor General,73,Office of the Secretary to the Governor General,exact,
+Parole Board of Canada,Parole Board of Canada,36,Parole Board of Canada,exact,
+Privy Council Office,Privy Council Office,28,Privy Council Office,exact,
+Public Health Agency of Canada,Public Health Agency of Canada,70,Public Health Agency of Canada,exact,
+Public Prosecution Service of Canada,Public Prosecution Service of Canada,46,Public Prosecution Service of Canada,exact,
+Public Safety Canada,Public Safety Canada,53,Public Safety Canada,exact,
+Public Service Commission of Canada,Public Service Commission of Canada,21,Public Service Commission of Canada,exact,
+Public Services and Procurement Canada,Public Services and Procurement Canada,07,Public Services and Procurement Canada,exact,
+Royal Canadian Mounted Police3,Royal Canadian Mounted Police,16,Royal Canadian Mounted Police,exact,
+Royal Canadian Mounted Police (Civilian Staff),Royal Canadian Mounted Police (Civilian Staff),16,Royal Canadian Mounted Police,exact,
+Royal Canadian Mounted Police (RCMP)3,Royal Canadian Mounted Police (RCMP),16,Royal Canadian Mounted Police,exact,
+Shared Services Canada,Shared Services Canada,37,Shared Services Canada,exact,
+Statistics Canada,Statistics Canada,08,Statistics Canada,exact,
+Transport Canada,Transport Canada,12,Transport Canada,exact,
+Transportation Safety Board of Canada,Transportation Safety Board of Canada,39,Transportation Safety Board of Canada,exact,
+Treasury Board of Canada Secretariat,Treasury Board of Canada Secretariat,26,Treasury Board of Canada Secretariat,exact,
+Veterans Affairs Canada,Veterans Affairs Canada,18,Veterans Affairs Canada,exact,
+Veterans Review and Appeal Board,Veterans Review and Appeal Board,61,Veterans Review and Appeal Board,exact,
+Women and Gender Equality Canada,Women and Gender Equality Canada,90,Women and Gender Equality Canada,exact,
+Total,Total,,,exclude,"aggregate ""Total"" row from PDF extraction — not a department"
+Total7,Total,,,exclude,"aggregate ""Total"" row from PDF extraction — not a department"
+Elections Canada,Elections Canada,40,Office of the Chief Electoral Officer,manual,"name variant: PSES uses ""Office of the Chief Electoral Officer"""
+Impact Assessment Agency of Canada5,Impact Assessment Agency of Canada,47,Impact Assessment Agency of Canada,manual,"BT1-28 source typo ""lmpact"" corrected"
+Infrastructure Canada,Infrastructure Canada,82,"Housing, Infrastructure and Communities Canada",manual,"renamed Housing, Infrastructure and Communities Canada (Jun 2024)"
+Office of the Governor General’s Secretary,Office of the Governor General's Secretary,73,Office of the Secretary to the Governor General,manual,"name variant: PSES uses ""Office of the Secretary to the Governor General"""
+Registrar of the Supreme Court of Canada,Registrar of the Supreme Court of Canada,44,Supreme Court of Canada,manual,"name variant: PSES uses ""Supreme Court of Canada"""
+Western Economic Diversification Canada,Western Economic Diversification Canada,76,Prairies Economic Development Canada,manual,renamed Prairies Economic Development Canada (Aug 2021)
+Accessibility Standards Canada,Accessibility Standards Canada,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Canadian Dairy Commission,Canadian Dairy Commission,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Canadian Intergovernmental Conference Secretariat,Canadian Intergovernmental Conference Secretariat,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Canadian Northern Economic Development Agency,Canadian Northern Economic Development Agency,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Civilian Review and Complaints Commission for the RCMP,Civilian Review and Complaints Commission for the RCMP,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Copyright Board Canada,Copyright Board Canada,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+International Joint Commission,International Joint Commission,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Law Commission of Canada,Law Commission of Canada,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Military Grievances External Review Committee,Military Grievances External Review Committee,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Military Police Complaints Commission of Canada,Military Police Complaints Commission of Canada,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Office of the Commissioner for Federal Judicial Affairs Canada,Office of the Commissioner for Federal Judicial Affairs Canada,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Office of the Commissioner of Lobbying of Canada,Office of the Commissioner of Lobbying of Canada,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Office of the Public Sector Integrity Commissioner of Canada,Office of the Public Sector Integrity Commissioner of Canada,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Patented Medicine Prices Review Board Canada,Patented Medicine Prices Review Board Canada,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+RCMP External Review Committee,RCMP External Review Committee,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Secretariat of the National Security and Intelligence Committee of Parliamentarians,Secretariat of the National Security and Intelligence Committee of Parliamentarians,95,Micro-organizations combined,micro_combined,"micro-organization — PSES reports it only inside [95] ""Micro-organizations combined""; no dept-level scores"
+Federal Economic Development Agency for Northern Ontario,Federal Economic Development Agency for Northern Ontario,,,unmatched,REJECTED fuzzy match to [93] Southern Ontario — different agency; no PSES equivalent found | HUMAN DECISION 2026-07-02: representation shown; no experience scores (approved by group)
+Offices of the Information and Privacy Commissioners of Canada,Offices of the Information and Privacy Commissioners of Canada,,,unmatched,"PSES has only [80] Office of the Privacy Commissioner — partial overlap, needs human decision | HUMAN DECISION 2026-07-02: representation shown; no experience scores (approved by group)"
