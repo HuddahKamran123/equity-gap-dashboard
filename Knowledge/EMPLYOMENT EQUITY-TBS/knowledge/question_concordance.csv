@@ -1,0 +1,228 @@
+code_2024,code_2020,code_2022,verdict,min_wording_similarity,title
+D57_1,Q53,D56_1,comparable_3yr_minor_wording,0.971,Question 57_1. Do you intend to leave your current position in the next two years?
+D57_2,Q54,D56_2,comparable_3yr_minor_wording,0.952,Question 57_2. Please indicate your reason for leaving.
+Q01,Q01,Q01,comparable_3yr,1.0,"Question 1. I have the tools, technology and equipment I need to do my job."
+Q02,,,new_in_2024,,"Question 2. During meetings in my work unit, I feel free to use the official language of my choice."
+Q03,,,new_in_2024,,"Question 3. When I prepare written materials, including emails, I feel free to use the official language of my choice."
+Q04,Q03,Q03,comparable_3yr,1.0,"Question 4. My physical environment (e.g., office, workspace) is suitable for my job requirements."
+Q05,Q04,Q04,comparable_3yr,1.0,Question 5. I get the training I need to do my job.
+Q06,Q05,Q05,comparable_3yr,1.0,"Question 6. I have the information, training and equipment I need to ensure my health and safety at work."
+Q07,Q06,Q06,comparable_3yr,1.0,Question 7. I have support at work to balance my work and personal life.
+Q08,Q07,Q07,comparable_3yr,1.0,Question 8. I get a sense of satisfaction from my work.
+Q09,Q08,Q08,comparable_3yr,1.0,Question 9. I receive meaningful recognition for work well done.
+Q10,Q09,Q09,comparable_3yr,1.0,Question 10. I have clear work objectives.
+Q11,Q10,Q10,comparable_3yr,1.0,Question 11. I know how my work contributes to the achievement of my department's or agency's goals.
+Q12,Q11,Q11,comparable_3yr,1.0,"Question 12. Overall, I feel valued at work."
+Q13,Q12,Q12,comparable_3yr,1.0,Question 13. I am proud of the work that I do.
+Q14,Q13,Q13,comparable_3yr,1.0,Question 14. I have opportunities to provide input into decisions that affect my work.
+Q15,Q14,Q14,comparable_3yr,1.0,Question 15. I am encouraged to be innovative or to take initiative in my work.
+Q16,Q15,Q15,comparable_3yr,1.0,Question 16. I have support at work to provide a high level of service.
+Q17,Q16,Q16,comparable_3yr,1.0,"Question 17. Overall, I like my job."
+Q18,Q17,Q17,comparable_3yr,1.0,Question 18. I can complete my assigned workload during my regular working hours.
+Q19a,Q18a,Q18a,comparable_3yr,1.0,Question 19a. I feel that the quality of my work suffers because of... constantly changing priorities.
+Q19b,Q18c,Q18b,comparable_3yr,1.0,Question 19b. I feel that the quality of my work suffers because of... too many approval stages.
+Q19c,Q18d,Q18c,comparable_3yr,1.0,Question 19c. I feel that the quality of my work suffers because of... unreasonable deadlines.
+Q19d,Q18e,Q18d,comparable_3yr,1.0,"Question 19d. I feel that the quality of my work suffers because of... having to do the same or more work, but with fewer resources."
+Q19e,Q18f,Q18e,comparable_3yr,1.0,Question 19e. I feel that the quality of my work suffers because of... high staff turnover.
+Q19f,Q18g,Q18f,comparable_3yr,1.0,Question 19f. I feel that the quality of my work suffers because of... overly complicated or unnecessary business processes.
+Q19g,Q18h,Q18g,comparable_3yr,1.0,Question 19g. I feel that the quality of my work suffers because of... unreliable technology.
+Q20,Q19,Q19,comparable_3yr,1.0,Question 20. I am satisfied with how interpersonal issues are resolved in my work unit.
+Q21,Q20,Q20,comparable_3yr,1.0,"Question 21. In my work unit, every individual is accepted as an equal member of the team."
+Q22,Q21,Q21,comparable_3yr,1.0,"Question 22. In my work unit, individuals behave in a respectful manner."
+Q23,Q22,Q22,comparable_3yr,1.0,Question 23. The people I work with value my ideas and opinions.
+Q24,,Q23,comparable_2yr,1.0,"Question 24. In my work unit, I would feel safe to speak about racism in the workplace without fear of reprisal or negative impact on my career."
+Q25,,Q24,comparable_2yr,1.0,"Question 25. In my work unit, I would feel safe to speak about racism in the workplace without negative impact on my mental health."
+Q26,Q24,Q25,comparable_3yr,1.0,Question 26. My immediate supervisor encourages me to work collaboratively with others outside of my work unit.
+Q27,Q25,Q26,comparable_3yr,1.0,Question 27. I receive useful feedback from my immediate supervisor on my job performance.
+Q28,Q26,Q27,comparable_3yr,1.0,Question 28. I feel that my immediate supervisor supports my career goals.
+Q29,Q27,Q28,comparable_3yr,1.0,Question 29. My immediate supervisor keeps me informed about the issues affecting my work.
+Q30,,Q29,comparable_2yr,1.0,"Question 30. My immediate supervisor supports the use of flexible work hours (e.g., varying the start and end times of the workday)."
+Q31,Q30,Q30,comparable_3yr,1.0,Question 31. I am satisfied with the quality of supervision I receive.
+Q32,,Q31,comparable_2yr,1.0,"Question 32. When I communicate with my immediate supervisor, I feel free to use the official language of my choice."
+Q33,Q31,Q32,comparable_3yr,1.0,Question 33. Senior managers in my department or agency lead by example in ethical behaviour.
+Q34,Q32,Q33,comparable_3yr,1.0,Question 34. I have confidence in the senior management of my department or agency.
+Q35,Q33,Q34,comparable_3yr,1.0,Question 35. Senior management in my department or agency makes effective and timely decisions.
+Q36,Q34,Q35,comparable_3yr,1.0,Question 36. Essential information flows effectively from senior management to staff.
+Q37,Q35,Q36,comparable_3yr,1.0,Question 37. Senior managers in my department or agency use both official languages in their interactions with employees.
+Q38,Q36,Q37,comparable_3yr,1.0,"Question 38. My department or agency does a good job of communicating its vision, mission and goals."
+Q39,Q37,Q38,comparable_3yr,1.0,Question 39. I feel that change is managed well in my department or agency.
+Q40,Q38,Q39,comparable_3yr,1.0,"Question 40. If I am faced with an ethical dilemma or a conflict between values in the workplace, I know where I can go for help in resolving the situation."
+Q41,Q39,Q40,comparable_3yr,1.0,Question 41. My department or agency does a good job of promoting values and ethics in the workplace.
+Q42,Q40,Q41,comparable_3yr,1.0,"Question 42. I feel I can initiate a formal recourse process (e.g., grievance, complaint, appeal) without fear of reprisal."
+Q43,Q41,Q42,comparable_3yr,1.0,Question 43. My department or agency does a good job of supporting employee career development.
+Q44a,Q43a,Q43a,comparable_3yr,1.0,Question 44a. To what extent have the following adversely affected your career progress in the federal public service over the last 12 months? Conflict between my work obligations and my family or personal obligations
+Q44b,,,new_in_2024,,Question 44b. To what extent have the following adversely affected your career progress in the federal public service over the last 12 months? Lack of access to language training in my second official language
+Q44c,Q43c,Q43c,comparable_3yr,1.0,Question 44c. To what extent have the following adversely affected your career progress in the federal public service over the last 12 months? Discrimination
+Q44d,Q43d,Q43d,comparable_3yr_minor_wording,0.946,Question 44d. To what extent have the following adversely affected your career progress in the federal public service over the last 12 months? Accessibility issues
+Q44e,Q43d,Q43d,comparable_3yr_minor_wording,0.946,Question 44e. To what extent have the following adversely affected your career progress in the federal public service over the last 12 months? Accommodation issues
+Q45,Q42,Q44,comparable_3yr,1.0,"Question 45. I believe I have opportunities for promotion within my department or agency, given my education, skills and experience."
+Q46,Q44,Q45,comparable_3yr,1.0,Question 46. I feel I would be supported by my department or agency if I proposed a new idea.
+Q47,Q45,Q46,comparable_3yr,1.0,"Question 47. I think that my department or agency respects individual differences (e.g., culture, work styles, ideas, abilities)."
+Q48,Q46,Q47,comparable_3yr_minor_wording,0.968,Question 48. My department or agency implements activities and practices that support a diverse workforce.
+Q49,Q47,Q48,comparable_3yr,1.0,Question 49. My department or agency implements initiatives that promote anti-racism in the workplace.
+Q50,Q48,Q49,comparable_3yr_minor_wording,0.934,"Question 50. I would feel comfortable sharing concerns about racism in the workplace with a person of authority (e.g., immediate supervisor, senior manager, ombudsperson, human resources advisor)."
+Q51,,Q50,comparable_2yr,1.0,Question 51. I feel that racism in my department or agency has had an adverse or negative impact on my mental health.
+Q52,,Q51,comparable_2yr,1.0,"Question 52. I feel that the Call to Action on Anti-Racism, Equity and Inclusion has had a positive impact in my department or agency, since it launched in January 2021."
+Q53,Q49,Q52,comparable_3yr,1.0,"Question 53. Overall, my department or agency treats me with respect."
+Q54,Q50,Q53,comparable_3yr,1.0,Question 54. I would recommend my department or agency as a great place to work.
+Q55,Q51,Q54,comparable_3yr,1.0,Question 55. I am satisfied with my department or agency.
+Q56,Q52,Q55,comparable_3yr,1.0,"Question 56. I would prefer to remain with my department or agency, even if a comparable job was available elsewhere in the federal public service."
+Q58,Q55,Q57,comparable_3yr_minor_wording,0.976,"Question 58. Having carefully read the definition of harassment above, have you been the victim of harassment on the job in the past 12 months?"
+Q59a,Q56a,Q58a,comparable_3yr,1.0,Question 59a. From whom did you experience harassment on the job? Co-workers
+Q59b,Q56b,Q58b,comparable_3yr,1.0,Question 59b. From whom did you experience harassment on the job? Individuals with authority over me
+Q59c,Q56c,Q58c,comparable_3yr,1.0,Question 59c. From whom did you experience harassment on the job? Individuals working for me
+Q59d,Q56d,Q58d,comparable_3yr,1.0,"Question 59d. From whom did you experience harassment on the job? Individuals for whom I have a custodial responsibility (e.g., inmates, offenders, patients, detainees)"
+Q59e,Q56e,Q58e,comparable_3yr,1.0,Question 59e. From whom did you experience harassment on the job? Individuals from other departments or agencies
+Q59f,Q56f,Q58f,comparable_3yr,1.0,Question 59f. From whom did you experience harassment on the job? Members of the public (individuals or organizations)
+Q59g,Q56g,Q58g,comparable_3yr,1.0,Question 59g. From whom did you experience harassment on the job? Other
+Q60a,Q57a,Q59a,comparable_3yr,1.0,Question 60a. Please indicate the nature of the harassment you experienced. Aggressive behaviour
+Q60b,Q57b,Q59b,comparable_3yr,1.0,Question 60b. Please indicate the nature of the harassment you experienced. Excessive control
+Q60c,Q57c,Q59c,comparable_3yr,1.0,Question 60c. Please indicate the nature of the harassment you experienced. Being excluded or being ignored
+Q60d,Q57d,Q59d,comparable_3yr,1.0,Question 60d. Please indicate the nature of the harassment you experienced. Humiliation
+Q60e,Q57e,Q59e,comparable_3yr,1.0,Question 60e. Please indicate the nature of the harassment you experienced. Interference with work or withholding resources
+Q60f,Q57f,Q59f,comparable_3yr,1.0,Question 60f. Please indicate the nature of the harassment you experienced. Offensive remark
+Q60g,Q57g,Q59g,comparable_3yr,1.0,Question 60g. Please indicate the nature of the harassment you experienced. Personal attack
+Q60h,Q57h,Q59h,comparable_3yr,1.0,Question 60h. Please indicate the nature of the harassment you experienced. Physical violence
+Q60i,Q57i,Q59i,comparable_3yr,1.0,Question 60i. Please indicate the nature of the harassment you experienced. Sexual comment or gesture
+Q60j,Q57j,Q59j,comparable_3yr,1.0,Question 60j. Please indicate the nature of the harassment you experienced. Threat
+Q60k,Q57k,Q59k,comparable_3yr,1.0,Question 60k. Please indicate the nature of the harassment you experienced. Unfair treatment
+Q60l,Q57l,Q59l,comparable_3yr,1.0,Question 60l. Please indicate the nature of the harassment you experienced. Yelling or shouting
+Q60m,Q57m,Q59m,comparable_3yr,1.0,Question 60m. Please indicate the nature of the harassment you experienced. Other
+Q61a,Q58a,Q60a,comparable_3yr,1.0,Question 61a. What action(s) did you take to address the harassment you experienced? I discussed the matter with my supervisor or a senior manager.
+Q61b,Q58b,Q60b,comparable_3yr,1.0,Question 61b. What action(s) did you take to address the harassment you experienced? I discussed the matter with the person(s) from whom I experienced the harassment.
+Q61c,Q58c,Q60c,comparable_3yr,1.0,Question 61c. What action(s) did you take to address the harassment you experienced? I contacted a human resources advisor in my department or agency.
+Q61d,Q58d,Q60d,comparable_3yr,1.0,Question 61d. What action(s) did you take to address the harassment you experienced? I contacted my union representative.
+Q61e,Q58e,Q60e,comparable_3yr,1.0,Question 61e. What action(s) did you take to address the harassment you experienced? I used an informal conflict resolution process.
+Q61f,Q58f,Q60f,comparable_3yr,1.0,Question 61f. What action(s) did you take to address the harassment you experienced? I filed a grievance or formal complaint.
+Q61g,Q58g,Q60g,comparable_3yr,1.0,Question 61g. What action(s) did you take to address the harassment you experienced? I resolved the matter informally on my own.
+Q61h,Q58h,Q60h,comparable_3yr_minor_wording,0.993,Question 61h. What action(s) did you take to address the harassment you experienced? Other
+Q61i,Q58i,Q60i,comparable_3yr,1.0,Question 61i. What action(s) did you take to address the harassment you experienced? I took no action.
+Q62a,Q59a,Q61a,comparable_3yr,1.0,Question 62a. Why did you not file a grievance or formal complaint about the harassment you experienced? The issue was resolved.
+Q62b,Q59b,Q61b,comparable_3yr,1.0,Question 62b. Why did you not file a grievance or formal complaint about the harassment you experienced? I did not think the incident was serious enough.
+Q62c,Q59c,Q61c,comparable_3yr,1.0,Question 62c. Why did you not file a grievance or formal complaint about the harassment you experienced? The behaviour stopped.
+Q62d,Q59d,Q61d,comparable_3yr,1.0,Question 62d. Why did you not file a grievance or formal complaint about the harassment you experienced? The individual apologized.
+Q62e,Q59e,Q61e,comparable_3yr,1.0,Question 62e. Why did you not file a grievance or formal complaint about the harassment you experienced? Management intervened.
+Q62f,Q59f,Q61f,comparable_3yr,1.0,Question 62f. Why did you not file a grievance or formal complaint about the harassment you experienced? The individual left or changed jobs.
+Q62g,Q59g,Q61g,comparable_3yr,1.0,Question 62g. Why did you not file a grievance or formal complaint about the harassment you experienced? I changed jobs.
+Q62h,Q59h,Q61h,comparable_3yr,1.0,"Question 62h. Why did you not file a grievance or formal complaint about the harassment you experienced? I did not know what to do, where to go or whom to ask."
+Q62i,Q59i,Q61i,comparable_3yr,1.0,Question 62i. Why did you not file a grievance or formal complaint about the harassment you experienced? I was too distraught.
+Q62j,Q59j,Q61j,comparable_3yr,1.0,"Question 62j. Why did you not file a grievance or formal complaint about the harassment you experienced? I had concerns about the formal complaint process (e.g., confidentiality, how long it would take)."
+Q62k,Q59k,Q61k,comparable_3yr,1.0,Question 62k. Why did you not file a grievance or formal complaint about the harassment you experienced? I was advised against filing a complaint.
+Q62l,Q59l,Q61l,comparable_3yr,1.0,"Question 62l. Why did you not file a grievance or formal complaint about the harassment you experienced? I was afraid of reprisal (e.g., having limited career advancement, being labelled a troublemaker)."
+Q62m,Q59m,Q61m,comparable_3yr,1.0,Question 62m. Why did you not file a grievance or formal complaint about the harassment you experienced? Someone threatened me.
+Q62n,Q59n,Q61n,comparable_3yr,1.0,Question 62n. Why did you not file a grievance or formal complaint about the harassment you experienced? I did not believe it would make a difference.
+Q62o,Q59o,,comparable_2yr,0.997,"Question 62o. Why did you not file a grievance or formal complaint about the harassment you experienced? I intend to file a grievance or a formal complaint, but I have not done so yet."
+Q62p,Q59p,Q61p,comparable_3yr,1.0,Question 62p. Why did you not file a grievance or formal complaint about the harassment you experienced? Other
+Q63,Q60,Q62,comparable_3yr,1.0,Question 63. I am satisfied with how matters related to harassment are resolved in my department or agency.
+Q64,Q61,Q63,comparable_3yr,1.0,Question 64. My department or agency works hard to create a workplace that prevents harassment.
+Q65,Q62,Q64,comparable_3yr_minor_wording,0.978,"Question 65. Having carefully read the definition of discrimination above, have you been the victim of discrimination on the job in the past 12 months?"
+Q66a,Q63a,Q65a,comparable_3yr,1.0,Question 66a. From whom did you experience discrimination on the job? Co-workers
+Q66b,Q63b,Q65b,comparable_3yr,1.0,Question 66b. From whom did you experience discrimination on the job? Individuals with authority over me
+Q66c,Q63c,Q65c,comparable_3yr,1.0,Question 66c. From whom did you experience discrimination on the job? Individuals working for me
+Q66d,Q63d,Q65d,comparable_3yr,1.0,"Question 66d. From whom did you experience discrimination on the job? Individuals for whom I have a custodial responsibility (e.g., inmates, offenders, patients, detainees)"
+Q66e,Q63e,Q65e,comparable_3yr,1.0,Question 66e. From whom did you experience discrimination on the job? Individuals from other departments or agencies
+Q66f,Q63f,Q65f,comparable_3yr,1.0,Question 66f. From whom did you experience discrimination on the job? Members of the public (individuals or organizations)
+Q66g,Q63g,Q65g,comparable_3yr,1.0,Question 66g. From whom did you experience discrimination on the job? Other
+Q67a,Q64a,Q66a,comparable_3yr,1.0,Question 67a. Please indicate the type of discrimination you experienced. Race
+Q67b,Q64b,Q66b,comparable_3yr,1.0,Question 67b. Please indicate the type of discrimination you experienced. National or ethnic origin
+Q67c,Q64c,Q66c,comparable_3yr,1.0,Question 67c. Please indicate the type of discrimination you experienced. Colour
+Q67d,Q64d,Q66d,comparable_3yr,1.0,Question 67d. Please indicate the type of discrimination you experienced. Religion
+Q67e,Q64e,Q66e,comparable_3yr,1.0,Question 67e. Please indicate the type of discrimination you experienced. Age
+Q67f,Q64f,Q66f,comparable_3yr,1.0,Question 67f. Please indicate the type of discrimination you experienced. Sex
+Q67g,Q64g,Q66g,comparable_3yr,1.0,Question 67g. Please indicate the type of discrimination you experienced. Sexual orientation
+Q67h,Q64h,Q66h,comparable_3yr_minor_wording,0.997,"Question 67h. Please indicate the type of discrimination you experienced. Gender identity or expression (including gender diverse identities or expressions such as transgender, two-spirit or non-binary)"
+Q67i,Q64i,Q66i,comparable_3yr,1.0,Question 67i. Please indicate the type of discrimination you experienced. Marital status
+Q67j,Q64j,Q66j,comparable_3yr,1.0,Question 67j. Please indicate the type of discrimination you experienced. Family status
+Q67k,Q64k,Q66k,comparable_3yr_minor_wording,0.997,Question 67k. Please indicate the type of discrimination you experienced. Genetic characteristics (including a requirement to undergo a genetic test or disclose the results of a genetic test)
+Q67l,Q64l,Q66l,comparable_3yr,1.0,Question 67l. Please indicate the type of discrimination you experienced. Disability
+Q67m,Q64m,Q66m,comparable_3yr,1.0,Question 67m. Please indicate the type of discrimination you experienced. Pardoned conviction or suspended record
+Q68a,Q65a,Q67a,comparable_3yr,1.0,Question 68a. What action(s) did you take to address the discrimination you experienced? I discussed the matter with my supervisor or a senior manager.
+Q68b,Q65b,Q67b,comparable_3yr,1.0,Question 68b. What action(s) did you take to address the discrimination you experienced? I discussed the matter with the person(s) from whom I experienced the discrimination.
+Q68c,Q65c,Q67c,comparable_3yr,1.0,Question 68c. What action(s) did you take to address the discrimination you experienced? I contacted a human resources advisor in my department or agency.
+Q68d,Q65d,Q67d,comparable_3yr,1.0,Question 68d. What action(s) did you take to address the discrimination you experienced? I contacted my union representative.
+Q68e,Q65e,Q67e,comparable_3yr,1.0,Question 68e. What action(s) did you take to address the discrimination you experienced? I used an informal conflict resolution process.
+Q68f,Q65f,Q67f,comparable_3yr,1.0,Question 68f. What action(s) did you take to address the discrimination you experienced? I filed a grievance or formal complaint.
+Q68g,Q65g,Q67g,comparable_3yr,1.0,Question 68g. What action(s) did you take to address the discrimination you experienced? I resolved the matter informally on my own.
+Q68h,Q65h,Q67h,comparable_3yr,1.0,Question 68h. What action(s) did you take to address the discrimination you experienced? Other
+Q68i,Q65i,Q67i,comparable_3yr,1.0,Question 68i. What action(s) did you take to address the discrimination you experienced? I took no action.
+Q69a,Q66a,Q68a,comparable_3yr,1.0,Question 69a. Why did you not file a grievance or formal complaint about the discrimination you experienced? The issue was resolved.
+Q69b,Q66b,Q68b,comparable_3yr,1.0,Question 69b. Why did you not file a grievance or formal complaint about the discrimination you experienced? I did not think the incident was serious enough.
+,Q02,Q02,discontinued_after_2022,,"Question 2. The material and tools provided for my work, including software and other automated tools, are available in the official language of my choice."
+,Q43b,Q43b,discontinued_after_2022,,Question 43b. To what extent have the following adversely affected your career progress in the federal public service over the last 12 months? Lack of access to learning opportunities
+,,Q61o,discontinued_after_2022,,Question 61o. Why did you not file a grievance or formal complaint about the harassment you experienced? The time limit to file a grievance or a formal complaint had passed.
+,Q64n,Q66n,discontinued_after_2022,,Question 66n. Please indicate the type of discrimination you experienced. Other
+,Q66c,Q68c,discontinued_after_2022,,Question 68c. Why did you not file a grievance or formal complaint about the discrimination you experienced? The behaviour stopped.
+,Q66d,Q68d,discontinued_after_2022,,Question 68d. Why did you not file a grievance or formal complaint about the discrimination you experienced? The individual apologized.
+,Q66e,Q68e,discontinued_after_2022,,Question 68e. Why did you not file a grievance or formal complaint about the discrimination you experienced? Management intervened.
+,Q66f,Q68f,discontinued_after_2022,,Question 68f. Why did you not file a grievance or formal complaint about the discrimination you experienced? The individual left or changed jobs.
+,Q66g,Q68g,discontinued_after_2022,,Question 68g. Why did you not file a grievance or formal complaint about the discrimination you experienced? I changed jobs.
+,Q66h,Q68h,discontinued_after_2022,,"Question 68h. Why did you not file a grievance or formal complaint about the discrimination you experienced? I did not know what to do, where to go or whom to ask."
+,Q66i,Q68i,discontinued_after_2022,,Question 68i. Why did you not file a grievance or formal complaint about the discrimination you experienced? I was too distraught.
+,Q66j,Q68j,discontinued_after_2022,,"Question 68j. Why did you not file a grievance or formal complaint about the discrimination you experienced? I had concerns about the formal complaint process (e.g., confidentiality, how long it would take)."
+,Q66k,Q68k,discontinued_after_2022,,Question 68k. Why did you not file a grievance or formal complaint about the discrimination you experienced? I was advised against filing a complaint.
+,Q66l,Q68l,discontinued_after_2022,,"Question 68l. Why did you not file a grievance or formal complaint about the discrimination you experienced? I was afraid of reprisal (e.g., having limited career advancement, being labelled a troublemaker)."
+,Q66m,Q68m,discontinued_after_2022,,Question 68m. Why did you not file a grievance or formal complaint about the discrimination you experienced? Someone threatened me.
+,Q66n,Q68n,discontinued_after_2022,,Question 68n. Why did you not file a grievance or formal complaint about the discrimination you experienced? I did not believe it would make a difference.
+,,Q68o,discontinued_after_2022,,Question 68o. Why did you not file a grievance or formal complaint about the discrimination you experienced? The time limit to file a grievance or a formal complaint had passed.
+,Q66p,Q68p,discontinued_after_2022,,Question 68p. Why did you not file a grievance or formal complaint about the discrimination you experienced? Other
+,Q67,Q69,discontinued_after_2022,,Question 69. I am satisfied with how matters related to discrimination are resolved in my department or agency.
+,Q68,Q70,discontinued_after_2022,,Question 70. My department or agency works hard to create a workplace that prevents discrimination.
+,Q69,Q71,discontinued_after_2022,,Question 71. I am satisfied with how concerns or complaints about racism in the workplace are resolved in my department or agency. (only asked if respondent selected 'Race' in question 66.)
+,,Q72a,discontinued_after_2022,,"Question 72a. Overall, to what extent do the following factors cause you work-related stress? Pay or other compensation-related issues"
+,,Q72b,discontinued_after_2022,,"Question 72b. Overall, to what extent do the following factors cause you work-related stress? Heavy workload"
+,,Q72c,discontinued_after_2022,,"Question 72c. Overall, to what extent do the following factors cause you work-related stress? Unreasonable deadlines"
+,,Q72d,discontinued_after_2022,,"Question 72d. Overall, to what extent do the following factors cause you work-related stress? Not enough employees to do the work"
+,,Q72e,discontinued_after_2022,,"Question 72e. Overall, to what extent do the following factors cause you work-related stress? Overtime or long work hours"
+,,Q72f,discontinued_after_2022,,"Question 72f. Overall, to what extent do the following factors cause you work-related stress? Balancing work and personal life"
+,,Q72g,discontinued_after_2022,,"Question 72g. Overall, to what extent do the following factors cause you work-related stress? Lack of control or input in decision-making"
+,,Q72h,discontinued_after_2022,,"Question 72h. Overall, to what extent do the following factors cause you work-related stress? Competing or constantly changing priorities"
+,,Q72i,discontinued_after_2022,,"Question 72i. Overall, to what extent do the following factors cause you work-related stress? Lack of clear expectations"
+,,Q72j,discontinued_after_2022,,"Question 72j. Overall, to what extent do the following factors cause you work-related stress? Lack of recognition"
+,,Q72k,discontinued_after_2022,,"Question 72k. Overall, to what extent do the following factors cause you work-related stress? Feeling disconnected from colleagues"
+,,Q72l,discontinued_after_2022,,"Question 72l. Overall, to what extent do the following factors cause you work-related stress? Information overload"
+,,Q72m,discontinued_after_2022,,"Question 72m. Overall, to what extent do the following factors cause you work-related stress? Physical work environment"
+,Q70p,Q72n,discontinued_after_2022,,"Question 72n. Overall, to what extent do the following factors cause you work-related stress? Difficulty accessing my work tools or network (e.g., work email, work device, ergonomic equipment)"
+,,Q72o,discontinued_after_2022,,"Question 72o. Overall, to what extent do the following factors cause you work-related stress? Accessibility or accommodation issues"
+,,Q72p,discontinued_after_2022,,"Question 72p. Overall, to what extent do the following factors cause you work-related stress? Harassment or discrimination"
+,,Q72q,discontinued_after_2022,,"Question 72q. Overall, to what extent do the following factors cause you work-related stress? Issue(s) with my co-worker(s)"
+,,Q72r,discontinued_after_2022,,"Question 72r. Overall, to what extent do the following factors cause you work-related stress? Issue(s) with individual(s) with authority over me"
+,,Q72s,discontinued_after_2022,,"Question 72s. Overall, to what extent do the following factors cause you work-related stress? Issue(s) with individual(s) working for me"
+,Q70v,Q72t,discontinued_after_2022,,"Question 72t. Overall, to what extent do the following factors cause you work-related stress? Issue(s) with other individual(s) (e.g., members of the public, individuals from other departments or agencies)"
+,,Q72u,discontinued_after_2022,,"Question 72u. Overall, to what extent do the following factors cause you work-related stress? Lack of job security"
+,,Q72v,discontinued_after_2022,,"Question 72v. Overall, to what extent do the following factors cause you work-related stress? Personal issues"
+,Q72,Q73,discontinued_after_2022,,"Question 73. Overall, my level of work-related stress is..."
+,Q73,Q74,discontinued_after_2022,,"Question 74. After my workday, I feel emotionally drained."
+,Q74,Q75,discontinued_after_2022,,Question 75. My department or agency does a good job of raising awareness of mental health in the workplace.
+,,Q76,discontinued_after_2022,,"Question 76. In general, how is your mental health?"
+,Q77,Q77,discontinued_after_2022,,Question 77. My immediate supervisor supports my mental health and well-being.
+,Q76,Q78,discontinued_after_2022,,Question 78. I would feel comfortable sharing concerns with my immediate supervisor about my mental health.
+,Q81,Q79,discontinued_after_2022,,Question 79. I would feel comfortable sharing concerns with my immediate supervisor about my physical health and safety.
+,Q78,Q80,discontinued_after_2022,,Question 80. I would describe my workplace as being psychologically healthy.
+,Q84,Q82,discontinued_after_2022,,Question 82. I am equipped to support employees in my work unit who are experiencing mental health issues. (for supervisors)
+,Q88,Q83,discontinued_after_2022,,"Question 83. Having carefully read the definition of duty to accommodate, have you requested workplace accommodation measures in the last two years?"
+,Q89,Q84,discontinued_after_2022,,Question 84. Were the requests for workplace accommodation measures related to a disability?
+,Q90,Q85,discontinued_after_2022,,Question 85. Were any workplace accommodation measures implemented?
+,Q91,Q86,discontinued_after_2022,,Question 86. I am satisfied with the workplace accommodation measures that were implemented.
+,Q92,Q87,discontinued_after_2022,,Question 87. I would feel comfortable requesting workplace accommodation measures from my immediate supervisor.
+,Q93,Q88,discontinued_after_2022,,"Question 88. In the last 12 months, has your pay or other compensation been affected by issues with the Phoenix pay system?"
+,Q94,Q89,discontinued_after_2022,,Question 89. Have all your pay or other compensation issues been resolved?
+,Q95,Q90,discontinued_after_2022,,"Question 90. I am satisfied with the support (e.g., regular information, follow-up, making enquiries on my behalf, offering emergency or priority pay) I received from my department or agency to help resolve my pay or other compensation issues."
+,Q96,Q91,discontinued_after_2022,,Question 91. I am satisfied with the support I received from the Pay Centre to help resolve my pay or other compensation issues.
+,Q97,Q92,discontinued_after_2022,,"Question 92. To what extent have issues with the Phoenix pay system affected your decision to seek or accept another position (e.g., deployment, promotion, secondment, assignment, acting assignment) within your department or agency or the federal public service?"
+,,Q94,discontinued_after_2022,,"Question 94. In general, which of the following best describes the percentage of time you spend working at a Government of Canada location?"
+,,Q95,discontinued_after_2022,,"Question 95. When working at a Government of Canada location, do you usually work there on the same days of the week?"
+,,Q96a,discontinued_after_2022,,"Question 96a. In general, which of the following activities do you feel are best completed at a Government of Canada location?  Attend meetings"
+,,Q96b,discontinued_after_2022,,"Question 96b. In general, which of the following activities do you feel are best completed at a Government of Canada location?  Participate in team building activities"
+,,Q96c,discontinued_after_2022,,"Question 96c. In general, which of the following activities do you feel are best completed at a Government of Canada location?  Collaborate on projects with colleagues (e.g., brainstorming)"
+,,Q96d,discontinued_after_2022,,"Question 96d. In general, which of the following activities do you feel are best completed at a Government of Canada location? ...Work with stakeholders or clients"
+,,Q96e,discontinued_after_2022,,"Question 96e. In general, which of the following activities do you feel are best completed at a Government of Canada location?  Completing onboarding of employees"
+,,Q96f,discontinued_after_2022,,"Question 96f. In general, which of the following activities do you feel are best completed at a Government of Canada location?  Completing offboarding of employees"
+,,Q96g,discontinued_after_2022,,"Question 96g. In general, which of the following activities do you feel are best completed at a Government of Canada location?  Perform individual work"
+,,Q96h,discontinued_after_2022,,"Question 96h. In general, which of the following activities do you feel are best completed at a Government of Canada location? ...Completing other administrative work (e.g., tasks related to human resources, finance and security)"
+,,Q96i,discontinued_after_2022,,"Question 96i. In general, which of the following activities do you feel are best completed at a Government of Canada location?  Discussing sensitive issues"
+,,Q96j,discontinued_after_2022,,"Question 96j. In general, which of the following activities do you feel are best completed at a Government of Canada location? ...Training"
+,,Q96k,discontinued_after_2022,,"Question 96k. In general, which of the following activities do you feel are best completed at a Government of Canada location? ...Other"
+,,Q96l,discontinued_after_2022,,"Question 96l. In general, which of the following activities do you feel are best completed at a Government of Canada location? ...None of the above"
+,,Q97,discontinued_after_2022,,Question 97. Having the flexibility to choose where I work allows me to have a better work-life-balance.
+,,Q98,discontinued_after_2022,,Question 98. I am concerned that I will miss out on career opportunities if I am not at the Government of Canada worksite as often as others.
+,,Q99,discontinued_after_2022,,Question 99. I believe team members who attend meetings virtually would feel less included than those who attend in person.
